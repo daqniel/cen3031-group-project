@@ -2,9 +2,12 @@
 ## Team 
 Daniel Quintero (leingad)
 
-Daniel Chalco (chalco):
-.. daniel1712@ufl.edu
+Daniel Chalco (chalco)
+
+	daniel1712@ufl.edu
 
 Jack Fining (jackfining)
 
-Sarah Walker (swalker15)sarah.walker@ufl.edu
+Sarah Walker (swalker15)
+	
+	sarah.walker@ufl.edu
