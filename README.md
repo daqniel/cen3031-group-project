@@ -1,10 +1,10 @@
 # cen3031-group-project
-Group Members: 
-
+## Team 
 Daniel Quintero (leingad)
 
-Daniel Chalco daniel1712@ufl.edu
+Daniel Chalco (chalco):
+.. daniel1712@ufl.edu
 
-Jack Fining jackfining
+Jack Fining (jackfining)
 
-Sarah Walker swalker15 sarah.walker@ufl.edu
+Sarah Walker (swalker15)sarah.walker@ufl.edu
