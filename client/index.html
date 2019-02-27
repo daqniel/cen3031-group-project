@@ -6,17 +6,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Playball" rel="stylesheet">
   <link rel="stylesheet" href="style/index.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <title>Bochitto Travel!</title>
+  <title>Welcome!</title>
 </head>
 
 <body>
 
   <!-- NAVBAR -->
   <nav class="navbar navbar-expand-lg navbar-light">
-    <a class="navbar-brand" href="#">Bochitto Travel!</a>
+    <a class="navbar-brand title" href="#">Bochitto Travel</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -37,27 +38,27 @@
 
       <ul class="navbar-nav ml-auto nav-fill">
         <li class="nav-item active mr-1">
-          <button type="button" class="btn btn-success">Login!</button>
+          <button type="button" class="btn btn-success">Login</button>
         </li>
         <li class="nav-item active mr-1">
-          <button type="button" class="btn btn-success">Register!</button>
+          <button type="button" class="btn btn-success">Register</button>
         </li>
       </ul>
     </div>
   </nav>
 
   <!-- Specials Carousel -->
-  <nav class="container-fluid p-0 specialsCarousel">
+  <nav class="container-fluid specialsCarousel">
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <h1 class="text-center justify-content-center text-info">Image 1</h1>
+          <h1 class="text-center justify-content-center text-info">Special 1</h1>
         </div>
         <div class="carousel-item">
-          <h1 class="text-center align-middle text-info">Image 2</h1>
+          <h1 class="text-center align-middle text-info">Special 2</h1>
         </div>
         <div class="carousel-item">
-          <h1 class="text-center align-middle text-info">Image 3</h1>
+          <h1 class="text-center align-middle text-info">Special 3</h1>
         </div>
       </div>
       <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -71,8 +72,83 @@
     </div>
   </nav>
 
+  <!-- Reviews Section -->
   <nav class="container-fluid recommendations">
-    
+    <nav class="container p-3">
+      <h1 class="text-center title">Travel Agent Reviews</h1>
+      <nav>
+        <div class="nav nav-tabs m-3" id="nav-tab" role="tablist">
+          <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab"
+            aria-controls="nav-home" aria-selected="true">Bahamas</a>
+          <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab"
+            aria-controls="nav-profile" aria-selected="false">Key West, FL</a>
+          <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab"
+            aria-controls="nav-contact" aria-selected="false">San Fransisco, CA</a>
+        </div>
+      </nav>
+      <div class="tab-content" id="nav-tabContent">
+        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, odio dolore vero vel voluptates quaerat quo
+            officiis temporibus ullam ad asperiores iusto tempora natus atque earum exercitationem commodi voluptatem
+            voluptatibus! Eum, libero. Blanditiis labore, voluptatibus debitis consectetur veritatis eaque
+            exercitationem ut repudiandae qui necessitatibus temporibus, ipsum rerum deleniti natus delectus corporis
+            illo quam quibusdam possimus modi error, fugiat ad in. Velit quod deserunt blanditiis saepe, sed qui iure,
+            dicta architecto nulla laborum pariatur, voluptatum culpa dignissimos expedita. Corporis deserunt, aliquam
+            repudiandae voluptates explicabo, qui necessitatibus magnam accusantium amet ex numquam ut consectetur error
+            nostrum odit sed! Placeat quia dolorum beatae exercitationem ad, porro animi quos asperiores nostrum maxime
+            temporibus error. Ad animi distinctio, consectetur iusto, veritatis odit, adipisci nam in mollitia molestiae
+            corrupti reprehenderit nobis. Ratione similique labore tenetur non, facere tempore debitis ea, aut sapiente
+            quod tempora ipsa. Alias dicta quos unde ab commodi nisi nobis corrupti, in quidem accusamus recusandae
+            corporis repellendus tenetur delectus. Ut ullam dicta, ex ducimus dolores accusantium, sed velit, beatae
+            delectus molestiae rerum dolor vitae sequi assumenda magnam veritatis ab iste. Sequi, illo accusantium earum
+            quasi voluptatem aperiam vitae saepe nesciunt a et enim deleniti, sint placeat nulla. Accusantium minima
+            recusandae odio expedita quaerat?
+          </p>
+          <img src="./images/bahamas.jpg" class="mx-auto d-block" alt="">
+        </div>
+        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, odio dolore vero vel voluptates quaerat quo
+            officiis temporibus ullam ad asperiores iusto tempora natus atque earum exercitationem commodi voluptatem
+            voluptatibus! Eum, libero. Blanditiis labore, voluptatibus debitis consectetur veritatis eaque
+            exercitationem ut repudiandae qui necessitatibus temporibus, ipsum rerum deleniti natus delectus corporis
+            illo quam quibusdam possimus modi error, fugiat ad in. Velit quod deserunt blanditiis saepe, sed qui iure,
+            dicta architecto nulla laborum pariatur, voluptatum culpa dignissimos expedita. Corporis deserunt, aliquam
+            repudiandae voluptates explicabo, qui necessitatibus magnam accusantium amet ex numquam ut consectetur error
+            nostrum odit sed! Placeat quia dolorum beatae exercitationem ad, porro animi quos asperiores nostrum maxime
+            temporibus error. Ad animi distinctio, consectetur iusto, veritatis odit, adipisci nam in mollitia molestiae
+            corrupti reprehenderit nobis. Ratione similique labore tenetur non, facere tempore debitis ea, aut sapiente
+            quod tempora ipsa. Alias dicta quos unde ab commodi nisi nobis corrupti, in quidem accusamus recusandae
+            corporis repellendus tenetur delectus. Ut ullam dicta, ex ducimus dolores accusantium, sed velit, beatae
+            delectus molestiae rerum dolor vitae sequi assumenda magnam veritatis ab iste. Sequi, illo accusantium earum
+            quasi voluptatem aperiam vitae saepe nesciunt a et enim deleniti, sint placeat nulla. Accusantium minima
+            recusandae odio expedita quaerat?
+          </p>
+          <img src="./images/keys.jpeg" class="mx-auto d-block" alt="">
+        </div>
+        <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, odio dolore vero vel voluptates quaerat quo
+            officiis temporibus ullam ad asperiores iusto tempora natus atque earum exercitationem commodi voluptatem
+            voluptatibus! Eum, libero. Blanditiis labore, voluptatibus debitis consectetur veritatis eaque
+            exercitationem ut repudiandae qui necessitatibus temporibus, ipsum rerum deleniti natus delectus corporis
+            illo quam quibusdam possimus modi error, fugiat ad in. Velit quod deserunt blanditiis saepe, sed qui iure,
+            dicta architecto nulla laborum pariatur, voluptatum culpa dignissimos expedita. Corporis deserunt, aliquam
+            repudiandae voluptates explicabo, qui necessitatibus magnam accusantium amet ex numquam ut consectetur error
+            nostrum odit sed! Placeat quia dolorum beatae exercitationem ad, porro animi quos asperiores nostrum maxime
+            temporibus error. Ad animi distinctio, consectetur iusto, veritatis odit, adipisci nam in mollitia molestiae
+            corrupti reprehenderit nobis. Ratione similique labore tenetur non, facere tempore debitis ea, aut sapiente
+            quod tempora ipsa. Alias dicta quos unde ab commodi nisi nobis corrupti, in quidem accusamus recusandae
+            corporis repellendus tenetur delectus. Ut ullam dicta, ex ducimus dolores accusantium, sed velit, beatae
+            delectus molestiae rerum dolor vitae sequi assumenda magnam veritatis ab iste. Sequi, illo accusantium earum
+            quasi voluptatem aperiam vitae saepe nesciunt a et enim deleniti, sint placeat nulla. Accusantium minima
+            recusandae odio expedita quaerat?
+          </p>
+          <img src="./images/sanfransisco.jpg" class="mx-auto d-block" alt="">
+        </div>
+      </div>
+    </nav>
   </nav>
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

@@ -5,6 +5,11 @@ html, body
     height: 100%;
 }
 
+.title
+{
+    font-family: 'Playball', cursive;
+}
+
 .navbar-brand {
     font-size: 1.5rem!important;
 }
@@ -41,5 +46,5 @@ html, body
 .recommendations
 {
     background-color: mistyrose;
-    height: 75%;
+    height: 80%;
 }
