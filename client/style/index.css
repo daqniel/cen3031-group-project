@@ -5,17 +5,19 @@ html, body
     height: 100%;
 }
 
+
 .title
 {
-    font-family: 'Playball', cursive;
+    color: rgb(156, 40, 255) !important;
 }
+
 
 .navbar-brand {
     font-size: 1.5rem!important;
 }
 
 .navbar {
-    background-color: ivory!important;
+    background-color: LIGHTSKYBLUE!important;
     font-size: 1.25rem;
 }
 
@@ -32,7 +34,7 @@ html, body
 
 .specialsCarousel
 {
-    height: 20%;
+    height: 20.3%;
 }
 
 .carousel-control-prev {
@@ -45,6 +47,11 @@ html, body
 }
 .recommendations
 {
-    background-color: mistyrose;
-    height: 80%;
+    background-color: ivory;
+    height: 73.7%;
+}
+
+#aboutMe
+{
+    height: 70%;
 }
