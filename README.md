@@ -1,4 +1,8 @@
 # cen3031-group-project
+## Notes
+* Currently is just the bootcamp4 assignment.
+* Using DQ's bootcamp3 mlab database.
+
 ## Team 
 Daniel Quintero (leingad)
 
