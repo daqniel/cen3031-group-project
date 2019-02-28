@@ -1,4 +1,4 @@
-# cen3031-group-project (BACKEND)
+# cen3031-group-project
 ## Team 
 Daniel Quintero (leingad)
 
