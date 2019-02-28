@@ -4,13 +4,14 @@ var mongoose = require('mongoose'),
 
 /* Create your schema */
 var userSchema = new Schema({
-    name: {
+    name: { //first and last name of client associated with account
         first: String,
         last: String,
     },
-    password : String,
-    email: String, //(KEY)
-    phoneNumber: String,
+    password : String, //will be hashed
+    username: String, //(KEY) uniquely identifies each client
+    email: String, //(KEY) used for contact and uniquely def
+    phoneNumber: String, //for contact
     isAdmin: Boolean, //enables user to access admin pages and functions
     createdDate: Date,
     updatedDate: Date

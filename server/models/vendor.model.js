@@ -4,7 +4,7 @@ var mongoose = require('mongoose'),
 
 /* Create your schema */
 var vendorSchema = new Schema({
-    name: String, //(KEY) number associated with note
+    name: String, //(KEY) one name per vendor
     description: String, //what kind of company the vendor is
     phoneNumber: String,
     email: String,

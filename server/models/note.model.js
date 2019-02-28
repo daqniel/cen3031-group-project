@@ -6,7 +6,7 @@ var mongoose = require('mongoose'),
 var noteSchema = new Schema({
     noteID: Number, //(KEY) number associated with note
     type: String, //type of note: "Client","Vendor","Request"
-    title: String,
+    title: String, //heading
     text: String, //body of note
     createdDate: Date,
     updatedDate: Date
