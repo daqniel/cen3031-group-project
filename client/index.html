@@ -5,18 +5,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Playball" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Boogaloo|Laila" rel="stylesheet">
   <link rel="stylesheet" href="style/index.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+    integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+
   <title>Welcome!</title>
 </head>
 
 <body>
 
   <!-- NAVBAR -->
-  <nav class="navbar navbar-expand-lg navbar-light">
+  <nav id="mainNavbar" class="navbar navbar-expand-md navbar-light fixed-top">
     <a class="navbar-brand title" href="#">Bochitto Travel</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,13 +29,13 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto nav-fill w-100">
         <li class="nav-item active">
-          <a class="nav-link " href="#">Specials <span class="sr-only">(current)</span></a>
+          <a class="nav-link " href="#">Specials<span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item active">
-          <a class="nav-link" href="#">Blog <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="#">Blog<span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item active">
-          <a class="nav-link" href="#">About Me <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="#">Our Story<span class="sr-only">(current)</span></a>
         </li>
       </ul>
 
@@ -48,17 +51,17 @@
   </nav>
 
   <!-- Specials Carousel -->
-  <nav class="container-fluid specialsCarousel p-0">
+  <nav class="container-fluid specialsCarousel">
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img src="./images/beach.jpg" alt="">
-        </div>
-        <div class="carousel-item">
-          <img src="./images/specials.jpg" alt="">
+          <img src="./images/specials1.jpg" alt="">
         </div>
         <div class="carousel-item">
           <img src="./images/specials2.jpg" alt="">
+        </div>
+        <div class="carousel-item">
+          <img src="./images/specials3.jpg" alt="">
         </div>
       </div>
       <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -74,21 +77,22 @@
 
   <!-- Reviews Section -->
   <nav class="container-fluid recommendations">
-    <nav class="container p-3">
-      <h1 class="text-center">Travel Agent Reviews</h1>
+    <nav class="container">
+      <h1 class="text-center titleFont p-2">Travel Agent Reviews</h1>
       <nav>
         <div class="nav nav-tabs m-3" id="nav-tab" role="tablist">
-          <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab"
-            aria-controls="nav-home" aria-selected="true">Bahamas</a>
-          <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab"
-            aria-controls="nav-profile" aria-selected="false">Key West, FL</a>
-          <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab"
-            aria-controls="nav-contact" aria-selected="false">San Fransisco, CA</a>
+          <a class="nav-item nav-link active titleFont reviewTab" id="nav-home-tab" data-toggle="tab" href="#nav-home"
+            role="tab" aria-controls="nav-home" aria-selected="true">Bahamas</a>
+          <a class="nav-item nav-link titleFont reviewTab" id="nav-profile-tab" data-toggle="tab" href="#nav-profile"
+            role="tab" aria-controls="nav-profile" aria-selected="false">Key West, FL</a>
+          <a class="nav-item nav-link titleFont reviewTab" id="nav-contact-tab" data-toggle="tab" href="#nav-contact"
+            role="tab" aria-controls="nav-contact" aria-selected="false">San Fransisco, CA</a>
         </div>
       </nav>
       <div class="tab-content" id="nav-tabContent">
         <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-          <p>
+          <hr>
+          <p class="textFont">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, odio dolore vero vel voluptates quaerat quo
             officiis temporibus ullam ad asperiores iusto tempora natus atque earum exercitationem commodi voluptatem
             voluptatibus! Eum, libero. Blanditiis labore, voluptatibus debitis consectetur veritatis eaque
@@ -108,7 +112,8 @@
           <img src="./images/bahamas.jpg" class="mx-auto d-block" alt="">
         </div>
         <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-          <p>
+          <hr>
+          <p class="textFont">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, odio dolore vero vel voluptates quaerat quo
             officiis temporibus ullam ad asperiores iusto tempora natus atque earum exercitationem commodi voluptatem
             voluptatibus! Eum, libero. Blanditiis labore, voluptatibus debitis consectetur veritatis eaque
@@ -128,7 +133,8 @@
           <img src="./images/keys.jpeg" class="mx-auto d-block" alt="">
         </div>
         <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-          <p>
+          <hr>
+          <p class="textFont">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, odio dolore vero vel voluptates quaerat quo
             officiis temporibus ullam ad asperiores iusto tempora natus atque earum exercitationem commodi voluptatem
             voluptatibus! Eum, libero. Blanditiis labore, voluptatibus debitis consectetur veritatis eaque
@@ -151,17 +157,133 @@
     </nav>
   </nav>
 
-  <nav class="container-fluid" id="aboutMe"></nav>
+  <nav class="container-fluid" id="ourStory">
+    <h1 class="text-center titleFont pt-3">About Us <i class="fas fa-sun"></i></h1>
+    <h5 class="text-center subtitleFont">Individual, Group, Business, Family, Domestic and International Travel
+      Specializing in... </h5>
+    <hr id="storyRule">
+    <nav class="row">
+      <div class="card col-md-4" style="width: 16rem;">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+            content.</p>
+          <a href="#" class="card-link">Card link</a>
+          <a href="#" class="card-link">Another link</a>
+        </div>
+      </div>
+
+      <div class="card col-md-4" style="width: 16rem;">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+            content.</p>
+          <a href="#" class="card-link">Card link</a>
+          <a href="#" class="card-link">Another link</a>
+        </div>
+      </div>
+
+      <div class="card col-md-4" style="width: 16rem;">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+            content.</p>
+          <a href="#" class="card-link">Card link</a>
+          <a href="#" class="card-link">Another link</a>
+        </div>
+      </div>
+
+    </nav>
+
+    <nav class="row">
+      <div class="card col-md-4" style="width: 16rem;">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+            content.</p>
+          <a href="#" class="card-link">Card link</a>
+          <a href="#" class="card-link">Another link</a>
+        </div>
+      </div>
+
+      <div class="card col-md-4" style="width: 16rem;">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+            content.</p>
+          <a href="#" class="card-link">Card link</a>
+          <a href="#" class="card-link">Another link</a>
+        </div>
+      </div>
+
+      <div class="card col-md-4" style="width: 16rem;">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+            content.</p>
+          <a href="#" class="card-link">Card link</a>
+          <a href="#" class="card-link">Another link</a>
+        </div>
+      </div>
+
+    </nav>
+
+    <nav class="row">
+      <div class="card col-md-4" style="width: 16rem;">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+            content.</p>
+          <a href="#" class="card-link">Card link</a>
+          <a href="#" class="card-link">Another link</a>
+        </div>
+      </div>
+
+      <div class="card col-md-4" style="width: 16rem;">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+            content.</p>
+          <a href="#" class="card-link">Card link</a>
+          <a href="#" class="card-link">Another link</a>
+        </div>
+      </div>
+
+      <div class="card col-md-4" style="width: 16rem;">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+            content.</p>
+          <a href="#" class="card-link">Card link</a>
+          <a href="#" class="card-link">Another link</a>
+        </div>
+      </div>
+
+    </nav>
+  </nav>
+
+  <nav class="container-fluid" id="footer"></nav>
+
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+    integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
     crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+    integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
     crossorigin="anonymous"></script>
+  <script src="js/styling/script.js"></script>
 </body>
 
 </html>

@@ -1,24 +1,65 @@
 html, body
 {
-    font-family: 'Shadows Into Light', cursive !important;
     width: 100%;
     height: 100%;
 }
 
-
-.title
+.titleFont
 {
-    color: rgb(156, 40, 255) !important;
+    font-family: 'Boogaloo', cursive;
 }
 
+.subtitleFont
+{
+    font-family: 'Boogaloo', cursive;
+    font-style: italic;
+}
+
+.reviewTab
+{
+    color: black;
+}
+
+.reviewTab:hover
+{
+    color: white;
+}
+
+.navbar.scrolled{
+    background: rgba(231, 237, 168, 0.97);
+    transition: background 1s;
+}
+
+.nav-tabs
+{
+    border-bottom: 0px !important;
+}
+
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active 
+{
+    background-color: #f08080!important;
+    color: white !important;
+}
+
+.nav-tabs .nav-link:focus, .nav-tabs .nav-link:hover {
+    border-color: #F08080 #F08080 #f08080 !important;
+    background-color: #E95252;
+}
+
+.textFont
+{
+    font-family: 'Laila', serif;
+    font-size: 16px;
+}
 
 .navbar-brand {
     font-size: 1.5rem!important;
 }
 
 .navbar {
-    background-color: LIGHTSKYBLUE!important;
     font-size: 1.25rem;
+    background-color: rgb(239, 242, 203);
+    font-family: 'Boogaloo', cursive;
 }
 
 .btn-success:hover {
@@ -26,15 +67,19 @@ html, body
     background-color: #E95252 !important;
     border-color: #E95252 !important;
 }
+
 .btn-success {
     color: #fff;
-    background-color: lightcoral !important;
+    background-color: #f08080 !important;
     border-color: lightcoral !important;
 }
 
 .specialsCarousel
 {
-    height: 20.3%;
+    padding-top: 4rem;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+    height: 26.8%;
 }
 
 .carousel-control-prev {
@@ -45,13 +90,26 @@ html, body
 {
     filter: invert(100%);
 }
+
 .recommendations
 {
-    background-color: ivory;
-    height: 73.7%;
+    height: 76%;
+    background-color: #D3FFFF;
 }
 
-#aboutMe
+#ourStory
 {
-    height: 70%;
+    height: 94%;
+    background-color: white;
+}
+
+#storyRule
+{
+    width: 32.5%;
+}
+
+#footer
+{
+    background-color: #D3FFFF;
+    height:30%;
 }
