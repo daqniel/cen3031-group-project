@@ -5,8 +5,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- Links: API's, CSS, and FontAwesome -->
   <link href="https://fonts.googleapis.com/css?family=Boogaloo|Laila" rel="stylesheet">
   <link rel="stylesheet" href="style/index.css">
+  <link rel="stylesheet" href="style/style.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
@@ -20,7 +22,7 @@
 
   <!-- NAVBAR -->
   <nav id="mainNavbar" class="navbar navbar-expand-md navbar-light fixed-top">
-    <a class="navbar-brand title" href="#">Bochitto Travel</a>
+    <a class="navbar-brand title" href="./index.html" style="color: #9C28FF">Bochitto Travel</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -28,22 +30,22 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto nav-fill w-100">
-        <li class="nav-item active">
-          <a class="nav-link " href="#">Specials<span class="sr-only">(current)</span></a>
+        <li class="icon nav-item active">
+          <a class="nav-link " href="./specials.html">Specials<span class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Blog<span class="sr-only">(current)</span></a>
+        <li class="icon nav-item active">
+          <a class="nav-link" href="./blog.html">Past Reviews<span class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Our Story<span class="sr-only">(current)</span></a>
+        <li class="icon nav-item active">
+          <a class="nav-link" href="#aboutUsContainer">About Us<span class="sr-only">(current)</span></a>
         </li>
       </ul>
 
       <ul class="navbar-nav ml-auto nav-fill">
-        <li class="nav-item active mr-1">
+        <li class="icon nav-item active mr-1">
           <button type="button" class="btn btn-success">Login</button>
         </li>
-        <li class="nav-item active mr-1">
+        <li class="icon nav-item active mr-1">
           <button type="button" class="btn btn-success">Register</button>
         </li>
       </ul>
@@ -51,17 +53,29 @@
   </nav>
 
   <!-- Specials Carousel -->
-  <nav class="container-fluid specialsCarousel">
+  <div class="container-fluid specialsCarousel">
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img src="./images/specials1.jpg" alt="">
+          <img src="./images/specials1.jpg" class="specialsImages" alt="">
+          <div class="carousel-caption d-none d-md-block">
+            <h4 class="titleFont">3 Nights 4 Days in Cancun, Mexico: $599!</h4>
+            <button type="button" class="btn btn-success">Book Now</button>
+          </div>
         </div>
         <div class="carousel-item">
-          <img src="./images/specials2.jpg" alt="">
+          <img src="./images/specials2.jpg" class="specialsImages" alt="">
+          <div class="carousel-caption d-none d-md-block">
+            <h4 class="titleFont">3 Nights 4 Days in San Fransisco, California: $999!</h4>
+            <button type="button" class="btn btn-success">Book Now</button>
+          </div>
         </div>
         <div class="carousel-item">
-          <img src="./images/specials3.jpg" alt="">
+          <img src="./images/specials3.jpg" class="specialsImages" alt="">
+          <div class="carousel-caption d-none d-md-block">
+            <h4 class="titleFont">6 Nights 7 Days in Giza, Egypt: $1299!</h4>
+            <button type="button" class="btn btn-success">Book Now</button>
+          </div>
         </div>
       </div>
       <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -73,10 +87,10 @@
         <span class="sr-only">Next</span>
       </a>
     </div>
-  </nav>
+  </div>
 
   <!-- Reviews Section -->
-  <nav class="container-fluid recommendations">
+  <nav class="container-fluid recommendations" id="recommendations">
     <nav class="container">
       <h1 class="text-center titleFont p-2">Travel Agent Reviews</h1>
       <nav>
@@ -157,123 +171,220 @@
     </nav>
   </nav>
 
-  <nav class="container-fluid" id="ourStory">
-    <h1 class="text-center titleFont pt-3">About Us <i class="fas fa-sun"></i></h1>
+  <!-- Services Section -->
+  <div class="container-fluid" id="aboutUsContainer">
+    <!-- Titles and hr -->
+    <h1 class="text-center titleFont pt-3">About Us <i class="fas fa-sun fa-1.5x"></i></h1>
     <h5 class="text-center subtitleFont">Individual, Group, Business, Family, Domestic and International Travel
       Specializing in... </h5>
     <hr id="storyRule">
-    <nav class="row">
-      <div class="card col-md-4" style="width: 16rem;">
+
+    <!-- button row -->
+    <div class="row">
+      <div class="col-md-4"></div>
+      <div class="col-md-4">
+        <button type="button" class="btn btn-success" style="width: 100%;">Learn More</button>
+      </div>
+      <div class="col-md-4"></div>
+    </div>
+
+    <!-- space between button and rows -->
+    <br><br>
+
+    <!-- cards + rows -->
+    <div class="row aboutUsRow">
+      <div class="card col-md-4 aboutUsCard">
         <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-            content.</p>
-          <a href="#" class="card-link">Card link</a>
-          <a href="#" class="card-link">Another link</a>
+          <h3 class="card-title titleFont">Cruises</h3>
+          <i class="icon fas fa-ship fa-6x"></i>
         </div>
       </div>
 
-      <div class="card col-md-4" style="width: 16rem;">
+      <div class="card col-md-4 aboutUsCard">
         <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-            content.</p>
-          <a href="#" class="card-link">Card link</a>
-          <a href="#" class="card-link">Another link</a>
+          <h3 class="card-title titleFont">Flights</h3>
+          <i class="icon fas fa-plane-departure fa-6x"></i>
         </div>
       </div>
 
-      <div class="card col-md-4" style="width: 16rem;">
+      <div class="card col-md-4 aboutUsCard">
         <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-            content.</p>
-          <a href="#" class="card-link">Card link</a>
-          <a href="#" class="card-link">Another link</a>
+          <h3 class="card-title titleFont">Hotels</h3>
+          <i class="icon fas fa-building fa-6x"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="row aboutUsRow">
+      <div class="card col-md-4 aboutUsCard">
+        <div class="card-body">
+          <h3 class="card-title titleFont">Car Rentals</h3>
+          <i class="icon fas fa-car fa-7x"></i>
         </div>
       </div>
 
-    </nav>
-
-    <nav class="row">
-      <div class="card col-md-4" style="width: 16rem;">
+      <div class="card col-md-4 aboutUsCard">
         <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-            content.</p>
-          <a href="#" class="card-link">Card link</a>
-          <a href="#" class="card-link">Another link</a>
+          <h3 class="card-title titleFont">Ground Transportation</h3>
+          <i class="icon fas fa-bus-alt fa-6x"></i>
         </div>
       </div>
 
-      <div class="card col-md-4" style="width: 16rem;">
+      <div class="card col-md-4 aboutUsCard">
         <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-            content.</p>
-          <a href="#" class="card-link">Card link</a>
-          <a href="#" class="card-link">Another link</a>
+          <h3 class="card-title titleFont">Family Reuninon Packages</h3>
+          <i class="icon fas fa-users fa-6x"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="row aboutUsRow">
+      <div class="card col-md-4 aboutUsCard">
+        <div class="card-body">
+          <h3 class="card-title titleFont">Attraction Tickets</h3>
+          <h6 class="card-title textFont mb-2 text-muted">Focused in Orlando, St. Thomas and U.S Virgin Islands*</h6>
+          <i class="icon fas fa-ticket-alt fa-6x"></i>
         </div>
       </div>
 
-      <div class="card col-md-4" style="width: 16rem;">
+      <div class="card col-md-4 aboutUsCard">
         <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-            content.</p>
-          <a href="#" class="card-link">Card link</a>
-          <a href="#" class="card-link">Another link</a>
+          <h3 class="card-title titleFont">Tours</h3>
+          <br>
+          <i class="icon fas fa-search-location fa-6x"></i>
         </div>
       </div>
 
-    </nav>
-
-    <nav class="row">
-      <div class="card col-md-4" style="width: 16rem;">
+      <div class="card col-md-4 aboutUsCard">
         <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-            content.</p>
-          <a href="#" class="card-link">Card link</a>
-          <a href="#" class="card-link">Another link</a>
+          <h3 class="card-title titleFont">Weddings</h3>
+          <h6 class="card-title textFont mb-2 text-muted">Select Locations*</h6>
+          <i class="icon far fa-grin-hearts fa-6x"></i>
         </div>
       </div>
+    </div>
+  </div>
 
-      <div class="card col-md-4" style="width: 16rem;">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-            content.</p>
-          <a href="#" class="card-link">Card link</a>
-          <a href="#" class="card-link">Another link</a>
+  <div class="container-fluid" id="bufferSection"></div>
+
+  <!-- Footer -->
+  <div class="container-fluid" id="footer">
+    <br>
+    <br>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <h5 class="titleFont">Specials</h5>
+          <ul>
+            <li>
+              blah
+            </li>
+            <li>
+              blah
+            </li>
+            <li>
+              blah
+            </li>
+            <li>
+              blah
+            </li>
+            <li>
+              blah
+            </li>
+            <li>
+              blah
+            </li>
+            <li>
+              blah
+            </li>
+            <li>
+              blah
+            </li>
+            <li>
+              blah
+            </li>
+            <li>
+              blah
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h5 class="text-center titleFont">Book Now!</h5>
+          <ul>
+            <li>
+              blah
+            </li>
+            <li>
+              blah
+            </li>
+            <li>
+              blah
+            </li>
+            <li>
+              blah
+            </li>
+            <li>
+              blah
+            </li>
+            <li>
+              blah
+            </li>
+            <li>
+              blah
+            </li>
+            <li>
+              blah
+            </li>
+            <li>
+              blah
+            </li>
+            <li>
+              blah
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-4 text-right ">
+          <h5 class="titleFont">Contact Us</h5>
+          <ul>
+            <li>
+              blah
+            </li>
+            <li>
+              blah
+            </li>
+            <li>
+              blah
+            </li>
+            <li>
+              blah
+            </li>
+            <li>
+              blah
+            </li>
+            <li>
+              blah
+            </li>
+            <li>
+              blah
+            </li>
+            <li>
+              blah
+            </li>
+            <li>
+              blah
+            </li>
+            <li>
+              blah
+            </li>
+          </ul>
         </div>
       </div>
+    </div>
+    <hr id="footerRule">
+    <h5 class="text-center titleFont">SWE Team 1 Spring 2019 - Software Engineering @ UF: All Rights Reserved.</h5>
+  </div>
 
-      <div class="card col-md-4" style="width: 16rem;">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-            content.</p>
-          <a href="#" class="card-link">Card link</a>
-          <a href="#" class="card-link">Another link</a>
-        </div>
-      </div>
-
-    </nav>
-  </nav>
-
-  <nav class="container-fluid" id="footer"></nav>
-
-
+  <!-- CDN's + Scripts -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>

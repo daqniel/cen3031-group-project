@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Boogaloo|Laila" rel="stylesheet">
+    <link rel="stylesheet" href="style/specials.css">
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <title>Specials</title>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav id="mainNavbar" class="navbar navbar-expand-md navbar-light fixed-top">
+        <a class="navbar-brand title" href="./index.html" style="color: #9C28FF">Bochitto Travel</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto nav-fill w-100">
+                <li class="icon nav-item active">
+                    <a class="nav-link " href="./specials.html">Specials<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="icon nav-item active">
+                    <a class="nav-link" href="./blog.html">Past Reviews<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="icon nav-item active">
+                    <a class="nav-link" href="#aboutUsContainer">About Us<span class="sr-only">(current)</span></a>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav ml-auto nav-fill">
+                <li class="icon nav-item active mr-1">
+                    <button type="button" class="btn btn-success">Login</button>
+                </li>
+                <li class="icon nav-item active mr-1">
+                    <button type="button" class="btn btn-success">Register</button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Deals -->
+    <div class="container-fluid py-5" id="deals">
+        <div class="container">
+            <h1 class="text-center py-4 titleFont">Specials</h1>
+            <table class="table table-striped table-hover" id="specialsTable">
+                <thead>
+                    <th class="">Departing From</th>
+                    <th class="">Destination</th>
+                    <th class="">Expiration Date</th>
+                    <th class="">Price</th>
+                    <th>Details</th>
+                    <th>Remove</th>
+                </thead>
+                <tbody>
+                    <!-- Hardcoded special 1 -->
+                    <tr>
+                        <td>Fort Lauderdale, FL</td>
+                        <td>Cancun, Mexico</td>
+                        <td>3/6/2019</td>
+                        <td>$599.99</td>
+                        <td id="editButton">
+                            <button type="button" id="addButton" class="btn btn-info" data-toggle="modal"
+                                data-target="#exampleModal" data-whatever="@mdo">
+                                <i class="fas fa-info-circle"></i>
+                            </button>
+                        </td>
+                        <td id="removeButton">
+                            <!-- TODO: remove listing if button is clicked -->
+                            <button type="button" class="btn btn-secondary">
+                                <i class="fas fa-trash-alt"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <!-- special 2 -->
+                    <tr>
+                        <td>Miami, FL</td>
+                        <td>San Fransisco, California</td>
+                        <td>3/9/2019</td>
+                        <td>$999.99</td>
+                        <td id="editButton">
+                            <button type="button" class="btn btn-info" id="editButton">
+                                <i class="fas fa-info-circle"></i>
+                            </button>
+                        </td>
+                        <td id="removeButton">
+                            <!-- TODO: remove listing if button is clicked -->
+                            <button type="button" class="btn btn-secondary">
+                                <i class="fas fa-trash-alt"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <!-- special 3 -->
+                    <tr>
+                        <td>Orlando, FL</td>
+                        <td>Giza, Egypt</td>
+                        <td>3/9/2019</td>
+                        <td>$1299.99</td>
+                        <td id="editButton">
+                            <button type="button" class="btn btn-info" id="editButton">
+                                <i class="fas fa-info-circle"></i>
+                            </button>
+                        </td>
+                        <td id="removeButton">
+                            <!-- TODO: remove listing if button is clicked -->
+                            <button type="button" class="btn btn-secondary">
+                                <i class="fas fa-trash-alt"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <h3 class="titleFont text-center">Enjoy your time in BLANK</h3>
+                    <img src="./images/keys.jpeg" class="image" alt="">
+                    <hr>
+                    <p class="textFont">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum ipsa autem mollitia quo earum
+                        et vel quidem sequi, explicabo laboriosam consectetur in, doloremque consequatur numquam! Maxime
+                        aperiam illum odio iusto quae, perferendis veritatis quod voluptatum! Quia, sit! Iste minima
+                        atque sit repellendus possimus consectetur, vel cum. Sequi dolor quaerat perspiciatis delectus
+                        eaque iusto facere amet totam similique aliquid laudantium, animi harum, et nobis qui nostrum,
+                        aliquam exercitationem consectetur? Cum dolor fugiat vitae saepe laboriosam veritatis ipsum
+                        necessitatibus quibusdam. Dolores a sint quod accusantium odit nemo dicta aliquam doloribus
+                        aperiam. Sunt laborum placeat cumque exercitationem, ipsa labore natus accusamus dolorem
+                        quaerat.
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-success" data-dismiss="modal">Book Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- bookNow -->
+    <div class="container-fluid" id="bookNow">
+        <div class="row" id="fillOutForm">
+            <div class="col-md-6">
+                <div class="card-body">
+                    <h3 class="card-title titleFont text-center">Create Trip Recommendation!</h3>
+                    <h5 class="textFont text-center">After filling this form out, you don't have to worry about the
+                        nitty-gritty details
+                        we'll take care of everything for you
+                    </h5>
+                    <button type="button" class="btn btn-success bookNowButton">Fill Out Request</button>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card-body">
+                    <h3 class="card-title titleFont text-center bookNowButton">Book On Your Own!</h3>
+                    <h5 class="textFont text-center">Using our vendors, book on your own and customize your booking to
+                        your specific needs
+                    </h5>
+                    <button type="button" class="btn btn-success bookNowButton">Book on My Own</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="container-fluid" id="footer">
+        <br>
+        <br>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5 class="titleFont">Specials</h5>
+                    <ul>
+                        <li>
+                            blah
+                        </li>
+                        <li>
+                            blah
+                        </li>
+                        <li>
+                            blah
+                        </li>
+                        <li>
+                            blah
+                        </li>
+                        <li>
+                            blah
+                        </li>
+                        <li>
+                            blah
+                        </li>
+                        <li>
+                            blah
+                        </li>
+                        <li>
+                            blah
+                        </li>
+                        <li>
+                            blah
+                        </li>
+                        <li>
+                            blah
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5 class="text-center titleFont">Book Now!</h5>
+                    <ul>
+                        <li>
+                            blah
+                        </li>
+                        <li>
+                            blah
+                        </li>
+                        <li>
+                            blah
+                        </li>
+                        <li>
+                            blah
+                        </li>
+                        <li>
+                            blah
+                        </li>
+                        <li>
+                            blah
+                        </li>
+                        <li>
+                            blah
+                        </li>
+                        <li>
+                            blah
+                        </li>
+                        <li>
+                            blah
+                        </li>
+                        <li>
+                            blah
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-4 text-right ">
+                    <h5 class="titleFont">Contact Us</h5>
+                    <ul>
+                        <li>
+                            blah
+                        </li>
+                        <li>
+                            blah
+                        </li>
+                        <li>
+                            blah
+                        </li>
+                        <li>
+                            blah
+                        </li>
+                        <li>
+                            blah
+                        </li>
+                        <li>
+                            blah
+                        </li>
+                        <li>
+                            blah
+                        </li>
+                        <li>
+                            blah
+                        </li>
+                        <li>
+                            blah
+                        </li>
+                        <li>
+                            blah
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <hr id="footerRule">
+        <h5 class="text-center titleFont">SWE Team 1 Spring 2019 - Software Engineering @ UF: All Rights Reserved.</h5>
+    </div>
+
+    <!-- CDN's + Scripts -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+        integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+        integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+        crossorigin="anonymous"></script>
+    <script src="js/styling/script.js"></script>
+</body>
+
+</html>

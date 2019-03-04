@@ -1,85 +1,14 @@
-html, body
-{
-    width: 100%;
-    height: 100%;
-}
-
-.titleFont
-{
-    font-family: 'Boogaloo', cursive;
-}
-
-.subtitleFont
-{
-    font-family: 'Boogaloo', cursive;
-    font-style: italic;
-}
-
-.reviewTab
-{
-    color: black;
-}
-
-.reviewTab:hover
-{
-    color: white;
-}
-
-.navbar.scrolled{
-    background: rgba(231, 237, 168, 0.97);
-    transition: background 1s;
-}
-
-.nav-tabs
-{
-    border-bottom: 0px !important;
-}
-
-.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active 
-{
-    background-color: #f08080!important;
-    color: white !important;
-}
-
-.nav-tabs .nav-link:focus, .nav-tabs .nav-link:hover {
-    border-color: #F08080 #F08080 #f08080 !important;
-    background-color: #E95252;
-}
-
-.textFont
-{
-    font-family: 'Laila', serif;
-    font-size: 16px;
-}
-
-.navbar-brand {
-    font-size: 1.5rem!important;
-}
-
-.navbar {
-    font-size: 1.25rem;
-    background-color: rgb(239, 242, 203);
-    font-family: 'Boogaloo', cursive;
-}
-
-.btn-success:hover {
-    color: #fff;
-    background-color: #E95252 !important;
-    border-color: #E95252 !important;
-}
-
-.btn-success {
-    color: #fff;
-    background-color: #f08080 !important;
-    border-color: lightcoral !important;
-}
-
 .specialsCarousel
 {
-    padding-top: 4rem;
+    padding-top: 3.95rem;
     padding-left: 0px !important;
     padding-right: 0px !important;
-    height: 26.8%;
+    height: 26.94%;
+}
+
+.specialsImages
+{
+    opacity: 0.25;
 }
 
 .carousel-control-prev {
@@ -97,10 +26,43 @@ html, body
     background-color: #D3FFFF;
 }
 
-#ourStory
+#aboutUsContainer
 {
-    height: 94%;
+    height: 84%;
     background-color: white;
+}
+
+#cardContainer
+{
+    height: 100%;
+}
+
+.aboutUsRow
+{
+    height: 28.3%;
+    padding-bottom: 1rem;
+}
+
+.aboutUsCard
+{
+    padding: 0rem!important;
+    text-align: center;
+    border: none !important;
+}
+
+.icon
+{
+    color: #F08080;
+}
+
+.aboutUsCard:hover
+{
+    transform: scale(1.25);
+}
+
+.icon:hover
+{
+    color: #E95252;
 }
 
 #storyRule
@@ -108,8 +70,7 @@ html, body
     width: 32.5%;
 }
 
-#footer
+#bufferSection
 {
-    background-color: #D3FFFF;
-    height:30%;
+    height: 12%;
 }
