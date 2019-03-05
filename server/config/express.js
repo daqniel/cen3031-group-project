@@ -21,6 +21,8 @@ module.exports.init = function() {
 
   // Set static folder */
     app.use(express.static('client'));
+    
+    console.log("testing");
 
   // Use the listings router for requests to the api */
     app.use('/api/listings', listingsRouter);
