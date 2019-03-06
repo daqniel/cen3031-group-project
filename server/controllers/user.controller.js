@@ -26,41 +26,22 @@ exports.read = function(req, res) {
 
 /* Update a user */
 exports.update = function(req, res) {
-    User.findOneAndUpdate(req.params, req.body, (err, updatedUser) => {
-      if(err) res.send(404).send(err);
-      else{
-        res.json(updatedUser);
-      }
-    });
-    // User.findById(userID, (err, updatedUser) => {
-    //     updatedUser.set(req.body); 
-    //     updatedUser.save();
-    //     if(err) res.send(404).send(err);
-    //     else {
-    //         res.json(updatedUser);
-    //     }
-    // });
-
-  /** TODO **/
-  /* Replace the article's properties with the new properties found in req.body */
-  /* Save the article */
+  User.findOneAndUpdate(req.params, req.body, (err, updatedUser) => {
+    if(err) res.send(404).send(err);
+    else{
+      res.json(updatedUser);
+    }
+  });
 };
 
 /* Delete a user */
 exports.delete = function(req, res) {
-    userID = req.params.userId;
-    User.findById(userID, function(err, deletedUser){
-        if (err) res.status(404).send(err);
-        else deletedUser.remove(function(err){
-            if (err){
-                res.status(400).send(err);
-            }
-            console.log("Article deleted.");
-            res.json(deletedUser);
-        });
-  /** TODO **/
-  /* Remove the article */
-    });
+  User.findOneAndRemove(req.params, (err, deletedUser) =>{
+    console.log(deletedUser);
+    //NOTE: There maybe a more correct way to do this
+    if (!deletedUser) res.status(404).send("User does not exist.");
+    else res.send(deletedUser);
+  });
 };
 
 
@@ -74,11 +55,7 @@ exports.list = function(req, res){
 };
 
 /* 
-  Middleware: find a user by its ID, then pass it to the next request handler. 
-
-  Find the user using a mongoose query, 
-        bind it to the request object as the property 'user', 
-        then finally call next
+  Middleware: find a user by their email, then pass it to the next request handler. 
  */
 exports.userByEmail = function(req, res, next, email) {
   User.findOne(req.params).exec((err, user) => {
