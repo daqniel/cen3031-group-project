@@ -2,9 +2,11 @@ var path = require('path'),
     express = require('express'),
     mongoose = require('mongoose'),
     morgan = require('morgan'),
-    bodyParser = require('body-parser'),
+    //NOTE: body-parser not needed, already built into express (express.json)
+    //bodyParser = require('body-parser'),
     config = require('./config'),
     listingsRouter = require('../routes/listings.server.routes');
+    usersRouter = require('../routes/user.routes')
 
 module.exports.init = function() {
   /* db connect */
@@ -17,7 +19,7 @@ module.exports.init = function() {
   // app.use(morgan('dev')); 
 
   //body parsing middleware
-  // app.use(bodyParser.json());
+  app.use(express.json());
 
   // Set static folder */
     app.use(express.static('client'));
@@ -25,7 +27,8 @@ module.exports.init = function() {
     console.log("testing");
 
   // Use the listings router for requests to the api */
-    app.use('/api/listings', listingsRouter);
+    //app.use('/api/listings', listingsRouter);
+    app.use('/api/users', usersRouter);
 
   // Go to homepage for all routes not specified */
     app.get('*', function(req, res){

@@ -14,17 +14,11 @@ var mongoose = require('mongoose'),
 
 /* Create a listing */
 exports.create = function(req, res) {
-  /* Instantiate a Listing */
   var listing = new Listing(req.body);
 
-  /* Then save the listing */
   listing.save(function(err) {
-    if(err) {
-      console.log(err);
-      res.status(400).send(err);
-    } else {
-      res.json(listing);
-    }
+    if(err) res.status(400).send(err);
+    else res.json(listing);
   });
 };
 
