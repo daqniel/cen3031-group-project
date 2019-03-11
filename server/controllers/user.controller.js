@@ -27,7 +27,7 @@ exports.read = function(req, res) {
 /* Update a user */
 exports.update = function(req, res) {
   User.findOneAndUpdate(req.params, req.body, (err, updatedUser) => {
-    if(err) res.send(404).send(err);
+    if(err) res.status(404).send(err);
     else{
       res.json(updatedUser);
     }
