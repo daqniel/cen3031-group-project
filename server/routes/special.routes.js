@@ -42,7 +42,7 @@ router
   It will then pass control to the routing function specified above, where it will either 
   get, update, or delete that specific listing (depending on the HTTP verb specified)
  */
-router.param("numSpecials", specials_controller.specialsAmount);
+router.param("numSpecials", specials_controller.specialsGetAmount);
 router.param("specialID", specials_controller.specialByID);
 
 

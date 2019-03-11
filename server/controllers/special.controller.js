@@ -88,18 +88,7 @@ exports.specialByID = function(req, res, next) {
   });
 };
 
-exports.specialsAmount = function(req, res, next) {
-  /* -1 for newest, 1 for oldest */
-// Special.find()
-//     .sort({ createdDate: -1 })
-//     .limit(req.params.numSpecials)
-//     .exec((err, specials) => {
-//       if (err) res.status(404).send(err);
-//       else {
-//         req.specials = specials;
-//         next();
-//       }
-//     });
+exports.specialsGetAmount = function(req, res, next) {
 req.numSpecials = parseInt(req.params.numSpecials);
 next();
 };
