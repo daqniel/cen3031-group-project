@@ -38,14 +38,111 @@
 
       <ul class="navbar-nav ml-auto nav-fill">
         <li class="nav-item active mr-1">
-          <button type="button" class="btn btn-success">Login</button>
+          <button type="button" class="btn btn-success" data-toggle="modal" data-target="#loginModal">Login</button>
         </li>
         <li class="nav-item active mr-1">
-          <button type="button" class="btn btn-success">Register</button>
+          <button type="button" class="btn btn-success" data-toggle="modal" data-target="#registerModal">Register</button>
         </li>
       </ul>
     </div>
   </nav>
+
+
+  <!-- The Modal For Login -->
+<div class="modal fade" id="loginModal">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Login</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+      	<form>
+      		<div class="container"> 	      	
+			   	
+			    <div class="row">
+			      	<label class="col-25" for="email">Email:</label>
+			      	<input class="col-75" type="text" id="email" name="">
+			    </div>
+			    <div class="row">
+			      	<label class="col-25" for="pass">Password:</label>
+			      	<input class="col-75" type="text" id="pass" name="">
+			    </div>
+			    
+		    </div>
+	    </form>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+      	<button type="button" class="btn btn-danger register mr-auto" data-dismiss="modal" data-toggle="modal" data-target="#registerModal">Register</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Submit</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- The Modal For Register -->
+<div class="modal fade" id="registerModal">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Register</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+      	<form>
+      		<div class="container"> 
+      			<div class="row">
+	      			<label class="col-25" for="First">First Name:  </label>
+			      	<input class="col-75" type="text" id="Last" name="">
+			    </div>
+			      	
+			    <div class="row">
+			      	<label class="col-25" for="Last">Last Name:</label>
+			      	<input class="col-75" type="text" id="Last" name="">
+			    </div>
+			    <div class="row">
+			      	<label class="col-25" for="pass">Password:</label>
+			      	<input class="col-75" type="text" id="pass" name="">
+			    </div>
+			    <div class="row">
+			      	<label class="col-25" for="Repass">Retype Password:</label>
+			      	<input class="col-75" type="text" id="Repass" name="">
+			    </div>  	
+			    <div class="row">
+			      	<label class="col-25" for="email">Email:</label>
+			      	<input class="col-75" type="text" id="email" name="">
+			    </div>
+			    <div class="row">
+			      	<label class="col-25" for="Phone">Phone Number:</label>
+			      	<input class="col-75" type="text" id="phone" name="">
+			    </div>
+		    </div>
+	    </form>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+      	<button type="button" class="btn btn-danger login mr-auto" data-dismiss="modal" data-toggle="modal" data-target="#loginModal">Login</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Submit</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
 
   <!-- Specials Carousel -->
   <nav class="container-fluid specialsCarousel">

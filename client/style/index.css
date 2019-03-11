@@ -48,3 +48,23 @@ html, body
     background-color: mistyrose;
     height: 80%;
 }
+
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+
+.col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+}
+
+.row input{
+    margin-bottom: 3%;
+}
+
+.modal-title{
+    text-align: center;
+}
