@@ -4,7 +4,7 @@ var mongoose = require('mongoose'),
 
 /* Create your schema */
 var blogPostSchema = new Schema({
-    blogID: Number, //(KEY) number associated with post, increments starting at 1 per post
+    // blogID: Number, //(KEY) number associated with post, increments starting at 1 per post
     title: String, //heading
     text: String, //body of post
     createdDate: Date,

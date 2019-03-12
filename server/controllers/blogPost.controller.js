@@ -1,66 +1,64 @@
-
 /* Dependencies */
-var mongoose = require('mongoose'), 
-    BlogPost = require('../models/blogPost.model.js');
+var Blogpost = require("../models/blogpost.model.js");
 
-/* Create a BlogPost */
+/* Create a Blogpost */
 exports.create = function(req, res) {
-  var blogPost = new BlogPost(req.body);
+  var blogpost = new Blogpost(req.body);
 
   /* save to mongoDB */
-  blogPost.save(err => {
-    if(err) {
-      console.log(err);
+  blogpost.save(err => {
+    if (err) {
+      // console.log(err);
       res.status(400).send(err);
     } else {
-      res.json(blogPost);
+      res.json(blogpost);
     }
   });
 };
 
-/* Show the current blogPost */
+/* Show the current blogpost */
 exports.read = function(req, res) {
-  req.body = req.blogPost;
-  res.json(req.blogPost);
+  res.json(req.blogpost);
 };
 
-/* Update a blogPost */
+/* Update a blogpost */
 exports.update = function(req, res) {
-  BlogPost.findOneAndUpdate(req.params, req.body, (err, updatedBlog) => {
-    if(err) res.send(404).send(err);
-    else{
-      res.json(updatedBlog);
+  Blogpost.findByIdAndUpdate(req.blogpost._id, req.body, (err, updatedBlogpost) => {
+    if (err) res.send(404).send(err);
+    else {
+      //NOTE: currently returns the old document, not the updated one.
+      res.json(updatedBlogpost);
     }
   });
 };
 
-/* Delete a blogPost */
+/* Delete a blogpost */
 exports.delete = function(req, res) {
-  BlogPost.findOneAndRemove(req.params, (err, deletedBlog) =>{
-    console.log(deletedBlog);
-    if (!deletedBlog) res.status(404).send("Blog post does not exist.");
-    else res.send(deletedBlog);
+  Blogpost.findByIdAndRemove(req.blogpost._id, (err, deletedBlogpost) => {
+    // console.log(deletedBlogpost);
+    if (!deletedBlogpost) res.status(404).send("Blogpost does not exist.");
+    else res.send(deletedBlogpost);
   });
 };
 
-
-/* retrieve all blogPosts */
-exports.list = function(req, res){
-    BlogPost.find({}, (err, blogPost) => {
-        if (err) res.status(404).send(err);
-        res.json(blogPost);
-        console.log('all blog posts retrieved.');
-    });
+/* retrieve all blogposts */
+exports.list = function(req, res) {
+  Blogpost.find({}, (err, blogpost) => {
+    if (err) res.status(404).send(err);
+    res.json(blogpost);
+    // console.log('all blogposts retrieved.');
+  });
 };
 
 /* 
-  Middleware: find a blogPost by ID, then pass it to the next request handler. 
+  Middleware: find a blogpost by ID, then pass it to the next request handler. 
  */
-exports.blogByID = function(req, res, next, ID) {
-  BlogPost.findOne(req.params).exec((err, blogPost) => {
-    if(err) res.status(404).send(err);
+exports.blogpostByID = function(req, res, next) {
+  blogpost_id = req.params.blogpost_id;
+  Blogpost.findById(blogpost_id).exec((err, blogpost) => {
+    if (err) res.status(404).send(err);
     else {
-      req.blogPost = blogPost;
+      req.blogpost = blogpost;
       next();
     }
   });
