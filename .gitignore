@@ -1,5 +1,3 @@
-# osx
-.DS_Store
 node_modules
 server/config/config.js
-.eslintrc.js
+.DS_Store

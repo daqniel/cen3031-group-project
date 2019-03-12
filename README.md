@@ -1,7 +1,6 @@
 # cen3031-group-project
 ## Notes
-* Currently is just the bootcamp4 assignment.
-* Using DQ's bootcamp3 mlab database.
+End of sprint 1
 
 ## Team 
 Daniel Quintero (leingad)
@@ -13,4 +12,3 @@ Jack Fining (jackfining)
 Sarah Walker (swalker15)
 	
 Daniel Garzon Moreno (dgarzonmoreno)
-
