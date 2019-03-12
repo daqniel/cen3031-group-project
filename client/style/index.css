@@ -1,38 +1,15 @@
-html, body
-{
-    font-family: 'Shadows Into Light', cursive !important;
-    width: 100%;
-    height: 100%;
-}
-
-.title
-{
-    font-family: 'Playball', cursive;
-}
-
-.navbar-brand {
-    font-size: 1.5rem!important;
-}
-
-.navbar {
-    background-color: ivory!important;
-    font-size: 1.25rem;
-}
-
-.btn-success:hover {
-    color: #fff;
-    background-color: #E95252 !important;
-    border-color: #E95252 !important;
-}
-.btn-success {
-    color: #fff;
-    background-color: lightcoral !important;
-    border-color: lightcoral !important;
-}
 
 .specialsCarousel
 {
-    height: 20%;
+    padding-top: 3.95rem;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+    height: 26.94%;
+}
+
+.specialsImages
+{
+    opacity: 0.25;
 }
 
 .carousel-control-prev {
@@ -43,8 +20,69 @@ html, body
 {
     filter: invert(100%);
 }
+
 .recommendations
 {
-    background-color: mistyrose;
-    height: 80%;
+    height: 76%;
+    background-color: #D3FFFF;
+}
+
+#aboutUsContainer
+{
+    height: 84%;
+    background-color: white;
+}
+
+#cardContainer
+{
+    height: 100%;
+}
+
+.aboutUsRow
+{
+    height: 28.3%;
+    padding-bottom: 1rem;
+}
+
+.aboutUsCard
+{
+    padding: 0rem!important;
+    text-align: center;
+    border: none !important;
+}
+
+.icon
+{
+    color: #F08080;
+}
+
+.aboutUsCard:hover
+{
+    transform: scale(1.25);
+}
+
+.icon:hover
+{
+    color: #E95252;
+}
+
+#storyRule
+{
+    width: 32.5%;
+}
+
+#bufferSection
+{
+    height: 12%;
+}
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+
+.col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
 }

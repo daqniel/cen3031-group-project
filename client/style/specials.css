@@ -1,0 +1,32 @@
+#bookNow
+{
+    height:15%;
+}
+
+#deals
+{
+    height: 85%;
+    background-color: #D3FFFF;
+}
+
+.bookNowButton
+{
+    width: 100%;
+}
+
+#specialsTable{
+    height: 10%!important;
+}
+
+#removeButton{
+    width: 40px;
+}
+  
+#editButton{
+    width: 40px;
+}
+
+.image
+{
+    width: 100%;
+}
