@@ -3,6 +3,7 @@
 
 module.exports = {
   db: {
-      uri:'mongodb://test:test123@ds056288.mlab.com:56288/bootcamp3db', //place the URI of your mongo database here.
+    uri:'mongodb://test:test123@ds155815.mlab.com:55815/businesstraveldb'//place the URI of your mongo database here.
   }
 };
+
