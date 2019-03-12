@@ -74,12 +74,12 @@ exports.findRecommendationByID = function(req, res, next) {
 };
 
 /*Middleware: Find Recommendation by User's Email*/
-exports.findRequestByUser = function(req, res, next) {
-    Recommendation.findOne(req.params.clientID).exec(function(err, request) {
+exports.findRecommendationByUser = function(req, res, next) {
+    Recommendation.findOne(req.params.clientID).exec(function(err, recommendation) {
         if(err) {
             res.status(400).send(err);
         } else {
-            req.request = request;
+            req.recommendation = recommendation;
             next();
         }
     });
