@@ -39,7 +39,10 @@ html, body
 
 .navbar {
     font-size: 1.25rem;
-    background-color: white;
+    /* background-color: #807869; */
+     background-color: white;
+  /* not sure which color you guys intended, kept both in here just in case - Daniel Q */
+
     font-family: 'Boogaloo', cursive;
 }
 
