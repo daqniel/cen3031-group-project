@@ -4,19 +4,32 @@ var mongoose = require('mongoose'),
 
 /* Create your schema */
 var noteSchema = new Schema({
-    // noteID: Number, //(KEY) number associated with note
-    type: String, //type of note: "Client","Vendor","Request"
+    type: {
+        type: String,
+        enum: ['Client', 'Vendor', 'Request'],
+        required: true
+    }, //type of note: "Client","Vendor","Request"
     title: String, //heading
     text: String, //body of note
     createdDate: Date,
     updatedDate: Date
 });
 
-/* create a 'pre' function that adds the updatedDate (and createdDate if not already there) property */
-noteSchema.pre('save', function(next) {
+/* validate note integrity */
+noteSchema.pre('validate', function (next) {
+    if (!this.title && !this.text) {
+        var err = new Error("Note validation failed: Both title and text are empty.");
+        next(err);
+    } else {
+        next();
+    }
+});
+
+/* add date fields */
+noteSchema.pre('save', function (next) {
+
     this.updatedDate = new Date;
-    if(!this.createdDate)
-    {
+    if (!this.createdDate) {
         this.createdDate = new Date;
     }
     next();
