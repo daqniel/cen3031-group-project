@@ -2,6 +2,16 @@
 var mongoose = require('mongoose'),
     Request = require('../models/request.model.js');
 
+/*Retrieve all Requests*/
+exports.list = function(req, res) {
+    /* Your code here */
+    Request.find({}, function(err, requests){
+        if (err) res.status(404).send(err);
+        res.json(requests);
+        console.log('All requests retrieved.');
+    });
+};
+
 /*Create a Request*/
 exports.create = function(req, res){
     /*Instantiate a Request*/
@@ -17,10 +27,9 @@ exports.create = function(req, res){
     });
 };
 
-/*Show current Request*/
+/*Show current Requests*/
 exports.read = function(req, res){
-    req.body = req.request;
-    res.json(req.request);
+    res.json(req.requests);
 };
 
 /*Update Request*/
@@ -51,13 +60,15 @@ exports.delete = function(req, res){
     });
 };
 
-/*Retrieve all Requests*/
-exports.list = function(req, res) {
-    /* Your code here */
-    Request.find({}, function(err, requests){
-        if (err) res.status(404).send(err);
-        res.json(requests);
-        console.log('All requests retrieved.');
+/*Middleware: Find Request by User's Email*/
+exports.findByClient = function(req, res, next) {
+    Request.find({"email" : req.query.clientID}).exec((err, requests) => {
+        if(err) {
+            res.status(400).send(err);
+        } else {
+            req.requests = requests;
+            next();
+        }
     });
 };
 
@@ -67,20 +78,24 @@ exports.findRequestByID = function(req, res, next) {
         if(err) {
             res.status(400).send(err);
         } else {
-            req.request = request;
+            req.requests = request;
             next();
         }
     });
 };
 
 /*Middleware: Find Request by User's Email*/
-exports.findRequestByUser = function(req, res, next) {
-    Request.findOne(req.params.clientID).exec(function(err, request) {
-        if(err) {
-            res.status(400).send(err);
-        } else {
-            req.request = request;
-            next();
-        }
-    });
-};
+// exports.findRequestsByUser = function(req, res, next) {
+//     Request.find(req.params.clientID).exec(function(err, request) {
+//         if(err) {
+//             res.status(400).send(err);
+//         } else {
+//             req.requests = requests;
+//             next();
+//         }
+//     });
+// };
+
+
+
+
