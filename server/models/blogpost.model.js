@@ -5,7 +5,7 @@ var mongoose = require('mongoose'),
 /* Create your schema */
 var blogPostSchema = new Schema({
     title: { type: String, required: true }, /* Heading, REQUIRED */
-    text: String, /* Body, maybe should be required? */
+    text: String, /* TODO: Decide if this should be required */
     createdDate: Date,
     updatedDate: Date
 });
