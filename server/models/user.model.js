@@ -10,8 +10,13 @@ var userSchema = new Schema({
         last: {type: String, required: true }
     },
     /* NOTE: currently unhashed */
-    email: {type: String, required: true}, //(KEY) used for contact and clientID
-    password : {type: String, required: true}, //will be hashed
+    email: {type: String, validate: {
+        validator: function(v) {
+            /* unholy regex copy-pasted from stack overflow */
+            return /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/.test(v);
+        }
+    }, required: true}, //(KEY) used for contact and clientID
+    password: {type: String, required: true}, //will be hashed
     phoneNumber: String, //for contact
     isAdmin: Boolean, //enables user to access admin pages and functions
     createdDate: Date,
