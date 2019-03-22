@@ -4,9 +4,8 @@ var mongoose = require('mongoose'),
 
 /* Create your schema */
 var blogPostSchema = new Schema({
-    // blogID: Number, //(KEY) number associated with post, increments starting at 1 per post
-    title: String, //heading
-    text: String, //body of post
+    title: { type: String, required: true }, /* Heading, REQUIRED */
+    text: String, /* TODO: Decide if this should be required */
     createdDate: Date,
     updatedDate: Date
 });

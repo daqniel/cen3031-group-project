@@ -8,14 +8,30 @@ var requestController = require('../controllers/request.controller.js'),
   Take note that it is possible for different controller functions to handle requests to the same route.
 */
 
+/* middleware to get requests via query param clientID */
+router.use('/', requestController.findByClient)
 router.route('/')
+    .get(requestController.list)
     .post(requestController.create);
 
-router.route('/:requestID?/:clientID?')
+    /* 
+    i think this should be split into two routes because
+    this implementation gets a little awkward when updating.
+    We would need to put both the clientID and the requestID,
+    when we really only need the requestID.
+    */  
+// router.route('/:clientID?/:requestID?')
+//     .get(requestController.read)
+//     .put(requestController.update)
+//     .delete(requestController.delete);
+
+/* TODO: Decide on url params vs query params */
+/* NOTE: trying to use query params for getting certain clients */
+/* my implementation */
+router.route('/:requestID')
     .get(requestController.read)
     .put(requestController.update)
     .delete(requestController.delete);
-
 /*
   The 'router.param' method allows us to specify middleware we would like to use to handle
   requests with a parameter.
@@ -25,6 +41,6 @@ router.route('/:requestID?/:clientID?')
  */
 
 router.param('requestID', requestController.findRequestByID);
-router.param('clientID', requestController.findRequestByUser);
+// router.param('clientID', requestController.findRequestsByUser);
 
 module.exports = router;
