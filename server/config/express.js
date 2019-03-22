@@ -6,11 +6,12 @@ var path = require("path"),
   //bodyParser = require('body-parser'),
   config = require("./config"),
   specialsRouter = require("../routes/special.routes"),
-  usersRouter = require("../routes/special.routes"),
-  // requestsRouter = require("../routes/request.routes"),
+  usersRouter = require("../routes/user.routes"),
+  requestsRouter = require("../routes/request.routes"),
   // recommendationsRouter = require("../routes/recommendation.routes"),
   notesRouter = require("../routes/note.routes"),
-  blogpostsRouter = require("../routes/blogpost.routes");
+  blogpostsRouter = require("../routes/blogpost.routes"),
+  vendorsRouter = require("../routes/vendor.routes");
 
 module.exports.init = function() {
   /* db connect */
@@ -31,10 +32,11 @@ module.exports.init = function() {
   // Use the listings router for requests to the api */
   app.use("/api/users", usersRouter);
   app.use("/api/specials", specialsRouter);
-  // app.use("/api/requests", requestsRouter);
+  app.use("/api/requests", requestsRouter);
   // app.use("/api/recommendations", recommendationsRouter);
   app.use("/api/notes", notesRouter);
   app.use("/api/blogposts", blogpostsRouter);
+  app.use("/api/vendors", vendorsRouter);
 
   // Go to homepage for all routes not specified */
   app.get("*", function(req, res) {
