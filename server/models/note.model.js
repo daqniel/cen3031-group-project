@@ -9,6 +9,7 @@ var noteSchema = new Schema({
         enum: ['Client', 'Vendor', 'Request'],
         required: true
     }, //type of note: "Client","Vendor","Request"
+    linkedId: {type: String, required: true},
     title: String, //heading
     text: String, //body of note
     createdDate: Date,
