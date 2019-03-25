@@ -3,7 +3,8 @@
 Request/Recommendation schema/API's are a mess right now. Waiting on more info from client. Other API's should be pretty much functional, may need some additional functionality added later. Code could probably be cleaned up a bit too but not too important right now.
 
 ## API
-#Notes
+# Notes
+
 Currently separated into three categories: Client, Vendor, and Request. Each note linked to a Client/Vendor/Request via a 'linkedId' field, which is just the '_id' of what the note is linked to. Required fields: type, linkedId. Title and text fields cannot both be empty.
 
 * Get all notes: GET /api/notes
