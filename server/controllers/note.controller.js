@@ -46,11 +46,7 @@ exports.delete = function (req, res) {
 
 /* retrieve all notes */
 exports.list = function (req, res) {
-  Note.find({}, (err, note) => {
-    if (err) res.status(404).send(err);
-    res.json(note);
-    // console.log('all notes retrieved.');
-  });
+    res.json(req.note);
 };
 
 /* 
@@ -65,4 +61,28 @@ exports.noteByID = function (req, res, next) {
       next();
     }
   });
+};
+
+exports.noteByLinkedID = function (req, res, next) {
+  linkedId = req.query.linkedId;
+  if (linkedId) {
+    console.log(req.query.linkedId);
+    Note.find({
+      linkedId: linkedId
+    }).exec((err, note) => {
+      if (err) res.status(404).send(err);
+      else {
+        req.note = note;
+        next();
+      }
+    });
+  } else {
+    Note.find({}).exec((err, note) => {
+      if (err) res.status(404).send(err);
+      else {
+        req.note = note;
+        next();
+      }
+    })
+  }
 };
