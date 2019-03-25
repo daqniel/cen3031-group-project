@@ -15,7 +15,9 @@ var path = require("path"),
 
 module.exports.init = function() {
   /* db connect */
-  mongoose.connect(config.db.uri);
+  mongoose.connect(config.db.uri, {dbName: 'BochittoTravelDB', useNewUrlParser: true}, err => {
+    if(err) console.log("couldn't connect to DB: ", err);
+  });
 
   /* init app */
   const app = express();
