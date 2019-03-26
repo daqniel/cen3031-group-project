@@ -4,6 +4,7 @@ var note_controller = require('../controllers/note.controller.js'),
     router = express.Router();
 
 //lists all notes made
+router.use('/', note_controller.noteByLinkedID);
 router.route('/')
     .get(note_controller.list)
     .post(note_controller.create);
