@@ -4,11 +4,11 @@ var mongoose = require('mongoose'),
 
 /* Create your schema */
 var recommendationSchema = new Schema({
-    recommendID: Number, //(KEY) number associated with recommendation, matches corresponding requestID
-    clientID : String, //will use key value associated with User, namely User.email
+    client: {type: String, required: true}, //will use key value associated with User, namely User.email
     price: Number, //price for travel found by agent
     travelDate: Date, //departure date
-    groupSize: Number, //size of travelling party
+    //groupSize: Number, //size of travelling party
+  
     createdDate: Date,
     updatedDate: Date
 });

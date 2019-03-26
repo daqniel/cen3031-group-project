@@ -3,17 +3,46 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 /* Create your schema */
+var partySchema = new Schema({
+    children: [{
+        age: Number
+    }],
+    adults: [{
+        age: Number
+    }]
+});
+
+partySchema.pre('save', next => {
+    this.size = children.length + adults.length;
+    this.minAge = Math.min(...children)
+});
+
 var requestSchema = new Schema({
-    requestID: Number, //(KEY) number associated with request, ideally starts at 1 and increases as requests are made
+    // requestID: Number, //(KEY) number associated with request, ideally starts at 1 and increases as requests are made
     clientID : String, //will use key value associated with User, namely User.email
-    state: String, //Shows state of request, can be one of the following: Declined, Pending, or Accepted
+    //TODO: validate states
+    requestState: String, //Shows state of request, can be one of the following: Declined, Pending, or Accepted
     price:{
         min: Number,
         max: Number
     },
-    travelLength: Number,
-    travelDate: Date,
-    groupSize: Number,
+   // groupSize: Number,
+      /* I think it may be better to implement this way,
+       age information could be useful to her. I think this
+       info should be required. */
+    party: {
+        type: partySchema,
+        required: true
+    },
+    // party: [{
+    //     children: [{
+    //         age: Number
+    //     }],
+    //     adults: [{
+    //         age: Number
+    //     }],
+    //     required: true
+    // }],
     createdDate: Date,
     updatedDate: Date
 });
@@ -27,6 +56,11 @@ requestSchema.pre('save', function(next) {
     }
     next();
 });
+
+// tripSchema.pre('save', (next) => {
+//     this.numDays = (this.endDate - this.startDate)/86400000;
+//     next();
+// })
 
 /* Use your schema to instantiate a Mongoose model */
 var Request = mongoose.model('Request', requestSchema);
