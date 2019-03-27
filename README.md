@@ -48,11 +48,13 @@ Required fields: title(String). Optional fields: description(String), expireDate
 
 * Delete special by _id: DELETE /api/specials/(special._id)
 
-NOTE: I will probably redo this implementation to use query params instead
+NOTE: I have reimplemented this to use query params instead
 
-* Get newest N specials: GET /api/specials/newest/(N)
+* Get newest N specials: GET /api/specials/?num=N
 
-* Get oldest N specials: GET /api/specials/oldest/(N)
+* Get oldest N specials: GET /api/specials/?num=N&order=old
+
+* Get all specials old to new: GET /api/specials/?order=old
  
 TODO: Document rest of the API.
 
