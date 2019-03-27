@@ -7,6 +7,8 @@ var specials_controller = require("../controllers/special.controller.js"),
   These method calls are responsible for routing requests to the correct request handler.
   Take note that it is possible for different controller functions to handle requests to the same route.
  */
+
+router.use("/", specials_controller.getNewOrOld);
 router
   .route("/")
   .get(specials_controller.list)
@@ -14,14 +16,6 @@ router
 /*
   The ':' specifies a URL parameter. 
  */
-
-router
-  .route("/oldest/:numSpecials")
-  .get(specials_controller.readOldest);
-
-router
-  .route("/newest/:numSpecials")
-  .get(specials_controller.readNewest);
 
 router
   .route("/:specialID")
@@ -42,8 +36,6 @@ router
   It will then pass control to the routing function specified above, where it will either 
   get, update, or delete that specific listing (depending on the HTTP verb specified)
  */
-router.param("numSpecials", specials_controller.specialsGetAmount);
 router.param("specialID", specials_controller.specialByID);
-
 
 module.exports = router;
