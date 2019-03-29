@@ -86,21 +86,37 @@ describe('Tests for Note API call', function() {
         agent.put('/api/notes/' + id)
             .send(noteUpdate)
             .expect(200)
-            .end(function(err, res){
+            .end(function (err, res) {
                 should.not.exist(err);
-                should.exist(res);
-                res.body.linkedId.should.equal('5c990e800e74a10b93c91caf');
-                res.body.type.should.equal('Client');
-                res.body.title.should.equal('Also has fear of rivers, streams, and lakes.');
-                res.body.text.should.equal('Also avoid recommending everything near rivers or fresh water.');
-                res.body._id.should.equal(id);
-                done();
-            });
+                agent.get('/api/notes/' + id) //grabs updated note
+                    .expect(200)
+                    .end(function (err, res) {
+                        should.not.exist(err);
+                        should.exist(res);
+                        res.body.linkedId.should.equal('5c990e800e74a10b93c91caf');
+                        res.body.type.should.equal('Client');
+                        res.body.title.should.equal('Also has fear of rivers, streams, and lakes.');
+                        res.body.text.should.equal('Also avoid recommending everything near rivers or fresh water.');
+                        res.body._id.should.equal(id);
+                        done();
+                    });
+            })
     });
 
-    // it('Delete Note by _id', function(done) {
-    //
-    // });
+    it('Delete Note by _id', function(done) {
+        agent.delete('/api/notes/' + id)
+            .expect(200)
+            .end(function(err, res) {
+                should.not.exist(err);
+                should.exist(res);
+                agent.get('/api/notes/' + id)
+                    .expect(400)
+                    .end(function(err, res) {
+                        id = undefined;
+                        done();
+                    });
+            })
+    });
 
     after(function(done) {
         if(id) {
