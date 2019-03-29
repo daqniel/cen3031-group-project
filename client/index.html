@@ -19,7 +19,7 @@
   <title>Welcome!</title>
 </head>
 
-<body ng-app="agencyApp">
+<body ng-app = "agencyApp">
 
   <!-- NAVBAR -->
   <nav id="mainNavbar" class="navbar navbar-expand-md navbar-light fixed-top">
@@ -155,21 +155,21 @@
         <div class="carousel-item active">
           <img src="./images/specials1.jpg" class="specialsImages" alt="">
           <div class="carousel-caption d-none d-md-block" ng-controller="SpecialsController">
-              <h4 class="titleFont"><ng-repeat="special in specials | filter:{id:5c990c7c0e74a10b93c91cac}:true">{{special.title}}</h4>
+              <h4 class="titleFont" ng-repeat="special in specials" ng-show = "$index == 0">{{special.title}}</h4>
             <button type="button" class="btn btn-success">Book Now</button>
           </div>
         </div>
         <div class="carousel-item">
           <img src="./images/specials2.jpg" class="specialsImages" alt="">
-          <div class="carousel-caption d-none d-md-block">
-            <h4 class="titleFont">3 Nights 4 Days in Washington D.C: $999!</h4>
+          <div class="carousel-caption d-none d-md-block" ng-controller="SpecialsController">
+            <h4 class="titleFont" ng-repeat="special in specials" ng-show = "$index == 1">{{special.title}}</h4>
             <button type="button" class="btn btn-success">Book Now</button>
           </div>
         </div>
         <div class="carousel-item">
           <img src="./images/specials3.jpg" class="specialsImages" alt="">
-          <div class="carousel-caption d-none d-md-block">
-            <h4 class="titleFont">6 Nights 7 Days in Giza, Egypt: $1299!</h4>
+          <div class="carousel-caption d-none d-md-block" ng-controller="SpecialsController">
+            <h4 class="titleFont" ng-repeat="special in specials" ng-show = "$index == 2">{{special.title}}</h4>
             <button type="button" class="btn btn-success">Book Now</button>
           </div>
         </div>
