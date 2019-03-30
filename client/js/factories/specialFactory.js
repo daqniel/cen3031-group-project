@@ -4,7 +4,7 @@ angular.module('specials', []).factory('Specials', function($http) {
       return $http.get('http://localhost:8080/api/specials');
     },
 	
-	create: function(listing) {
+	create: function(special) {
 	  return $http.post('http://localhost:8080/api/specials', special);
     }, 
 
