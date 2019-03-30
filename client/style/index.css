@@ -4,7 +4,7 @@
     padding-top: 3.95rem;
     padding-left: 0px !important;
     padding-right: 0px !important;
-    height: 26.94%;
+    height: 38.54%;
 }
 
 .specialsImages
@@ -23,14 +23,25 @@
 
 .recommendations
 {
-    height: 76%;
+    height: 110%;
     background-color: white;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+    margin-top: 2%;
 }
 
 #aboutUsContainer
 {
-    height: 84%;
+    height: 80%;
     background-color: white;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+    margin-bottom: 15%;
+}
+
+#tabs
+{
+    height: 100%;
 }
 
 #cardContainer
@@ -83,10 +94,6 @@
     width: 32.5%;
 }
 
-#bufferSection
-{
-    height: 12%;
-}
 .col-25 {
   float: left;
   width: 25%;
