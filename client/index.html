@@ -93,14 +93,14 @@
 
 
 <!-- The Modal For Register -->
-<div class="modal fade" id="registerModal">
+<div class="modal fade" id="registerModal" ng-controller = "UsersController" >
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
 
       <!-- Modal Header -->
       <div class="modal-header">
         <h4 class="modal-title">Register</h4>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <button type="button" class="close" data-dismiss="modal" >&times;</button>
       </div>
 
       <!-- Modal body -->
@@ -108,29 +108,23 @@
       	<form>
       		<div class="container"> 
       			<div class="row">
-	      			<label class="col-25" for="First">First Name:  </label>
-			      	<input class="col-75" type="text" id="Last" name="">
+	      			First Name: <input type="text" ng-model="newUser.name.first"/>
 			    </div>
 			      	
 			    <div class="row">
-			      	<label class="col-25" for="Last">Last Name:</label>
-			      	<input class="col-75" type="text" id="Last" name="">
+			      	Last Name: <input type="text" ng-model="newUser.name.last"/> 
 			    </div>
 			    <div class="row">
-			      	<label class="col-25" for="pass">Password:</label>
-			      	<input class="col-75" type="text" id="pass" name="">
+			      	Password: <input type="text" ng-model="newUser.password"/>
 			    </div>
 			    <div class="row">
 			      	<label class="col-25" for="Repass">Retype Password:</label>
-			      	<input class="col-75" type="text" id="Repass" name="">
 			    </div>  	
 			    <div class="row">
-			      	<label class="col-25" for="email">Email:</label>
-			      	<input class="col-75" type="text" id="email" name="">
+			      	Email: <input type="text" ng-model="newUser.email"/>
 			    </div>
 			    <div class="row">
-			      	<label class="col-25" for="Phone">Phone Number:</label>
-			      	<input class="col-75" type="text" id="phone" name="">
+			      	Phone Number: <input type="text" ng-model="newUser.phoneNumber"/>
 			    </div>
 		    </div>
 	    </form>
@@ -139,7 +133,7 @@
       <!-- Modal footer -->
       <div class="modal-footer">
       	<button type="button" class="btn btn-danger login mr-auto" data-dismiss="modal" data-toggle="modal" data-target="#loginModal">Login</button>
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Submit</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="addUser(newUser)">Submit</button>
       </div>
 
     </div>
@@ -190,76 +184,34 @@
     <nav class="container">
       <h1 class="text-center titleFont p-2">Travel Agent Reviews</h1>
       <nav>
-        <div class="nav nav-tabs m-3" id="nav-tab" role="tablist">
+        <div class="nav nav-tabs m-3" id="nav-tab" role="tablist" ng-controller = "BlogPostsController">
           <a class="nav-item nav-link active titleFont reviewTab" id="nav-home-tab" data-toggle="tab" href="#nav-home"
-            role="tab" aria-controls="nav-home" aria-selected="true">Bahamas</a>
+            role="tab" aria-controls="nav-home" aria-selected="true" ng-repeat= "blogPost in blogPosts" ng-show = "$index == 0">{{blogPost.title}}</a>
           <a class="nav-item nav-link titleFont reviewTab" id="nav-profile-tab" data-toggle="tab" href="#nav-profile"
-            role="tab" aria-controls="nav-profile" aria-selected="false">Key West, FL</a>
+            role="tab" aria-controls="nav-profile" aria-selected="false" ng-repeat= "blogPost in blogPosts" ng-show = "$index == 1">{{blogPost.title}}</a>
           <a class="nav-item nav-link titleFont reviewTab" id="nav-contact-tab" data-toggle="tab" href="#nav-contact"
-            role="tab" aria-controls="nav-contact" aria-selected="false">Washington D.C</a>
+            role="tab" aria-controls="nav-contact" aria-selected="false"ng-repeat= "blogPost in blogPosts" ng-show = "$index == 0">{{blogPost.title}}</a>
         </div>
       </nav>
-      <div class="tab-content" id="nav-tabContent">
+      <div class="tab-content" id="nav-tabContent" ng-controller = "BlogPostsController">
         <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
           <hr>
-          <p class="textFont">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, odio dolore vero vel voluptates quaerat quo
-            officiis temporibus ullam ad asperiores iusto tempora natus atque earum exercitationem commodi voluptatem
-            voluptatibus! Eum, libero. Blanditiis labore, voluptatibus debitis consectetur veritatis eaque
-            exercitationem ut repudiandae qui necessitatibus temporibus, ipsum rerum deleniti natus delectus corporis
-            illo quam quibusdam possimus modi error, fugiat ad in. Velit quod deserunt blanditiis saepe, sed qui iure,
-            dicta architecto nulla laborum pariatur, voluptatum culpa dignissimos expedita. Corporis deserunt, aliquam
-            repudiandae voluptates explicabo, qui necessitatibus magnam accusantium amet ex numquam ut consectetur error
-            nostrum odit sed! Placeat quia dolorum beatae exercitationem ad, porro animi quos asperiores nostrum maxime
-            temporibus error. Ad animi distinctio, consectetur iusto, veritatis odit, adipisci nam in mollitia molestiae
-            corrupti reprehenderit nobis. Ratione similique labore tenetur non, facere tempore debitis ea, aut sapiente
-            quod tempora ipsa. Alias dicta quos unde ab commodi nisi nobis corrupti, in quidem accusamus recusandae
-            corporis repellendus tenetur delectus. Ut ullam dicta, ex ducimus dolores accusantium, sed velit, beatae
-            delectus molestiae rerum dolor vitae sequi assumenda magnam veritatis ab iste. Sequi, illo accusantium earum
-            quasi voluptatem aperiam vitae saepe nesciunt a et enim deleniti, sint placeat nulla. Accusantium minima
-            recusandae odio expedita quaerat?
+          <p class="textFont" ng-repeat= "blogPost in blogPosts" ng-show = "$index == 0">
+          {{blogPost.text}}
           </p>
           <img src="./images/bahamas.jpg" class="mx-auto d-block" alt="">
         </div>
         <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
           <hr>
-          <p class="textFont">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, odio dolore vero vel voluptates quaerat quo
-            officiis temporibus ullam ad asperiores iusto tempora natus atque earum exercitationem commodi voluptatem
-            voluptatibus! Eum, libero. Blanditiis labore, voluptatibus debitis consectetur veritatis eaque
-            exercitationem ut repudiandae qui necessitatibus temporibus, ipsum rerum deleniti natus delectus corporis
-            illo quam quibusdam possimus modi error, fugiat ad in. Velit quod deserunt blanditiis saepe, sed qui iure,
-            dicta architecto nulla laborum pariatur, voluptatum culpa dignissimos expedita. Corporis deserunt, aliquam
-            repudiandae voluptates explicabo, qui necessitatibus magnam accusantium amet ex numquam ut consectetur error
-            nostrum odit sed! Placeat quia dolorum beatae exercitationem ad, porro animi quos asperiores nostrum maxime
-            temporibus error. Ad animi distinctio, consectetur iusto, veritatis odit, adipisci nam in mollitia molestiae
-            corrupti reprehenderit nobis. Ratione similique labore tenetur non, facere tempore debitis ea, aut sapiente
-            quod tempora ipsa. Alias dicta quos unde ab commodi nisi nobis corrupti, in quidem accusamus recusandae
-            corporis repellendus tenetur delectus. Ut ullam dicta, ex ducimus dolores accusantium, sed velit, beatae
-            delectus molestiae rerum dolor vitae sequi assumenda magnam veritatis ab iste. Sequi, illo accusantium earum
-            quasi voluptatem aperiam vitae saepe nesciunt a et enim deleniti, sint placeat nulla. Accusantium minima
-            recusandae odio expedita quaerat?
+          <p class="textFont" ng-repeat= "blogPost in blogPosts" ng-show = "$index == 1"> 
+            {{blogPost.text}}
           </p>
           <img src="./images/keys.jpeg" class="mx-auto d-block" alt="">
         </div>
-        <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+        <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab" ng-controller = "BlogPostsController">
           <hr>
-          <p class="textFont">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, odio dolore vero vel voluptates quaerat quo
-            officiis temporibus ullam ad asperiores iusto tempora natus atque earum exercitationem commodi voluptatem
-            voluptatibus! Eum, libero. Blanditiis labore, voluptatibus debitis consectetur veritatis eaque
-            exercitationem ut repudiandae qui necessitatibus temporibus, ipsum rerum deleniti natus delectus corporis
-            illo quam quibusdam possimus modi error, fugiat ad in. Velit quod deserunt blanditiis saepe, sed qui iure,
-            dicta architecto nulla laborum pariatur, voluptatum culpa dignissimos expedita. Corporis deserunt, aliquam
-            repudiandae voluptates explicabo, qui necessitatibus magnam accusantium amet ex numquam ut consectetur error
-            nostrum odit sed! Placeat quia dolorum beatae exercitationem ad, porro animi quos asperiores nostrum maxime
-            temporibus error. Ad animi distinctio, consectetur iusto, veritatis odit, adipisci nam in mollitia molestiae
-            corrupti reprehenderit nobis. Ratione similique labore tenetur non, facere tempore debitis ea, aut sapiente
-            quod tempora ipsa. Alias dicta quos unde ab commodi nisi nobis corrupti, in quidem accusamus recusandae
-            corporis repellendus tenetur delectus. Ut ullam dicta, ex ducimus dolores accusantium, sed velit, beatae
-            delectus molestiae rerum dolor vitae sequi assumenda magnam veritatis ab iste. Sequi, illo accusantium earum
-            quasi voluptatem aperiam vitae saepe nesciunt a et enim deleniti, sint placeat nulla. Accusantium minima
-            recusandae odio expedita quaerat?
+          <p class="textFont" ng-repeat= "blogPost in blogPosts" ng-show = "$index == 0">
+           {{blogPost.text}}
           </p>
           <img src="./images/sanfransisco.jpg" class="mx-auto d-block" alt="">
         </div>
@@ -495,6 +447,10 @@
   <script src="js/app.js"></script>
   <script src="js/factories/specialFactory.js"></script>
   <script src="js/controllers/specialController.js"></script>
+  <script src="js/factories/blogPostFactory.js"></script>
+  <script src="js/controllers/blogPostController.js"></script>
+  <script src="js/factories/userFactory.js"></script>
+  <script src="js/controllers/userController.js"></script>
 
 </body>
 
