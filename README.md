@@ -21,6 +21,42 @@ Currently separated into three categories: Client, Vendor, and Request. Each not
 
 TODO: Document rest of the API.
 
+### BlogPosts
+
+Required fields: title(String). Optional fields: text(String). Maybe text should be a required field too? Although she may want to use her blogposts as announcements. Short announcements would only need the title field.
+
+Get all blogposts: GET /api/blogposts
+
+Create blogpost: POST /api/blogposts
+
+Get blogpost by _id: GET /api/blogposts/(blogpost._id)
+
+Update blogpost by _id: PUT /api/blogposts/(blogpost._id)
+
+Delete blogpost by _id: DELETE /api/blogposts/(blogpost._id)
+
+### Specials
+
+Required fields: title(String). Optional fields: description(String), expireDate(Date). Date format should be 'YYYY-MM-DD'.
+
+Get all specials: GET /api/specials
+
+Create special: POST /api/specials
+
+Get special by _id: GET /api/specials/(special._id)
+
+Update special by _id: PUT /api/specials/(special._id)
+
+Delete special by _id: DELETE /api/specials/(special._id)
+
+NOTE: I have reimplemented this to use query params instead
+
+Get newest N specials: GET /api/specials/?num=N
+
+Get oldest N specials: GET /api/specials/?num=N&order=old
+
+Get all specials old to new: GET /api/specials/?order=old
+
 ## Team 
 Daniel Quintero (leingad)
 
