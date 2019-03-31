@@ -1,13 +1,6 @@
 angular.module('users').controller('UsersController', ['$scope', 'Users', 
   function($scope, Users) {
     /* Get all the listings, then bind it to the scope */
-    Users.getAll().then(function(response) {
-      $scope.users = response.data;
-    }, function(error) {
-      console.log('Unable to retrieve user:', error);
-    });
-    $scope.detailedInfo = undefined;
-
     $scope.addUser = function(user) {
 
       Listings.create(user).then(function(response) {
@@ -15,9 +8,26 @@ angular.module('users').controller('UsersController', ['$scope', 'Users',
     }, function(error) {
       console.log('Unable to retrieve users:', error);
     });
-
-
     };
+    
+    $scope.authenticateUser = function(email, password){
+      console.log(email);
+      console.log(password);
+      Users.authenticate(email, password).then(function(response)
+      {
+        if(response.status == 200)
+        {
+          window.location.href = '../home.html';
+        }
+        else if (response.status == 404)
+        {
+          alert("Please try again, incorrect credentials provided");
+        }
+      },function(error){
+          console.log("FAIL");
+      });
+    };
+
 
     $scope.deleteUser = function(id) {
 

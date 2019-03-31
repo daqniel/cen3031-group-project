@@ -31,7 +31,7 @@ exports.read = function (req, res) {
 /* Update a special */
 
 exports.update = function (req, res) {
-  Special.findOneAndUpdate(req.special._id, req.body, (err, updatedSpecial) => {
+  Special.findOneAndUpdate({_id: req.params.specialID}, req.body, (err, updatedSpecial) => {
     if (err) res.status(404).send(err);
     else {
       res.json(updatedSpecial);
