@@ -18,11 +18,11 @@
     <title>Welcome!</title>
 </head>
 
-<body>
+<body ng-app="agencyApp">
 
     <!-- NAVBAR -->
     <nav id="mainNavbar" class="navbar navbar-expand-md navbar-light fixed-top">
-        <a class="navbar-brand title" href="./index.html" style="color: #9C28FF">Bochitto Travel</a>
+        <a class="navbar-brand title" href="./home.html" style="color: #9C28FF">Bochitto Travel</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -31,7 +31,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto nav-fill w-100">
                 <li class="icon nav-item active">
-                    <a class="nav-link " href="./specials.html">Specials<span class="sr-only">(current)</span></a>
+                    <a class="nav-link " href="./specials-home.html">Specials<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="icon nav-item active">
                     <a class="nav-link" href="./blog.html">Past Reviews<span class="sr-only">(current)</span></a>
@@ -40,47 +40,47 @@
                     <a class="nav-link" href="#aboutUsContainer">About Us<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="icon nav-item active">
-                    <a class="nav-link" href="./recommendations.html">MyRecommendations<span
+                    <a class="nav-link" href="./user-recommendations.html">MyRecommendations<span
                             class="sr-only">(current)</span></a>
                 </li>
             </ul>
             <div class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false"  style="color:black!important;">
+                    aria-haspopup="true" aria-expanded="false" style="color:black!important;">
                     Welcome, Jon Doe
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="#">Profile</a>
                     <a class="dropdown-item" href="./recommendations.html">MyRecommendations</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Logout</a>
+                    <a class="dropdown-item" href="./index.html">Logout</a>
                 </div>
             </div>
         </div>
     </nav>
 
     <!-- Specials Carousel -->
-    <div class="container-fluid specialsCarousel">
+    <div class="container-fluid specialsCarousel" ng-controller="SpecialsController" data-ng-init="get3MostRecent()">
         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <img src="./images/specials1.jpg" class="specialsImages" alt="">
                     <div class="carousel-caption d-none d-md-block">
-                        <h4 class="titleFont">3 Nights 4 Days in Cancun, Mexico: $599!</h4>
+                        <h4 class="titleFont">{{special1.title}}</h4>
                         <button type="button" class="btn btn-success">Book Now</button>
                     </div>
                 </div>
                 <div class="carousel-item">
                     <img src="./images/specials2.jpg" class="specialsImages" alt="">
                     <div class="carousel-caption d-none d-md-block">
-                        <h4 class="titleFont">3 Nights 4 Days in San Fransisco, California: $999!</h4>
+                        <h4 class="titleFont">{{special2.title}}</h4>
                         <button type="button" class="btn btn-success">Book Now</button>
                     </div>
                 </div>
                 <div class="carousel-item">
                     <img src="./images/specials3.jpg" class="specialsImages" alt="">
                     <div class="carousel-caption d-none d-md-block">
-                        <h4 class="titleFont">6 Nights 7 Days in Giza, Egypt: $1299!</h4>
+                        <h4 class="titleFont">{{special3.title}}</h4>
                         <button type="button" class="btn btn-success">Book Now</button>
                     </div>
                 </div>
@@ -97,121 +97,42 @@
     </div>
 
     <!-- Reviews Section -->
-    <nav class="container-fluid recommendations" id="recommendations">
-        <nav class="container">
-            <h1 class="text-center titleFont p-2">Travel Agent Reviews</h1>
+    <nav class="container-fluid recommendations" id="recommendations" ng-controller="BlogPostsController"
+        data-ng-init="getAll()">
+        <nav class="container" id="tabs">
+            <h1 class="text-center titleFont">Travel Agent Reviews</h1>
             <nav>
                 <div class="nav nav-tabs m-3" id="nav-tab" role="tablist">
                     <a class="nav-item nav-link active titleFont reviewTab" id="nav-home-tab" data-toggle="tab"
-                        href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Bahamas</a>
+                        href="#nav-home" role="tab" aria-controls="nav-home"
+                        aria-selected="true">{{blogPost1.title}}</a>
                     <a class="nav-item nav-link titleFont reviewTab" id="nav-profile-tab" data-toggle="tab"
-                        href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Key West,
-                        FL</a>
+                        href="#nav-profile" role="tab" aria-controls="nav-profile"
+                        aria-selected="false">{{blogPost2.title}}</a>
                     <a class="nav-item nav-link titleFont reviewTab" id="nav-contact-tab" data-toggle="tab"
-                        href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">San Fransisco,
-                        CA</a>
+                        href="#nav-contact" role="tab" aria-controls="nav-contact"
+                        aria-selected="false">{{blogPost3.title}}</a>
                 </div>
             </nav>
             <div class="tab-content" id="nav-tabContent">
                 <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                     <hr>
                     <p class="textFont">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, odio dolore vero vel voluptates
-                        quaerat quo
-                        officiis temporibus ullam ad asperiores iusto tempora natus atque earum exercitationem commodi
-                        voluptatem
-                        voluptatibus! Eum, libero. Blanditiis labore, voluptatibus debitis consectetur veritatis eaque
-                        exercitationem ut repudiandae qui necessitatibus temporibus, ipsum rerum deleniti natus delectus
-                        corporis
-                        illo quam quibusdam possimus modi error, fugiat ad in. Velit quod deserunt blanditiis saepe, sed
-                        qui iure,
-                        dicta architecto nulla laborum pariatur, voluptatum culpa dignissimos expedita. Corporis
-                        deserunt, aliquam
-                        repudiandae voluptates explicabo, qui necessitatibus magnam accusantium amet ex numquam ut
-                        consectetur error
-                        nostrum odit sed! Placeat quia dolorum beatae exercitationem ad, porro animi quos asperiores
-                        nostrum maxime
-                        temporibus error. Ad animi distinctio, consectetur iusto, veritatis odit, adipisci nam in
-                        mollitia molestiae
-                        corrupti reprehenderit nobis. Ratione similique labore tenetur non, facere tempore debitis ea,
-                        aut sapiente
-                        quod tempora ipsa. Alias dicta quos unde ab commodi nisi nobis corrupti, in quidem accusamus
-                        recusandae
-                        corporis repellendus tenetur delectus. Ut ullam dicta, ex ducimus dolores accusantium, sed
-                        velit, beatae
-                        delectus molestiae rerum dolor vitae sequi assumenda magnam veritatis ab iste. Sequi, illo
-                        accusantium earum
-                        quasi voluptatem aperiam vitae saepe nesciunt a et enim deleniti, sint placeat nulla.
-                        Accusantium minima
-                        recusandae odio expedita quaerat?
+                        {{blogPost1.text}}
                     </p>
                     <img src="./images/bahamas.jpg" class="mx-auto d-block" alt="">
                 </div>
                 <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
                     <hr>
                     <p class="textFont">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, odio dolore vero vel voluptates
-                        quaerat quo
-                        officiis temporibus ullam ad asperiores iusto tempora natus atque earum exercitationem commodi
-                        voluptatem
-                        voluptatibus! Eum, libero. Blanditiis labore, voluptatibus debitis consectetur veritatis eaque
-                        exercitationem ut repudiandae qui necessitatibus temporibus, ipsum rerum deleniti natus delectus
-                        corporis
-                        illo quam quibusdam possimus modi error, fugiat ad in. Velit quod deserunt blanditiis saepe, sed
-                        qui iure,
-                        dicta architecto nulla laborum pariatur, voluptatum culpa dignissimos expedita. Corporis
-                        deserunt, aliquam
-                        repudiandae voluptates explicabo, qui necessitatibus magnam accusantium amet ex numquam ut
-                        consectetur error
-                        nostrum odit sed! Placeat quia dolorum beatae exercitationem ad, porro animi quos asperiores
-                        nostrum maxime
-                        temporibus error. Ad animi distinctio, consectetur iusto, veritatis odit, adipisci nam in
-                        mollitia molestiae
-                        corrupti reprehenderit nobis. Ratione similique labore tenetur non, facere tempore debitis ea,
-                        aut sapiente
-                        quod tempora ipsa. Alias dicta quos unde ab commodi nisi nobis corrupti, in quidem accusamus
-                        recusandae
-                        corporis repellendus tenetur delectus. Ut ullam dicta, ex ducimus dolores accusantium, sed
-                        velit, beatae
-                        delectus molestiae rerum dolor vitae sequi assumenda magnam veritatis ab iste. Sequi, illo
-                        accusantium earum
-                        quasi voluptatem aperiam vitae saepe nesciunt a et enim deleniti, sint placeat nulla.
-                        Accusantium minima
-                        recusandae odio expedita quaerat?
+                        {{blogPost2.text}}
                     </p>
                     <img src="./images/keys.jpeg" class="mx-auto d-block" alt="">
                 </div>
                 <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
                     <hr>
                     <p class="textFont">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, odio dolore vero vel voluptates
-                        quaerat quo
-                        officiis temporibus ullam ad asperiores iusto tempora natus atque earum exercitationem commodi
-                        voluptatem
-                        voluptatibus! Eum, libero. Blanditiis labore, voluptatibus debitis consectetur veritatis eaque
-                        exercitationem ut repudiandae qui necessitatibus temporibus, ipsum rerum deleniti natus delectus
-                        corporis
-                        illo quam quibusdam possimus modi error, fugiat ad in. Velit quod deserunt blanditiis saepe, sed
-                        qui iure,
-                        dicta architecto nulla laborum pariatur, voluptatum culpa dignissimos expedita. Corporis
-                        deserunt, aliquam
-                        repudiandae voluptates explicabo, qui necessitatibus magnam accusantium amet ex numquam ut
-                        consectetur error
-                        nostrum odit sed! Placeat quia dolorum beatae exercitationem ad, porro animi quos asperiores
-                        nostrum maxime
-                        temporibus error. Ad animi distinctio, consectetur iusto, veritatis odit, adipisci nam in
-                        mollitia molestiae
-                        corrupti reprehenderit nobis. Ratione similique labore tenetur non, facere tempore debitis ea,
-                        aut sapiente
-                        quod tempora ipsa. Alias dicta quos unde ab commodi nisi nobis corrupti, in quidem accusamus
-                        recusandae
-                        corporis repellendus tenetur delectus. Ut ullam dicta, ex ducimus dolores accusantium, sed
-                        velit, beatae
-                        delectus molestiae rerum dolor vitae sequi assumenda magnam veritatis ab iste. Sequi, illo
-                        accusantium earum
-                        quasi voluptatem aperiam vitae saepe nesciunt a et enim deleniti, sint placeat nulla.
-                        Accusantium minima
-                        recusandae odio expedita quaerat?
+                        {{blogPost3.text}}
                     </p>
                     <img src="./images/sanfransisco.jpg" class="mx-auto d-block" alt="">
                 </div>
@@ -313,8 +234,6 @@
             </div>
         </div>
     </div>
-
-    <div class="container-fluid" id="bufferSection"></div>
 
     <!-- Footer -->
     <div class="container-fluid" id="footer">
@@ -443,7 +362,15 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
         integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
         crossorigin="anonymous"></script>
-    <script src="js/styling/script.js"></script>
+    <!-- <script src="js/styling/script.js"></script> -->
+    <script src="https://code.angularjs.org/1.4.3/angular.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/factories/specialFactory.js"></script>
+    <script src="js/controllers/specialController.js"></script>
+    <script src="js/factories/blogPostFactory.js"></script>
+    <script src="js/controllers/blogPostController.js"></script>
+    <script src="js/factories/userFactory.js"></script>
+    <script src="js/controllers/userController.js"></script>
 </body>
 
 </html>
