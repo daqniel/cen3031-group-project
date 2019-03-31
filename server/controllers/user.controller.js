@@ -24,6 +24,16 @@ exports.read = function(req, res) {
   res.json(req.user);
 };
 
+exports.readWithPassword = function(req, res) {
+  if(req.params.password != req.user.password)
+  {
+    res.status(404).send("Could not read, password mismatch.") 
+  }
+  else {
+    res.json(req.user);
+  }
+}
+
 /* Update a user */
 exports.update = function(req, res) {
   User.findOneAndUpdate(req.params, req.body, (err, updatedUser) => {
@@ -58,11 +68,15 @@ exports.list = function(req, res){
   Middleware: find a user by their email, then pass it to the next request handler. 
  */
 exports.userByEmail = function(req, res, next, email) {
-  User.findOne(req.params).exec((err, user) => {
+  User.findOne({email: req.params.email}).exec((err, user) => {
     if(err) res.status(404).send(err);
     else {
       req.user = user;
       next();
     }
   });
+};
+
+exports.validatePassword = function(req, res, next, email) {
+  User.findOne()
 };
