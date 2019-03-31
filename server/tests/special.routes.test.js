@@ -34,7 +34,6 @@ describe('Tests for Special API call', function() {
                 res.body.title.should.equal('PASS ONE TEST AND PASS ANOTHER ONE FREE HOPEFULLY');
                 res.body.description.should.equal('May or may not pass the test');
                 id = res.body._id;
-                console.log(id);
                 done();
             });
     });
@@ -87,8 +86,6 @@ describe('Tests for Special API call', function() {
             })
     });
 
-    console.log(id);
-
     it('Delete Special by _id', function(done) {
         agent.delete('/api/specials/' + id)
             .expect(200)
@@ -103,6 +100,36 @@ describe('Tests for Special API call', function() {
                     });
             })
     });
+
+    it('Get newest n Specials',function(done){
+        var n = 3;
+        agent.get('api/specials/?num=' + n)
+            .expect(200)
+            .end(function(err,res){
+                should.not.exist(err);
+                should.exist(res);
+                res.body.should.have.length(n);
+                //console.log(res.body);
+                done();
+            });
+    });
+
+    it('Get oldest n Specials',function(done){
+        var n = 3;
+        agent.get('api/specials/?num=' + n + '&order=old')
+            .expect(200)
+            .end(function(err,res){
+                should.not.exist(err);
+                should.exist(res);
+                res.body.should.have.length(n);
+                //console.log(res.body);
+                done();
+            });
+    });
+
+    // it('Get all Specials from oldest to newest',function(done){
+    //     agent.get('api/specials/?order=old')
+    // });
 
     after(function(done) {
         if(id) {
