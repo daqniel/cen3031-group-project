@@ -18,6 +18,7 @@ angular.module('users').controller('UsersController', ['$scope', 'Users',
         if(response.status == 200)
         {
           window.location.href = '../home.html';
+          sessionStorage.setItem("username", email);
         }
       },function(error){
           alert("Please try again, incorrect credentials provided");
