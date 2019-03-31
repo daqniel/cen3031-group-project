@@ -42,7 +42,7 @@ exports.update = function (req, res) {
 
 /* Delete a special */
 exports.delete = function (req, res) {
-  Special.findOneAndRemove(req.params, (err, deletedSpecial) => {
+  Special.findOneAndRemove({_id: req.params.specialID}, (err, deletedSpecial) => {
     //NOTE: There maybe a more correct way to do this
     if (!deletedSpecial) res.status(404).send("Special does not exist.");
     else res.json(deletedSpecial);
