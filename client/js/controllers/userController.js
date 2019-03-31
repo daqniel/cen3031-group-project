@@ -1,7 +1,6 @@
 angular.module('users').controller('UsersController', ['$scope', 'Users', 
   function($scope, Users) {
     /* Get all the listings, then bind it to the scope */
-    
     $scope.addUser = function(user) {
 
       Listings.create(user).then(function(response) {
@@ -9,6 +8,11 @@ angular.module('users').controller('UsersController', ['$scope', 'Users',
     }, function(error) {
       console.log('Unable to retrieve users:', error);
     });
+
+    $scope.authenticateUser = function(email, password)
+    {
+      
+    }
 
 
     };
