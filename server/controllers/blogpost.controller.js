@@ -48,8 +48,7 @@ exports.delete = function(req, res) {
   Middleware: find a blogpost by ID, then pass it to the next request handler. 
  */
 exports.blogpostByID = function(req, res, next) {
-  blogpost_id = req.params.blogpost_id;
-  Blogpost.findById(blogpost_id).exec((err, blogpost) => {
+  Blogpost.findById(req.params.blogpostId).exec((err, blogpost) => {
     if (err) res.status(404).send(err);
     else {
       req.blogpost = blogpost;
@@ -63,14 +62,13 @@ exports.blogpostByID = function(req, res, next) {
   either newest or oldest.
  */
 exports.getNewOrOld = function (req, res, next) {
-  var num = req.query.num;
-  /* if order=old query param is passed, gets N oldest specials */
+  /* if order=old query param is passed, gets N oldest blogposts */
   var order = req.query.order == 'old' ? 1 : -1;
   Blogpost.find()
     .sort({
       createdDate: order
     })
-    .limit(parseInt(num))
+    .limit(parseInt(req.query.num))
     .exec((err, blogposts) => {
       if (err) res.status(404).send(err);
       else {
