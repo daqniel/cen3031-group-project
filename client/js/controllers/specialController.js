@@ -2,8 +2,10 @@ angular.module('specials').controller('SpecialsController', ['$scope', 'Specials
   function($scope, Specials) {
     /* Get all the listings, then bind it to the scope */
     Specials.get3MostRecent().then(function(response) {
-      $scope.specials = response;
-      console.log(response.data);
+      $scope.specials = response.data;
+      $scope.special1 = response.data[0];
+      $scope.special2 = response.data[1];
+      $scope.special3 = response.data[2];
     }, function(error) {
       console.log('Unable to retrieve specials:', error);
     });
@@ -36,8 +38,10 @@ angular.module('specials').controller('SpecialsController', ['$scope', 'Specials
 
     };
 
-    $scope.showDetails = function(index) {
-      $scope.detailedInfo = $scope.specials[index];
-    };
+    // $scope.showDetails = function(index) {
+    //   $scope.special1 = specials[0];
+    //   $scope.special2 = specials[1];
+    //   $scope.special3 = specials[2];
+    // };
   }
 ]);
