@@ -1,13 +1,7 @@
 angular.module('users').controller('UsersController', ['$scope', 'Users', 
   function($scope, Users) {
     /* Get all the listings, then bind it to the scope */
-    Users.getAll().then(function(response) {
-      $scope.users = response.data;
-    }, function(error) {
-      console.log('Unable to retrieve user:', error);
-    });
-    $scope.detailedInfo = undefined;
-
+    
     $scope.addUser = function(user) {
 
       Listings.create(user).then(function(response) {

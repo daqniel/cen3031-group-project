@@ -65,16 +65,16 @@
 
       <!-- Modal body -->
       <div class="modal-body">
-      	<form>
+      	<form onsubmit="this.reset()">
       		<div class="container"> 	      	
 			   	
 			    <div class="row">
 			      	<label class="col-25" for="email">Email:</label>
-			      	<input class="col-75" type="text" id="email" name="">
+			      	<input class="col-75" type="text" id="email" ng-model="email">
 			    </div>
 			    <div class="row">
 			      	<label class="col-25" for="pass">Password:</label>
-			      	<input class="col-75" type="text" id="pass" name="">
+			      	<input class="col-75" type="text" id="pass" ng-model="password">
 			    </div>
 			    
 		    </div>
@@ -84,7 +84,7 @@
       <!-- Modal footer -->
       <div class="modal-footer">
       	<button type="button" class="btn btn-success register mr-auto" data-dismiss="modal" data-toggle="modal" data-target="#registerModal">Register</button>
-        <button type="button" class="btn btn-success" data-dismiss="modal">Submit</button>
+        <button type="button" class="btn btn-success" data-dismiss="modal" ng-click="addListing(newCode, newBuilding, newLongitude, newLatitude, newAddress)">Submit</button>
       </div>
 
     </div>
