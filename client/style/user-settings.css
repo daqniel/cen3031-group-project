@@ -1,0 +1,27 @@
+#profile
+{
+    height: 93%;
+    margin-top: 5%;
+}
+
+#specialsTable{
+    height: 10%!important;
+}
+
+#removeButton{
+    width: 40px;
+}
+  
+#editButton{
+    width: 40px;
+}
+
+#delete
+{
+    width: 100%;
+}
+
+.list-group-item.active {
+    background-color: #9C28FF !important;
+    border-color: #9C28FF !important;
+}

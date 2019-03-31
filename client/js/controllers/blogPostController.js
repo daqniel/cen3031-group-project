@@ -1,7 +1,11 @@
 angular.module('blogPosts').controller('BlogPostsController', ['$scope', 'BlogPosts', 
   function($scope, BlogPosts) {
     BlogPosts.getAll().then(function(response) {
-      $scope.blogPosts = response.data;
+      $scope.blogPost1 = response.data[0];
+      $scope.blogPost2 = response.data[1];
+      $scope.blogPost3 = response.data[2];
+
+      console.log($scope.blogPost1.title);
     }, function(error) {
       console.log('Unable to retrieve blogPosts:', error);
     });

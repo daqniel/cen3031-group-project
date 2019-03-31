@@ -8,6 +8,11 @@ angular.module('specials', []).factory('Specials', function($http) {
 	  return $http.post('http://localhost:8080/api/specials', special);
     }, 
 
+    get3MostRecent: function(response)
+    {
+      return $http.get('http://localhost:8080/api/specials/?num=3');
+    },
+
     delete: function(id) {
 	   /**TODO
         return result of HTTP delete method
