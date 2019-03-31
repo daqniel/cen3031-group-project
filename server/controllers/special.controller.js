@@ -25,15 +25,13 @@ exports.create = function (req, res) {
 
 /* Show the current special */
 exports.read = function (req, res) {
-  req.body = req.special;
   res.json(req.special);
 };
 
 /* Update a special */
 
 exports.update = function (req, res) {
-  Special.findOneAndUpdate(req.params.specialID, req.body, (err, updatedSpecial) => {
-
+  Special.findOneAndUpdate(req.special._id, req.body, (err, updatedSpecial) => {
     if (err) res.status(404).send(err);
     else {
       res.json(updatedSpecial);
@@ -43,9 +41,8 @@ exports.update = function (req, res) {
 
 /* Delete a special */
 exports.delete = function (req, res) {
-  Special.findOneAndRemove({_id: req.params.specialID}, (err, deletedSpecial) => {
-    //NOTE: There maybe a more correct way to do this
-    if (!deletedSpecial) res.status(404).send("Special does not exist.");
+  Special.findByIdAndRemove(req.special._id, (err, deletedSpecial) => {
+    if(err) res.status(404).send(err);
     else res.json(deletedSpecial);
   });
 };
@@ -55,7 +52,6 @@ exports.delete = function (req, res) {
  */
 exports.specialByID = function (req, res, next) {
   Special.findById(req.params.specialID).exec((err, special) => {
-
     if (err) res.status(404).send(err);
     else {
       req.special = special;
@@ -65,19 +61,17 @@ exports.specialByID = function (req, res, next) {
 };
 
 /* 
-
   Middleware: find N specials and pass on sorted by created date,
   either newest or oldest.
  */
 exports.getNewOrOld = function (req, res, next) {
-  var num = req.query.num;
   /* if order=old query param is passed, gets N oldest specials */
   var order = req.query.order == 'old' ? 1 : -1;
   Special.find()
     .sort({
       createdDate: order
     })
-    .limit(parseInt(num))
+    .limit(parseInt(req.query.num))
     .exec((err, specials) => {
       if (err) res.status(404).send(err);
       else {
