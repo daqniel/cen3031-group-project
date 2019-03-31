@@ -1,12 +1,13 @@
 angular.module('specials').controller('SpecialsController', ['$scope', 'Specials', 
   function($scope, Specials) {
     /* Get all the listings, then bind it to the scope */
-    Specials.getAll().then(function(response) {
-      $scope.specials = response.data;
+    Specials.get3MostRecent().then(function(response) {
+      $scope.specials = response;
+      console.log(response.data);
     }, function(error) {
       console.log('Unable to retrieve specials:', error);
     });
-    $scope.detailedInfo = undefined;
+    
 
     $scope.addSpecial = function(list) {
 	
