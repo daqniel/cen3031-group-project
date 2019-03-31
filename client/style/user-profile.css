@@ -1,0 +1,16 @@
+#profile
+{
+    height: 100%;
+}
+
+#specialsTable{
+    height: 10%!important;
+}
+
+#removeButton{
+    width: 40px;
+}
+  
+#editButton{
+    width: 40px;
+}
