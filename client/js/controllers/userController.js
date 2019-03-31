@@ -11,7 +11,11 @@ angular.module('users').controller('UsersController', ['$scope', 'Users',
 
     $scope.authenticateUser = function(email, password)
     {
-      Users.authenticate(email, password).then(function(response))
+      Users.authenticate(email, password).then(function(response)
+      {
+      },function(error){
+
+      });
     }
 
 
