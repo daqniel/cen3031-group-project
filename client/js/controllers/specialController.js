@@ -9,12 +9,8 @@ angular.module('specials').controller('SpecialsController', ['$scope', 'Specials
     $scope.detailedInfo = undefined;
 
     $scope.addSpecial = function(list) {
-	  /**TODO 
-	  *Save the article using the Listings factory. If the object is successfully 
-	  saved redirect back to the list page. Otherwise, display the error
-	 */
+	
       Specials.create(list).then(function(response) {
-     // $scope.listings = response.data;
       window.location=window.location;
     }, function(error) {
       console.log('Unable to retrieve specials:', error);
@@ -24,10 +20,6 @@ angular.module('specials').controller('SpecialsController', ['$scope', 'Specials
     };
 
     $scope.deleteSpecial = function(id) {
-	   /**TODO
-        Delete the article using the Listings factory. If the removal is successful, 
-		navigate back to 'listing.list'. Otherwise, display the error. 
-       */ 
       Specials.delete(id).then(function(response)
       {
         $scope.specials = response.data;
