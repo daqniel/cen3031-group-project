@@ -19,12 +19,9 @@ angular.module('users').controller('UsersController', ['$scope', 'Users',
         {
           window.location.href = '../home.html';
         }
-        else if (response.status == 404)
-        {
-          alert("Please try again, incorrect credentials provided");
-        }
       },function(error){
-          console.log("FAIL");
+          alert("Please try again, incorrect credentials provided");
+          window.location.href = "../index.html";
       });
     };
 
