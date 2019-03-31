@@ -33,6 +33,7 @@ exports.read = function (req, res) {
 
 exports.update = function (req, res) {
   Special.findOneAndUpdate(req.params.specialID, req.body, (err, updatedSpecial) => {
+
     if (err) res.status(404).send(err);
     else {
       res.json(updatedSpecial);
@@ -54,6 +55,7 @@ exports.delete = function (req, res) {
  */
 exports.specialByID = function (req, res, next) {
   Special.findById(req.params.specialID).exec((err, special) => {
+
     if (err) res.status(404).send(err);
     else {
       req.special = special;
@@ -63,6 +65,7 @@ exports.specialByID = function (req, res, next) {
 };
 
 /* 
+
   Middleware: find N specials and pass on sorted by created date,
   either newest or oldest.
  */
@@ -82,4 +85,5 @@ exports.getNewOrOld = function (req, res, next) {
         next();
       }
     });
+
 };
