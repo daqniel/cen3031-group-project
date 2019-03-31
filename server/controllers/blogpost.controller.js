@@ -1,6 +1,11 @@
 /* Dependencies */
 var Blogpost = require("../models/blogpost.model.js");
 
+/* retrieve all blogposts */
+exports.list = function(req, res) {
+  res.json(req.blogpost);
+};
+
 /* Create a Blogpost */
 exports.create = function(req, res) {
   var blogpost = new Blogpost(req.body);
@@ -8,7 +13,6 @@ exports.create = function(req, res) {
   /* save to mongoDB */
   blogpost.save(err => {
     if (err) {
-      // console.log(err);
       res.status(400).send(err);
     } else {
       res.json(blogpost);
@@ -35,18 +39,8 @@ exports.update = function(req, res) {
 /* Delete a blogpost */
 exports.delete = function(req, res) {
   Blogpost.findByIdAndRemove(req.blogpost._id, (err, deletedBlogpost) => {
-    // console.log(deletedBlogpost);
-    if (!deletedBlogpost) res.status(404).send("Blogpost does not exist.");
-    else res.send(deletedBlogpost);
-  });
-};
-
-/* retrieve all blogposts */
-exports.list = function(req, res) {
-  Blogpost.find({}, (err, blogpost) => {
-    if (err) res.status(404).send(err);
-    res.json(blogpost);
-    // console.log('all blogposts retrieved.');
+    if(err) res.status(404).send(err);
+    else res.json(deletedBlogpost);
   });
 };
 
@@ -62,4 +56,26 @@ exports.blogpostByID = function(req, res, next) {
       next();
     }
   });
+};
+
+/* 
+  Middleware: find N specials and pass on sorted by created date,
+  either newest or oldest.
+ */
+exports.getNewOrOld = function (req, res, next) {
+  var num = req.query.num;
+  /* if order=old query param is passed, gets N oldest specials */
+  var order = req.query.order == 'old' ? 1 : -1;
+  Blogpost.find()
+    .sort({
+      createdDate: order
+    })
+    .limit(parseInt(num))
+    .exec((err, blogposts) => {
+      if (err) res.status(404).send(err);
+      else {
+        req.blogpost = blogposts;
+        next();
+      }
+    });
 };

@@ -4,6 +4,7 @@ var blogpost_controller = require('../controllers/blogpost.controller.js'),
     router = express.Router();
 
 //lists all blogposts made
+router.use("/", blogpost_controller.getNewOrOld);
 router.route('/')
     .get(blogpost_controller.list)
     .post(blogpost_controller.create);
