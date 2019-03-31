@@ -32,7 +32,8 @@ exports.read = function (req, res) {
 /* Update a special */
 
 exports.update = function (req, res) {
-  Special.findOneAndUpdate({_id: req.params.specialID}, req.body, (err, updatedSpecial) => {
+  Special.findOneAndUpdate(req.params.specialID, req.body, (err, updatedSpecial) => {
+
     if (err) res.status(404).send(err);
     else {
       res.json(updatedSpecial);
@@ -49,11 +50,12 @@ exports.delete = function (req, res) {
   });
 };
 
-/*
-  Middleware: find a special by its ID, then pass it to the next request handler.
+/* 
+  Middleware: find a special by its ID, then pass it to the next request handler. 
  */
 exports.specialByID = function (req, res, next) {
-  Special.findById({_id:req.params.specialID}).exec((err, special) => {
+  Special.findById(req.params.specialID).exec((err, special) => {
+
     if (err) res.status(404).send(err);
     else {
       req.special = special;
@@ -62,7 +64,8 @@ exports.specialByID = function (req, res, next) {
   })
 };
 
-/*
+/* 
+
   Middleware: find N specials and pass on sorted by created date,
   either newest or oldest.
  */
@@ -71,15 +74,16 @@ exports.getNewOrOld = function (req, res, next) {
   /* if order=old query param is passed, gets N oldest specials */
   var order = req.query.order == 'old' ? 1 : -1;
   Special.find()
-      .sort({
-        createdDate: order
-      })
-      .limit(parseInt(num))
-      .exec((err, specials) => {
-        if (err) res.status(404).send(err);
-        else {
-          req.special = specials;
-          next();
-        }
-      });
+    .sort({
+      createdDate: order
+    })
+    .limit(parseInt(num))
+    .exec((err, specials) => {
+      if (err) res.status(404).send(err);
+      else {
+        req.special = specials;
+        next();
+      }
+    });
+
 };

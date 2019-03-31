@@ -18,10 +18,11 @@ router
  */
 
 router
-    .route("/:specialID")
-    .get(specials_controller.read) /* Maybe don't need this get by id */
-    .put(specials_controller.update)
-    .delete(specials_controller.delete);
+  .route("/:specialID")
+  .get(specials_controller.read) /* Maybe don't need this get by id */
+  .put(specials_controller.update)
+  .delete(specials_controller.delete);
+
 
 /*
   The 'router.param' method allows us to specify middleware we would like to use to handle
@@ -36,3 +37,4 @@ router
 router.param("specialID", specials_controller.specialByID);
 
 module.exports = router;
+
