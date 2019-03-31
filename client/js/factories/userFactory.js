@@ -14,6 +14,10 @@ angular.module('users', []).factory('Users', function($http) {
          */
        return $http.delete('http://localhost:8080/api/users/'+id);
   
+      },
+      authenticate: function(username, email)
+      {
+        return $http.get('http://localhost:8080/api/users' + username + "/" + password);
       }
     };
   
