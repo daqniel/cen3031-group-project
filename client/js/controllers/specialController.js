@@ -11,6 +11,11 @@ angular.module('specials').controller('SpecialsController', ['$scope', 'Specials
         console.log('Unable to retrieve specials:', error);
       });
     };
+    Specials.getAll().then(function(response) {
+      $scope.specials = response.data;
+    }, function(error) {
+      console.log('Unable to retrieve specials:', error);
+    });
 
     $scope.addSpecial = function (list) {
       Specials.create(list).then(function (response) {
