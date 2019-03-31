@@ -8,17 +8,16 @@
     <!-- Links: API's, CSS, and FontAwesome -->
     <link href="https://fonts.googleapis.com/css?family=Boogaloo|Laila" rel="stylesheet">
     <link rel="stylesheet" href="style/style.css">
-    <link rel="stylesheet" href="style/user-profile.css">
+    <link rel="stylesheet" href="style/user-recommendations.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
-        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <title>My Profile</title>
 </head>
 
 <body>
 
-    <!-- NAVBAR -->
     <nav id="mainNavbar" class="navbar navbar-expand-md navbar-light fixed-top">
         <a class="navbar-brand title" href="./index.html" style="color: #9C28FF">Bochitto Travel</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -44,7 +43,7 @@
             </ul>
             <div class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false"  style="color:black!important;">
+                    aria-haspopup="true" aria-expanded="false" style="color:black!important;">
                     Welcome, Jon Doe
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -57,10 +56,23 @@
         </div>
     </nav>
 
-    <nav class="container-fluid" id="profile">
-        <div class="container-fluid py-5" id="deals">
-            <div class="container">
-                <h1 class="text-center py-4 titleFont">Recommendations Made to You, From Us:</h1>
+    <div class="container" id="profile">
+        <h1 class="titleFont text-center">My Recommendations</h1>
+        <hr class="settings-hr">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="list-group">
+                    <a href="./user-recommendations.html" class="list-group-item list-group-item-action active">
+                        <i class="far fa-lightbulb"></i> &nbsp;
+                        Recommendations
+                    </a>
+                    <a href="./user-settings.html" class="list-group-item list-group-item-action">
+                        <i class="fas fa-user-cog"></i> &nbsp;
+                        Profile Settings
+                    </a>
+                </div>
+            </div>
+            <nav class="container-fluid col-md-9">
                 <table class="table table-striped table-hover" id="specialsTable">
                     <thead>
                         <th class="">Title</th>
@@ -120,9 +132,9 @@
                         </tr>
                     </tbody>
                 </table>
-            </div>
+            </nav>
         </div>
-    </nav>
+    </div>
 
     <!-- Footer -->
     <div class="container-fluid" id="footer">
