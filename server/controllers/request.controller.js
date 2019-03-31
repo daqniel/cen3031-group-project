@@ -29,13 +29,13 @@ exports.create = function(req, res){
 
 /*Show current Requests*/
 exports.read = function(req, res){
-    res.json(req.requests);
+    res.json(req.request);
 };
 
 /*Update Request*/
 exports.update = function(req, res){
     /*Finds and updates Request based on passed parameter*/
-    Request.findOneAndUpdate(req.params, req.body, function(err, updatedRequest){
+    Request.findOneAndUpdate({_id: req.params.requestID}, req.body, function(err, updatedRequest){
         if(err){
             res.send(404).send(err);
         }else{
@@ -46,56 +46,37 @@ exports.update = function(req, res){
 
 /*Delete Request*/
 exports.delete = function(req, res){
-    /*Finds and deletes Request based on passed parameter*/
-    Request.findOneAndUpdate(req.params, function(err, deletedRequest){
-        if(err){
-            res.status(404).send(err);
-        }else deletedRequest.remove(function(err){
-            if (err){
-                res.status(400).send(err);
-            }
-            console.log("Request deleted.");
-            res.json(deletedRequest);
-        });
-    });
+ Request.findOneAndRemove(req.params.requestID, (err, deletedSpecial) => {
+     if(err) {
+         res.status(404).send(err);
+     }
+     else {
+         res.json(deletedSpecial);
+     }
+  });
 };
 
-/*Middleware: Find Request by User's Email*/
-exports.findByClient = function(req, res, next) {
-    Request.find({"email" : req.query.clientID}).exec((err, requests) => {
-        if(err) {
-            res.status(400).send(err);
-        } else {
-            req.requests = requests;
-            next();
-        }
-    });
-};
 
 /*Middleware: Find Request by RequestID*/
 exports.findRequestByID = function(req, res, next) {
-    Request.findOne(req.params.requestID).exec(function(err, request) {
+    Request.findById(req.params.requestID).exec(function(err, request) {
         if(err) {
             res.status(400).send(err);
         } else {
-            req.requests = request;
+            req.request = request;
             next();
         }
     });
 };
 
-/*Middleware: Find Request by User's Email*/
-// exports.findRequestsByUser = function(req, res, next) {
-//     Request.find(req.params.clientID).exec(function(err, request) {
-//         if(err) {
-//             res.status(400).send(err);
-//         } else {
-//             req.requests = requests;
-//             next();
-//         }
-//     });
-// };
-
-
-
-
+/*Middleware: Find Request by client Email*/
+exports.findRequestsByClient = function(req, res, next) {
+    Request.find({clientID: req.query.clientID}).exec(function(err, request) {
+        if(err) {
+            res.status(400).send(err);
+        } else {
+            req.request = request;
+            next();
+        }
+    });
+};

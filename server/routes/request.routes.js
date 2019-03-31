@@ -9,7 +9,7 @@ var requestController = require('../controllers/request.controller.js'),
 */
 
 /* middleware to get requests via query param clientID */
-router.use('/', requestController.findByClient)
+router.use('/', requestController.findRequestsByClient)
 router.route('/')
     .get(requestController.list)
     .post(requestController.create);
@@ -32,13 +32,6 @@ router.route('/:requestID')
     .get(requestController.read)
     .put(requestController.update)
     .delete(requestController.delete);
-/*
-  The 'router.param' method allows us to specify middleware we would like to use to handle
-  requests with a parameter.
-
-  It will then pass control to the routing function specified above, where it will either
-  get, update, or delete that specific listing (depending on the HTTP verb specified)
- */
 
 router.param('requestID', requestController.findRequestByID);
 // router.param('clientID', requestController.findRequestsByUser);
