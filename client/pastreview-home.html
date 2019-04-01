@@ -17,11 +17,11 @@
     <title>MyRecommendations</title>
 </head>
 
-<body>
+<body ng-app="agencyApp">
 
     <!-- NAVBAR -->
-    <nav id="mainNavbar" class="navbar navbar-expand-md navbar-light fixed-top">
-        <a class="navbar-brand title" href="./index.html" style="color: #9C28FF">Bochitto Travel</a>
+    <nav id="mainNavbar" class="navbar navbar-expand-md navbar-light fixed-top" ng-controller="UsersController" data-ng-init="showName()">
+        <a class="navbar-brand title" href="./home.html" style="color: #9C28FF">Bochitto Travel</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -30,7 +30,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto nav-fill w-100">
                 <li class="icon nav-item active">
-                    <a class="nav-link " href="./specials.html">Specials<span class="sr-only">(current)</span></a>
+                    <a class="nav-link " href="./specials-home.html">Specials<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="icon nav-item active">
                     <a class="nav-link" href="./PastReview.html">Past Reviews<span class="sr-only">(current)</span></a>
@@ -38,16 +38,23 @@
                 <li class="icon nav-item active">
                     <a class="nav-link" href="#aboutUsContainer">About Us<span class="sr-only">(current)</span></a>
                 </li>
-            </ul>
-
-            <ul class="navbar-nav ml-auto nav-fill">
-                <li class="icon nav-item active mr-1">
-                    <button type="button" class="btn btn-success">Login</button>
-                </li>
-                <li class="icon nav-item active mr-1">
-                    <button type="button" class="btn btn-success">Register</button>
+                <li class="icon nav-item active">
+                    <a class="nav-link" href="./user-recommendations.html">MyRecommendations<span
+                            class="sr-only">(current)</span></a>
                 </li>
             </ul>
+            <div class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false" style="color:black!important;">
+                    Welcome, {{ sessionUsername }}
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">Profile</a>
+                    <a class="dropdown-item" href="./recommendations.html">MyRecommendations</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="./index.html">Logout</a>
+                </div>
+            </div>
         </div>
     </nav>
 
@@ -236,6 +243,10 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
         integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
         crossorigin="anonymous"></script>
-    <script src="js/styling/script.js"></script>
+    <!-- <script src="js/styling/script.js"></script> -->
+    <script src="https://code.angularjs.org/1.4.3/angular.js"></script> 
+    <script src="js/app.js"></script>
+    <script src="js/factories/userFactory.js"></script>
+    <script src="js/controllers/userController.js"></script>
 </body>
 </html>

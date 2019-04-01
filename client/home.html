@@ -18,11 +18,11 @@
     <title>Welcome!</title>
 </head>
 
-<body ng-app="agencyApp">
+<body ng-app="agencyApp" >
 
     <!-- NAVBAR -->
-    <nav id="mainNavbar" class="navbar navbar-expand-md navbar-light fixed-top">
-        <a class="navbar-brand title" href="./index.html" style="color: #9C28FF">Bochitto Travel</a>
+    <nav id="mainNavbar" class="navbar navbar-expand-md navbar-light fixed-top" ng-controller="UsersController" data-ng-init="showName()">
+        <a class="navbar-brand title" href="./home.html" style="color: #9C28FF">Bochitto Travel</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -31,56 +31,56 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto nav-fill w-100">
                 <li class="icon nav-item active">
-                    <a class="nav-link " href="./specials.html">Specials<span class="sr-only">(current)</span></a>
+                    <a class="nav-link " href="./specials-home.html">Specials<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="icon nav-item active">
-                    <a class="nav-link" href="./blog.html">Past Reviews<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="./pastreview-home.html">Past Reviews<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="icon nav-item active">
                     <a class="nav-link" href="#aboutUsContainer">About Us<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="icon nav-item active">
-                    <a class="nav-link" href="./recommendations.html">MyRecommendations<span
+                    <a class="nav-link" href="./user-recommendations.html">MyRecommendations<span
                             class="sr-only">(current)</span></a>
                 </li>
             </ul>
             <div class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false"  style="color:black!important;">
-                    Welcome, Jon Doe
+                    aria-haspopup="true" aria-expanded="false" style="color:black!important;">
+                    Welcome, {{ sessionUsername }}
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Profile</a>
-                    <a class="dropdown-item" href="./recommendations.html">MyRecommendations</a>
+                    <a class="dropdown-item" href="./user-settings.html">Profile</a>
+                    <a class="dropdown-item" href="./user-recommendations.html">MyRecommendations</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Logout</a>
+                    <a class="dropdown-item" href="./index.html">Logout</a>
                 </div>
             </div>
         </div>
     </nav>
 
     <!-- Specials Carousel -->
-    <div class="container-fluid specialsCarousel">
+    <div class="container-fluid specialsCarousel" ng-controller="SpecialsController" data-ng-init="get3MostRecent()">
         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <img src="./images/specials1.jpg" class="specialsImages" alt="">
-                    <div class="carousel-caption d-none d-md-block" ng-controller="SpecialsController">
-                        <h4 class="titleFont" ng-repeat = "special in specials" ng-show = "$index ==0">{{special.title}}</h4>
+                    <div class="carousel-caption d-none d-md-block">
+                        <h4 class="titleFont">{{special1.title}}</h4>
                         <button type="button" class="btn btn-success">Book Now</button>
                     </div>
                 </div>
                 <div class="carousel-item">
                     <img src="./images/specials2.jpg" class="specialsImages" alt="">
-                    <div class="carousel-caption d-none d-md-block" ng-controller="SpecialsController">
-                        <h4 class="titleFont" ng-repeat = "special in specials" ng-show = "$index ==1">{{special.title}}</h4>
+                    <div class="carousel-caption d-none d-md-block">
+                        <h4 class="titleFont">{{special2.title}}</h4>
                         <button type="button" class="btn btn-success">Book Now</button>
                     </div>
                 </div>
                 <div class="carousel-item">
                     <img src="./images/specials3.jpg" class="specialsImages" alt="">
-                    <div class="carousel-caption d-none d-md-block" ng-controller="SpecialsController">
-                        <h4 class="titleFont" ng-repeat = "special in specials" ng-show = "$index ==2">{{special.title}}</h4>
+                    <div class="carousel-caption d-none d-md-block">
+                        <h4 class="titleFont">{{special3.title}}</h4>
                         <button type="button" class="btn btn-success">Book Now</button>
                     </div>
                 </div>
@@ -97,40 +97,42 @@
     </div>
 
     <!-- Reviews Section -->
-    <nav class="container-fluid recommendations" id="recommendations">
-        <nav class="container">
-            <h1 class="text-center titleFont p-2">Travel Agent Reviews</h1>
+    <nav class="container-fluid recommendations" id="recommendations" ng-controller="BlogPostsController"
+        data-ng-init="getAll()">
+        <nav class="container" id="tabs">
+            <h1 class="text-center titleFont">Travel Agent Reviews</h1>
             <nav>
-                <div class="nav nav-tabs m-3" id="nav-tab" role="tablist" ng-controller = "BlogPostsController">
+                <div class="nav nav-tabs m-3" id="nav-tab" role="tablist">
                     <a class="nav-item nav-link active titleFont reviewTab" id="nav-home-tab" data-toggle="tab"
-                        href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true" ng-repeat = "blogPost in blogPosts" ng-show= "$index == 0">{{blogPost.title}}</a>
+                        href="#nav-home" role="tab" aria-controls="nav-home"
+                        aria-selected="true">{{blogPost1.title}}</a>
                     <a class="nav-item nav-link titleFont reviewTab" id="nav-profile-tab" data-toggle="tab"
-                        href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false" ng-repeat = "blogPost in blogPosts" ng-show= "$index == 1">{{blogPost.title}}
-                    </a>
+                        href="#nav-profile" role="tab" aria-controls="nav-profile"
+                        aria-selected="false">{{blogPost2.title}}</a>
                     <a class="nav-item nav-link titleFont reviewTab" id="nav-contact-tab" data-toggle="tab"
-                        href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false" ng-repeat = "blogPost in blogPosts" ng-show= "$index == 0">{{blogPost.title}}
-                        </a>
+                        href="#nav-contact" role="tab" aria-controls="nav-contact"
+                        aria-selected="false">{{blogPost3.title}}</a>
                 </div>
             </nav>
-            <div class="tab-content" id="nav-tabContent" ng-controller = "BlogPostsController">
+            <div class="tab-content" id="nav-tabContent">
                 <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                     <hr>
-                    <p class="textFont" ng-repeat = "blogPost in blogPosts" ng-show= "$index == 0">
-                       {{blogPost.text}}
+                    <p class="textFont">
+                        {{blogPost1.text}}
                     </p>
                     <img src="./images/bahamas.jpg" class="mx-auto d-block" alt="">
                 </div>
                 <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
                     <hr>
-                    <p class="textFont"ng-repeat = "blogPost in blogPosts" ng-show= "$index == 1">
-                      {{blogPost.text}}
+                    <p class="textFont">
+                        {{blogPost2.text}}
                     </p>
                     <img src="./images/keys.jpeg" class="mx-auto d-block" alt="">
                 </div>
                 <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
                     <hr>
-                    <p class="textFont" ng-repeat = "blogPost in blogPosts" ng-show= "$index == 0">
-                        {{blogPost.text}}
+                    <p class="textFont">
+                        {{blogPost3.text}}
                     </p>
                     <img src="./images/sanfransisco.jpg" class="mx-auto d-block" alt="">
                 </div>
@@ -232,8 +234,6 @@
             </div>
         </div>
     </div>
-
-    <div class="container-fluid" id="bufferSection"></div>
 
     <!-- Footer -->
     <div class="container-fluid" id="footer">
@@ -362,7 +362,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
         integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
         crossorigin="anonymous"></script>
-    <script src="js/styling/script.js"></script>
+    <!-- <script src="js/styling/script.js"></script> -->
     <script src="https://code.angularjs.org/1.4.3/angular.js"></script>
     <script src="js/app.js"></script>
     <script src="js/factories/specialFactory.js"></script>

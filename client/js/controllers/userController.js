@@ -8,18 +8,23 @@ angular.module('users').controller('UsersController', ['$scope', 'Users',
     }, function(error) {
       console.log('Unable to retrieve users:', error);
     });
-
-    $scope.authenticateUser = function(email, password)
-    {
+    };
+    
+    $scope.authenticateUser = function(email, password){
       Users.authenticate(email, password).then(function(response)
       {
+        if(response.status == 200)
+        {
+          window.location.href = '../home.html';
+          $scope.storedUsername = sessionStorage.setItem("username", email);
+          $scope.storedPassword = sessionStorage.setItem("password", password);
+        }
       },function(error){
-
+          alert("Please try again, incorrect credentials provided");
+          window.location.href = "../index.html";
       });
-    }
-
-
     };
+
 
     $scope.deleteUser = function(id) {
 
@@ -40,6 +45,11 @@ angular.module('users').controller('UsersController', ['$scope', 'Users',
 
     $scope.showDetails = function(index) {
       $scope.detailedInfo = $scope.listings[index];
+    };
+
+    $scope.showName = function()
+    {
+      $scope.sessionUsername = sessionStorage.getItem('username');
     };
   }
 ]);
