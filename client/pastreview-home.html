@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,14 +6,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Links: API's, CSS, and FontAwesome -->
     <link href="https://fonts.googleapis.com/css?family=Boogaloo|Laila" rel="stylesheet">
-    <link rel="stylesheet" href="style/specials.css">
+    <link rel="stylesheet" href="style/PastReviews.css">
     <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
         integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-    <title>Specials</title>
+    <title>MyRecommendations</title>
 </head>
 
 <body ng-app="agencyApp">
@@ -31,7 +33,7 @@
                     <a class="nav-link " href="./specials-home.html">Specials<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="icon nav-item active">
-                    <a class="nav-link" href="./pastreview-home.html">Past Reviews<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="./PastReview.html">Past Reviews<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="icon nav-item active">
                     <a class="nav-link" href="#aboutUsContainer">About Us<span class="sr-only">(current)</span></a>
@@ -56,134 +58,65 @@
         </div>
     </nav>
 
-    <!-- Deals -->
-    <div class="container-fluid py-5" id="deals">
-        <div class="container">
-            <h1 class="text-center py-4 titleFont">Specials</h1>
-            <table class="table table-striped table-hover" id="specialsTable">
-                <thead>
-                    <th class="">Title</th>
-                    <th class="">Expiration Date</th>
-                    <th class="">Price</th>
-                    <th>Details</th>
-                    <th>Remove</th>
-                </thead>
-                <tbody>
-                    <!-- Hardcoded special 1 -->
-                    <tr>
-                        <td>Fort Lauderdale, FL</td>
-                        <td>3/6/2019</td>
-                        <td>$599.99</td>
-                        <td id="editButton">
-                            <button type="button" id="addButton" class="btn btn-info" data-toggle="modal"
-                                data-target="#exampleModal" data-whatever="@mdo">
-                                <i class="fas fa-info-circle"></i>
-                            </button>
-                        </td>
-                        <td id="removeButton">
-                            <!-- TODO: remove listing if button is clicked -->
-                            <button type="button" class="btn btn-secondary">
-                                <i class="fas fa-trash-alt"></i>
-                            </button>
-                        </td>
-                    </tr>
-                    <!-- special 2 -->
-                    <tr>
-                        <td>Miami, FL</td>
-                        <td>3/9/2019</td>
-                        <td>$999.99</td>
-                        <td id="editButton">
-                            <button type="button" class="btn btn-info" id="editButton">
-                                <i class="fas fa-info-circle"></i>
-                            </button>
-                        </td>
-                        <td id="removeButton">
-                            <!-- TODO: remove listing if button is clicked -->
-                            <button type="button" class="btn btn-secondary">
-                                <i class="fas fa-trash-alt"></i>
-                            </button>
-                        </td>
-                    </tr>
-                    <!-- special 3 -->
-                    <tr>
-                        <td>Orlando, FL</td>
-                        <td>3/9/2019</td>
-                        <td>$1299.99</td>
-                        <td id="editButton">
-                            <button type="button" class="btn btn-info" id="editButton">
-                                <i class="fas fa-info-circle"></i>
-                            </button>
-                        </td>
-                        <td id="removeButton">
-                            <!-- TODO: remove listing if button is clicked -->
-                            <button type="button" class="btn btn-secondary">
-                                <i class="fas fa-trash-alt"></i>
-                            </button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
+    <!-- body -->
 
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                            aria-hidden="true">&times;</span></button>
-                </div>
-                <div class="modal-body">
-                    <h3 class="titleFont text-center">Enjoy your time in BLANK</h3>
-                    <img src="./images/keys.jpeg" class="image" alt="">
-                    <hr>
-                    <p class="textFont">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum ipsa autem mollitia quo earum
-                        et vel quidem sequi, explicabo laboriosam consectetur in, doloremque consequatur numquam! Maxime
-                        aperiam illum odio iusto quae, perferendis veritatis quod voluptatum! Quia, sit! Iste minima
-                        atque sit repellendus possimus consectetur, vel cum. Sequi dolor quaerat perspiciatis delectus
-                        eaque iusto facere amet totam similique aliquid laudantium, animi harum, et nobis qui nostrum,
-                        aliquam exercitationem consectetur? Cum dolor fugiat vitae saepe laboriosam veritatis ipsum
-                        necessitatibus quibusdam. Dolores a sint quod accusantium odit nemo dicta aliquam doloribus
-                        aperiam. Sunt laborum placeat cumque exercitationem, ipsa labore natus accusamus dolorem
-                        quaerat.
-                    </p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-success" data-dismiss="modal">Book Now</button>
-                </div>
+<br>
+<br>
+    <div class="container border my-5" id="profile">
+            <h1 class="titleFont text-center mt-4">Past Reviews</h1>
+            <hr class="settings-hr">
+            <div class="row">
+                <nav class="container-fluid col py-3">
+                    <!-- Hardcoded past Reviews -->
+                    <div class="py-4" id="PastReview">
+                        <h3 class="pb-3">Bahamas Trip</h3>
+                        <div class="container px-5">
+                            <p>
+                            Traveling organized excursion blogger whimsical whimsical, organized excursion excursion webdesign pretty. Colorful fun modern wanderlust, travelblogger design colorful webdesign fun design. Travelblogger modern colorful Travel blogger pretty traveling. Fun WordPress whimsical pretty darn excursion theme WordPress. Whimsical cute blogger Travel simple darn, simple darn blogger darn design traveler colorful. Colorful modern organized, design clean organized whimsical wanderlust organized pretty. Organized organized adventure travelblogger, fun webdesign cute organized darn theme webdesign website. Colorful clean adventure blogger, website clean WordPress clean theme adventure fun. Pretty fun modern fun pretty darn colorful modern.
+                            </p>
+                            <p>        
+                            WordPress WordPress design modern blogger, theme wanderlust website WordPress website expedition. Design design blogger fun whimsical pretty simple expedition travelblogger. Modern travelblogger adventure cute, design design wanderlust organized modern fun cute website. Blogger wanderlust colorful colorful traveler whimsical pretty cute, travelblogger travelblogger darn modern website adventure. Traveler clean theme expedition darn colorful website.
+                            </p>
+                            <p>   
+                            Traveler design WordPress travelblogger clean expedition traveler modern, traveler organized organized simple. Theme whimsical simple, traveler adventure whimsical travelblogger excursion clean expedition. Traveler WordPress WordPress wanderlust WordPress expedition, blogger travelblogger modern travelblogger organized theme adventure website. Adventure blogger simple travelblogger blogger organized design traveling organized, whimsical simple fun expedition colorful. Whimsical blogger simple WordPress colorful theme traveling design.</p>
+                            </p> 
+                        </div>
+                         
+                    </div>
+                    <div class="py-4" id="PastReview">
+                        <h3 class="pb-3">Vegas Trip</h3>
+                        <div class="container px-5">
+                            <p>
+                            Traveling organized excursion blogger whimsical whimsical, organized excursion excursion webdesign pretty. Colorful fun modern wanderlust, travelblogger design colorful webdesign fun design. Travelblogger modern colorful Travel blogger pretty traveling. Fun WordPress whimsical pretty darn excursion theme WordPress. Whimsical cute blogger Travel simple darn, simple darn blogger darn design traveler colorful. Colorful modern organized, design clean organized whimsical wanderlust organized pretty. Organized organized adventure travelblogger, fun webdesign cute organized darn theme webdesign website. Colorful clean adventure blogger, website clean WordPress clean theme adventure fun. Pretty fun modern fun pretty darn colorful modern.
+                            </p>
+                            <p>        
+                            WordPress WordPress design modern blogger, theme wanderlust website WordPress website expedition. Design design blogger fun whimsical pretty simple expedition travelblogger. Modern travelblogger adventure cute, design design wanderlust organized modern fun cute website. Blogger wanderlust colorful colorful traveler whimsical pretty cute, travelblogger travelblogger darn modern website adventure. Traveler clean theme expedition darn colorful website.
+                            </p>
+                            <p>   
+                            Traveler design WordPress travelblogger clean expedition traveler modern, traveler organized organized simple. Theme whimsical simple, traveler adventure whimsical travelblogger excursion clean expedition. Traveler WordPress WordPress wanderlust WordPress expedition, blogger travelblogger modern travelblogger organized theme adventure website. Adventure blogger simple travelblogger blogger organized design traveling organized, whimsical simple fun expedition colorful. Whimsical blogger simple WordPress colorful theme traveling design.</p>
+                            </p> 
+                        </div>            
+                    </div>  
+                    <div class="py-4" id="PastReview">
+                        <h3 class="pb-3">Desert Trip</h3>
+                        <div class="container px-5">
+                            <p>
+                            Traveling organized excursion blogger whimsical whimsical, organized excursion excursion webdesign pretty. Colorful fun modern wanderlust, travelblogger design colorful webdesign fun design. Travelblogger modern colorful Travel blogger pretty traveling. Fun WordPress whimsical pretty darn excursion theme WordPress. Whimsical cute blogger Travel simple darn, simple darn blogger darn design traveler colorful. Colorful modern organized, design clean organized whimsical wanderlust organized pretty. Organized organized adventure travelblogger, fun webdesign cute organized darn theme webdesign website. Colorful clean adventure blogger, website clean WordPress clean theme adventure fun. Pretty fun modern fun pretty darn colorful modern.
+                            </p>
+                            <p>        
+                            WordPress WordPress design modern blogger, theme wanderlust website WordPress website expedition. Design design blogger fun whimsical pretty simple expedition travelblogger. Modern travelblogger adventure cute, design design wanderlust organized modern fun cute website. Blogger wanderlust colorful colorful traveler whimsical pretty cute, travelblogger travelblogger darn modern website adventure. Traveler clean theme expedition darn colorful website.
+                            </p>
+                            <p>   
+                            Traveler design WordPress travelblogger clean expedition traveler modern, traveler organized organized simple. Theme whimsical simple, traveler adventure whimsical travelblogger excursion clean expedition. Traveler WordPress WordPress wanderlust WordPress expedition, blogger travelblogger modern travelblogger organized theme adventure website. Adventure blogger simple travelblogger blogger organized design traveling organized, whimsical simple fun expedition colorful. Whimsical blogger simple WordPress colorful theme traveling design.</p>
+                            </p> 
+                        </div>
+                         
+                    </div>   
+                </nav>
             </div>
         </div>
-    </div>
 
-    <!-- bookNow -->
-    <div class="container-fluid" id="bookNow">
-        <div class="row" id="fillOutForm">
-            <div class="col-md-6">
-                <div class="card-body">
-                    <h3 class="card-title titleFont text-center">Create Trip Recommendation!</h3>
-                    <h5 class="textFont text-center">After filling this form out, you don't have to worry about the
-                        nitty-gritty details
-                        we'll take care of everything for you
-                    </h5>
-                    <button type="button" class="btn btn-success bookNowButton">Fill Out Request</button>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="card-body">
-                    <h3 class="card-title titleFont text-center bookNowButton">Book On Your Own!</h3>
-                    <h5 class="textFont text-center">Using our vendors, book on your own and customize your booking to
-                        your specific needs
-                    </h5>
-                    <button type="button" class="btn btn-success bookNowButton">Book on My Own</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Footer -->
+    <!-- Footer  -->
     <div class="container-fluid" id="footer">
         <br>
         <br>
@@ -310,11 +243,10 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
         integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
         crossorigin="anonymous"></script>
-    <script src="https://code.angularjs.org/1.4.3/angular.js"></script> 
     <!-- <script src="js/styling/script.js"></script> -->
+    <script src="https://code.angularjs.org/1.4.3/angular.js"></script> 
     <script src="js/app.js"></script>
     <script src="js/factories/userFactory.js"></script>
     <script src="js/controllers/userController.js"></script>
 </body>
-
 </html>
