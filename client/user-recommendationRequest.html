@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css?family=Boogaloo|Laila" rel="stylesheet">
     <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="style/user-recommendations.css">
+    <link rel="stylesheet" href="style/user-recommendationsRequest.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
@@ -17,7 +18,7 @@
 </head>
 
 <body>
-
+    <!-- Nav bar -->
     <nav id="mainNavbar" class="navbar navbar-expand-md navbar-light fixed-top">
         <a class="navbar-brand title" href="./index.html" style="color: #9C28FF">Bochitto Travel</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -55,87 +56,77 @@
             </div>
         </div>
     </nav>
-
-    <div class="container" id="profile">
-        <h1 class="titleFont text-center">My Recommendations</h1>
-        <hr class="settings-hr">
-        <div class="row">
-            <div class="col-md-3">
-                <div class="list-group">
-                    <a href="./user-recommendations.html" class="list-group-item list-group-item-action active">
-                        <i class="far fa-lightbulb"></i> &nbsp;
-                        Recommendations
-                    </a>
-                    <a href="./user-settings.html" class="list-group-item list-group-item-action">
-                        <i class="fas fa-user-cog"></i> &nbsp;
-                        Profile Settings
-                    </a>
+    
+    <br>
+    <!-- page -->
+    <div class="container my-5 border rounded" id="profile">
+        <h1 class="titleFont text-center pt-2">Request Recommendation</h1>
+        <hr class="settings-hr">     
+            <!-- Request Form -->
+            <form>
+                <div class="">
+                    <div class="col-sm-6">
+                        <label for="FirstName">First Name</label>
+                        <input type="text" class="form-control" id="FirstName" placeholder="First Name">
+                        <label for="inputPassword4">Last Name</label>
+                        <input type="password" class="form-control" id="inputPassword4" placeholder="Last Name">
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="inputPassword4">Last Name</label>
+                        <input type="password" class="form-control" id="inputPassword4" placeholder="Last Name">
+                    </div>
                 </div>
-            </div>
-            <nav class="container-fluid col-md-9">
-                <table class="table table-striped table-hover" id="specialsTable">
-                    <thead>
-                        <th class="">Title</th>
-                        <th class="">Price</th>
-                        <th>Details</th>
-                        <th>Remove</th>
-                    </thead>
-                    <tbody>
-                        <!-- Hardcoded special 1 -->
-                        <tr>
-                            <td>Fort Lauderdale, FL</td>
-                            <td>$599.99</td>
-                            <td id="editButton">
-                                <button type="button" id="addButton" class="btn btn-info" data-toggle="modal"
-                                    data-target="#exampleModal" data-whatever="@mdo">
-                                    <i class="fas fa-info-circle"></i>
-                                </button>
-                            </td>
-                            <td id="removeButton">
-                                <!-- TODO: remove listing if button is clicked -->
-                                <button type="button" class="btn btn-secondary">
-                                    <i class="fas fa-trash-alt"></i>
-                                </button>
-                            </td>
-                        </tr>
-                        <!-- special 2 -->
-                        <tr>
-                            <td>Miami, FL</td>
-                            <td>$999.99</td>
-                            <td id="editButton">
-                                <button type="button" class="btn btn-info" id="editButton">
-                                    <i class="fas fa-info-circle"></i>
-                                </button>
-                            </td>
-                            <td id="removeButton">
-                                <!-- TODO: remove listing if button is clicked -->
-                                <button type="button" class="btn btn-secondary">
-                                    <i class="fas fa-trash-alt"></i>
-                                </button>
-                            </td>
-                        </tr>
-                        <!-- special 3 -->
-                        <tr>
-                            <td>Orlando, FL</td>
-                            <td>$1299.99</td>
-                            <td id="editButton">
-                                <button type="button" class="btn btn-info" id="editButton">
-                                    <i class="fas fa-info-circle"></i>
-                                </button>
-                            </td>
-                            <td id="removeButton">
-                                <!-- TODO: remove listing if button is clicked -->
-                                <button type="button" class="btn btn-secondary">
-                                    <i class="fas fa-trash-alt"></i>
-                                </button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </nav>
-        </div>
+                <div class="form-group">
+                    <label for="inputAddress">Destination</label>
+                    <input type="text" class="form-control" id="inputAddress" placeholder="Destination">
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="inputAddress2">Buget</label>
+                    <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                    <label for="inputCity">Travel Length</label>
+                    <input type="text" class="form-control" id="inputCity">
+                    </div>
+                    <div class="form-group col-md-4">
+                    <label for="inputState">Travel Date</label>
+                    <select id="inputState" class="form-control">
+                        <option selected>Choose...</option>
+                        <option>...</option>
+                    </select>
+                    </div>
+                    <div class="form-group col-md-2">
+                    <label for="inputZip">pets</label>
+                    <input type="text" class="form-control" id="inputZip">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="gridCheck">
+                    <label class="form-check-label" for="gridCheck">
+                        Check me out
+                    </label>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Sign in</button>
+            </form>
     </div>
 
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
     <!-- Footer -->
     <div class="container-fluid" id="footer">
         <br>
