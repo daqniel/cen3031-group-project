@@ -8,6 +8,7 @@
     <!-- Links: API's, CSS, and FontAwesome -->
     <link href="https://fonts.googleapis.com/css?family=Boogaloo|Laila" rel="stylesheet">
     <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/AdminSettings.css">
     <link rel="stylesheet" href="style/user-recommendations.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -16,11 +17,10 @@
     <title>My Recommendations</title>
 </head>
 
-<body ng-app="agencyApp">
-
-    <nav id="mainNavbar" class="navbar navbar-expand-md navbar-light fixed-top" ng-controller="UsersController"
-        data-ng-init="showName()">
-        <a class="navbar-brand title" href="./home.html" style="color: #9C28FF">Bochitto Travel</a>
+<body>
+    <!-- Nav bar -->
+    <nav id="mainNavbar" class="navbar navbar-expand-md navbar-light fixed-top">
+        <a class="navbar-brand title" href="./index.html" style="color: #9C28FF">Bochitto Travel</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -29,116 +29,199 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto nav-fill w-100">
                 <li class="icon nav-item active">
-                    <a class="nav-link " href="./specials-home.html">Specials<span class="sr-only">(current)</span></a>
+                    <a class="nav-link " href="./specials.html">Specials<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="icon nav-item active">
-
-                    <a class="nav-link" href="./pastreview-home.html">Past Reviews<span
-                            class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="./blog.html">Past Reviews<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="icon nav-item active">
                     <a class="nav-link" href="#aboutUsContainer">About Us<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="icon nav-item active">
-                    <a class="nav-link" href="./user-recommendations.html">MyRecommendations<span
+                    <a class="nav-link" href="./recommendations.html">MyRecommendations<span
                             class="sr-only">(current)</span></a>
                 </li>
             </ul>
             <div class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false" style="color:black!important;">
-                    Welcome, {{sessionUsername}}
+                    Welcome, Jon Doe
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="./user-settings.html">Profile</a>
-                    <a class="dropdown-item" href="./user-recommendations.html">MyRecommendations</a>
+                    <a class="dropdown-item" href="#">Profile</a>
+                    <a class="dropdown-item" href="./recommendations.html">MyRecommendations</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="./index.html">Logout</a>
+                    <a class="dropdown-item" href="#">Logout</a>
                 </div>
             </div>
         </div>
     </nav>
-
-    <div class="container" id="profile">
-        <h1 class="titleFont text-center">My Recommendations</h1>
+    
+    <br>
+    <!-- page -->
+    <div class="container my-5" id="profile">
+        <h1 class="titleFont text-center">Admin Settings</h1>
         <hr class="settings-hr">
         <div class="row">
+            
+            <!--Side Nav table -->
             <div class="col-md-3">
                 <div class="list-group">
-                    <a href="./user-recommendations.html" class="list-group-item list-group-item-action active">
+                    <a href="./admin-recommendations.html" class="list-group-item list-group-item-action">
                         <i class="far fa-lightbulb"></i> &nbsp;
                         Recommendations
                     </a>
-                    <a href="./user-settings.html" class="list-group-item list-group-item-action">
+                    <a href="./admin-pastReviews.html" class="list-group-item list-group-item-action active">
                         <i class="fas fa-user-cog"></i> &nbsp;
-                        Profile Settings
+                        Past Reviews
+                    </a>
+                    <a href="./admin-SpecialsVendors.html" class="list-group-item list-group-item-action">
+                        <i class="fas fa-user-cog"></i> &nbsp;
+                        Vendor List/Specials
                     </a>
                 </div>
             </div>
-            <nav class="container-fluid col-md-9">
-                <table class="table table-striped table-hover" id="specialsTable">
-                    <thead>
-                        <th class="">Title</th>
-                        <th class="">Price</th>
-                        <th>Details</th>
-                        <th>Remove</th>
+
+            <!-- Past Reviews Manager --> 
+            <div class="col-sm-9">
+                <table class="table table-striped table-hover" id="SpecialTable">
+                    <thead class="thead-dark">
+                        <th colspan="3">Past Reviews</th>
+                    </thead>
+                    <thead class="">
+                            <th>Post</th>
+                            <th>Date Created</th>  
                     </thead>
                     <tbody>
-                        <!-- Hardcoded special 1 -->
                         <tr>
-                            <td>Fort Lauderdale, FL</td>
-                            <td>$599.99</td>
-                            <td id="editButton">
-                                <button type="button" id="addButton" class="btn btn-info" data-toggle="modal"
-                                    data-target="#exampleModal" data-whatever="@mdo">
-                                    <i class="fas fa-info-circle"></i>
-                                </button>
-                            </td>
-                            <td id="removeButton">
-                                <!-- TODO: remove listing if button is clicked -->
-                                <button type="button" class="btn btn-secondary">
-                                    <i class="fas fa-trash-alt"></i>
+                            <td>Cancun, Mexico</td>
+                            <td>$2000</td>
+                            <td>
+                                <button type="button" id="VendorButton" class="btn btn-info" data-toggle="modal"
+                                data-target="#PastReviewInfoModal" data-whatever="@mdo">
+                                <i class="fas fa-info-circle"></i>
                                 </button>
                             </td>
                         </tr>
-                        <!-- special 2 -->
                         <tr>
-                            <td>Miami, FL</td>
-                            <td>$999.99</td>
-                            <td id="editButton">
-                                <button type="button" class="btn btn-info" id="editButton">
-                                    <i class="fas fa-info-circle"></i>
-                                </button>
-                            </td>
-                            <td id="removeButton">
-                                <!-- TODO: remove listing if button is clicked -->
-                                <button type="button" class="btn btn-secondary">
-                                    <i class="fas fa-trash-alt"></i>
+                            <td>San Fransisco, California</td>
+                            <td>$9300</td>
+                            <td>
+                                <button type="button" id="VendorButton" class="btn btn-info" data-toggle="modal"
+                                data-target="#PastReviewInfoModal" data-whatever="@mdo">
+                                <i class="fas fa-info-circle"></i>
                                 </button>
                             </td>
                         </tr>
-                        <!-- special 3 -->
-                        <tr>
-                            <td>Orlando, FL</td>
-                            <td>$1299.99</td>
-                            <td id="editButton">
-                                <button type="button" class="btn btn-info" id="editButton">
-                                    <i class="fas fa-info-circle"></i>
+                        <tr>  
+                            <td>Giza, Egypt</td>
+                            <td>$5500</td>
+                            <td>
+                                <button type="button" id="VendorButton" class="btn btn-info" data-toggle="modal"
+                                data-target="#PastReviewInfoModal" data-whatever="@mdo">
+                                <i class="fas fa-info-circle"></i>
                                 </button>
                             </td>
-                            <td id="removeButton">
-                                <!-- TODO: remove listing if button is clicked -->
-                                <button type="button" class="btn btn-secondary">
-                                    <i class="fas fa-trash-alt"></i>
-                                </button>
-                            </td>
+                        </tr>
                         </tr>
                     </tbody>
                 </table>
-            </nav>
+
+            </div>
+
+            <!-- Post Blog -->
+            <div class="container-fluid py-5" id="Blog">   
+                <div class="row">
+                    <div class="col-sm">                      
+                        <div class="card">
+                            <div class="card-header bg-dark">
+                                Blog Posts
+                            </div>
+                            <div class="card-body">
+                                <form> 
+                                    <div class="row"> 
+                                        <div class="col-sm-4">
+                                            <label for="TitleBlog">Title</label>
+                                            <input type="text" class="form-control" id="TitleBlog" placeholder="Title">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <label for="comment">Post:</label>
+                                            <textarea class="form-control" rows="10" id="comment"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="">
+                                        <button type="button" class="btn btn-success"  data-whatever="@mdo">Submit</button>
+                                    </div>
+    
+                                </form>
+                            </div>
+                        </div>                         
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 
+
+    <!--Past Reviews Info Modal -->
+    <div class="modal fade" id="PastReviewInfoModal">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+    
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Past Review</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+    
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form>
+                    <div class="container"> 
+                        <div class="row py-1">
+                            <label class="col-4" ></label>
+                            <p class="col" name="">Bahamas Trip</p> 
+                        </div>
+
+                        <div class="row pl-3">
+                            <p>
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil reprehenderit alias aperiam vitae recusandae
+                                blanditiis veritatis vel soluta esse explicabo aliquid error voluptatum, cupiditate cum amet dolore excepturi 
+                                eveniet ex?
+                            </p>
+                        </div>
+                        
+                    </div>
+                </form>
+            </div>
+    
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger login mr-auto" data-dismiss="modal" data-toggle="modal" data-target="#loginModal">Delete</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Edit</button>
+            </div>
+    
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
     <!-- Footer -->
     <div class="container-fluid" id="footer">
         <br>
@@ -266,11 +349,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
         integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
         crossorigin="anonymous"></script>
-    <!-- <script src="js/styling/script.js"></script> -->
-    <script src="https://code.angularjs.org/1.4.3/angular.js"></script> 
-    <script src="js/app.js"></script>
-    <script src="js/factories/userFactory.js"></script>
-    <script src="js/controllers/userController.js"></script>
+    <script src="js/styling/script.js"></script>
 </body>
 
 </html>
