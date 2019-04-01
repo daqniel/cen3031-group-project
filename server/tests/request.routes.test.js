@@ -6,7 +6,7 @@ var should = require('should'),
 /* Global variables */
 var app, agent;
 
-var request = { //new Request created to test save, update, and delete calls
+var req = { //new Request created to test save, update, and delete calls
     clientID: 'octomom@gmail.com',
     requestState: 'Pending',
     budget: {
@@ -34,13 +34,18 @@ describe('Tests for Request API call', function() {
 
     it('Create Request', function(done) {
         agent.post('/api/requests')
-            .send(request)
+            .send(req)
             .expect(200)
             .end(function(err, res){
                 should.not.exist(err);
                 should.exist(res.body._id);
-                res.body.title.should.equal('THIS IS A TEST');
-                res.body.text.should.equal('This blog post is only a test. Do not be alarmed.');
+                res.body.clientID.should.equal('octomom@gmail.com');
+                res.body.requestState.should.equal('Pending');
+                res.body.budget.min.should.equal(0);
+                res.body.budget.max.should.equal(1000000);
+                res.body.party.children.should.equal(8);
+                res.body.party.adults.should.equal(2);
+                res.body.text.should.equal('I have eight rambunctious kids. Take me somewhere were they won\'t annoy me.');
                 id = res.body._id;
                 done();
             });
@@ -52,8 +57,13 @@ describe('Tests for Request API call', function() {
             .end(function (err, res) {
                 should.not.exist(err);
                 should.exist(res);
-                res.body.title.should.equal('THIS IS A TEST');
-                res.body.text.should.equal('This blog post is only a test. Do not be alarmed.');
+                res.body.clientID.should.equal('octomom@gmail.com');
+                res.body.requestState.should.equal('Pending');
+                res.body.budget.min.should.equal(0);
+                res.body.budget.max.should.equal(1000000);
+                res.body.party.children.should.equal(8);
+                res.body.party.adults.should.equal(2);
+                res.body.text.should.equal('I have eight rambunctious kids. Take me somewhere were they won\'t annoy me.');
                 res.body._id.should.equal(id);
                 done();
             });
@@ -71,8 +81,17 @@ describe('Tests for Request API call', function() {
 
     it('Update Request by _id', function(done) {
         var reqUpdate = {
-            title: 'THIS IS A TEST',
-            text: 'This is not a drill: TEXT HAS BEEN UPDATED.'
+            clientID: 'octomom@gmail.com',
+            requestState: 'Declined',
+            budget: {
+                min: 0,
+                max: 1000000
+            },
+            party: {
+                children: 8,
+                adults: 2,
+            },
+            text: 'I have eight rambunctious kids. Take me somewhere were they won\'t annoy me.'
         };
         agent.put('/api/requests/' + id)
             .send(reqUpdate)
@@ -84,8 +103,13 @@ describe('Tests for Request API call', function() {
                     .end(function (err, res) {
                         should.not.exist(err);
                         should.exist(res);
-                        res.body.title.should.equal('THIS IS A TEST');
-                        res.body.text.should.equal('This is not a drill: TEXT HAS BEEN UPDATED.');
+                        res.body.clientID.should.equal('octomom@gmail.com');
+                        res.body.requestState.should.equal('Declined');
+                        res.body.budget.min.should.equal(0);
+                        res.body.budget.max.should.equal(1000000);
+                        res.body.party.children.should.equal(8);
+                        res.body.party.adults.should.equal(2);
+                        res.body.text.should.equal('I have eight rambunctious kids. Take me somewhere were they won\'t annoy me.');
                         res.body._id.should.equal(id);
                         done();
                     });
