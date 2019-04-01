@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Boogaloo|Laila" rel="stylesheet"> 
+    <link rel="stylesheet" href="style/AdminSettings.css">
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <title>Admin</title>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav id="mainNavbar" class="navbar navbar-expand-md navbar-light fixed-top">
+        <a class="navbar-brand title" href="./index.html" style="color: #9C28FF">Bochitto Travel</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto nav-fill w-100">
+                <li class="icon nav-item active">
+                    <a class="nav-link " href="./specials.html">Specials<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="icon nav-item active">
+                    <a class="nav-link" href="./PastReview.html">Past Reviews<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="icon nav-item active">
+                    <a class="nav-link" href="./index.html#aboutUsContainer">About Us<span class="sr-only">(current)</span></a>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav ml-auto nav-fill">
+                <li class="icon nav-item active mr-1">
+                    <button type="button" class="btn btn-success">Login</button>
+                </li>
+                <li class="icon nav-item active mr-1">
+                    <button type="button" class="btn btn-success">Register</button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    
+    <div id="page-title">  
+        <h1 align="center">Admin Settings</h1>
+    </div>
+
+    <!-- Vend/Req/Specials/BlogP -->
+    <div class="container-fluid" id="FirstRow">
+        <div class="row">
+            <!-- Vendor List -->
+            <div class="col-sm-3">
+                <div class="container-fluid py-4" id = "vendor">
+                    <table class="table table-sm table-striped">
+                    <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Vendor</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Yellow
+                                    <button type="button" id="VendorButton" class="btn btn-info" data-toggle="modal"
+                                                data-target="#VendorInfoModal" data-whatever="@mdo">
+                                                <i class="fas fa-info-circle"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Submarine</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>Target</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Submarine</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>Target</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Submarine</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>Target</td>
+                            </tr>                            
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Submarine</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>Target</td>
+                            </tr>
+                            <tr>
+                                <th colspan="2" scope="row">
+                                    <button type="button" class="btn btn-success" data-toggle="modal"
+                                    data-target="#AddVendorModal" data-whatever="@mdo">Add Vendor</button></th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- FlexBox Req/Specials/BlogP -->
+            <div class="col-sm-9 py-4">  
+                <!-- request -->
+                <div class="container-fluid" id="request">
+                    
+                        <table class="table table-striped table-hover" id="requestTable">
+                            <thead class="thead-dark">
+                                <th class="">Client</th>
+                                <th class="">Destination</th>
+                                <th class="">Budget</th>
+                                <th class="">Travel Length</th>
+                                <th>Travel Date</th>
+                                <th>Details</th>
+                                <th>Remove</th>
+                            </thead>
+                            <tbody>                
+                                <!-- Hardcoded special 1 -->
+                                <tr data-toggle="collapse" href="#Recommendation" role="button" aria-expanded="false" aria-controls="Recommendation">
+                                    <td>Mike john</td>
+                                    <td>Cancun, Mexico</td>
+                                    <td>3/6/2019</td>
+                                    <td>$599.99</td>
+                                    <td>$599.99</td>
+                                    <td id="editButton">
+                                        <button type="button" id="addButton" class="btn btn-info" data-toggle="modal"
+                                            data-target="#exampleModal" data-whatever="@mdo">
+                                            <i class="fas fa-info-circle"></i>
+                                        </button>
+                                    </td>
+                                    <td id="removeButton">
+                                        <!-- TODO: remove listing if button is clicked -->
+                                        <button type="button" class="btn btn-secondary">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+
+                            
+                                <!-- Collapse Recommendations -->
+                                
+                               <tr class="collapse" id="Recommendation">
+                                    <th colspan="4">Recommendation</th>
+                                    <th colspan="3">Notes</th>
+                               </tr>
+                                
+                                <tr  class="collapse" id="Recommendation"> 
+                                    <td colspan="4">
+                                      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                                    </td>
+                                    <td colspan="3">
+                                         Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                                    </td>                              
+                                </tr>
+                                <tr  class="collapse" id="Recommendation"> 
+                                        <td colspan="4">
+                                          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                                        </td>
+                                        <td colspan="3">
+                                             Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                                        </td>                              
+                                </tr>
+
+                                <!-- special 2 -->
+                                <tr>
+                                    <td>Larry Field</td>
+                                    <td>San Fransisco, California</td>
+                                    <td>3/9/2019</td>
+                                    <td>$999.99</td>
+                                    <td>$999.99</td>
+                                    <td id="editButton">
+                                        <button type="button" class="btn btn-info" id="editButton">
+                                            <i class="fas fa-info-circle"></i>
+                                        </button>
+                                    </td>
+                                    <td id="removeButton">
+                                        <!-- TODO: remove listing if button is clicked -->
+                                        <button type="button" class="btn btn-secondary">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <!-- special 3 -->
+                                <tr>
+                                    <td>Michelle West</td>
+                                    <td>Giza, Egypt</td>
+                                    <td>3/9/2019</td>
+                                    <td>$1299.99</td>
+                                    <td>$1299.99</td>
+                                    <td id="editButton">
+                                        <button type="button" class="btn btn-info" id="editButton">
+                                            <i class="fas fa-info-circle"></i>
+                                        </button>
+                                    </td>
+                                    <td id="removeButton">
+                                        <!-- TODO: remove listing if button is clicked -->
+                                        <button type="button" class="btn btn-secondary">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    
+                </div>
+
+                <!-- Special Manager/Blog Post -->   
+                <div class="container-fluid">
+            `    <div class="row">       
+                        <!-- Special Manager --> 
+                        <div class="col-sm-6">
+                            <div class="container-fluid">
+                                <table class="table table-striped table-hover" id="SpecialTable">
+                                    <thead class="thead-dark">
+                                        <th colspan="3">Specials</th>
+                                    </thead>
+                                    <thead class="">
+                                            <th>Deal</th>
+                                            <th>Exp Date</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Cancun, Mexico</td>
+                                            <td>$2000
+                                                <button type="button" id="VendorButton" class="btn btn-info" data-toggle="modal"
+                                                data-target="#SpecialInfoModal" data-whatever="@mdo">
+                                                <i class="fas fa-info-circle"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>San Fransisco, California</td>
+                                            <td>$9300
+                                                <button type="button" id="VendorButton" class="btn btn-info" data-toggle="modal"
+                                                data-target="#SpecialInfoModal" data-whatever="@mdo">
+                                                <i class="fas fa-info-circle"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>  
+                                            <td>Giza, Egypt</td>
+                                            <td>$5500
+                                                <button type="button" id="VendorButton" class="btn btn-info" data-toggle="modal"
+                                                data-target="#SpecialInfoModal" data-whatever="@mdo">
+                                                <i class="fas fa-info-circle"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th colspan="2" scope="row">
+                                                <button type="button" class="btn btn-success" data-toggle="modal"
+                                                data-target="#AddSpecialModal" data-whatever="@mdo">Add Special</button>
+                                            </th>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+            
+                        <!-- Blog Manager --> 
+                        <div class="col-sm-6">
+                            <div class="container-fluid">
+                                    <table class="table table-striped table-hover" id="SpecialTable">
+                                        <thead class="thead-dark">
+                                            <th colspan="3">Blog</th>
+                                        </thead>
+                                        <thead class="">
+                                                <th>Post</th>
+                                                <th>Date Created</th>  
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Cancun, Mexico</td>
+                                                <td>$2000</td>
+                                                <td>
+                                                    <button type="button" id="VendorButton" class="btn btn-info" data-toggle="modal"
+                                                    data-target="#SpecialInfoModal" data-whatever="@mdo">
+                                                    <i class="fas fa-info-circle"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>San Fransisco, California</td>
+                                                <td>$9300</td>
+                                                <td>
+                                                    <button type="button" id="VendorButton" class="btn btn-info" data-toggle="modal"
+                                                    data-target="#SpecialInfoModal" data-whatever="@mdo">
+                                                    <i class="fas fa-info-circle"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>  
+                                                <td>Giza, Egypt</td>
+                                                <td>$5500</td>
+                                                <td>
+                                                    <button type="button" id="VendorButton" class="btn btn-info" data-toggle="modal"
+                                                    data-target="#SpecialInfoModal" data-whatever="@mdo">
+                                                    <i class="fas fa-info-circle"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th colspan="3" scope="row">
+                                                    <a data-spy="scroll" href="#Blog">
+                                                        <button type="button" class="btn btn-success" data-whatever="@mdo">Add Blog</button>
+                                                    </a>
+                                                </th>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                        </div>
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+            
+    <!-- Add recommendation -->
+    <div class="container-fluid py-5">   
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="container-fluid">
+                        <div class="card">
+                            <div class="card-header bg-dark">
+                                Request
+                            </div>
+                            <div class="card-body">
+                                <form> 
+                                    <div class="row"> 
+                                        <div class="col-sm-4">
+                                            <label for="price">Price</label>
+                                            <input type="text" class="form-control" id="price" placeholder="Price">
+                                            <label for="Location">Location</label>
+                                            <input type="text" class="form-control" id="Location" placeholder="Location">
+                                            <label for="Hotel">Hotel</label>
+                                            <input type="text" class="form-control" id="Hotel" placeholder="Hotel">
+                                            <label for="TravelDate">TravelDate</label>
+                                            <input type="text" class="form-control" id="TravelDate" placeholder="TravelDate">               
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <label for="Duration">Duration</label>
+                                            <input type="text" class="form-control" id="Duration" placeholder="Duration">
+                                            <label for="Cruise">Cruise</label>
+                                            <input type="text" class="form-control" id="Cruise" placeholder="Cruise">
+                                            <label for="Airline">Airline</label>
+                                            <input type="text" class="form-control" id="Airline" placeholder="Airline">                                                   
+                                        </div>
+                                        <div class="col-sm-4">                                               
+                                            
+                                            <!-- Pending Request -->
+                                            <div class="container-fluid pt-2" id = "pending">
+                                                <table class="table table-sm table-striped">
+                                                <thead class="thead-dark">
+                                                        <tr>
+                                                            <th scope="col">#</th>
+                                                            <th scope="col">Name</th>
+                                                            <th scope="col">Location</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <th scope="row">1</th>
+                                                            <td>Mike</td>
+                                                            <td>miami</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">2</th>
+                                                            <td>Lauren</td>
+                                                            <td>miami</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">3</th>
+                                                            <td>Tom</td>
+                                                            <td>miami</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">3</th>
+                                                            <td>Tom</td>
+                                                            <td>miami</td>
+                                                        </tr>
+                                                             <tr>
+                                                            <th scope="row">3</th>
+                                                            <td>Tom</td>
+                                                            <td>miami</td>
+                                                        </tr>
+                                                             <tr>
+                                                            <th scope="row">3</th>
+                                                            <td>Tom</td>
+                                                            <td>miami</td>
+                                                        </tr>
+                                                             <tr>
+                                                            <th scope="row">3</th>
+                                                            <td>Tom</td>
+                                                            <td>miami</td>
+                                                        </tr>
+                                                             <tr>
+                                                            <th scope="row">3</th>
+                                                            <td>Tom</td>
+                                                            <td>miami</td>
+                                                        </tr>
+                                                        
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-10">
+                                            <label for="Note">Note:</label>
+                                            <textarea class="form-control" rows="7" id="Note"></textarea>
+                                        </div>
+                                        <div class="mt-5">
+                                            <button type="button" class="btn btn-success"  data-whatever="@mdo">Submit</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>  
+                    </div>
+                </div>
+            </div>
+    </div>
+
+
+    <!-- Post Blog -->
+    <div class="container-fluid py-5" id="Blog">   
+        <div class="row">
+            <div class="col-sm">
+                <div class="container-fluid">
+                    <div class="card">
+                        <div class="card-header bg-dark">
+                            Blog Posts
+                        </div>
+                        <div class="card-body">
+                            <form> 
+                                <div class="row"> 
+                                    <div class="col-sm-4">
+                                        <label for="TitleBlog">Title</label>
+                                        <input type="text" class="form-control" id="TitleBlog" placeholder="Title">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <label for="comment">Post:</label>
+                                        <textarea class="form-control" rows="10" id="comment"></textarea>
+                                    </div>
+                                </div>
+                                <div class="">
+                                    <button type="button" class="btn btn-success"  data-whatever="@mdo">Submit</button>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>  
+                </div>
+            </div>
+        </div>
+    </div>
+   
+
+    <!--Request Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <h3 class="titleFont text-center">Enjoy your time in BLANK</h3>
+                    <img src="./images/keys.jpeg" class="image" alt="">
+                    <hr>
+                    <p class="textFont">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum ipsa autem mollitia quo earum
+                        et vel quidem sequi, explicabo laboriosam consectetur in, doloremque consequatur numquam! Maxime
+                        aperiam illum odio iusto quae, perferendis veritatis quod voluptatum! Quia, sit! Iste minima
+                        atque sit repellendus possimus consectetur, vel cum. Sequi dolor quaerat perspiciatis delectus
+                        eaque iusto facere amet totam similique aliquid laudantium, animi harum, et nobis qui nostrum,
+                        aliquam exercitationem consectetur? Cum dolor fugiat vitae saepe laboriosam veritatis ipsum
+                        necessitatibus quibusdam. Dolores a sint quod accusantium odit nemo dicta aliquam doloribus
+                        aperiam. Sunt laborum placeat cumque exercitationem, ipsa labore natus accusamus dolorem
+                        quaerat.
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-success" data-dismiss="modal">Book Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Add Vendor Modal -->
+    <div class="modal fade" id="AddVendorModal">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+            <h4 class="modal-title">Add Vendor</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+            <form>
+                <div class="container"> 
+                    <div class="row py-1">
+                        <label class="col-4" for="First">Vendor Name:  </label>
+                        <input class="col" type="text" id="Last" name="">
+                    </div>
+                        
+                    <div class="row py-1">
+                        <label class="col-4" for="phoneNumber">Phone Number:</label>
+                        <input class="col" type="text" id="phoneNumber" name="">
+                    </div>
+                    <div class="row py-1">
+                        <label class="col-4" for="Email">Email:</label>
+                        <input class="col" type="text" id="Email" name="">
+                    </div>
+                    <div class="row py-1">
+                        <label class="col-4" for="website">Website:</label>
+                        <input class="col" type="text" id="website" name="">
+                    </div>  	
+                    <div class="row py-1">
+                        <label class="col-4" for="description">Description:</label>
+                    </div>
+                    <div class="row pl-3">
+                        <textarea rows="3" cols="80" type="text" id="description" name=""></textarea>
+                    </div>
+                    
+                </div>
+            </form>
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Submit</button>
+        </div>
+
+        </div>
+    </div>
+    </div>
+
+    
+
+    <!--Vendor Info Modal -->
+    <div class="modal fade" id="VendorInfoModal">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+        
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Vendor</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+        
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <form>
+                        <div class="container"> 
+                            <div class="row py-1">
+                                <label class="col-4" for="First">Vendor Name:  </label>
+                                <p class="col" name="">Vacation inc.</p> 
+                            </div>
+                                
+                            <div class="row py-1">
+                                <label class="col-4" >Phone Number:</label>
+                                <p class="col" name="">954-333-3333.</p>
+                            </div>
+                            <div class="row py-1">
+                                <label class="col-4" for="Email">Email:</label>
+                                <p class="col" name="">vacationinc@vac.com.</p>
+                            </div>
+                            <div class="row py-1">
+                                <label class="col-4" for="website">Website:</label>
+                                <p class="col" name="">VacationInc.com</p>
+                            </div>  	
+                            <div class="row py-1">
+                                <label class="col-4">Description:</label>
+                            </div>
+                            <div class="row pl-3">
+                                <p>
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil reprehenderit alias aperiam vitae recusandae
+                                    blanditiis veritatis vel soluta esse explicabo aliquid error voluptatum, cupiditate cum amet dolore excepturi 
+                                    eveniet ex?
+                                </p>
+                            </div>
+                            
+                        </div>
+                    </form>
+                </div>
+        
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger login mr-auto" data-dismiss="modal" data-toggle="modal" data-target="#loginModal">Delete</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Edit</button>
+                </div>
+        
+                </div>
+            </div>
+    </div>
+
+    <!--Specials Info Modal -->
+    <div class="modal fade" id="SpecialInfoModal">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+        
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Specials</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+        
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <form>
+                        <div class="container"> 
+                            <div class="row py-1">
+                                <label class="col-4" >Special Title</label>
+                                <p class="col" name="">Bahamas Trip</p> 
+                            </div>
+                                
+                            <div class="row py-1">
+                                <label class="col-4" >Expire Date:</label>
+                                <p class="col" name="">5/04/2019</p>
+                            </div>
+                            <div class="row py-1">
+                                <label class="col-4">Description:</label>
+                            </div>
+                            <div class="row pl-3">
+                                <p>
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil reprehenderit alias aperiam vitae recusandae
+                                    blanditiis veritatis vel soluta esse explicabo aliquid error voluptatum, cupiditate cum amet dolore excepturi 
+                                    eveniet ex?
+                                </p>
+                            </div>
+                            
+                        </div>
+                    </form>
+                </div>
+        
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger login mr-auto" data-dismiss="modal" data-toggle="modal" data-target="#loginModal">Delete</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Edit</button>
+                </div>
+        
+                </div>
+            </div>
+    </div>
+
+    <!--Add Special Modal -->
+    <div class="modal fade" id="AddSpecialModal">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+        
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Add Special</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+        
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <form>
+                        <div class="container"> 
+                            <div class="row py-1">
+                                <label class="col-4" for="First">Vendor Name:  </label>
+                                <input class="col" type="text" id="Last" name="">
+                            </div>
+                                
+                            <div class="row py-1">
+                                <label class="col-4" for="phoneNumber">Phone Number:</label>
+                                <input class="col" type="text" id="phoneNumber" name="">
+                            </div>
+                            <div class="row py-1">
+                                <label class="col-4" for="Email">Email:</label>
+                                <input class="col" type="text" id="Email" name="">
+                            </div>
+                            <div class="row py-1">
+                                <label class="col-4" for="website">Website:</label>
+                                <input class="col" type="text" id="website" name="">
+                            </div>  	
+                            <div class="row py-1">
+                                <label class="col-4" for="description">Description:</label>
+                            </div>
+                            <div class="row pl-3">
+                                <textarea rows="3" cols="80" type="text" id="description" name=""></textarea>
+                            </div>
+                            
+                        </div>
+                    </form>
+                </div>
+        
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Submit</button>
+                </div>
+        
+                </div>
+            </div>
+    </div>
+
+    <!-- bookNow -->
+    <div class="container-fluid" id="bookNow">
+        <div class="row" id="fillOutForm">
+            <div class="col-md-6">
+                <div class="card-body">
+                    <h3 class="card-title titleFont text-center">Create Trip Recommendation!</h3>
+                    <h5 class="textFont text-center">After filling this form out, you don't have to worry about the
+                        nitty-gritty details
+                        we'll take care of everything for you
+                    </h5>
+                    <button type="button" class="btn btn-success bookNowButton">Fill Out Request</button>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card-body">
+                    <h3 class="card-title titleFont text-center bookNowButton">Book On Your Own!</h3>
+                    <h5 class="textFont text-center">Using our vendors, book on your own and customize your booking to
+                        your specific needs
+                    </h5>
+                    <button type="button" class="btn btn-success bookNowButton">Book on My Own</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="container-fluid" id="footer">
+        <br>
+        <br>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5 class="titleFont">Specials</h5>
+                    <ul>
+                        <li>
+                            blah
+                        </li>
+                        <li>
+                            blah
+                        </li>
+                        <li>
+                            blah
+                        </li>
+                        <li>
+                            blah
+                        </li>
+                        <li>
+                            blah
+                        </li>
+                        <li>
+                            blah
+                        </li>
+                        <li>
+                            blah
+                        </li>
+                        <li>
+                            blah
+                        </li>
+                        <li>
+                            blah
+                        </li>
+                        <li>
+                            blah
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5 class="text-center titleFont">Book Now!</h5>
+                    <ul>
+                        <li>
+                            blah
+                        </li>
+                        <li>
+                            blah
+                        </li>
+                        <li>
+                            blah
+                        </li>
+                        <li>
+                            blah
+                        </li>
+                        <li>
+                            blah
+                        </li>
+                        <li>
+                            blah
+                        </li>
+                        <li>
+                            blah
+                        </li>
+                        <li>
+                            blah
+                        </li>
+                        <li>
+                            blah
+                        </li>
+                        <li>
+                            blah
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-4 text-right ">
+                    <h5 class="titleFont">Contact Us</h5>
+                    <ul>
+                        <li>
+                            blah
+                        </li>
+                        <li>
+                            blah
+                        </li>
+                        <li>
+                            blah
+                        </li>
+                        <li>
+                            blah
+                        </li>
+                        <li>
+                            blah
+                        </li>
+                        <li>
+                            blah
+                        </li>
+                        <li>
+                            blah
+                        </li>
+                        <li>
+                            blah
+                        </li>
+                        <li>
+                            blah
+                        </li>
+                        <li>
+                            blah
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <hr id="footerRule">
+        <h5 class="text-center titleFont">SWE Team 1 Spring 2019 - Software Engineering @ UF: All Rights Reserved.</h5>
+    </div>
+
+    <!-- CDN's + Scripts -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+        integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+        integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+        crossorigin="anonymous"></script>
+    <script src="js/styling/script.js"></script>
+</body>
+
+</html>

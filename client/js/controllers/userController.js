@@ -11,20 +11,17 @@ angular.module('users').controller('UsersController', ['$scope', 'Users',
     };
     
     $scope.authenticateUser = function(email, password){
-      console.log(email);
-      console.log(password);
       Users.authenticate(email, password).then(function(response)
       {
         if(response.status == 200)
         {
           window.location.href = '../home.html';
-        }
-        else if (response.status == 404)
-        {
-          alert("Please try again, incorrect credentials provided");
+          $scope.storedUsername = sessionStorage.setItem("username", email);
+          $scope.storedPassword = sessionStorage.setItem("password", password);
         }
       },function(error){
-          console.log("FAIL");
+          alert("Please try again, incorrect credentials provided");
+          window.location.href = "../index.html";
       });
     };
 
@@ -48,6 +45,11 @@ angular.module('users').controller('UsersController', ['$scope', 'Users',
 
     $scope.showDetails = function(index) {
       $scope.detailedInfo = $scope.listings[index];
+    };
+
+    $scope.showName = function()
+    {
+      $scope.sessionUsername = sessionStorage.getItem('username');
     };
   }
 ]);
