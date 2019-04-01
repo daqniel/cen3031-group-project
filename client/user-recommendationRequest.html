@@ -7,9 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- Links: API's, CSS, and FontAwesome -->
     <link href="https://fonts.googleapis.com/css?family=Boogaloo|Laila" rel="stylesheet">
+    <link rel="stylesheet" href="style/user-recommendationRequest.css">
     <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="style/user-recommendations.css">
-    <link rel="stylesheet" href="style/user-recommendationsRequest.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
@@ -64,52 +64,59 @@
         <hr class="settings-hr">     
             <!-- Request Form -->
             <form>
-                <div class="">
+                <div class="form-row pb-5 pt-3">
                     <div class="col-sm-6">
-                        <label for="FirstName">First Name</label>
-                        <input type="text" class="form-control" id="FirstName" placeholder="First Name">
-                        <label for="inputPassword4">Last Name</label>
-                        <input type="password" class="form-control" id="inputPassword4" placeholder="Last Name">
+                        <label for="">First Name</label>
+                        <input type="text" id="" class="form-control" placeholder="First Name">
                     </div>
                     <div class="col-sm-6">
-                        <label for="inputPassword4">Last Name</label>
-                        <input type="password" class="form-control" id="inputPassword4" placeholder="Last Name">
+                        <label for="">Last Name</label>
+                        <input type="text" class="form-control" placeholder="Last Name">
                     </div>
                 </div>
-                <div class="form-group">
-                    <label for="inputAddress">Destination</label>
-                    <input type="text" class="form-control" id="inputAddress" placeholder="Destination">
-                </div>
-                <div class="form-group col-md-2">
-                    <label for="inputAddress2">Buget</label>
-                    <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                    <label for="inputCity">Travel Length</label>
-                    <input type="text" class="form-control" id="inputCity">
+
+                <div class="form-row pb-5">
+                    <div class="col-sm-3">
+                        <label for="">Budget</label>
+                        <div class="">
+                            <input type="text" class="form-control" placeholder="Min">
+                        </div>
                     </div>
-                    <div class="form-group col-md-4">
-                    <label for="inputState">Travel Date</label>
-                    <select id="inputState" class="form-control">
-                        <option selected>Choose...</option>
-                        <option>...</option>
-                    </select>
+                    <div class="col-sm-3 ">
+                        <div class="">
+                            <label for="">` </label>
+                            <input type="text" class="form-control" placeholder="Max">
+                        </div>
                     </div>
-                    <div class="form-group col-md-2">
-                    <label for="inputZip">pets</label>
-                    <input type="text" class="form-control" id="inputZip">
+                    <div class="col-sm-3">
+                        <label for="">Number of Adults</label>
+                        <input type="text" class="form-control" placeholder="# of Adults">
+                    </div>
+                    <div class="col-sm-3">
+                        <label for="">Number of Children</label>
+                        <input type="text" class="form-control" placeholder="# of Children">
                     </div>
                 </div>
-                <div class="form-group">
-                    <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="gridCheck">
-                    <label class="form-check-label" for="gridCheck">
-                        Check me out
-                    </label>
+
+                <div class="form-row pb-5">
+                    <div class="col-sm-6">
+                        <label for="">Destination</label>
+                        <input type="text" class="form-control" placeholder="Location">
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="">Pets? What kind</label>
+                        <input type="text" class="form-control" placeholder="Pets">
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary">Sign in</button>
+                
+                <div class="form-row pb-3">
+                    <div class="col-sm-12">
+                        <label for="">Description of your perfect vacation</label>
+                        <textarea class="form-control" name="" id="" cols="30" rows="5" placeholder="Where will your adventure begin..."></textarea>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-success">Submit</button>
             </form>
     </div>
 
