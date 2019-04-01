@@ -58,6 +58,7 @@ describe('Tests for Special API call', function() {
             .end(function (err, res) {
                 should.not.exist(err);
                 should.exist(res);
+                res.body.should.have.length(9);
                 done();
             });
     });
@@ -103,33 +104,38 @@ describe('Tests for Special API call', function() {
 
     it('Get newest n Specials',function(done){
         var n = 3;
-        agent.get('api/specials/?num=' + n)
+        agent.get('/api/specials/?num=' + n)
             .expect(200)
             .end(function(err,res){
                 should.not.exist(err);
                 should.exist(res);
                 res.body.should.have.length(n);
-                //console.log(res.body);
                 done();
             });
     });
 
     it('Get oldest n Specials',function(done){
         var n = 3;
-        agent.get('api/specials/?num=' + n + '&order=old')
+        agent.get('/api/specials/?num=' + n + '&order=old')
             .expect(200)
             .end(function(err,res){
                 should.not.exist(err);
                 should.exist(res);
                 res.body.should.have.length(n);
-                //console.log(res.body);
                 done();
             });
     });
 
-    // it('Get all Specials from oldest to newest',function(done){
-    //     agent.get('api/specials/?order=old')
-    // });
+    it('Get all Specials from oldest to newest',function(done){
+        agent.get('/api/specials/?order=old')
+            .expect(200)
+            .end(function(err,res) {
+                should.not.exist(err);
+                should.exist(res);
+                res.body.should.have.length(8);
+                done();
+            });
+    });
 
     after(function(done) {
         if(id) {

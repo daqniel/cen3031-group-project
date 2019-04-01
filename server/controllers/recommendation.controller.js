@@ -9,7 +9,6 @@ exports.create = function(req, res){
     /*Saves Request to database*/
     recommendation.save(function(err){
         if(err){
-            console.log(err);
             res.status(400).send(err);
         }else{
             res.json(recommendation);
@@ -19,7 +18,6 @@ exports.create = function(req, res){
 
 /*Show current Recommendation*/
 exports.read = function(req, res){
-    req.body = req.recommendation;
     res.json(req.recommendation);
 };
 
@@ -38,32 +36,27 @@ exports.update = function(req, res){
 /*Delete Recommendation*/
 exports.delete = function(req, res){
     /*Finds and deletes Request based on passed parameter*/
-    Recommendation.findOneAndUpdate(req.params, function(err, deletedRecommendation){
-        if(err){
+    Recommendation.findOneAndRemove(req.params.recommendationID, (err, deletedRecommendation) => {
+        if(err) {
             res.status(404).send(err);
-        }else deletedRecommendation.remove(function(err){
-            if (err){
-                res.status(400).send(err);
-            }
-            console.log("Recommendation deleted.");
+        }
+        else {
             res.json(deletedRecommendation);
-        });
+        }
     });
 };
 
 /*Retrieve all Recommendations*/
 exports.list = function(req, res) {
-    /* Your code here */
     Recommendation.find({}, function(err, recommendations){
         if (err) res.status(404).send(err);
         res.json(recommendations);
-        console.log('All recommendations retrieved.');
     });
 };
 
 /*Middleware: Find Recommendation by RequestID*/
 exports.findRecommendationByID = function(req, res, next) {
-    Recommendation.findOne(req.params.recommendID).exec(function(err, recommendation) {
+    Recommendation.findById(req.params.recommendationID).exec(function(err, recommendation) {
         if(err) {
             res.status(400).send(err);
         } else {
@@ -74,8 +67,8 @@ exports.findRecommendationByID = function(req, res, next) {
 };
 
 /*Middleware: Find Recommendation by User's Email*/
-exports.findRecommendationByUser = function(req, res, next) {
-    Recommendation.findOne(req.params.clientID).exec(function(err, recommendation) {
+exports.findRecommendationsByClient = function(req, res, next) {
+    Recommendation.find({client: req.query.clientId}).exec(function(err, recommendation) {
         if(err) {
             res.status(400).send(err);
         } else {

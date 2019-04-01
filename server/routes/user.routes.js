@@ -13,7 +13,7 @@ router.route('/')
     .post(user_controller.create);
 
 //FIXME: this is the default route rn for some reason, password isn't optional
-router.route('/:email/:password?')
+router.route('/:email/:password')
     .get(user_controller.readWithPassword)
 /*
   The ':' specifies a URL parameter. 
