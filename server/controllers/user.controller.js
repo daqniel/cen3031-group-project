@@ -4,7 +4,19 @@ var mongoose = require('mongoose'),
 
 /* Create a User */
 exports.create = function (req, res) {
-  var user = new User(req.body);
+  var user = new User(
+    {
+      name: {
+        first: req.query.fname,
+        middle: req.query.mname,
+        last: req.query.lname
+      },
+      email: req.query.email,
+      password: req.query.password,
+      phoneNumber: req.query.phoneNumber,
+      isAdmin: req.query.isAdmin
+    }
+  );
 
   /* save to mongoDB */
   user.save(err => {

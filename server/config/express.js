@@ -8,7 +8,7 @@ var path = require("path"),
   specialsRouter = require("../routes/special.routes"),
   usersRouter = require("../routes/user.routes"),
   requestsRouter = require("../routes/request.routes"),
-  // recommendationsRouter = require("../routes/recommendation.routes"),
+  recommendationsRouter = require("../routes/recommendation.routes"),
   notesRouter = require("../routes/note.routes"),
   blogpostsRouter = require("../routes/blogpost.routes"),
   vendorsRouter = require("../routes/vendor.routes");
@@ -35,7 +35,7 @@ module.exports.init = function() {
   app.use("/api/users", usersRouter);
   app.use("/api/specials", specialsRouter);
   app.use("/api/requests", requestsRouter);
-  // app.use("/api/recommendations", recommendationsRouter);
+  app.use("/api/recommendations", recommendationsRouter);
   app.use("/api/notes", notesRouter);
   app.use("/api/blogposts", blogpostsRouter);
   app.use("/api/vendors", vendorsRouter);
