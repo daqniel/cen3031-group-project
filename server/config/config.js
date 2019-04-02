@@ -3,7 +3,7 @@
 
 module.exports = {
   db: {
-    uri:'mongodb://test:test123@ds155815.mlab.com:55815/businesstraveldb'//place the URI of your mongo database here.
+    uri: "mongodb+srv://bochitto:bochitto123@cluster0-esiwd.azure.mongodb.net"
   }
 };
 

@@ -1,18 +1,32 @@
 #bookNow
 {
-    height:15%;
+    height:25%;
 }
 
 #deals
 {
-    height: 85%;
+    height: 75%;
     background-color:white;
+    overflow: hidden;
+    overflow-y: scroll;
 }
 
 .bookNowButton
 {
     width: 100%;
 }
+
+.col-25 {
+    float: left;
+    width: 25%;
+    margin-top: 6px;
+  }
+  
+  .col-75 {
+    float: left;
+    width: 75%;
+    margin-top: 6px;
+  }
 
 #specialsTable{
     height: 10%!important;

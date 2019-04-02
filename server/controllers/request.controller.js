@@ -2,14 +2,35 @@
 var mongoose = require('mongoose'),
     Request = require('../models/request.model.js');
 
+/*Retrieve all Requests*/
+exports.list = function(req, res) {
+    /* Your code here */
+    Request.find({}, function(err, requests){
+        if (err) res.status(404).send(err);
+        res.json(requests);
+    });
+};
+
 /*Create a Request*/
 exports.create = function(req, res){
-    /*Instantiate a Request*/
-    var request = new Request(req.body);
+var request = new Request(
+    {
+      clientID: req.query.email,
+      requestState: req.query.state, // manual for now, should be automatic
+      budget: {
+          min: req.query.budgetMin,
+          max: req.query.budgetMax
+      },
+      party: {
+          children: req.query.numChildren,
+          adults: req.query.numAdults
+      },
+      text: req.query.text
+    }
+  );
     /*Saves Request to database*/
-    request.save(function(err){
+    request.save(err => {
         if(err){
-            console.log(err);
             res.status(400).send(err);
         }else{
             res.json(request);
@@ -17,16 +38,15 @@ exports.create = function(req, res){
     });
 };
 
-/*Show current Request*/
+/*Show current Requests*/
 exports.read = function(req, res){
-    req.body = req.request;
     res.json(req.request);
 };
 
 /*Update Request*/
 exports.update = function(req, res){
     /*Finds and updates Request based on passed parameter*/
-    Request.findOneAndUpdate(req.params, req.body, function(err, updatedRequest){
+    Request.findOneAndUpdate({_id: req.params.requestID}, req.body, function(err, updatedRequest){
         if(err){
             res.send(404).send(err);
         }else{
@@ -37,33 +57,20 @@ exports.update = function(req, res){
 
 /*Delete Request*/
 exports.delete = function(req, res){
-    /*Finds and deletes Request based on passed parameter*/
-    Request.findOneAndUpdate(req.params, function(err, deletedRequest){
-        if(err){
-            res.status(404).send(err);
-        }else deletedRequest.remove(function(err){
-            if (err){
-                res.status(400).send(err);
-            }
-            console.log("Request deleted.");
-            res.json(deletedRequest);
-        });
-    });
+ Request.findOneAndRemove(req.params.requestID, (err, deletedSpecial) => {
+     if(err) {
+         res.status(404).send(err);
+     }
+     else {
+         res.json(deletedSpecial);
+     }
+  });
 };
 
-/*Retrieve all Requests*/
-exports.list = function(req, res) {
-    /* Your code here */
-    Request.find({}, function(err, requests){
-        if (err) res.status(404).send(err);
-        res.json(requests);
-        console.log('All requests retrieved.');
-    });
-};
 
 /*Middleware: Find Request by RequestID*/
 exports.findRequestByID = function(req, res, next) {
-    Request.findOne(req.params.requestID).exec(function(err, request) {
+    Request.findById(req.params.requestID).exec(function(err, request) {
         if(err) {
             res.status(400).send(err);
         } else {
@@ -73,9 +80,9 @@ exports.findRequestByID = function(req, res, next) {
     });
 };
 
-/*Middleware: Find Request by User's Email*/
-exports.findRequestByUser = function(req, res, next) {
-    Request.findOne(req.params.clientID).exec(function(err, request) {
+/*Middleware: Find Request by client Email*/
+exports.findRequestsByClient = function(req, res, next) {
+    Request.find({clientID: req.query.clientID}).exec(function(err, request) {
         if(err) {
             res.status(400).send(err);
         } else {
