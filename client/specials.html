@@ -62,8 +62,7 @@
                     <th>Remove</th>
                 </thead>
                 <tbody>
-                    <!-- Hardcoded special 1 -->
-
+                    <!-- Specials loaded in from DB -->
                     <tr ng-repeat="special in specials">
                         <td>{{special.title}}</td>
                         <td>{{special.description}}</td>
@@ -71,40 +70,6 @@
                         <td id="editButton">
                             <button type="button" id="addButton" class="btn btn-info" data-toggle="modal"
                                 data-target="#exampleModal" data-whatever="@mdo">
-                                <i class="fas fa-info-circle"></i>
-                            </button>
-                        </td>
-                        <td id="removeButton">
-                            <!-- TODO: remove listing if button is clicked -->
-                            <button type="button" class="btn btn-secondary">
-                                <i class="fas fa-trash-alt"></i>
-                            </button>
-                        </td>
-                    </tr>
-                    <!-- special 2 -->
-                    <tr>
-                        <td>Buy One Night Get One FREE in San Francisco, California</td>
-                        <td>6/30/2019</td>
-                        <td>$999.99</td>
-                        <td id="editButton">
-                            <button type="button" class="btn btn-info" id="editButton">
-                                <i class="fas fa-info-circle"></i>
-                            </button>
-                        </td>
-                        <td id="removeButton">
-                            <!-- TODO: remove listing if button is clicked -->
-                            <button type="button" class="btn btn-secondary">
-                                <i class="fas fa-trash-alt"></i>
-                            </button>
-                        </td>
-                    </tr>
-                    <!-- special 3 -->
-                    <tr>
-                        <td>FREE Camel Rides when staying with Ghaya Grand Hotel in Dubai</td>
-                        <td>4/13/2019</td>
-                        <td>$1299.99</td>
-                        <td id="editButton">
-                            <button type="button" class="btn btn-info" id="editButton">
                                 <i class="fas fa-info-circle"></i>
                             </button>
                         </td>
