@@ -4,6 +4,11 @@ html, body
     height: 100%;
 }
 
+.btn:focus, .btn:active {
+    outline: #9C28FF !important;
+    box-shadow: none !important;
+}
+
 .titleFont
 {
     font-family: 'Boogaloo', cursive;
@@ -68,10 +73,21 @@ html, body
     border-color: #C076FF !important;
 }
 
+.btn-success:focus {
+    border-color: #C076FF !important;
+    outline: 0 !important;
+}
+
+.btn-success:active {
+    border-color: #C076FF !important;
+    border-width: 0px;
+}
+
+
 #footer
 {
     background-color: rgb(242, 242, 242);
-    height:45%;
+    height: 60%;
     width: 100%;
 }
 

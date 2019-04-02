@@ -11,6 +11,10 @@ router.route('/')
     .get(user_controller.list)
     // .post(user_controller.create);
     .post(user_controller.create);
+
+//FIXME: this is the default route rn for some reason, password isn't optional
+router.route('/:email/:password')
+    .get(user_controller.readWithPassword)
 /*
   The ':' specifies a URL parameter. 
  */
@@ -40,5 +44,6 @@ router.route('/:email')
   get, update, or delete that specific listing (depending on the HTTP verb specified)
  */
 router.param('email', user_controller.userByEmail);
+//router.param('password', user_controller.validatePassword);
 
 module.exports = router;
