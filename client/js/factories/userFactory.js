@@ -4,8 +4,10 @@ angular.module('users', []).factory('Users', function($http) {
         return $http.get('http://localhost:8080/api/users');
       },
       
-      create: function(user) {
-        return $http.post('http://localhost:8080/api/users', user);
+      create: function(newFirst, newMiddle, newLast, newPass, newPhone, newEmail) {
+        return $http.post('http://localhost:8080/api/users?' + "fname=" +newFirst 
+        +"&mname=" + newMiddle + "&lname=" + newLast + "&password=" + newPass + "&phoneNumber=" + newPhone + 
+        "&email=" + newEmail);
       }, 
   
       delete: function(id) {
