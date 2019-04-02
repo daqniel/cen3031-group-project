@@ -1,13 +1,21 @@
 angular.module('users').controller('UsersController', ['$scope', 'Users', 
   function($scope, Users) {
     /* Get all the listings, then bind it to the scope */
-    $scope.addUser = function(user) {
-
-      Listings.create(user).then(function(response) {
-      window.location=window.location;
-    }, function(error) {
-      console.log('Unable to retrieve users:', error);
-    });
+    $scope.addUser = function(newFirst, newMiddle, newLast, newPass, newPassVerify, newEmail, newPhone) {
+      if(newPass != newPassVerify)
+      {
+        alert("passwords don't match, please try again.");
+        // window.location.href = "../index.html";
+      }
+      Users.create(newFirst, newMiddle, newLast, newPass, newPhone, newEmail).then(function(response)
+      {
+        if(response.status == 200)
+          alert("user created successfully, please sign in!");
+      }, function(error)
+      {
+        alert("user not created, please try again")
+        // window.location.href = "../index.html";
+      });
     };
     
     $scope.authenticateUser = function(email, password){

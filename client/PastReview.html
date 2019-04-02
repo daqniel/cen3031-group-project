@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,6 +18,106 @@
 
 <body>
 
+    <div class="modal fade titleFont" id="loginModal" ng-controller="UsersController">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Login</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <form onsubmit="this.reset()">
+                        <div class="container">
+
+                            <div class="row">
+                                <label class="col-25" for="email">Email:</label>
+                                <input class="col-75" type="text" id="email" ng-model="email">
+                            </div>
+                            <div class="row">
+                                <label class="col-25" for="pass">Password:</label>
+                                <input class="col-75" type="password" id="pass" ng-model="password">
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success register mr-auto" data-dismiss="modal"
+                        data-toggle="modal" data-target="#registerModal">Register</button>
+                    <button type="button" class="btn btn-success" data-dismiss="modal"
+                        ng-click="authenticateUser(email, password)">Submit</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- The Modal For Register -->
+    <div class="modal fade titleFont" id="registerModal" ng-controller="UsersController">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Register</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <form>
+                        <div class="container">
+                            <div class="row">
+                                <label class="col-25" for="First">First Name: </label>
+                                <input class="col-75" type="text" id="Last" name="" ng-model="newFirst">
+                            </div>
+                            <div class="row">
+                                <label class="col-25" for="First">Middle Name: </label>
+                                <input class="col-75" type="text" id="Last" name="" ng-model="newMiddle">
+                            </div>
+                            <div class="row">
+                                <label class="col-25" for="Last">Last Name:</label>
+                                <input class="col-75" type="text" id="Last" name="" ng-model="newLast">
+                            </div>
+                            <div class="row">
+                                <label class="col-25" for="pass">Password:</label>
+                                <input class="col-75" type="text" id="pass" name="" ng-model="newPass">
+                            </div>
+                            <div class="row">
+                                <label class="col-25" for="Repass">Retype Password:</label>
+                                <input class="col-75" type="text" id="Repass" name="" ng-model="newPassVerify">
+                            </div>
+                            <div class="row">
+                                <label class="col-25" for="email">Email:</label>
+                                <input class="col-75" type="text" id="email" name="" ng-model="newEmail">
+                            </div>
+                            <div class="row">
+                                <label class="col-25" for="Phone">Phone Number:</label>
+                                <input class="col-75" type="text" id="phone" name="" ng-model="newPhone">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success login mr-auto" data-dismiss="modal" data-toggle="modal"
+                        data-target="#loginModal">Login</button>
+                    <button type="button" class="btn btn-success" data-dismiss="modal"
+                        ng-click="addUser(newFirst, newMiddle, newLast, newPass, newPassVerify, newEmail, newPhone)">Submit</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
     <!-- NAVBAR -->
     <nav id="mainNavbar" class="navbar navbar-expand-md navbar-light fixed-top">
         <a class="navbar-brand title" href="./index.html" style="color: #9C28FF">Bochitto Travel</a>
@@ -36,16 +135,19 @@
                     <a class="nav-link" href="./PastReview.html">Past Reviews<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="icon nav-item active">
-                    <a class="nav-link" href="#aboutUsContainer">About Us<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="./index.html#aboutUsContainer">About Us<span
+                            class="sr-only">(current)</span></a>
                 </li>
             </ul>
 
             <ul class="navbar-nav ml-auto nav-fill">
                 <li class="icon nav-item active mr-1">
-                    <button type="button" class="btn btn-success">Login</button>
+                    <button type="button" class="btn btn-success" data-toggle="modal"
+                        data-target="#loginModal">Login</button>
                 </li>
                 <li class="icon nav-item active mr-1">
-                    <button type="button" class="btn btn-success">Register</button>
+                    <button type="button" class="btn btn-success" data-toggle="modal"
+                        data-target="#registerModal">Register</button>
                 </li>
             </ul>
         </div>
@@ -53,61 +155,118 @@
 
     <!-- body -->
 
-<br>
-<br>
+    <br>
+    <br>
     <div class="container border my-5" id="profile">
-            <h1 class="titleFont text-center mt-4">Past Reviews</h1>
-            <hr class="settings-hr">
-            <div class="row">
-                <nav class="container-fluid col py-3">
-                    <!-- Hardcoded past Reviews -->
-                    <div class="py-4" id="PastReview">
-                        <h3 class="pb-3">Bahamas Trip</h3>
-                        <div class="container px-5">
-                            <p>
-                            Traveling organized excursion blogger whimsical whimsical, organized excursion excursion webdesign pretty. Colorful fun modern wanderlust, travelblogger design colorful webdesign fun design. Travelblogger modern colorful Travel blogger pretty traveling. Fun WordPress whimsical pretty darn excursion theme WordPress. Whimsical cute blogger Travel simple darn, simple darn blogger darn design traveler colorful. Colorful modern organized, design clean organized whimsical wanderlust organized pretty. Organized organized adventure travelblogger, fun webdesign cute organized darn theme webdesign website. Colorful clean adventure blogger, website clean WordPress clean theme adventure fun. Pretty fun modern fun pretty darn colorful modern.
-                            </p>
-                            <p>        
-                            WordPress WordPress design modern blogger, theme wanderlust website WordPress website expedition. Design design blogger fun whimsical pretty simple expedition travelblogger. Modern travelblogger adventure cute, design design wanderlust organized modern fun cute website. Blogger wanderlust colorful colorful traveler whimsical pretty cute, travelblogger travelblogger darn modern website adventure. Traveler clean theme expedition darn colorful website.
-                            </p>
-                            <p>   
-                            Traveler design WordPress travelblogger clean expedition traveler modern, traveler organized organized simple. Theme whimsical simple, traveler adventure whimsical travelblogger excursion clean expedition. Traveler WordPress WordPress wanderlust WordPress expedition, blogger travelblogger modern travelblogger organized theme adventure website. Adventure blogger simple travelblogger blogger organized design traveling organized, whimsical simple fun expedition colorful. Whimsical blogger simple WordPress colorful theme traveling design.</p>
-                            </p> 
-                        </div>
-                         
+        <h1 class="titleFont text-center mt-4">Past Reviews</h1>
+        <hr class="settings-hr">
+        <div class="row">
+            <nav class="container-fluid col py-3">
+                <!-- Hardcoded past Reviews -->
+                <div class="py-4" id="PastReview">
+                    <h3 class="pb-3">Bahamas Trip</h3>
+                    <div class="container px-5">
+                        <p>
+                            Traveling organized excursion blogger whimsical whimsical, organized excursion excursion
+                            webdesign pretty. Colorful fun modern wanderlust, travelblogger design colorful webdesign
+                            fun design. Travelblogger modern colorful Travel blogger pretty traveling. Fun WordPress
+                            whimsical pretty darn excursion theme WordPress. Whimsical cute blogger Travel simple darn,
+                            simple darn blogger darn design traveler colorful. Colorful modern organized, design clean
+                            organized whimsical wanderlust organized pretty. Organized organized adventure
+                            travelblogger, fun webdesign cute organized darn theme webdesign website. Colorful clean
+                            adventure blogger, website clean WordPress clean theme adventure fun. Pretty fun modern fun
+                            pretty darn colorful modern.
+                        </p>
+                        <p>
+                            WordPress WordPress design modern blogger, theme wanderlust website WordPress website
+                            expedition. Design design blogger fun whimsical pretty simple expedition travelblogger.
+                            Modern travelblogger adventure cute, design design wanderlust organized modern fun cute
+                            website. Blogger wanderlust colorful colorful traveler whimsical pretty cute, travelblogger
+                            travelblogger darn modern website adventure. Traveler clean theme expedition darn colorful
+                            website.
+                        </p>
+                        <p>
+                            Traveler design WordPress travelblogger clean expedition traveler modern, traveler organized
+                            organized simple. Theme whimsical simple, traveler adventure whimsical travelblogger
+                            excursion clean expedition. Traveler WordPress WordPress wanderlust WordPress expedition,
+                            blogger travelblogger modern travelblogger organized theme adventure website. Adventure
+                            blogger simple travelblogger blogger organized design traveling organized, whimsical simple
+                            fun expedition colorful. Whimsical blogger simple WordPress colorful theme traveling design.
+                        </p>
+                        </p>
                     </div>
-                    <div class="py-4" id="PastReview">
-                        <h3 class="pb-3">Vegas Trip</h3>
-                        <div class="container px-5">
-                            <p>
-                            Traveling organized excursion blogger whimsical whimsical, organized excursion excursion webdesign pretty. Colorful fun modern wanderlust, travelblogger design colorful webdesign fun design. Travelblogger modern colorful Travel blogger pretty traveling. Fun WordPress whimsical pretty darn excursion theme WordPress. Whimsical cute blogger Travel simple darn, simple darn blogger darn design traveler colorful. Colorful modern organized, design clean organized whimsical wanderlust organized pretty. Organized organized adventure travelblogger, fun webdesign cute organized darn theme webdesign website. Colorful clean adventure blogger, website clean WordPress clean theme adventure fun. Pretty fun modern fun pretty darn colorful modern.
-                            </p>
-                            <p>        
-                            WordPress WordPress design modern blogger, theme wanderlust website WordPress website expedition. Design design blogger fun whimsical pretty simple expedition travelblogger. Modern travelblogger adventure cute, design design wanderlust organized modern fun cute website. Blogger wanderlust colorful colorful traveler whimsical pretty cute, travelblogger travelblogger darn modern website adventure. Traveler clean theme expedition darn colorful website.
-                            </p>
-                            <p>   
-                            Traveler design WordPress travelblogger clean expedition traveler modern, traveler organized organized simple. Theme whimsical simple, traveler adventure whimsical travelblogger excursion clean expedition. Traveler WordPress WordPress wanderlust WordPress expedition, blogger travelblogger modern travelblogger organized theme adventure website. Adventure blogger simple travelblogger blogger organized design traveling organized, whimsical simple fun expedition colorful. Whimsical blogger simple WordPress colorful theme traveling design.</p>
-                            </p> 
-                        </div>            
-                    </div>  
-                    <div class="py-4" id="PastReview">
-                        <h3 class="pb-3">Desert Trip</h3>
-                        <div class="container px-5">
-                            <p>
-                            Traveling organized excursion blogger whimsical whimsical, organized excursion excursion webdesign pretty. Colorful fun modern wanderlust, travelblogger design colorful webdesign fun design. Travelblogger modern colorful Travel blogger pretty traveling. Fun WordPress whimsical pretty darn excursion theme WordPress. Whimsical cute blogger Travel simple darn, simple darn blogger darn design traveler colorful. Colorful modern organized, design clean organized whimsical wanderlust organized pretty. Organized organized adventure travelblogger, fun webdesign cute organized darn theme webdesign website. Colorful clean adventure blogger, website clean WordPress clean theme adventure fun. Pretty fun modern fun pretty darn colorful modern.
-                            </p>
-                            <p>        
-                            WordPress WordPress design modern blogger, theme wanderlust website WordPress website expedition. Design design blogger fun whimsical pretty simple expedition travelblogger. Modern travelblogger adventure cute, design design wanderlust organized modern fun cute website. Blogger wanderlust colorful colorful traveler whimsical pretty cute, travelblogger travelblogger darn modern website adventure. Traveler clean theme expedition darn colorful website.
-                            </p>
-                            <p>   
-                            Traveler design WordPress travelblogger clean expedition traveler modern, traveler organized organized simple. Theme whimsical simple, traveler adventure whimsical travelblogger excursion clean expedition. Traveler WordPress WordPress wanderlust WordPress expedition, blogger travelblogger modern travelblogger organized theme adventure website. Adventure blogger simple travelblogger blogger organized design traveling organized, whimsical simple fun expedition colorful. Whimsical blogger simple WordPress colorful theme traveling design.</p>
-                            </p> 
-                        </div>
-                         
-                    </div>   
-                </nav>
-            </div>
+
+                </div>
+                <div class="py-4" id="PastReview">
+                    <h3 class="pb-3">Vegas Trip</h3>
+                    <div class="container px-5">
+                        <p>
+                            Traveling organized excursion blogger whimsical whimsical, organized excursion excursion
+                            webdesign pretty. Colorful fun modern wanderlust, travelblogger design colorful webdesign
+                            fun design. Travelblogger modern colorful Travel blogger pretty traveling. Fun WordPress
+                            whimsical pretty darn excursion theme WordPress. Whimsical cute blogger Travel simple darn,
+                            simple darn blogger darn design traveler colorful. Colorful modern organized, design clean
+                            organized whimsical wanderlust organized pretty. Organized organized adventure
+                            travelblogger, fun webdesign cute organized darn theme webdesign website. Colorful clean
+                            adventure blogger, website clean WordPress clean theme adventure fun. Pretty fun modern fun
+                            pretty darn colorful modern.
+                        </p>
+                        <p>
+                            WordPress WordPress design modern blogger, theme wanderlust website WordPress website
+                            expedition. Design design blogger fun whimsical pretty simple expedition travelblogger.
+                            Modern travelblogger adventure cute, design design wanderlust organized modern fun cute
+                            website. Blogger wanderlust colorful colorful traveler whimsical pretty cute, travelblogger
+                            travelblogger darn modern website adventure. Traveler clean theme expedition darn colorful
+                            website.
+                        </p>
+                        <p>
+                            Traveler design WordPress travelblogger clean expedition traveler modern, traveler organized
+                            organized simple. Theme whimsical simple, traveler adventure whimsical travelblogger
+                            excursion clean expedition. Traveler WordPress WordPress wanderlust WordPress expedition,
+                            blogger travelblogger modern travelblogger organized theme adventure website. Adventure
+                            blogger simple travelblogger blogger organized design traveling organized, whimsical simple
+                            fun expedition colorful. Whimsical blogger simple WordPress colorful theme traveling design.
+                        </p>
+                        </p>
+                    </div>
+                </div>
+                <div class="py-4" id="PastReview">
+                    <h3 class="pb-3">Desert Trip</h3>
+                    <div class="container px-5">
+                        <p>
+                            Traveling organized excursion blogger whimsical whimsical, organized excursion excursion
+                            webdesign pretty. Colorful fun modern wanderlust, travelblogger design colorful webdesign
+                            fun design. Travelblogger modern colorful Travel blogger pretty traveling. Fun WordPress
+                            whimsical pretty darn excursion theme WordPress. Whimsical cute blogger Travel simple darn,
+                            simple darn blogger darn design traveler colorful. Colorful modern organized, design clean
+                            organized whimsical wanderlust organized pretty. Organized organized adventure
+                            travelblogger, fun webdesign cute organized darn theme webdesign website. Colorful clean
+                            adventure blogger, website clean WordPress clean theme adventure fun. Pretty fun modern fun
+                            pretty darn colorful modern.
+                        </p>
+                        <p>
+                            WordPress WordPress design modern blogger, theme wanderlust website WordPress website
+                            expedition. Design design blogger fun whimsical pretty simple expedition travelblogger.
+                            Modern travelblogger adventure cute, design design wanderlust organized modern fun cute
+                            website. Blogger wanderlust colorful colorful traveler whimsical pretty cute, travelblogger
+                            travelblogger darn modern website adventure. Traveler clean theme expedition darn colorful
+                            website.
+                        </p>
+                        <p>
+                            Traveler design WordPress travelblogger clean expedition traveler modern, traveler organized
+                            organized simple. Theme whimsical simple, traveler adventure whimsical travelblogger
+                            excursion clean expedition. Traveler WordPress WordPress wanderlust WordPress expedition,
+                            blogger travelblogger modern travelblogger organized theme adventure website. Adventure
+                            blogger simple travelblogger blogger organized design traveling organized, whimsical simple
+                            fun expedition colorful. Whimsical blogger simple WordPress colorful theme traveling design.
+                        </p>
+                        </p>
+                    </div>
+
+                </div>
+            </nav>
         </div>
+    </div>
 
     <!-- Footer  -->
     <div class="container-fluid" id="footer">
@@ -238,4 +397,5 @@
         crossorigin="anonymous"></script>
     <script src="js/styling/script.js"></script>
 </body>
+
 </html>

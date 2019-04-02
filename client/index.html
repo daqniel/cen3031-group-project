@@ -94,7 +94,7 @@
 
 
   <!-- The Modal For Register -->
-  <div class="modal fade titleFont" id="registerModal">
+  <div class="modal fade titleFont" id="registerModal" ng-controller="UsersController">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
 
@@ -110,28 +110,31 @@
             <div class="container">
               <div class="row">
                 <label class="col-25" for="First">First Name: </label>
-                <input class="col-75" type="text" id="Last" name="">
+                <input class="col-75" type="text" id="Last" name="" ng-model="newFirst">
               </div>
-
+              <div class="row">
+                <label class="col-25" for="First">Middle Name: </label>
+                <input class="col-75" type="text" id="Last" name="" ng-model="newMiddle">
+              </div>
               <div class="row">
                 <label class="col-25" for="Last">Last Name:</label>
-                <input class="col-75" type="text" id="Last" name="">
+                <input class="col-75" type="text" id="Last" name="" ng-model="newLast">
               </div>
               <div class="row">
                 <label class="col-25" for="pass">Password:</label>
-                <input class="col-75" type="text" id="pass" name="">
+                <input class="col-75" type="text" id="pass" name="" ng-model="newPass">
               </div>
               <div class="row">
                 <label class="col-25" for="Repass">Retype Password:</label>
-                <input class="col-75" type="text" id="Repass" name="">
+                <input class="col-75" type="text" id="Repass" name="" ng-model="newPassVerify">
               </div>
               <div class="row">
                 <label class="col-25" for="email">Email:</label>
-                <input class="col-75" type="text" id="email" name="">
+                <input class="col-75" type="text" id="email" name="" ng-model="newEmail">
               </div>
               <div class="row">
                 <label class="col-25" for="Phone">Phone Number:</label>
-                <input class="col-75" type="text" id="phone" name="">
+                <input class="col-75" type="text" id="phone" name="" ng-model="newPhone">
               </div>
             </div>
           </form>
@@ -141,7 +144,8 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-success login mr-auto" data-dismiss="modal" data-toggle="modal"
             data-target="#loginModal">Login</button>
-          <button type="button" class="btn btn-success" data-dismiss="modal">Submit</button>
+          <button type="button" class="btn btn-success" data-dismiss="modal" 
+          ng-click="addUser(newFirst, newMiddle, newLast, newPass, newPassVerify, newEmail, newPhone)">Submit</button>
         </div>
 
       </div>
