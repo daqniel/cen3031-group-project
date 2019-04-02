@@ -1,5 +1,6 @@
 html, body
 {
+    background: white;
     width: 100%;
     height: 100%;
 }
@@ -19,6 +20,10 @@ html, body
 {
     font-family: 'Boogaloo', cursive;
     font-style: italic;
+}
+
+#nav-tab{
+    margin: 0rem!important; /* added this */
 }
 
 .reviewTab
@@ -87,7 +92,7 @@ html, body
 #footer
 {
     background-color: rgb(242, 242, 242);
-    height: 60%;
+    height: 22.5%; /* tweaked this */
     width: 100%;
 }
 

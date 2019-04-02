@@ -4,7 +4,7 @@
     padding-top: 3.95rem;
     padding-left: 0px !important;
     padding-right: 0px !important;
-    height: 38.54%;
+    /* height: 38.54%; */ /* removed this */
 }
 
 .specialsImages
@@ -23,17 +23,20 @@
 
 .recommendations
 {
-    height: 70%;
+    height: 57.5%; /* tweaked this */
     background-color: white;
+    padding-top: 1rem !important; /* added this */
     padding-left: 0px !important;
     padding-right: 0px !important;
-    margin-top: 2%;
+    /* margin-top: 2%; */ /* removed this */
 }
 
 #aboutUsContainer
 {
-    margin-top: 3%;
+    margin-top: 0%; /* tweaked this */
+    padding-top: 3.1%; /* added this so the about us button shows the section title when we click it */
     height: 85%;
+    width: 75%; /* tweaked this */
     background-color: white;
     padding-left: 0px !important;
     padding-right: 0px !important;
@@ -52,6 +55,9 @@
 
 .aboutUsRow
 {
+    margin-left: 0rem!important;
+    margin-right: 0rem!important;
+    padding: 0rem!important;
     height: 28.3%;
     padding-bottom: 1rem;
 }
@@ -78,6 +84,7 @@
     padding: 0rem!important;
     text-align: center;
     border: none !important;
+    border-radius: 0rem !important;
 }
 
 .icon
