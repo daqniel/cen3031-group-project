@@ -13,10 +13,23 @@ exports.list = function(req, res) {
 
 /*Create a Request*/
 exports.create = function(req, res){
-    /*Instantiate a Request*/
-    var request = new Request(req.body);
+var request = new Request(
+    {
+      clientID: req.query.email,
+      requestState: req.query.state, // manual for now, should be automatic
+      budget: {
+          min: req.query.budgetMin,
+          max: req.query.budgetMax
+      },
+      party: {
+          children: req.query.numChildren,
+          adults: req.query.numAdults
+      },
+      text: req.query.text
+    }
+  );
     /*Saves Request to database*/
-    request.save(function(err){
+    request.save(err => {
         if(err){
             res.status(400).send(err);
         }else{
