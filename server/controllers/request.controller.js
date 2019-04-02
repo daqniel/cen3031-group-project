@@ -8,7 +8,6 @@ exports.list = function(req, res) {
     Request.find({}, function(err, requests){
         if (err) res.status(404).send(err);
         res.json(requests);
-        console.log('All requests retrieved.');
     });
 };
 
@@ -19,7 +18,6 @@ exports.create = function(req, res){
     /*Saves Request to database*/
     request.save(function(err){
         if(err){
-            console.log(err);
             res.status(400).send(err);
         }else{
             res.json(request);
