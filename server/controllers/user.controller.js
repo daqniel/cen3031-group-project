@@ -21,7 +21,6 @@ exports.create = function (req, res) {
   /* save to mongoDB */
   user.save(err => {
     if (err) {
-      console.log(err);
       res.status(400).send(err);
     } else {
       res.json(user);
