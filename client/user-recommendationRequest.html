@@ -19,6 +19,7 @@
 
 <body ng-app="agencyApp">
 
+
     <!-- NAVBAR -->
     <nav id="mainNavbar" class="navbar navbar-expand-md navbar-light fixed-top" ng-controller="UsersController"
         data-ng-init="showName()">
@@ -51,8 +52,8 @@
                     Welcome, {{ sessionUsername }}
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Profile</a>
-                    <a class="dropdown-item" href="./recommendations.html">MyRecommendations</a>
+                    <a class="dropdown-item" href="./user-settings.html">Profile</a>
+                    <a class="dropdown-item" href="./user-recommendations.html">MyRecommendations</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="./index.html">Logout</a>
                 </div>
@@ -266,7 +267,7 @@
         integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
         crossorigin="anonymous"></script>
     <!-- <script src="js/styling/script.js"></script> -->
-    <script src="https://code.angularjs.org/1.4.3/angular.js"></script> 
+    <script src="https://code.angularjs.org/1.4.3/angular.js"></script>
     <script src="js/app.js"></script>
     <script src="js/factories/userFactory.js"></script>
     <script src="js/controllers/userController.js"></script>
