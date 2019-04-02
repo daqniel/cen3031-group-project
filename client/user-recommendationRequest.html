@@ -63,19 +63,16 @@
 
     <br>
     <!-- page -->
-    <div class="container my-5 border rounded" id="profile">
+    <div class="container my-5 border rounded" id="profile" ng-controller="RequestsController">
         <h1 class="titleFont text-center pt-2">Request Recommendation</h1>
         <hr class="settings-hr">
         <!-- Request Form -->
         <form>
             <div class="form-row pb-5 pt-3">
-                <div class="col-sm-6">
-                    <label for="">First Name</label>
-                    <input type="text" id="" class="form-control" placeholder="First Name">
-                </div>
-                <div class="col-sm-6">
-                    <label for="">Last Name</label>
-                    <input type="text" class="form-control" placeholder="Last Name">
+                <div class="col-sm-12">
+                    <label class="text-center">Email</label>
+                    <input type="text" id="" class="form-control" ng-model="email"
+                    placeholder="Please type contact email here...">
                 </div>
             </div>
 
@@ -83,62 +80,36 @@
                 <div class="col-sm-3">
                     <label for="">Budget</label>
                     <div class="">
-                        <input type="text" class="form-control" placeholder="Min">
+                        <input type="number" class="form-control" placeholder="Min" ng-model="budgetMin">
                     </div>
                 </div>
                 <div class="col-sm-3 ">
                     <div class="">
                         <label for="">` </label>
-                        <input type="text" class="form-control" placeholder="Max">
+                        <input type="number" class="form-control" placeholder="Max" ng-model="budgetMax">
                     </div>
                 </div>
                 <div class="col-sm-3">
                     <label for="">Number of Adults</label>
-                    <input type="text" class="form-control" placeholder="# of Adults">
+                    <input type="number" class="form-control" placeholder="# of Adults" ng-model="numAdults">
                 </div>
                 <div class="col-sm-3">
                     <label for="">Number of Children</label>
-                    <input type="text" class="form-control" placeholder="# of Children">
+                    <input type="number" class="form-control" placeholder="# of Children" ng-model="numChildren">
                 </div>
             </div>
-
-            <div class="form-row pb-5">
-                <div class="col-sm-6">
-                    <label for="">Destination</label>
-                    <input type="text" class="form-control" placeholder="Location">
-                </div>
-                <div class="col-sm-6">
-                    <label for="">Pets? What kind</label>
-                    <input type="text" class="form-control" placeholder="Pets">
-                </div>
-            </div>
-
             <div class="form-row pb-3">
                 <div class="col-sm-12">
                     <label for="">Description of your perfect vacation</label>
                     <textarea class="form-control" name="" id="" cols="30" rows="5"
-                        placeholder="Where will your adventure begin..."></textarea>
+                        placeholder="Where will your adventure begin..." ng-model="text"></textarea>
                 </div>
             </div>
 
-            <button type="submit" class="btn btn-success">Submit</button>
+            <button type="submit" class="btn btn-success" 
+            ng-click="addRequest(email, budgetMin, budgetMax, numChildren, numAdults, text)">Submit</button>
         </form>
     </div>
-
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
     <!-- Footer -->
     <div class="container-fluid" id="footer">
         <br>
@@ -271,6 +242,8 @@
     <script src="js/app.js"></script>
     <script src="js/factories/userFactory.js"></script>
     <script src="js/controllers/userController.js"></script>
+    <script src="js/factories/requestFactory.js"></script>
+    <script src="js/controllers/requestController.js"></script>
 </body>
 
 </html>

@@ -7,9 +7,13 @@ angular.module('requests').controller('RequestsController', ['$scope', 'Requests
     });
     $scope.detailedInfo = undefined;
 
-    $scope.addRequest = function(list) {
-      Requests.create(list).then(function(response) {
-      window.location=window.location;
+    $scope.addRequest = function(email, budgetMin, budgetMax, numChildren, numAdults, text) {
+      Requests.create(email, budgetMin, budgetMax, numChildren, numAdults, text).then(function(response) {
+      if(response.status == 200)
+      {
+        alert("request created successfully");
+        window.location.href = '../../user-recommendations.html';
+      }
     }, function(error) {
       console.log('Unable to retrieve requests:', error);
     });
