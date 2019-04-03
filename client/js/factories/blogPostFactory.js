@@ -1,16 +1,18 @@
-angular.module('blogPosts', []).factory('BlogPosts', function($http) {
+angular.module('blogPosts', []).factory('BlogPosts', function($http, $location) {
   var methods = {
     getAll: function() {
-      return $http.get('http://localhost:8080/api/blogPosts');
+      console.log($location.absUrl());
+      
+      return $http.get($location.absUrl() + 'api/blogPosts');
     },
 	
 	create: function(blogPost) {
-	  return $http.post('http://localhost:8080/api/blogPosts', blogPost);
+	  return $http.post($location.absUrl() + 'api/blogPosts', blogPost);
     }, 
 
     delete: function(id) {
 
-     return $http.delete('http://localhost:8080/api/blogPosts/'+id);
+     return $http.delete($location.absUrl() + 'api/blogPosts/'+id);
 
     }
   };
