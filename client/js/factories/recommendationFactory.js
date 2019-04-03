@@ -1,17 +1,17 @@
-angular.module('recommendations', []).factory('Recommendations', function($http) {
+angular.module('recommendations', []).factory('Recommendations', function($http, $location) {
     var methods = {
       getAll: function() {
-        return $http.get('http://localhost:8080/api/recommendations');
+        return $http.get($location.absUrl() + 'api/recommendations');
         //sends to index, doesnt show recommendations
       },
       
       create: function(brecommendation) {
-        return $http.post('http://localhost:8080/api/recommendations', recommendation);
+        return $http.post($location.absUrl() + 'api/recommendations', recommendation);
       }, 
   
       delete: function(id) {
   
-       return $http.delete('http://localhost:8080/api/recommendations/'+id);
+       return $http.delete($location.absUrl() + 'api/recommendations/'+id);
   
       }
     };
