@@ -1,7 +1,8 @@
 angular.module('specials', []).factory('Specials', function($http, $location) {
+  const apiHost = $location.protocol() + "://" + $location.host() + ":" + $location.port();
   var methods = {
     getAll: function() {
-      return $http.get($location.absUrl() + 'api/specials');
+      return $http.get(apiHost + '/api/specials');
     },
 	
 	create: function(special) {
