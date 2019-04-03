@@ -1,5 +1,6 @@
 /* Dependencies */
 var Blogpost = require("../models/blogpost.model.js");
+var bcrypt = require("bcryptjs");
 
 /* retrieve all blogposts */
 exports.list = function(req, res) {
