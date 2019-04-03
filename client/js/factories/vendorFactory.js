@@ -1,15 +1,16 @@
-angular.module('vendors', []).factory('Vendors', function($http) {
+angular.module('vendors', []).factory('Vendors', function($http, $location) {
+    const apiHost = $location.protocol() + "://" + $location.host() + ":" + $location.port();
     var methods = {
       getAll: function() {
-        return $http.get('http://localhost:8080/api/vendors');
+        return $http.get(apiHost + '/api/vendors');
       },
       
       create: function(vendor) {
-        return $http.post('http://localhost:8080/api/vendors', vendor);
+        return $http.post(apiHost + '/api/vendors', vendor);
       }, 
   
       delete: function(id) {
-       return $http.delete('http://localhost:8080/api/vendors/'+id);
+       return $http.delete(apiHost + '/api/vendors/'+id);
   
       }
     };

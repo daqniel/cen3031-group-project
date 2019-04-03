@@ -1,9 +1,6 @@
 var path = require("path"),
   express = require("express"),
   mongoose = require("mongoose"),
-  morgan = require("morgan"),
-  //NOTE: body-parser not needed, already built into express (express.json)
-  //bodyParser = require('body-parser'),
   config = require("./config"),
   specialsRouter = require("../routes/special.routes"),
   usersRouter = require("../routes/user.routes"),
@@ -21,9 +18,6 @@ module.exports.init = function() {
 
   /* init app */
   const app = express();
-
-  //enable request logging for development debugging
-  // app.use(morgan('dev'));
 
   //body parsing middleware
   app.use(express.json());

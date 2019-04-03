@@ -1,18 +1,19 @@
-angular.module('notes', []).factory('Notes', function($http) {
+angular.module('notes', []).factory('Notes', function($http, $location) {
+    const apiHost = $location.protocol() + "://" + $location.host() + ":" + $location.port();
     var methods = {
       getAll: function() {
-        return $http.get('http://localhost:8080/api/notes');
+        return $http.get(apiHost + '/api/notes');
       },
       
       create: function(note) {
-        return $http.post('http://localhost:8080/api/notes', note);
+        return $http.post(apiHost + '/api/notes', note);
       }, 
   
       delete: function(id) {
          /**TODO
           return result of HTTP delete method
          */
-       return $http.delete('http://localhost:8080/api/notes/'+id);
+       return $http.delete(apiHost + '/api/notes/'+id);
   
       }
     };
