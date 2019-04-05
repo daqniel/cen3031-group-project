@@ -10,6 +10,7 @@
     "body-parser": "^1.18.3",
     "cookie-parser": "*",
     "express": "^4.16.4",
+    "express-session": "*",
     "mocha": "^5.2.0",
     "mongoose": "^5.4.20",
     "morgan": "^1.9.1",
