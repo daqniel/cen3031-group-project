@@ -99,6 +99,6 @@ exports.userByEmail = function(req, res, next, email) {
   });
 };
 
-exports.postAuthentication = function(req, res, next) {
-
+exports.postAuthentication = function(req, res) {
+  
 };
