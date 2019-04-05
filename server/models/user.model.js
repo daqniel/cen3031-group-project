@@ -18,13 +18,14 @@ var userSchema = new Schema({
     /* NOTE: currently unhashed */
     email: {
         type: String,
+        required: true,
+        unique: true,
         validate: {
             validator: function (v) {
                 /* unholy regex copy-pasted from stack overflow */
                 return /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/.test(v);
             }
         },
-        required: true
     }, //(KEY) used for contact and clientID
     password: {
         type: String,

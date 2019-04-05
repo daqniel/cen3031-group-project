@@ -1,9 +1,11 @@
 /* Dependencies */
 var mongoose = require('mongoose'),
+  bcrypt = require('bcryptjs'),
   User = require('../models/user.model.js');
 
 /* Create a User */
 exports.create = function (req, res) {
+  
   var user = new User(
     {
       name: {
@@ -12,19 +14,25 @@ exports.create = function (req, res) {
         last: req.query.lname
       },
       email: req.query.email,
-      password: req.query.password,
       phoneNumber: req.query.phoneNumber,
+      password: req.query.password,
       isAdmin: req.query.isAdmin
     }
   );
 
-  /* save to mongoDB */
-  user.save(err => {
-    if (err) {
-      res.status(400).send(err);
-    } else {
-      res.json(user);
-    }
+  /* Hash password and save to database */
+  bcrypt.genSalt(10, (err, salt) => {
+    bcrypt.hash(user.password, salt, (err, hash) => {
+      user.password = hash;
+      user.save((err, newUser) => {
+        if(err){
+          res.status(400).json(err);
+        }
+        else{
+          res.json(newUser);
+        }
+      })
+    });
   });
 };
 
