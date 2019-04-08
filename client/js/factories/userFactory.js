@@ -20,7 +20,8 @@ angular.module('users', []).factory('Users', function($http, $location) {
       },
       authenticate: function(username, password)
       {
-        return $http.get(apiHost + '/api/users/' + username + "/" + password);
+        console.log(`/api/users/login?email=${username}&password=${password}`);
+        return $http.post(apiHost + `/api/users/login?email=${username}&password=${password}`);
       }
     };
   

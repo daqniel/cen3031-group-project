@@ -99,6 +99,7 @@ exports.userByEmail = function(req, res, next, email) {
   });
 };
 
-exports.postAuthentication = function(req, res) {
-  
+exports.postAuth = function(req, res) {
+  console.log(req.user);
+  res.send("Authorized? I think.");
 };

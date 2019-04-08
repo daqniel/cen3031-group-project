@@ -21,6 +21,7 @@ angular.module('users').controller('UsersController', ['$scope', 'Users',
     $scope.authenticateUser = function(email, password){
       Users.authenticate(email, password).then(function(response)
       {
+        console.log(response.status);
         if(response.status == 200)
         {
           window.location.href = '../home.html';

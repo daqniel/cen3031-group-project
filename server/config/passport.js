@@ -36,7 +36,7 @@ module.exports = function(passport) {
   });
 
   passport.deserializeUser((email, done) => {
-    User.findOne(email, (err, user) => {
+    User.findOne({email: email}, (err, user) => {
       done(err, user);
     });
   });
