@@ -111,6 +111,7 @@ exports.userByEmail = function(req, res, next, email) {
 };
 
 exports.postAuth = function(req, res) {
+  console.log('postAuth', req.user);
   if(req.session.passport.pageViews){
     req.session.passport.pageViews++;
   }
@@ -118,7 +119,7 @@ exports.postAuth = function(req, res) {
     req.session.passport.pageViews = 1;
   }
   console.log(req.session);
-  res.send(`Welcome for ${req.session.passport.pageViews} time!`);
+  res.json(req.user);
 };
 
 exports.logout = function(req, res) {

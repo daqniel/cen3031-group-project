@@ -26,36 +26,30 @@ angular.module("users").controller("UsersController", [
         password: newPass,
         phoneNumber: newPhone
       };
-      Users.create(newUser).then(
-        function(response) {
-          if (response.status == 200)
+      Users.create(newUser)
+        .then(res => {
+          if (res.status == 200)
             alert("user created successfully, please sign in!");
-        },
-        function(error) {
+        })
+        .catch(err => {
           alert("user not created, please try again");
           // window.location.href = "../index.html";
-        }
-      );
+        });
     };
 
     $scope.authenticateUser = function(email, password) {
-      Users.authenticate(email, password).then(
-        function(response) {
-          console.log(response.status);
-          if (response.status == 200) {
+      Users.authenticate(email, password)
+        .then(res => {
+          console.log(res.data);
+          if (res.status == 200) {
             window.location.href = "../home.html";
-            $scope.storedUsername = sessionStorage.setItem("username", email);
-            $scope.storedPassword = sessionStorage.setItem(
-              "password",
-              password
-            );
+            sessionStorage.setItem("user", JSON.stringify(res.data));
           }
-        },
-        function(error) {
+        })
+        .catch(err => {
           alert("Please try again, incorrect credentials provided");
           window.location.href = "../index.html";
-        }
-      );
+        });
     };
 
     $scope.logout = function() {
@@ -63,6 +57,7 @@ angular.module("users").controller("UsersController", [
         .then(response => {
           console.log(response.status);
           if (response.status == 200) {
+            sessionStorage.removeItem("user");
             window.location.href = "../index.html";
           }
         })
@@ -73,16 +68,15 @@ angular.module("users").controller("UsersController", [
     };
 
     $scope.getSession = function() {
-      console.log('did this');
-      Users.getSession()
-        .then(response => {
-          console.log(response);
-          if(response.status == 200) {
-            console.log('test', response.text, response.body.text);
-            console.log('all good, got session');
-          }
-        });
-    }
+      console.log("did this");
+      Users.getSession().then(response => {
+        console.log(response);
+        if (response.status == 200) {
+          console.log("test", response.text, response.body.text);
+          console.log("all good, got session");
+        }
+      });
+    };
 
     $scope.deleteUser = function(id) {
       Users.delete(id).then(
@@ -109,7 +103,10 @@ angular.module("users").controller("UsersController", [
     };
 
     $scope.showName = function() {
-      $scope.sessionUsername = sessionStorage.getItem("username");
+      $scope.sessionUsername = $.parseJSON(
+        sessionStorage.getItem("user")
+      ).email;
+      console.log($scope.sessionUsername);
     };
   }
 ]);
