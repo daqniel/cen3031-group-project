@@ -30,6 +30,9 @@ module.exports.init = function() {
   app.use(express.json());
   app.use(express.urlencoded({extended: true}));
 
+  // Set static folder */
+  app.use(express.static('client'));
+
   // Express Session
   app.use(session({
     secret: 'sekeret',
@@ -41,9 +44,6 @@ module.exports.init = function() {
   app.use(passport.initialize());
   app.use(passport.session());
 
-  // Set static folder */
-  app.use(express.static('client'));
-
   // Use the listings router for requests to the api */
   app.use('/api/users', usersRouter);
   app.use('/api/specials', specialsRouter);
@@ -52,6 +52,11 @@ module.exports.init = function() {
   app.use('/api/notes', notesRouter);
   app.use('/api/blogposts', blogpostsRouter);
   app.use('/api/vendors', vendorsRouter);
+
+  app.get('/api/session', (req, res) => {
+    console.log("THIS HAPPINGING");
+    res.send(req.session.passport);
+  });
 
   // Go to homepage for all routes not specified */
   app.get('*', function(req, res) {
