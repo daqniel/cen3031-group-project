@@ -4,7 +4,6 @@ var bcrypt = require("bcryptjs");
 
 /* retrieve all blogposts */
 exports.list = function(req, res) {
-  console.log("testing session", req.session);
   res.json(req.blogpost);
 };
 
