@@ -13,6 +13,10 @@ router
   .route("/login")
   .post(passport.authenticate("local"), user_controller.postAuth);
 
+router
+  .route("/logout")
+  .get(user_controller.logout);
+
 router.route("/:email/:password").get(user_controller.readWithPassword);
 
 router

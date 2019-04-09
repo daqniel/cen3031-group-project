@@ -6,17 +6,28 @@ var mongoose = require("mongoose"),
 
 /* Create a User */
 exports.create = function(req, res) {
+  // var user = new User({
+  //   name: {
+  //     first: req.query.fname,
+  //     middle: req.query.mname,
+  //     last: req.query.lname
+  //   },
+  //   email: req.query.email,
+  //   phoneNumber: req.query.phoneNumber,
+  //   password: req.query.password,
+  //   isAdmin: req.query.isAdmin
+  // });
+
+  console.log(req.session);
+
   var user = new User({
-    name: {
-      first: req.query.fname,
-      middle: req.query.mname,
-      last: req.query.lname
-    },
-    email: req.query.email,
+    name: req.body.name,
+    email: req.body.email,
     phoneNumber: req.query.phoneNumber,
     password: req.query.password,
-    isAdmin: req.query.isAdmin
+    isAdmin: false // should always be false on creation, can be changed into admin account after by another admin
   });
+
 
   /* Hash password and save to database */
   bcrypt.genSalt(10, (err, salt) => {
@@ -100,6 +111,20 @@ exports.userByEmail = function(req, res, next, email) {
 };
 
 exports.postAuth = function(req, res) {
-  console.log(req.user);
-  res.send("Authorized? I think.");
+  if(req.session.passport.pageViews){
+    req.session.passport.pageViews++;
+  }
+  else{
+    req.session.passport.pageViews = 1;
+  }
+  console.log(req.session);
+  res.send(`Welcome for ${req.session.passport.pageViews} time!`);
+};
+
+exports.logout = function(req, res) {
+  req.session.destroy( err => {
+    console.log('should be destroyed', req.session);
+    if(err) res.status(400).send(err);
+    else res.send('Logged Out!');
+  });
 };
