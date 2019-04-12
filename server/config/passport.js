@@ -32,7 +32,6 @@ module.exports = function(passport) {
 
   passport.serializeUser((user, done) => {
     done(null, user.email);
-    console.log("we get here at least");
   });
 
   passport.deserializeUser((email, done) => {

@@ -40,7 +40,7 @@ angular.module("users").controller("UsersController", [
     $scope.authenticateUser = function(email, password) {
       Users.authenticate(email, password)
         .then(res => {
-          console.log(res.data);
+          console.log('res.data', res);
           if (res.status == 200) {
             window.location.href = "../home.html";
             sessionStorage.setItem("user", JSON.stringify(res.data));
@@ -106,7 +106,7 @@ angular.module("users").controller("UsersController", [
       $scope.sessionUsername = $.parseJSON(
         sessionStorage.getItem("user")
       ).email;
-      console.log($scope.sessionUsername);
+      console.log("sessionname", $scope.sessionUsername);
     };
   }
 ]);

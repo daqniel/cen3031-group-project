@@ -4,27 +4,30 @@ var user_controller = require("../controllers/user.controller.js"),
   passport = require("passport"),
   router = express.Router();
 
+/* Read all users, Create new user */
 router
   .route("/")
   .get(user_controller.list)
   .post(user_controller.create);
 
-router
-  .route("/login")
-  .post(passport.authenticate("local"), user_controller.postAuth);
-
-router
-  .route("/logout")
-  .get(user_controller.logout);
-
-router.route("/:email/:password").get(user_controller.readWithPassword);
-
+/* Read/Update/Delete user via email */
 router
   .route("/:email")
   .get(user_controller.read)
   .put(user_controller.update)
   .delete(user_controller.delete);
 
-router.param("email", user_controller.userByEmail);
+/* Authenticates user, creates session */
+router
+  .route("/login")
+  .post(passport.authenticate("local"), user_controller.postAuth);
+
+/* destroys session */
+router
+  .route("/logout")
+  .get(user_controller.logout);
+
+/* find user in database via email */
+// router.param("email", user_controller.userByEmail);
 
 module.exports = router;
