@@ -1,67 +1,53 @@
 /* Dependencies */
 var Blogpost = require("../models/blogpost.model.js");
-var bcrypt = require("bcryptjs");
 
 /* retrieve all blogposts */
 exports.list = function(req, res) {
-  res.json(req.blogpost);
+  res.json(req.blogposts);
 };
 
-/* Create a Blogpost */
+/* Create a blogpost */
 exports.create = function(req, res) {
   var blogpost = new Blogpost(req.body);
 
-  /* save to mongoDB */
-  blogpost.save(err => {
-    if (err) {
-      res.status(400).send(err);
-    } else {
-      res.json(blogpost);
-    }
-  });
+  /* save to database */
+  blogpost.save()
+    .then(newBlogpost => res.json(newBlogpost))
+    .catch(err => res.status(400).send(err));
 };
 
 /* Show the current blogpost */
 exports.read = function(req, res) {
-  res.json(req.blogpost);
+  Blogpost.findById(req.params)
+    .then(foundBlogpost => res.json(foundBlogpost))
+    .catch(err => res.status(400).send(err));
 };
 
 /* Update a blogpost */
 exports.update = function(req, res) {
-  Blogpost.findByIdAndUpdate(req.blogpost._id, req.body, (err, updatedBlogpost) => {
-    if (err) res.send(404).send(err);
-    else {
-      //NOTE: currently returns the old document, not the updated one.
-      res.json(updatedBlogpost);
-    }
-  });
+  Blogpost.findById(req.params)
+    .then(foundBlogpost => {
+      foundBlogpost.title = req.body.title;
+      foundBlogpost.text = req.body.text;
+      foundBlogpost.save()
+        .then(updatedBlogpost => res.json(updatedBlogpost))
+        .catch(err => res.status(400).send(err));
+    })
+    .catch(err => res.status(400).send(err));
 };
 
 /* Delete a blogpost */
 exports.delete = function(req, res) {
-  Blogpost.findByIdAndRemove(req.blogpost._id, (err, deletedBlogpost) => {
-    if(err) res.status(404).send(err);
-    else res.json(deletedBlogpost);
-  });
+  Blogpost.findByIdAndRemove(req.params)
+    .then(deletedBlogpost => res.json(deletedBlogpost))
+    .catch(err => res.status(400).send(err));
 };
 
-/* 
-  Middleware: find a blogpost by ID, then pass it to the next request handler. 
+/**
+ * Middleware: 
  */
-exports.blogpostByID = function(req, res, next) {
-  Blogpost.findById(req.params.blogpostId).exec((err, blogpost) => {
-    if (err) res.status(404).send(err);
-    else {
-      req.blogpost = blogpost;
-      next();
-    }
-  });
-};
 
-/* 
-  Middleware: find N specials and pass on sorted by created date,
-  either newest or oldest.
- */
+/* find N blogposts and pass in req.blogposts sorted by created date, either newest or oldest */
 exports.getNewOrOld = function (req, res, next) {
   /* if order=old query param is passed, gets N oldest blogposts */
   var order = req.query.order == 'old' ? 1 : -1;
@@ -70,11 +56,7 @@ exports.getNewOrOld = function (req, res, next) {
       createdDate: order
     })
     .limit(parseInt(req.query.num))
-    .exec((err, blogposts) => {
-      if (err) res.status(404).send(err);
-      else {
-        req.blogpost = blogposts;
-        next();
-      }
-    });
+    .then(foundBlogposts => req.blogposts = foundBlogposts)
+    .catch(err => res.status(400).send(err))
+    .then(() => next());
 };

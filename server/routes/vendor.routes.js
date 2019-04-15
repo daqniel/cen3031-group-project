@@ -8,11 +8,9 @@ router.route('/')
     .get(vendor_controller.list)
     .post(vendor_controller.create);
 
-router.route('/:vendor_id')
+router.route('/:_id')
     .get(vendor_controller.read)
     .put(vendor_controller.update)
     .delete(vendor_controller.delete);
-
-router.param('vendor_id', vendor_controller.vendorByID);
 
 module.exports = router;

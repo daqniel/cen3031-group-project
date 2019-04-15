@@ -1,16 +1,15 @@
-/* Import mongoose and define any variables needed to create the schema */
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 /* Create your schema */
 var blogPostSchema = new Schema({
     title: { type: String, required: true }, /* Heading, REQUIRED */
-    text: String, /* TODO: Decide if this should be required */
+    text: String, 
     createdDate: Date,
     updatedDate: Date
 });
 
-/* create a 'pre' function that adds the updatedDate (and createdDate if not already there) property */
+/* add created/updated date */
 blogPostSchema.pre('save', function(next) {
     this.updatedDate = new Date;
     if(!this.createdDate)
