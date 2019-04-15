@@ -1,19 +1,27 @@
-angular.module('blogPosts', []).factory('BlogPosts', function($http) {
-  var methods = {
-    getAll: function() {
-      return $http.get('http://localhost:8080/api/blogPosts');
-    },
-	
-	create: function(blogPost) {
-	  return $http.post('http://localhost:8080/api/blogPosts', blogPost);
-    }, 
+angular
+  .module("blogPosts", [])
+  .factory("BlogPosts", function($http, $location) {
+    const apiHost =
+      $location.protocol() + "://" + $location.host() + ":" + $location.port();
+    const httpOptions = {
+      headers: {
+        "Content-Type": "application/json"
+        //'Authorization': 'auth-token' TODO: add request authorization via tokens?
+      }
+    };
+    var methods = {
+      getAll: function() {
+        return $http.get(apiHost + "/api/blogPosts");
+      },
 
-    delete: function(id) {
+      create: function(blogPost) {
+        return $http.post(apiHost + "/api/blogPosts", blogPost, httpOptions);
+      },
 
-     return $http.delete('http://localhost:8080/api/blogPosts/'+id);
+      delete: function(id) {
+        return $http.delete(apiHost + "/api/blogPosts/" + id);
+      }
+    };
 
-    }
-  };
-
-  return methods;
-});
+    return methods;
+  });
