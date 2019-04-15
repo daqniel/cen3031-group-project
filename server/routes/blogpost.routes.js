@@ -9,11 +9,9 @@ router.route('/')
     .post(blogpost_controller.create);
 
 /* Read/Update/Delete blogpost via _id */
-router.route('/:blogpostId')
+router.route('/:_id')
     .get(blogpost_controller.read)
     .put(blogpost_controller.update)
     .delete(blogpost_controller.delete);
 
-/* find blogpost in database via _id */
-router.param('blogpostId', blogpost_controller.blogpostByID);
 module.exports = router;

@@ -9,7 +9,7 @@ router.route('/')
     .get(note_controller.noteByLinkedId, note_controller.list)
     .post(note_controller.create);
 
-router.route('/:noteId')
+router.route('/:_id')
     .get(note_controller.read)
     .put(note_controller.update)
     .delete(note_controller.delete);

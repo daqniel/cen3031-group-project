@@ -4,6 +4,7 @@ var mongoose = require('mongoose'),
 
 /* Create your schema */
 var vendorSchema = new Schema({
+    //TODO 'Type' field might be useful for diffing between cruise/hotel/etc. vendors
     name: {
         type: String,
         required: true

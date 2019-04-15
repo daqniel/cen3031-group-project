@@ -19,14 +19,23 @@ exports.create = function(req, res) {
 
 /* Show the current note */
 exports.read = function(req, res) {
-  res.json(req.notes);
+  Note.findById(req.params)
+    .then(foundNote => res.json(foundNote))
+    .catch(err => res.status(400).send(err));
 };
 
 /* Update a note */
 exports.update = function(req, res) {
-  Note.findByIdAndUpdate(req.params, req.body)
-    .then(updatedNote => res.json(updatedNote))
-    .catch(err => res.status(400).send(err));
+  Note.findOne(req.params).then(foundNote => {
+    foundNote.type = req.body.type;
+    foundNote.linkedId = req.body.linkedId;
+    foundNote.title = req.body.title;
+    foundNote.text = req.body.text;
+    foundNote
+      .save()
+      .then(updatedNote => res.json(updatedNote))
+      .catch(err => res.status(400).send(err));
+  });
 };
 
 /* Delete a note */
@@ -44,13 +53,14 @@ exports.delete = function(req, res) {
 exports.noteByLinkedId = function(req, res, next) {
   linkedId = req.query.linkedId;
   if (linkedId) {
-    Note.find({ linkedId: linkedId }).exec()
-      .then(notes => req.notes = notes)
+    Note.find({ linkedId: linkedId })
+      .then(notes => (req.notes = notes))
       .catch(err => res.status(400).send(err))
+      .then(() => next());
   } else {
-    Note.find({}).exec()
-      .then(notes => req.notes = notes)
+    Note.find({})
+      .then(notes => (req.notes = notes))
       .catch(err => res.status(400).send(err))
+      .then(() => next());
   }
-  next();
 };

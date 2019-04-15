@@ -1,6 +1,3 @@
-//TODO: delete, update are accessing database twice, fix if there's time.
-//NOTE: this is true for a lot of the schema controllers.
-
 /* Dependencies */
 var Special = require("../models/special.model.js");
 
@@ -14,50 +11,37 @@ exports.create = function (req, res) {
   var special = new Special(req.body);
 
   /* save to mongoDB */
-  special.save(err => {
-    if (err) {
-      res.status(400).send(err);
-    } else {
-      res.json(special);
-    }
-  });
+  special.save()
+    .then(newSpecial => res.json(newSpecial))
+    .catch(err => res.status(400).send(err));
 };
 
 /* Show the current special */
 exports.read = function (req, res) {
-  res.json(req.special);
+  Special.findById(req.params)
+    .then(foundSpecial => res.json(foundSpecial))
+    .catch(err => res.status(400).send(err));
 };
 
 /* Update a special */
-
 exports.update = function (req, res) {
-  Special.findOneAndUpdate({_id: req.params.specialID}, req.body, (err, updatedSpecial) => {
-    if (err) res.status(404).send(err);
-    else {
-      res.json(updatedSpecial);
-    }
-  });
+  Special.findById(req.params)
+    .then(foundSpecial => {
+      foundSpecial.title = req.body.title;
+      foundSpecial.text = req.body.text;
+      foundSpecial.expireDate = req.body.expireDate;
+      foundSpecial.save()
+        .then(updatedSpecial => res.json(updatedSpecial))
+        .catch(err => res.status(400).send(err));
+    })
+    .catch(err => res.status(400).send(err));
 };
 
 /* Delete a special */
 exports.delete = function (req, res) {
-  Special.findByIdAndRemove(req.special._id, (err, deletedSpecial) => {
-    if(err) res.status(404).send(err);
-    else res.json(deletedSpecial);
-  });
-};
-
-/* 
-  Middleware: find a special by its ID, then pass it to the next request handler. 
- */
-exports.specialByID = function (req, res, next) {
-  Special.findById(req.params.specialID).exec((err, special) => {
-    if (err) res.status(404).send(err);
-    else {
-      req.special = special;
-      next();
-    }
-  })
+  Special.findByIdAndRemove(req.params)
+    .then(deletedSpecial => res.json(deletedSpecial))
+    .catch(err => res.status(400).send(err));
 };
 
 /* 
@@ -72,12 +56,8 @@ exports.getNewOrOld = function (req, res, next) {
       createdDate: order
     })
     .limit(parseInt(req.query.num))
-    .exec((err, specials) => {
-      if (err) res.status(404).send(err);
-      else {
-        req.special = specials;
-        next();
-      }
-    });
+    .then(foundSpecials => req.specials = foundSpecials)
+    .catch(err => res.status(400).send(err))
+    .then(() => next())
 
 };

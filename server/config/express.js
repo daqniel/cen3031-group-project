@@ -1,7 +1,8 @@
 const path = require('path'),
+  Promise = require("bluebird"),
   express = require('express'),
   session = require('express-session'),
-  mongoose = require('mongoose'),
+  mongoose = Promise.promisifyAll(require('mongoose')),
   passport = require('passport');
 
 const specialsRouter = require('../routes/special.routes'),

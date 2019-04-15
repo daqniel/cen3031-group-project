@@ -32,25 +32,24 @@ exports.read = function(req, res) {
 
 /* Update a user */
 exports.update = function(req, res) {
-  
   User.findOne(req.params)
-    .then(updatedUser => {
-      updatedUser.email = req.body.email;
-      updatedUser.phoneNumber = req.body.phoneNumber;
-      updatedUser.name = req.body.name;
+    .then(foundUser => {
+      foundUser.email = req.body.email;
+      foundUser.phoneNumber = req.body.phoneNumber;
+      foundUser.name = req.body.name;
       /* if password is changed, re-hash */
-      if (updatedUser.password != req.body.password) {
+      if (foundUser.password != req.body.password) {
         User.hashPassword(req.body.password, hashed => {
-          updatedUser.password = hashed;
-          updatedUser
+          foundUser.password = hashed;
+          foundUser
             .save()
-            .then(newUser => res.json(newUser))
+            .then(updatedUser => res.json(updatedUser))
             .catch(err => res.status(400).send(err));
         });
       } else {
-        updatedUser
+        foundUser
           .save()
-          .then(newUser => res.json(newUser))
+          .then(updatedUser => res.json(updatedUser))
           .catch(err => res.status(400).send(err));
       }
     })
