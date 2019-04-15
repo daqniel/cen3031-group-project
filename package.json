@@ -17,12 +17,15 @@
     "passport": "*",
     "passport-http": "*",
     "passport-local": "*",
-    "request": "^2.67.0"
+    "request": "^2.67.0",
+    "bluebird": "*"
   },
   "devDependencies": {
     "nodemon": "^1.18.10",
     "should": "^7.1.1",
-    "supertest": "^3.4.2"
+    "supertest": "^3.4.2",
+    "mocha": "*",
+    "should": "*"
   },
   "scripts": {
     "start": "node server.js",

@@ -3,7 +3,7 @@ var Special = require("../models/special.model.js");
 
 /* retrieve all specials */
 exports.list = function (req, res) {
-  res.json(req.special);
+  res.json(req.specials);
 };
 
 /* Create a Special */

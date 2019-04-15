@@ -17,9 +17,10 @@ exports.create = function(req, res) {
   /* hash password and save to database */
   User.hashPassword(user.password, hashed => {
     user.password = hashed;
-    user.save()
+    user
+      .save()
       .then(newUser => res.json(newUser))
-      .catch(err => res.status(400).send(err))
+      .catch(err => res.status(400).send(err));
   });
 };
 

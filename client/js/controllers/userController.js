@@ -13,10 +13,10 @@ angular.module("users").controller("UsersController", [
       newPhone
     ) {
       if (newPass != newPassVerify) {
-        alert("passwords don't match, please try again.");
-        // window.location.href = "../index.html";
+        alert("Passwords don't match, please try again.");
+        window.location.href = "../index.html";
       }
-      newUser = {
+      var newUser = {
         name: {
           first: newFirst,
           middle: newMiddle,
@@ -28,19 +28,22 @@ angular.module("users").controller("UsersController", [
       };
       Users.create(newUser)
         .then(res => {
-          if (res.status == 200)
-            alert("user created successfully, please sign in!");
+          if (res.status == 200) alert("User successfully registered!");
         })
         .catch(err => {
-          alert("user not created, please try again");
-          // window.location.href = "../index.html";
+          if (err.data.code == 11000) {
+            alert("That email has already been registered!");
+          } else {
+            alert("User could not be created.");
+          }
+          window.location.href = "../index.html";
         });
     };
 
     $scope.authenticateUser = function(email, password) {
       Users.authenticate(email, password)
         .then(res => {
-          console.log('res.data', res);
+          console.log("res.data", res);
           if (res.status == 200) {
             window.location.href = "../home.html";
             sessionStorage.setItem("user", JSON.stringify(res.data));
@@ -62,7 +65,6 @@ angular.module("users").controller("UsersController", [
           }
         })
         .catch(err => {
-          console.log(err);
           alert("logout unsuccessful...");
         });
     };

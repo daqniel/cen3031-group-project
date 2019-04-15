@@ -21,10 +21,10 @@ exports.read = function(req, res) {
 
 /* Update a vendor */
 exports.update = function(req, res) {
-  Vendor.findById(req.parmas)
+  Vendor.findById(req.params)
     .then(foundVendor => {
       foundVendor.name = req.body.name;
-      foundVendor.description = req.body.description;
+      foundVendor.text = req.body.text;
       foundVendor.phoneNumber = req.body.phoneNumber;
       foundVendor.email = req.body.email;
       foundVendor.link = req.body.link;
@@ -39,7 +39,7 @@ exports.update = function(req, res) {
 /* Delete a vendor */
 exports.delete = function(req, res) {
   Vendor.findByIdAndRemove(req.params)
-    .then(deletedVendor => req.json(deletedVendor))
+    .then(deletedVendor => res.json(deletedVendor))
     .catch(err => res.status(400).send(err))
 };
 
