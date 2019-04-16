@@ -75,7 +75,7 @@
                     <tr ng-repeat="special in specials">
                         <td>{{special.title}}</td>
                         <td>{{special.description}}</td>
-                        <td>{{special.expireDate}}</td>
+                        <td>{{special.expireDate | date}}</td>
                         <td id="editButton">
                             <button type="button" id="addButton" class="btn btn-info" data-toggle="modal"
                                 data-target="#exampleModal" data-whatever="@mdo">
