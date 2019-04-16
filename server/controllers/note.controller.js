@@ -1,88 +1,66 @@
 /* Dependencies */
 var Note = require("../models/note.model.js");
 
+/* retrieve all notes */
+exports.list = function(req, res) {
+  res.json(req.notes);
+};
+
 /* Create a Note */
-exports.create = function (req, res) {
+exports.create = function(req, res) {
   var note = new Note(req.body);
 
   /* save to mongoDB */
-  note.save(err => {
-    if (err) {
-      res.status(400).send({
-        Error: {
-          msg: err.message,
-        }
-      });
-    } else {
-      res.json(note);
-    }
-  });
+  note
+    .save()
+    .then(() => res.json(note))
+    .catch(err => res.status(400).send(err));
 };
 
 /* Show the current note */
-exports.read = function (req, res) {
-  res.json(req.note);
+exports.read = function(req, res) {
+  Note.findById(req.params)
+    .then(foundNote => res.json(foundNote))
+    .catch(err => res.status(400).send(err));
 };
 
 /* Update a note */
-exports.update = function (req, res) {
-  Note.findByIdAndUpdate(req.note._id, req.body, (err, updatedNote) => {
-    if (err) res.send(404).send(err);
-    else {
-      //NOTE: currently returns the old document, not the updated one.
-      res.json(updatedNote);
-    }
+exports.update = function(req, res) {
+  Note.findOne(req.params).then(foundNote => {
+    foundNote.type = req.body.type;
+    foundNote.linkedId = req.body.linkedId;
+    foundNote.title = req.body.title;
+    foundNote.text = req.body.text;
+    foundNote
+      .save()
+      .then(updatedNote => res.json(updatedNote))
+      .catch(err => res.status(400).send(err));
   });
 };
 
 /* Delete a note */
-exports.delete = function (req, res) {
-  Note.findByIdAndRemove(req.note._id, (err, deletedNote) => {
-    // console.log(deletedNote);
-    if (!deletedNote) res.status(404).send("Note does not exist.");
-    else res.send(deletedNote);
-  });
+exports.delete = function(req, res) {
+  Note.findByIdAndRemove(req.params)
+    .then(deletedNote => res.json(deletedNote))
+    .catch(err => res.status(400).send(err));
 };
 
-/* retrieve all notes */
-exports.list = function (req, res) {
-    res.json(req.note);
-};
-
-/* 
-  Middleware: find a note by ID, then pass it to the next request handler. 
+/**
+ * Middlware
  */
-exports.noteByID = function (req, res, next) {
-  note_id = req.params.note_id;
-  Note.findById(note_id).exec((err, note) => {
-    if (err) res.status(404).send(err);
-    else {
-      req.note = note;
-      next();
-    }
-  });
-};
 
-exports.noteByLinkedID = function (req, res, next) {
+/* find all notes with a matching 'linkedId' */
+exports.noteByLinkedId = function(req, res, next) {
   linkedId = req.query.linkedId;
   if (linkedId) {
-    console.log(req.query.linkedId);
-    Note.find({
-      linkedId: linkedId
-    }).exec((err, note) => {
-      if (err) res.status(404).send(err);
-      else {
-        req.note = note;
-        next();
-      }
-    });
+    Note.find({ linkedId: linkedId })
+      .then(notes => (req.notes = notes))
+      .catch(err => res.status(400).send(err))
+      .then(() => next());
   } else {
-    Note.find({}).exec((err, note) => {
-      if (err) res.status(404).send(err);
-      else {
-        req.note = note;
-        next();
-      }
-    })
+    Note.find({})
+      .then(notes => (req.notes = notes))
+      .catch(err => res.status(400).send(err))
+      .then(() => next());
   }
 };
