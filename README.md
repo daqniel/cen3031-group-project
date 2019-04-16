@@ -1,6 +1,4 @@
 # cen3031-group-project
-## Notes
-Request/Recommendation schema/API's are a mess right now. Waiting on more info from client. Other API's should be pretty much functional, may need some additional functionality added later. Code could probably be cleaned up a bit too but not too important right now.
 
 ## API
 ### Notes
