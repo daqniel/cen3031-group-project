@@ -2,15 +2,23 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
-
+var partyMemberSchema = new Schema({
+    name: {
+        type: String,
+    },
+    birthDate: {
+        type: Date
+    }
+});
 var requestSchema = new Schema({
-    clientID : {
+    clientId : {
         type: String,
         required: true
     }, //will use key value associated with User, namely User.email
     requestState: {
         type: String,
         enum: ['Declined', 'Pending', 'Accepted', 'Resolved'],
+        default: 'Pending',
         required: true
     }, //Shows state of request, can be one of the following: Declined, Pending, or Accepted
     budget: {
@@ -26,20 +34,15 @@ var requestSchema = new Schema({
         returning: Date
     },
     //Names and birthdays of each person traveling. At least one traveler is required
-    traveler1: {name: String, birthDate: Date, required: true},
-    traveler2: {name: String, birthDate: Date},
-    traveler3: {name: String, birthDate: Date},
-    traveler4: {name: String, birthDate: Date},
-    traveler5: {name: String, birthDate: Date},
-    traveler6: {name: String, birthDate: Date},
-    traveler7: {name: String, birthDate: Date},
-    traveler8: {name: String, birthDate: Date},
     party: {
-        children: Number,
-        adults: Number
+        type: [partyMemberSchema],
+        default: undefined,
+        required: true
     },
+
     wantTravelInsurance: Boolean,
     wantCruise: Boolean,
+
     //text field is for other travel notes
     text: String,
     createdDate: Date,

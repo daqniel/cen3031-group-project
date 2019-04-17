@@ -14,31 +14,47 @@ angular.module("requests").controller("RequestsController", [
     $scope.detailedInfo = undefined;
 
     $scope.addRequest = function(
-      email,
-      budgetMin,
-      budgetMax,
-      numChildren,
-      numAdults,
-      text
+      newClientId,
+      newRequestState,
+      newBudgetMin,
+      newBudgetMax,
+      newLocationTo,
+      newLocationFrom,
+      newTravelDatesDeparting,
+      newTravelDatesReturning,
+      newParty,
+      newWantTravelInsurance,
+      newWantCruise,
+      newText
     ) {
-      Requests.create(
-        email,
-        budgetMin,
-        budgetMax,
-        numChildren,
-        numAdults,
-        text
-      ).then(
-        function(response) {
-          if (response.status == 200) {
-            alert("request created successfully");
-            window.location.href = "../../user-recommendations.html";
-          }
+      var newRequest = {
+        clientId: newClientId,
+        requestState: newRequestState,
+        budget: {
+          min: newBudgetMin,
+          max: newBudgetMax
         },
-        function(error) {
-          console.log("Unable to retrieve requests:", error);
-        }
-      );
+        location: {
+          to: newLocationTo,
+          from: newLocationFrom
+        },
+        travelDates: {
+          departing: newTravelDatesDeparting,
+          returning: newTravelDatesReturning
+        },
+        party: newParty,
+        wantTravelInsurance: newWantTravelInsurance,
+        wantCruise: newWantCruise,
+        text: newText
+      };
+
+      Requests.create(newRequest)
+        .then(res => {
+          if(res.status == 200) alert("Request successfully made!");
+        })
+        .catch(err => {
+          alert(err.data.code, "Request couldn't be made")
+        })
     };
 
     $scope.deleteRequest = function(id) {
