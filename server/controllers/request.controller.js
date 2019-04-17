@@ -1,93 +1,59 @@
 /*Dependencies*/
-var mongoose = require('mongoose'),
-    Request = require('../models/request.model.js');
+var mongoose = require("mongoose"),
+  Request = require("../models/request.model.js");
 
 /*Retrieve all Requests*/
 exports.list = function(req, res) {
-    /* Your code here */
-    Request.find({}, function(err, requests){
-        if (err) res.status(404).send(err);
-        res.json(requests);
-    });
+  res.json(req.requests);
 };
 
 /*Create a Request*/
-exports.create = function(req, res){
-var request = new Request(
-    {
-      clientID: req.query.email,
-      requestState: req.query.state, // manual for now, should be automatic
-      budget: {
-          min: req.query.budgetMin,
-          max: req.query.budgetMax
-      },
-      party: {
-          children: req.query.numChildren,
-          adults: req.query.numAdults
-      },
-      text: req.query.text
-    }
-  );
-    /*Saves Request to database*/
-    request.save(err => {
-        if(err){
-            res.status(400).send(err);
-        }else{
-            res.json(request);
-        }
-    });
+exports.create = function(req, res) {
+  var request = new Request(req.body);
+  /*Saves Request to database*/
+  request.save()
+    .then(() => res.json(request))
+    .catch(err => res.status(400).send(err));
 };
 
 /*Show current Requests*/
-exports.read = function(req, res){
-    res.json(req.request);
+exports.read = function(req, res) {
+  Request.findById(req.params)
+    .then(foundReq => res.json(foundReq))
+    .catch(err => res.status(400).send(err));
 };
 
 /*Update Request*/
-exports.update = function(req, res){
-    /*Finds and updates Request based on passed parameter*/
-    Request.findOneAndUpdate({_id: req.params.requestID}, req.body, function(err, updatedRequest){
-        if(err){
-            res.send(404).send(err);
-        }else{
-            res.json(updatedRequest);
-        }
-    });
-};
-
-/*Delete Request*/
-exports.delete = function(req, res){
- Request.findOneAndRemove(req.params.requestID, (err, deletedSpecial) => {
-     if(err) {
-         res.status(404).send(err);
-     }
-     else {
-         res.json(deletedSpecial);
-     }
+exports.update = function(req, res) {
+  /*Finds and updates Request based on passed parameter*/
+  Request.findOne(req.params).then(foundReq => {
+    foundReq.set(req.body);
+    foundReq
+      .save()
+      .then(updatedRequest => res.json(updatedRequest))
+      .catch(err => res.status(400).send(err));
   });
 };
 
-
-/*Middleware: Find Request by RequestID*/
-exports.findRequestByID = function(req, res, next) {
-    Request.findById(req.params.requestID).exec(function(err, request) {
-        if(err) {
-            res.status(400).send(err);
-        } else {
-            req.request = request;
-            next();
-        }
-    });
+/*Delete Request*/
+exports.delete = function(req, res) {
+  Request.findByIdAndRemove(req.params)
+    .then(deletedRequest => res.json(deletedRequest))
+    .catch(err => res.status(400).send(err));
 };
 
 /*Middleware: Find Request by client Email*/
 exports.findRequestsByClient = function(req, res, next) {
-    Request.find({clientID: req.query.clientID}).exec(function(err, request) {
-        if(err) {
-            res.status(400).send(err);
-        } else {
-            req.request = request;
-            next();
-        }
-    });
+  var clientId = req.query.clientId;
+  if (clientId) {
+    Request.find({ clientId: clientId })
+      .then(requests => (req.requests = requests))
+      .catch(err => res.status(400).send(err))
+      .then(() => next());
+  } else {
+    Request.find({})
+      .then(requests => (req.requests = requests))
+      .catch(err => res.status(400).send(err))
+      .then(() => next());
+  }
 };
