@@ -39,6 +39,7 @@ var requestSchema = new Schema({
         adults: Number
     },
     wantTravelInsurance: Boolean,
+    wantCruise: Boolean,
     //text field is for other travel notes
     text: String,
     createdDate: Date,
