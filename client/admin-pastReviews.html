@@ -8,6 +8,7 @@
     <!-- Links: API's, CSS, and FontAwesome -->
     <link href="https://fonts.googleapis.com/css?family=Boogaloo|Laila" rel="stylesheet">
     <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/admin-pastReviews.css">
     <link rel="stylesheet" href="style/AdminSettings.css">
     <link rel="stylesheet" href="style/user-recommendations.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -153,7 +154,7 @@
                     <div class="col-sm">                      
                         <div class="card">
                             <div class="card-header bg-dark">
-                                Blog Posts
+                              <span class="titleofBlog">Past Reviews Post</span>
                             </div>
                             <div class="card-body">
                                 <form> 
@@ -163,10 +164,10 @@
                                             <input type="text" class="form-control" id="TitleBlog" placeholder="Title" ng-model="newBlogPost.title" >
                                         </div>
                                     </div>
-                                    <div class="row">
+                                    <div class="row pt-3 pb-4">
                                         <div class="col">
                                             <label for="comment">Post:</label>
-                                            <input type="text" class="form-control" rows="10" id="comment" ng-model="newBlogPost.text">
+                                            <textarea type="text" class="form-control" rows="10" id="comment" ng-model="newBlogPost.text"></textarea>
                                         </div>
                                     </div>
                                     <div class="">
