@@ -1,103 +1,84 @@
 /* Dependencies */
-var mongoose = require('mongoose'),
-  User = require('../models/user.model.js');
+var User = require("../models/user.model.js");
 
-/* Create a User */
-exports.create = function (req, res) {
-  var user = new User(
-    {
-      name: {
-        first: req.query.fname,
-        middle: req.query.mname,
-        last: req.query.lname
-      },
-      email: req.query.email,
-      password: req.query.password,
-      phoneNumber: req.query.phoneNumber,
-      isAdmin: req.query.isAdmin
-    }
-  );
+/* retrieve all users */
+exports.list = function(req, res) {
+  User.find({})
+    .then(users => res.json(users))
+    .catch(err => res.status(400).send(err));
+};
 
-  /* save to mongoDB */
-  user.save(err => {
-    if (err) {
-      res.status(400).send(err);
-    } else {
-      res.json(user);
-    }
+/* Create a user */
+exports.create = function(req, res) {
+  var user = new User(req.body);
+  /* Always false on user creation, can be set true by another admin */
+  user.isAdmin = false;
+
+  /* hash password and save to database */
+  User.hashPassword(user.password, hashed => {
+    user.password = hashed;
+    user
+      .save()
+      .then(newUser => res.json(newUser))
+      .catch(err => res.status(400).send(err));
   });
 };
 
-/* Show the current user */
-exports.read = function (req, res) {
-  req.body = req.user;
-  res.json(req.user);
+/* Read a user */
+exports.read = function(req, res) {
+  User.findOne(req.params)
+    .then(foundUser => res.json(foundUser))
+    .catch(err => res.status(400).send(err));
 };
-
-exports.readWithPassword = function (req, res) {
-
-  if (req.params.password != undefined && req.user != undefined) {
-    if (req.params.password != req.user.password) {
-      res.status(404).json({"err": "Could not read, password mismatch."})
-    } else {
-      res.json(req.user);
-    }
-  }
-  else if(!req.user){
-    res.status(404).json({"err": `User '${req.params.email}' not found`})
-  }
-  else {
-    res.status(404).json({"err": "No password provided"})
-  }
-}
 
 /* Update a user */
-exports.update = function (req, res) {
-  User.findOneAndUpdate(req.params, req.body, (err, updatedUser) => {
-    if (err) res.status(404).send(err);
-    else {
-      res.json(updatedUser);
-    }
-  });
+exports.update = function(req, res) {
+  User.findOne(req.params)
+    .then(foundUser => {
+      foundUser.email = req.body.email;
+      foundUser.phoneNumber = req.body.phoneNumber;
+      foundUser.name = req.body.name;
+      /* if password is changed, re-hash */
+      if (foundUser.password != req.body.password) {
+        User.hashPassword(req.body.password, hashed => {
+          foundUser.password = hashed;
+          foundUser
+            .save()
+            .then(updatedUser => res.json(updatedUser))
+            .catch(err => res.status(400).send(err));
+        });
+      } else {
+        foundUser
+          .save()
+          .then(updatedUser => res.json(updatedUser))
+          .catch(err => res.status(400).send(err));
+      }
+    })
+    .catch(err => res.status(400).send(err));
 };
 
 /* Delete a user */
-exports.delete = function (req, res) {
-  User.findOneAndRemove(req.params, (err, deletedUser) => {
-    console.log(deletedUser);
-    //NOTE: There maybe a more correct way to do this
-    if (!deletedUser) res.status(404).send("User does not exist.");
-    else res.send(deletedUser);
-  });
+exports.delete = function(req, res) {
+  User.findOneAndRemove(req.params)
+    .then(deletedUser => res.json(deletedUser))
+    .catch(err => res.status(400).send(err));
 };
 
-
-/* retrieve all users */
-exports.list = function (req, res) {
-  User.find({}, (err, users) => {
-    if (err) res.status(404).send(err);
-    res.json(users);
-    console.log('all users retrieved.');
-  });
+/* post authentication, send user object in response */
+exports.postAuth = function(req, res) {
+  res.json(req.user);
 };
 
-/* 
-  Middleware: find a user by their email, then pass it to the next request handler. 
+/* destroy session */
+exports.logout = function(req, res) {
+  req.session
+    .destroy()
+    .then(() => res.send("Logged Out!"))
+    .catch(err => res.status(400).send(err));
+};
+
+/**
+ * Middleware
  */
-exports.userByEmail = function (req, res, next, email) {
-  User.findOne({
-    email: req.params.email
-  }).exec((err, user) => {
-    if (err) {
-      res.status(404).send(err);
-      console.log("is this running?");
-    } else {
-      req.user = user;
-      next();
-    }
-  });
-};
 
-exports.validatePassword = function (req, res, next, email) {
-  User.findOne()
-};
+//TODO: Restrict Read/Update/Delete by email to admin.

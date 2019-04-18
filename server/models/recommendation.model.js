@@ -7,9 +7,9 @@ var recommendationSchema = new Schema({
     client: {
         type: String, 
         required: true
-    }, //will use key value associated with User, namely User.email
-    price: Number, //price for travel found by agent
-    startDate: Date, //departure date
+    }, // will use key value associated with User, namely User.email
+    price: Number, // price for travel found by agent
+    startDate: Date, // departure date
     endDate: Date,
     text: String,
 

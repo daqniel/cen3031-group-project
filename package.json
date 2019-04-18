@@ -8,9 +8,11 @@
   "dependencies": {
     "bcrypt": "^3.0.5",
     "bcryptjs": "^2.4.3",
+
     "body-parser": "^1.18.3",
     "cookie-parser": "*",
     "express": "^4.16.4",
+    "express-session": "*",
     "mocha": "^5.2.0",
     "mongoose": "^5.4.22",
     "morgan": "^1.9.1",
@@ -21,8 +23,9 @@
   },
   "devDependencies": {
     "nodemon": "^1.18.10",
-    "should": "^7.1.1",
-    "supertest": "^3.4.2"
+    "should": "*",
+    "supertest": "^3.4.2",
+    "mocha": "*"
   },
   "scripts": {
     "start": "node server.js",

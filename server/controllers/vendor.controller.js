@@ -2,66 +2,50 @@
 var Vendor = require("../models/vendor.model.js");
 
 /* Create a Vendor */
-exports.create = function (req, res) {
+exports.create = function(req, res) {
   var vendor = new Vendor(req.body);
 
   /* save to mongoDB */
-  vendor.save(err => {
-    if (err) {
-      res.status(400).send({
-        Error: {
-          msg: err.message,
-        }
-      });
-    } else {
-      res.json(vendor);
-    }
-  });
+  vendor
+    .save()
+    .then(newVendor => res.json(newVendor))
+    .catch(err => res.status(400).send(err));
 };
 
 /* Show the current vendor */
-exports.read = function (req, res) {
-  res.json(req.vendor);
+exports.read = function(req, res) {
+  Vendor.findById(req.params)
+    .then(foundVender => res.json(foundVender))
+    .catch(err => res.status(400).send(err));
 };
 
 /* Update a vendor */
-exports.update = function (req, res) {
-  Vendor.findByIdAndUpdate(req.vendor._id, req.body, {runValidators: true} ,(err, updatedVendor) => {
-    if (err) res.status(404).send(err);
-    else {
-      //NOTE: currently returns the old document, not the updated one.
-      res.json(updatedVendor);
-    }
-  });
+exports.update = function(req, res) {
+  Vendor.findById(req.params)
+    .then(foundVendor => {
+      foundVendor.name = req.body.name;
+      foundVendor.text = req.body.text;
+      foundVendor.phoneNumber = req.body.phoneNumber;
+      foundVendor.email = req.body.email;
+      foundVendor.link = req.body.link;
+      foundVendor
+        .save()
+        .then(updatedVendor => res.json(updatedVendor))
+        .catch(err => res.status(400).send(err));
+    })
+    .catch(err => res.status(400).send(err));
 };
 
 /* Delete a vendor */
-exports.delete = function (req, res) {
-  Vendor.findByIdAndRemove(req.vendor._id, (err, deletedVendor) => {
-    // console.log(deletedVendor);
-    if (!deletedVendor) res.status(404).send("Vendor does not exist.");
-    else res.send(deletedVendor);
-  });
+exports.delete = function(req, res) {
+  Vendor.findByIdAndRemove(req.params)
+    .then(deletedVendor => res.json(deletedVendor))
+    .catch(err => res.status(400).send(err))
 };
 
 /* retrieve all vendors */
-exports.list = function (req, res) {
-  Vendor.find({}, (err, vendor) => {
-    if (err) res.status(404).send(err);
-    res.json(vendor);
-  });
-};
-
-/* 
-  Middleware: find a vendor by ID, then pass it to the next request handler. 
- */
-exports.vendorByID = function (req, res, next) {
-  vendor_id = req.params.vendor_id;
-  Vendor.findById(vendor_id).exec((err, vendor) => {
-    if (err) res.status(404).send(err);
-    else {
-      req.vendor = vendor;
-      next();
-    }
-  });
+exports.list = function(req, res) {
+  Vendor.find({})
+    .then(foundVendors => res.json(foundVendors))
+    .catch(err => res.status(400).send(err));
 };

@@ -2,28 +2,48 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
-
+var partyMemberSchema = new Schema({
+    name: {
+        type: String,
+    },
+    birthDate: {
+        type: Date
+    }
+});
 var requestSchema = new Schema({
-    clientID : {
+    clientId : {
         type: String,
         required: true
     }, //will use key value associated with User, namely User.email
     requestState: {
         type: String,
         enum: ['Declined', 'Pending', 'Accepted', 'Resolved'],
+        default: 'Pending',
         required: true
     }, //Shows state of request, can be one of the following: Declined, Pending, or Accepted
     budget: {
-        // NOTE: Ask client if we should require budget information or not
         min: Number,
         max: Number
     },
-    party: {
-        children: Number,
-        adults: Number
+    location: {
+        from: String,
+        to: String
     },
-    // Depending on what kind of info the client wants, we could add date ranges, or desired length of trip in days
-    // for now that info could just be in the text field.
+    travelDates: {
+        departing: Date,
+        returning: Date
+    },
+    //Names and birthdays of each person traveling. At least one traveler is required
+    party: {
+        type: [partyMemberSchema],
+        default: undefined,
+        required: true
+    },
+
+    wantTravelInsurance: Boolean,
+    wantCruise: Boolean,
+
+    //text field is for other travel notes
     text: String,
     createdDate: Date,
     updatedDate: Date
@@ -34,6 +54,10 @@ requestSchema.pre('save', function(next) {
     if(this.party.children < 0) this.party.children = 0;
     if(this.party.adults < 0) this.party.adults = 0;
     this.party.size = this.party.children + this.party.adults;
+
+    if(this.budget.min < 0) this.budget.min = 0;
+    if(this.budget.max < 0) this.budget.max = 0;
+
     this.updatedDate = new Date;
     if(!this.createdDate)
     {
@@ -45,5 +69,5 @@ requestSchema.pre('save', function(next) {
 /* Use schema to instantiate a Mongoose model */
 var Request = mongoose.model('Request', requestSchema);
 
-/* Export the model to make it avaiable to other parts of your Node application */
+/* Export the model to make it available to other parts of your Node application */
 module.exports = Request;
