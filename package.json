@@ -6,15 +6,16 @@
   "author": "Daniel Chalco, Jack Fining, Daniel Garzon, Daniel Quintero, Sarah Walker",
   "license": "MIT",
   "dependencies": {
-    "bcrypt": "^3.0.5",
-    "bcryptjs": "^2.4.3",
+    "bcryptjs": "*",
+    "bluebird": "*",
 
     "body-parser": "^1.18.3",
     "cookie-parser": "*",
     "express": "^4.16.4",
-    "express-session": "*",
+    "express-session": "^1.16.1",
     "mocha": "^5.2.0",
-    "mongoose": "^5.4.22",
+    "mongoose": "^5.5.2",
+
     "morgan": "^1.9.1",
     "passport": "*",
     "passport-http": "*",

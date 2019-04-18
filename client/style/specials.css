@@ -7,8 +7,8 @@
 {
     height: 75%;
     background-color:white;
-    overflow: hidden;
     overflow-y: scroll;
+    max-height: 500px;
 }
 
 .bookNowButton
