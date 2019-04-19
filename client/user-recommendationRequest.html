@@ -75,25 +75,58 @@
                     placeholder="Please type contact email here...">
                 </div>
             </div>
-
             <div class="form-row pb-5">
                 <div class="col-sm-3">
-                    <label for="">Budget</label>
+                    <label for="">Departing From</label>
                     <div class="">
-                        <input type="number" class="form-control" placeholder="Min" ng-model="budgetMin">
-                    </div>
-                </div>
-                <div class="col-sm-3 ">
-                    <div class="">
-                        <label for="">` </label>
-                        <input type="number" class="form-control" placeholder="Max" ng-model="budgetMax">
+                        <input type="text" class="form-control" placeholder="i.e. Gainesville, FL" ng-model="locationFrom">
                     </div>
                 </div>
                 <div class="col-sm-3">
+                    <label for="">Traveling To</label>
+                    <div class="">
+                        <input type="text" class="form-control" placeholder="i.e. New York, NY" ng-model="locationTo">
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <label for="">Departure Date</label>
+                    <div class="">
+                        <input type="date" class="form-control" ng-model="travelDatesDeparting">
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <label for="">Return Date</label>
+                    <div class="">
+                        <input type="date" class="form-control" ng-model="travelDatesReturning">
+                    </div>
+                </div>
+            </div>
+            <div class="form-row pb-5">
+                <div class="col-sm-2">
+                    <label for="">Need Travel Insurance?</label>
+                    <input type="checkbox" class="form-control" checked ng-model="wantTravelInsurance">
+                </div>
+                <div class="col-sm-2">
+                    <label for="">Traveling on a Cruise?</label>
+                    <input type="checkbox" class="form-control" checked ng-model="wantCruise">
+                </div>
+                <div class="col-sm-2">
+                    <label for="">Budget</label>
+                    <div class="">
+                        <input type="number" class="form-control" placeholder="Minimum" ng-model="budgetMin">
+                    </div>
+                </div>
+                <div class="col-sm-2 ">
+                    <div class="">
+                        <label for="">` </label>
+                        <input type="number" class="form-control" placeholder="Maximum" ng-model="budgetMax">
+                    </div>
+                </div>
+                <div class="col-sm-2">
                     <label for="">Number of Adults</label>
                     <input type="number" class="form-control" placeholder="# of Adults" ng-model="numAdults">
                 </div>
-                <div class="col-sm-3">
+                <div class="col-sm-2">
                     <label for="">Number of Children</label>
                     <input type="number" class="form-control" placeholder="# of Children" ng-model="numChildren">
                 </div>
@@ -102,12 +135,11 @@
                 <div class="col-sm-12">
                     <label for="">Description of your perfect vacation</label>
                     <textarea class="form-control" name="" id="" cols="30" rows="5"
-                        placeholder="Where will your adventure begin..." ng-model="text"></textarea>
+                              placeholder="Where will your adventure begin..." ng-model="text"></textarea>
                 </div>
             </div>
-
             <button type="submit" class="btn btn-success" 
-            ng-click="addRequest(email, budgetMin, budgetMax, numChildren, numAdults, text)">Submit</button>
+            ng-click="addRequest(email, locationFrom, locationTo, budgetMin, budgetMax, numChildren, numAdults, text)">Submit</button>
         </form>
     </div>
     <!-- Footer -->
