@@ -2,18 +2,15 @@ angular.module("blogPosts").controller("BlogPostsController", [
   "$scope",
   "BlogPosts",
   function($scope, BlogPosts) {
-    BlogPosts.getAll().then(
-      function(response) {
-        $scope.blogPost1 = response.data[0];
-        $scope.blogPost2 = response.data[1];
-        $scope.blogPost3 = response.data[2];
+    BlogPosts.getAll()
+      .then(res => {
+        $scope.blogPosts = res.data;
+        console.log('resdata', $scope.blogPosts);
+      })
+      .catch(err => {
+        console.log("Unable to get blogPosts:", error);
+      });
 
-        console.log($scope.blogPost1.title);
-      },
-      function(error) {
-        console.log("Unable to retrieve blogPosts:", error);
-      }
-    );
     $scope.detailedInfo = undefined;
 
     $scope.addBlogPost = function(newTitle, newText) {
