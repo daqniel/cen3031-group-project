@@ -2,11 +2,17 @@ angular.module("specials").controller("SpecialsController", [
   "$scope",
   "Specials",
   function($scope, Specials) {
+    Specials.getAll()
+      .then(res => {
+        $scope.specials = res.data;
+      })
+      .catch(err => console.log("Unable to retrieve specials:", err));
+
     /* Get all the listings, then bind it to the scope */
     $scope.get3MostRecent = function() {
       Specials.get3MostRecent()
         .then(res => {
-          console.log('get3specials', res);
+          console.log("get3specials", res);
           $scope.specials = res.data;
           $scope.special1 = res.data[0];
           $scope.special2 = res.data[1];
@@ -15,14 +21,6 @@ angular.module("specials").controller("SpecialsController", [
         .catch(err => {
           console.log("Unable to retrieve specials:", error);
         });
-    };
-
-    $scope.getAll = function() {
-      Specials.getAll()
-        .then(res => {
-          $scope.specials = res.data;
-        })
-        .catch(err => console.log("Unable to retrieve specials:", error));
     };
 
     $scope.addSpecial = function(newTitle, newText, newExpireDate) {
