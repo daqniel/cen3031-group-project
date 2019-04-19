@@ -2,14 +2,14 @@ angular.module("vendors").controller("VendorsController", [
   "$scope",
   "Vendors",
   function($scope, Vendors) {
-    Vendors.getAll().then(
-      function(res) {
+    Vendors.getAll()
+      .then(res => {
+        console.log(res.data);
         $scope.vendors = res.data;
-      },
-      function(error) {
-        console.log("Unable to retrieve vendors:", error);
-      }
-    );
+      })
+      .catch(err => {
+        console.log("unable to retrieve vendors: ", err);
+      });
 
     $scope.detailedInfo = undefined;
 

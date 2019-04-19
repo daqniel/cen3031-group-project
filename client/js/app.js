@@ -8,4 +8,4 @@ angular.module('requests',[]);
 angular.module('vendor',[]);
 
 /* register the application and inject all the necessary dependencies */
-var app = angular.module('agencyApp', ['specials','blogPosts','users','notes','recommendations','requests','vendor']);
+var app = angular.module('agencyApp', ['specials','blogPosts','users','notes','recommendations','requests','vendors']);
