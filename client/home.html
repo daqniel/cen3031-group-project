@@ -97,42 +97,41 @@
     </div>
 
     <!-- Reviews Section -->
-    <nav class="container-fluid recommendations" id="recommendations" ng-controller="BlogPostsController"
-        data-ng-init="getAll()">
+    <nav class="container-fluid recommendations" id="recommendations" ng-controller="BlogPostsController">
         <nav class="container" id="tabs">
             <h1 class="text-center titleFont">Travel Agent Reviews</h1>
             <nav>
                 <div class="nav nav-tabs m-3" id="nav-tab" role="tablist">
                     <a class="nav-item nav-link active titleFont reviewTab" id="nav-home-tab" data-toggle="tab"
                         href="#nav-home" role="tab" aria-controls="nav-home"
-                        aria-selected="true">{{blogPost1.title}}</a>
+                        aria-selected="true">{{blogPosts[0].title}}</a>
                     <a class="nav-item nav-link titleFont reviewTab" id="nav-profile-tab" data-toggle="tab"
                         href="#nav-profile" role="tab" aria-controls="nav-profile"
-                        aria-selected="false">{{blogPost2.title}}</a>
+                        aria-selected="false">{{blogPosts[1].title}}</a>
                     <a class="nav-item nav-link titleFont reviewTab" id="nav-contact-tab" data-toggle="tab"
                         href="#nav-contact" role="tab" aria-controls="nav-contact"
-                        aria-selected="false">{{blogPost3.title}}</a>
+                        aria-selected="false">{{blogPosts[2].title}}</a>
                 </div>
             </nav>
             <div class="tab-content" id="nav-tabContent">
                 <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                     <hr>
                     <p class="textFont">
-                        {{blogPost1.text}}
+                        {{blogPosts[0].text}}
                     </p>
                     <img src="./images/bahamas.jpg" class="mx-auto d-block" alt="">
                 </div>
                 <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
                     <hr>
                     <p class="textFont">
-                        {{blogPost2.text}}
+                        {{blogPosts[1].text}}
                     </p>
                     <img src="./images/keys.jpeg" class="mx-auto d-block" alt="">
                 </div>
                 <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
                     <hr>
                     <p class="textFont">
-                        {{blogPost3.text}}
+                        {{blogPosts[2].text}}
                     </p>
                     <img src="./images/sanfransisco.jpg" class="mx-auto d-block" alt="">
                 </div>
