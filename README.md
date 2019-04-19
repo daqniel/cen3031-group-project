@@ -2,11 +2,41 @@
 ## Notes
 Request/Recommendation schema/API's are a mess right now. Waiting on more info from client. Other API's should be pretty much functional, may need some additional functionality added later. Code could probably be cleaned up a bit too but not too important right now.
 
-## API
-### Notes
+# API
+The API is a way to interact with the documents stored in the database through HTTP requests.
 
-Currently separated into three categories: Client, Vendor, and Request. Each note linked to a Client/Vendor/Request via a 'linkedId' field, which is just the '_id' of what the note is linked to.
-Required fields: type(String), linkedId(String). Other fields:  Title and text fields cannot both be empty.
+## Users
+
+### Description
+Provides users CRUD and login/logout/authentication functionality.
+
+### Schema
+|Field|Type|Required?|Description|
+|-----|----|--------|-|
+|name.first|String|yes|User's first name|
+|name.last|String|yes|User's last name|
+|name.middle|String|no|User's middle name|
+|email|String|yes|User's email, unique in database|
+|password|String|yes|Hashed before storage in database|
+|phoneNumber|String|no|US number format http://regexlib.com/REDetails.aspx?regexp_id=58|
+|isAdmin|Boolean|no|Designates an Administrator account|
+
+### Requests
+
+## Notes
+
+### Description
+Provides notes CRUD functionality. Each note must be linked to a User, Vendor, or Request stored in the database.
+
+### Schema
+|Field|Type|Required?|Description|
+|-----|----|--------|-|
+|type|String|yes|Designates type that note is linked to. Possible values are 'Client', 'Vendor', and 'Request'.|
+|linkedId|String|yes|The _id of document the note is linked to.|
+|title|String|maybe|Title of the note. Required if no text is provided.|
+|text|String|maybe|Text of the note. Required if no title is provided.|
+
+### HTTP Requests
 
 * Get all notes: GET /api/notes
 
@@ -22,7 +52,16 @@ Required fields: type(String), linkedId(String). Other fields:  Title and text f
 
 ### Blogpost
 
+### Description
+
+### Schema
+|Field|Type|Required?|Description|
+|-----|----|--------|-|
+|title|String|yes|Title of the blogpost.|
+|text|String|maybe|Text of the note. Required if no title is provided.|
 Required fields: title(String). Optional fields: text(String). Maybe text should be a required field too? Although she may want to use her blogposts as announcements. Short announcements would only need the title field.
+
+### HTTP Request
 
 * Get all blogposts: GET /api/blogposts
 
