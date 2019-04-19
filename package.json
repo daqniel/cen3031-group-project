@@ -7,25 +7,24 @@
   "license": "MIT",
   "dependencies": {
     "bcryptjs": "*",
+    "bluebird": "*",
     "body-parser": "^1.18.3",
     "cookie-parser": "*",
     "express": "^4.16.4",
     "express-session": "*",
     "mocha": "^5.2.0",
-    "mongoose": "^5.4.20",
+    "mongoose": "^5.5.2",
     "morgan": "^1.9.1",
     "passport": "*",
     "passport-http": "*",
     "passport-local": "*",
-    "request": "^2.67.0",
-    "bluebird": "*"
+    "request": "^2.67.0"
   },
   "devDependencies": {
     "nodemon": "^1.18.10",
-    "should": "^7.1.1",
+    "should": "*",
     "supertest": "^3.4.2",
-    "mocha": "*",
-    "should": "*"
+    "mocha": "*"
   },
   "scripts": {
     "start": "node server.js",
