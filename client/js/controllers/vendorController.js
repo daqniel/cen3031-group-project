@@ -27,9 +27,11 @@ angular.module("vendors").controller("VendorsController", [
         email: newEmail,
         link: newLink
       };
+  
       Vendors.create(newVendor)
         .then(res => {
           //TODO: what should we do when we get a res?
+            window.location = window.location;
           if (res.status == 200)
             console.log("vendor added successfully", res.data);
         })
