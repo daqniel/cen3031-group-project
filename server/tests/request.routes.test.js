@@ -9,14 +9,15 @@ var app, agent;
 var req = { //new Request created to test save, update, and delete calls
     clientID: 'octomom@gmail.com',
     requestState: 'Pending',
-    budget: {
-        min: 0,
-        max: 1000000
-    },
+    budget: {min: 0, max: 1000000},
+    location: {from : 'Gainesville, FL', to: 'New York, NY',},
+    travelDates:{departing: new Date("2019-04-24"), returning: new Date("2019-04-30")},
     party: {
-        children: 8,
-        adults: 2,
-    },
+        0: {name: 'Jack', birthDate: new Date("1998-09-11")},
+        1: {name: 'Samantha', birthDate: new Date("1997-10-17")},
+        2: {name: 'Brittany', birthDate: new Date("1990-12-26")}},
+    wantTravelInsurance: false,
+    wantCruise: true,
     text: 'I have eight rambunctious kids. Take me somewhere were they won\'t annoy me.'
 };
 
@@ -43,8 +44,11 @@ describe('Tests for Request API call', function() {
                 res.body.requestState.should.equal('Pending');
                 res.body.budget.min.should.equal(0);
                 res.body.budget.max.should.equal(1000000);
-                res.body.party.children.should.equal(8);
-                res.body.party.adults.should.equal(2);
+                res.body.location.from.should.equal('Gainesville, FL');
+                res.body.location.to.should.equal('New York, NY');
+                res.body.party[0].name.should.equal('Jack');
+                res.body.party[1].name.should.equal('Samantha');
+                res.body.party[2].name.should.equal('Brittany');
                 res.body.text.should.equal('I have eight rambunctious kids. Take me somewhere were they won\'t annoy me.');
                 id = res.body._id;
                 done();
@@ -61,8 +65,11 @@ describe('Tests for Request API call', function() {
                 res.body.requestState.should.equal('Pending');
                 res.body.budget.min.should.equal(0);
                 res.body.budget.max.should.equal(1000000);
-                res.body.party.children.should.equal(8);
-                res.body.party.adults.should.equal(2);
+                res.body.location.from.should.equal('Gainesville, FL');
+                res.body.location.to.should.equal('New York, NY');
+                res.body.party[0].name.should.equal('Jack');
+                res.body.party[1].name.should.equal('Samantha');
+                res.body.party[2].name.should.equal('Brittany');
                 res.body.text.should.equal('I have eight rambunctious kids. Take me somewhere were they won\'t annoy me.');
                 res.body._id.should.equal(id);
                 done();
@@ -83,14 +90,15 @@ describe('Tests for Request API call', function() {
         var reqUpdate = {
             clientID: 'octomom@gmail.com',
             requestState: 'Declined',
-            budget: {
-                min: 0,
-                max: 1000000
-            },
+            budget: {min: 0, max: 1000000},
+            location: {from : 'Gainesville, FL', to: 'New York, NY',},
+            travelDates:{departing: new Date("2019-04-24"), returning: new Date("2019-04-30")},
             party: {
-                children: 8,
-                adults: 2,
-            },
+                0: {name: 'Jake', birthDate: new Date("1998-09-11")},
+                1: {name: 'Sam', birthDate: new Date("1997-10-17")},
+                2: {name: 'Britt', birthDate: new Date("1990-12-26")}},
+            wantTravelInsurance: false,
+            wantCruise: true,
             text: 'I have eight rambunctious kids. Take me somewhere were they won\'t annoy me.'
         };
         agent.put('/api/requests/' + id)
@@ -107,8 +115,11 @@ describe('Tests for Request API call', function() {
                         res.body.requestState.should.equal('Declined');
                         res.body.budget.min.should.equal(0);
                         res.body.budget.max.should.equal(1000000);
-                        res.body.party.children.should.equal(8);
-                        res.body.party.adults.should.equal(2);
+                        res.body.location.from.should.equal('Gainesville, FL');
+                        res.body.location.to.should.equal('New York, NY');
+                        res.body.party[0].name.should.equal('Jake');
+                        res.body.party[1].name.should.equal('Sam');
+                        res.body.party[2].name.should.equal('Britt');
                         res.body.text.should.equal('I have eight rambunctious kids. Take me somewhere were they won\'t annoy me.');
                         res.body._id.should.equal(id);
                         done();
