@@ -14,30 +14,26 @@ exports.create = function(req, res) {
   /*Saves Request to database*/
   recommendation
     .save()
-    .then(newRecommendation => res.json(newRecommendation))
+    .then(() => res.json(recommendation))
     .catch(err => res.status(400).send(err));
 };
 
 /*Show current Recommendation*/
 exports.read = function(req, res) {
-  res.json(req.recommendation);
+  Recommendation.findById(req.params)
+    .then(foundRec => res.json(foundRec))
+    .catch(err => res.status(400).send(err));
 };
 
 /*Update Recommendation*/
 exports.update = function(req, res) {
-  Recommendation.findById(req.params)
-    .then(foundRec => {
-      foundRec.client = req.body.client;
-      foundRec.price = req.body.price;
-      foundRec.startDate = req.body.startDate;
-      foundRec.endDate = req.body.endDate;
-      foundRec.text = req.body.text;
-      foundRec
-        .save()
-        .then(updatedRec => res.json(updatedRec))
-        .catch(err => res.status(400).send(err));
-    })
-    .catch(err => res.status(400).send(err));
+  Recommendation.findOne(req.params).then(foundRec => {
+    foundRec.set(req.body);
+    foundRec
+      .save()
+      .then(updatedRec => res.json(updatedRec))
+      .catch(err => res.status(400).send(err));
+  });
 };
 
 /* Delete a recommendation*/
@@ -49,15 +45,16 @@ exports.delete = function(req, res) {
 
 /*Middleware: Find Recommendation by User's Email*/
 exports.findRecommendationsByClient = function(req, res, next) {
-  var query;
-  if (req.query.client) {
-    query = Recommendation.find({ client: req.query.client });
+  var clientId = req.query.clientId;
+  if(clientId) {
+    Recommendation.find({clientId: clientId})
+      .then(recs => (req.recommendations = recs))
+      .catch(err => res.status(400).send(err))
+      .then(() => next());
   } else {
-    query = Recommendation.find({});
+    Recommendation.find({})
+      .then(recommendations => (req.recommendations = recommendations))
+      .catch(err => res.status(400).send(err))
+      .then(() => next());
   }
-
-  query
-    .then(foundRecommendations => (req.recommendations = foundRecommendations))
-    .catch(err => res.status(400).send(err))
-    .then(() => next());
 };

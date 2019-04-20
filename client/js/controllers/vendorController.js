@@ -36,6 +36,7 @@ angular.module("vendors").controller("VendorsController", [
             console.log("vendor added successfully", res.data);
         })
         .catch(err => console.log("Error creating vendor: ", err));
+
     };
 
     $scope.deleteVendor = function(id) {
