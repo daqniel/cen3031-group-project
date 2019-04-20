@@ -19,9 +19,10 @@
 </head>
 
 <body ng-app="agencyApp">
-    <!-- Nav bar -->
-    <nav id="mainNavbar" class="navbar navbar-expand-md navbar-light fixed-top">
-        <a class="navbar-brand title" href="./index.html" style="color: #9C28FF">Bochitto Travel</a>
+    <!-- NAVBAR -->
+    <nav id="mainNavbar" class="navbar navbar-expand-md navbar-light fixed-top" ng-controller="UsersController"
+        data-ng-init="showName()">
+        <a class="navbar-brand title" href="./home.html" style="color: #9C28FF">Bochitto Travel</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -30,10 +31,11 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto nav-fill w-100">
                 <li class="icon nav-item active">
-                    <a class="nav-link " href="./specials.html">Specials<span class="sr-only">(current)</span></a>
+                    <a class="nav-link " href="./specials-home.html">Specials<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="icon nav-item active">
-                    <a class="nav-link" href="./PastReview.html">Past Reviews<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="./pastreview-home.html">Past Reviews<span
+                            class="sr-only">(current)</span></a>
                 </li>
                 <li class="icon nav-item active">
                     <a class="nav-link" href="#aboutUsContainer">About Us<span class="sr-only">(current)</span></a>
@@ -46,13 +48,13 @@
             <div class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false" style="color:black!important;">
-                    Welcome, Jon Doe
+                    Welcome, {{ sessionUsername }}
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Profile</a>
-                    <a class="dropdown-item" href="./recommendations.html">MyRecommendations</a>
+                    <a class="dropdown-item" href="./user-settings.html">Profile</a>
+                    <a class="dropdown-item" href="./user-recommendations.html">MyRecommendations</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Logout</a>
+                    <a class="dropdown-item" href="./index.html">Logout</a>
                 </div>
             </div>
         </div>
@@ -154,7 +156,7 @@
                         <!-- Modal footer -->
                         <div class="modal-footer">
                             <button type="button" class="btn btn-danger login mr-auto" data-dismiss="modal" data-toggle="modal" data-target="#loginModal" ng-click="deleteSpecial(detailedInfo._id)">Delete</button>
-                            <button type="button" class="btn btn-danger" data-dismiss="modal" >Edit</button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal" data-toggle="modal" data-target="#EditModal" >Edit</button>
                         </div>
                 
                         </div>
@@ -234,7 +236,7 @@
                         <!-- Modal footer -->
                         <div class="modal-footer">
                             <button type="button" class="btn btn-danger login mr-auto" data-dismiss="modal" data-toggle="modal" data-target="#loginModal">Delete</button>
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Edit</button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal"  data-toggle="modal" data-target="#EditVendorModal">Edit</button>
                         </div>
                 
                         </div>
@@ -296,7 +298,59 @@
             </div>
         </div>
     </div>  
-            
+
+    <!--Edit Vendor Modal -->
+    <div class="modal fade" id="EditVendorModal" ng-controller="VendorsController">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+    
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Edit Vendor</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+    
+            <!-- Modal body -->
+            <div class="modal-body" >
+                <form>
+                    <div class="container"> 
+                        <div class="row py-1">
+                            <label class="col-4" >Vendor Name:  </label>
+                            <input class="col" type="text" name="" ng-model="">
+                        </div>
+                            
+                        <div class="row py-1">
+                            <label class="col-4" >Phone Number:</label>
+                            <input class="col" type="text" name="" ng-model="">
+                        </div>
+                        <div class="row py-1">
+                            <label class="col-4">Email:</label>
+                            <input class="col" type="text" name="" ng-model="">
+                        </div>
+                        <div class="row py-1">
+                            <label class="col-4">Website:</label>
+                            <input class="col" type="text" name="" ng-model="">
+                        </div>  	
+                        <div class="row py-1">
+                            <label class="col-4" >Description:</label>
+                        </div>
+                        <div class="row pl-3">
+                            <textarea rows="3" cols="80" type="text" ></textarea>
+                        </div>
+                        
+                    </div>
+                </form>
+            </div>
+    
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click ="">Submit</button>
+            </div>
+    
+            </div>
+        </div>
+    </div>  
+        
     
 
     <!--Add Special Modal -->
@@ -493,6 +547,10 @@
     <script src="js/controllers/specialController.js"></script>
     <script src="js/factories/vendorFactory.js"></script>
     <script src="js/controllers/vendorController.js"></script>
+    <script src="js/factories/userFactory.js"></script>
+    <script src="js/controllers/userController.js"></script>
+    <script src="js/factories/requestFactory.js"></script>
+    <script src="js/controllers/requestController.js"></script>
 </body>
 
 </html>
