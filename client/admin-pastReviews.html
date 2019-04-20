@@ -84,7 +84,8 @@
             </div>
 
             <!-- Past Reviews Manager --> 
-            <div class="col-sm-9" ng-controller="BlogPostsController">
+            <div class="col-sm-9" ng-controller="BlogPostsController" data-ng-init="getAll()">
+
                 <table class="table table-striped table-hover" id="SpecialTable"  >
                     <thead class="thead-dark">
                         <th colspan="3">Past Reviews</th>
