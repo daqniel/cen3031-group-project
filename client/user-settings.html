@@ -16,8 +16,7 @@
     <title>Profile Settings</title>
 </head>
 
-<body ng-app="agencyApp" ng-controller="UsersController"
-data-ng-init="showName()">
+<body ng-app="agencyApp" ng-controller="UsersController" data-ng-init="getSession()">
 
     <!-- NAVBAR -->
     <nav id="mainNavbar" class="navbar navbar-expand-md navbar-light fixed-top" >
@@ -47,7 +46,7 @@ data-ng-init="showName()">
             <div class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false" style="color:black!important;">
-                    Welcome, {{sessionUsername}}
+                    Welcome, {{currentUser.email}}
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="./user-settings.html">Profile</a>
@@ -77,11 +76,11 @@ data-ng-init="showName()">
             </div>
             <div class="col-md-9">
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Name: {{storedName}}
+                    <li class="list-group-item">Name: {{currentUser.name.first}}   {{currentUser.name.last}}
                     </li>
-                    <li class="list-group-item">Email: {{sessionUsername}}
+                    <li class="list-group-item">Email: {{currentUser.email}}
                     </li>
-                    <li class="list-group-item">Phone Number: {{storedPhone}}
+                    <li class="list-group-item">Phone Number: {{currentUser.phoneNumber}}
                     </li>
                     <li class="list-group-item">Password: **********
                     </li>
