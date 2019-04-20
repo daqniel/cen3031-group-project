@@ -235,8 +235,10 @@
                 
                         <!-- Modal footer -->
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-danger login mr-auto" data-dismiss="modal" data-toggle="modal" data-target="#loginModal" ng-click="deleteVendor(detailedInfo._id)">Delete</button>
-                            <button type="button" class="btn btn-danger" data-dismiss="modal"  data-toggle="modal" data-target="#EditVendorModal" ng-click="showDetails($index)">Edit</button>
+
+                            <button type="button" class="btn btn-danger login mr-auto" data-dismiss="modal" data-toggle="modal" data-target="#loginModal" ng-click="deleteVendor(detailedInfo._id)" >Delete</button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal" data-toggle="modal" data-target="#EditVendorModal">Edit</button>
+
                         </div>
                 
                         </div>
@@ -294,8 +296,8 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click ="addVendor(newVendor.name, newVendor.text, newVendor.phoneNumber, newVendor.email, newVendor.link)">Submit</button>
 
-            </div>
-    
+            </div>   
+
             </div>
         </div>
     </div>  
@@ -391,7 +393,7 @@
     
             <!-- Modal footer -->
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="addSpecial(newSpecial)">Submit</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="addSpecial(newSpecial.title, newSpecial.text, newSpecial.expireDate)">Submit</button>
             </div>
     
             </div>
