@@ -61,6 +61,7 @@
 
     <!-- body -->
 
+<<<<<<< HEAD
     <br>
     <br>
     <div class="container border my-5" id="profile">
@@ -171,6 +172,26 @@
 
                 </div>
             </nav>
+=======
+<br>
+<br>
+    <div class="container border my-5" id="profile" ng-controller="BlogPostsController">
+            <h1 class="titleFont text-center mt-4">Past Reviews</h1>
+            <hr class="settings-hr">
+            <div class="row">
+                <nav class="container-fluid col py-3">
+                    <!-- Hardcoded past Reviews -->
+                    <div class="py-4" id="PastReview" ng-repeat = "blogPost in blogPosts">
+                        <h3 class="pb-3">{{blogPost.title}}</h3>
+                        <div class="container px-5">
+                            <p>
+                                {{blogPost.text}}
+                           </p>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+>>>>>>> 8e796c13ab886750f4407a53dd87186cfc0d084e
         </div>
     </div>
 
@@ -306,6 +327,8 @@
     <script src="js/app.js"></script>
     <script src="js/factories/userFactory.js"></script>
     <script src="js/controllers/userController.js"></script>
+    <script src="js/factories/blogPostFactory.js"></script>
+    <script src="js/controllers/blogPostController.js"></script>
 </body>
 
 </html>

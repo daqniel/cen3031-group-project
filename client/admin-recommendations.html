@@ -8,6 +8,7 @@
     <!-- Links: API's, CSS, and FontAwesome -->
     <link href="https://fonts.googleapis.com/css?family=Boogaloo|Laila" rel="stylesheet">
     <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/admin-pastReviews.css">
     <link rel="stylesheet" href="style/AdminSettings.css">
     <link rel="stylesheet" href="style/user-recommendations.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -17,10 +18,19 @@
     <title>My Recommendations</title>
 </head>
 
+
 <body>
+<<<<<<< HEAD
     <!-- Nav bar -->
     <nav id="mainNavbar" class="navbar navbar-expand-md navbar-light fixed-top">
         <a class="navbar-brand title" href="./home.html" style="color: #9C28FF"><img src="./images/logo.jpg" alt=""></a>
+=======
+    <!-- NAVBAR -->
+    <nav id="mainNavbar" class="navbar navbar-expand-md navbar-light fixed-top" ng-controller="UsersController"
+        data-ng-init="showName()">
+        <a class="navbar-brand title" href="./home.html" style="color: #9C28FF">Bochitto Travel</a>
+
+>>>>>>> 8e796c13ab886750f4407a53dd87186cfc0d084e
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -29,29 +39,30 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto nav-fill w-100">
                 <li class="icon nav-item active">
-                    <a class="nav-link " href="./specials.html">Specials<span class="sr-only">(current)</span></a>
+                    <a class="nav-link " href="./specials-home.html">Specials<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="icon nav-item active">
-                    <a class="nav-link" href="./blog.html">Past Reviews<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="./pastreview-home.html">Past Reviews<span
+                            class="sr-only">(current)</span></a>
                 </li>
                 <li class="icon nav-item active">
                     <a class="nav-link" href="#aboutUsContainer">About Us<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="icon nav-item active">
-                    <a class="nav-link" href="./recommendations.html">MyRecommendations<span
+                    <a class="nav-link" href="./user-recommendations.html">MyRecommendations<span
                             class="sr-only">(current)</span></a>
                 </li>
             </ul>
             <div class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false" style="color:black!important;">
-                    Welcome, Jon Doe
+                    Welcome, {{ sessionUsername }}
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Profile</a>
-                    <a class="dropdown-item" href="./recommendations.html">MyRecommendations</a>
+                    <a class="dropdown-item" href="./user-settings.html">Profile</a>
+                    <a class="dropdown-item" href="./user-recommendations.html">MyRecommendations</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Logout</a>
+                    <a class="dropdown-item" href="./index.html">Logout</a>
                 </div>
             </div>
         </div>
@@ -83,7 +94,7 @@
             </div>
 
             <!-- Recomendations request table -->
-            <div class="col-md-9">
+            <div class="col-md-9" ng-controller = "RequestsController">
                 <div class="row">
                     <nav class="container-fluid">
                         <table class="table table-striped table-hover" id="requestTable">
@@ -91,13 +102,14 @@
                                 <th class="">Client</th>
                                 <th class="">Destination</th>
                                 <th class="">Budget</th>
-                                <th class="">Travel Length</th>
-                                <th>Travel Date</th>
+                                <th class="">Departing</th>
+                                <th>Returning</th>
                                 <th>Details</th>
                                 <th>Remove</th>
                             </thead>
                             <tbody>
                                 <!-- Hardcoded special 1 -->
+<<<<<<< HEAD
                                 <tr>
                                     <td data-toggle="collapse" href="#Recommendation" role="button"
                                         aria-expanded="false" aria-controls="Recommendation">Mike john</td>
@@ -109,9 +121,17 @@
                                         aria-expanded="false" aria-controls="Recommendation">$599.99</td>
                                     <td data-toggle="collapse" href="#Recommendation" role="button"
                                         aria-expanded="false" aria-controls="Recommendation">$599.99</td>
+=======
+                                <tr ng-repeat = "request in  requests">
+                                    <td data-toggle="collapse" href="#Recommendation" role="button" aria-expanded="false" aria-controls="Recommendation">{{request.party[0].name}}</td>
+                                    <td data-toggle="collapse" href="#Recommendation" role="button" aria-expanded="false" aria-controls="Recommendation">{{request.location.to}}</td>
+                                    <td data-toggle="collapse" href="#Recommendation" role="button" aria-expanded="false" aria-controls="Recommendation">${{request.budget.min}} - ${{request.budget.max}}</td>
+                                    <td data-toggle="collapse" href="#Recommendation" role="button" aria-expanded="false" aria-controls="Recommendation">{{request.travelDates.departing | date}}</td>
+                                    <td data-toggle="collapse" href="#Recommendation" role="button" aria-expanded="false" aria-controls="Recommendation">{{request.travelDates.returning | date}}</td>
+>>>>>>> 8e796c13ab886750f4407a53dd87186cfc0d084e
                                     <td id="editButton">
                                         <button type="button" id="addButton" class="btn btn-info" data-toggle="modal"
-                                            data-target="#RequestInfoModal" data-whatever="@mdo">
+                                            data-target="#RequestInfoModal" data-whatever="@mdo" ng-click="showDetails($index)">
                                             <i class="fas fa-info-circle"></i>
                                         </button>
                                     </td>
@@ -122,8 +142,62 @@
                                         </button>
                                     </td>
                                 </tr>
+<<<<<<< HEAD
 
 
+=======
+                                 <!--Requests Info Modal -->
+                            <div class="modal fade" id="RequestInfoModal">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                            
+                                    <!-- Modal Header -->
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Request</h4>
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    </div>
+                            
+                                    <!-- Modal body -->
+                                    <div class="modal-body">
+                                        <form>
+                                            <div class="container"> 
+                                                <div class="row py-1">
+                                                    <label class="col-4" >Client</label>
+                                                    <p class="col" name="">{{detailedInfo.party[0].name}}</p> 
+                                                </div>
+                                                <div class="row py-1">
+                                                    <label class="col-4" >Budget:</label>
+                                                    <p class="col" name=""> ${{detailedInfo.budget.min}} - ${{detailedInfo.budget.max}}</p>
+                                                </div>
+                                                <div class="row py-1">
+                                                    <label class="col-4">Dates:</label>
+                                                    <p class="col" name=""> {{detailedInfo.travelDates.departing| date}} - {{detailedInfo.travelDates.returning |date}}</p>
+                                                </div>
+                                                <div class="row py-1">
+                                                    <label class="col-4">Locations:</label>
+                                                    <p class="col-4">Departing from {{detailedInfo.location.from}} and going to {{detailedInfo.location.to}}</p>
+                                                </div>
+                                                <div class="row py-1">
+                                                    <label class="col-4">All attendees:</label>
+                                                    <p class="col" name="" ng-repeat = "party in parties">{{party.name}}      {{party.birthDate |date}}</p> 
+                                                </div>
+            
+                                                
+                                            </div>
+                                        </form>
+                                    </div>
+                            
+                                    <!-- Modal footer -->
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-danger login mr-auto" data-dismiss="modal" data-toggle="modal" data-target="#loginModal" ng-click="deleteSpecial(detailedInfo._id)">Delete</button>
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal" >Edit</button>
+                                    </div>
+                            
+                                    </div>
+                                </div>
+        
+                            
+>>>>>>> 8e796c13ab886750f4407a53dd87186cfc0d084e
                                 <!-- Collapse Recommendations -->
 
                                 <tr class="collapse" id="Recommendation">
@@ -210,7 +284,7 @@
                         <div class="">
                             <div class="card">
                                 <div class="card-header bg-dark">
-                                    Request
+                                    <span class="titleofBlog">Request</span>
                                 </div>
                                 <div class="card-body">
                                     <form>
@@ -319,8 +393,8 @@
         </div>
     </div>
 
-    <!--Request Modal -->
-    <div class="modal fade" id="RequestInfoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <!--Request Modal 
+    <div class="modal fade" id="" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -348,7 +422,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
 
     <br>
@@ -493,6 +567,17 @@
         integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
         crossorigin="anonymous"></script>
     <script src="js/styling/script.js"></script>
+
+    <script src="https://code.angularjs.org/1.4.3/angular.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/factories/recommendationFactory.js"></script>
+    <script src="js/controllers/recommendationController.js"></script>
+
+    <script src="js/factories/userFactory.js"></script>
+    <script src="js/controllers/userController.js"></script>
+    <script src="js/factories/requestFactory.js"></script>
+    <script src="js/controllers/requestController.js"></script>
+
 </body>
 
 </html>

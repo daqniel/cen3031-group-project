@@ -2,14 +2,14 @@ angular.module("vendors").controller("VendorsController", [
   "$scope",
   "Vendors",
   function($scope, Vendors) {
-    Vendors.getAll().then(
-      function(res) {
+    Vendors.getAll()
+      .then(res => {
+        console.log(res.data);
         $scope.vendors = res.data;
-      },
-      function(error) {
-        console.log("Unable to retrieve vendors:", error);
-      }
-    );
+      })
+      .catch(err => {
+        console.log("unable to retrieve vendors: ", err);
+      });
 
     $scope.detailedInfo = undefined;
 
@@ -27,13 +27,16 @@ angular.module("vendors").controller("VendorsController", [
         email: newEmail,
         link: newLink
       };
+  
       Vendors.create(newVendor)
         .then(res => {
           //TODO: what should we do when we get a res?
+            window.location = window.location;
           if (res.status == 200)
             console.log("vendor added successfully", res.data);
         })
         .catch(err => console.log("Error creating vendor: ", err));
+
     };
 
     $scope.deleteVendor = function(id) {
