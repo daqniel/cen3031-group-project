@@ -236,7 +236,7 @@
                         <!-- Modal footer -->
                         <div class="modal-footer">
                             <button type="button" class="btn btn-danger login mr-auto" data-dismiss="modal" data-toggle="modal" data-target="#loginModal" ng-click="deleteVendor(detailedInfo._id)">Delete</button>
-                            <button type="button" class="btn btn-danger" data-dismiss="modal"  data-toggle="modal" data-target="#EditVendorModal">Edit</button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal"  data-toggle="modal" data-target="#EditVendorModal" ng-click="showDetails($index)">Edit</button>
                         </div>
                 
                         </div>
@@ -317,20 +317,20 @@
                     <div class="container"> 
                         <div class="row py-1">
                             <label class="col-4" >Vendor Name:  </label>
-                            <input class="col" type="text" name="" ng-model="">
+                            <input class="col" type="text" value="DAM"> {{detailedInfo.name}}
                         </div>
                             
                         <div class="row py-1">
                             <label class="col-4" >Phone Number:</label>
-                            <input class="col" type="text" name="" ng-model="">
+                            <input class="col" type="text" value={{detailedInfo.name}}>
                         </div>
                         <div class="row py-1">
                             <label class="col-4">Email:</label>
-                            <input class="col" type="text" name="" ng-model="">
+                            <input class="col" type="text" value="{{detailedInfo.name}}" >
                         </div>
                         <div class="row py-1">
                             <label class="col-4">Website:</label>
-                            <input class="col" type="text" name="" ng-model="">
+                            <input class="col" type="text" >
                         </div>  	
                         <div class="row py-1">
                             <label class="col-4" >Description:</label>
