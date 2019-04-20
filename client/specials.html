@@ -17,110 +17,10 @@
 
 <body ng-app="agencyApp">
 
-    <!-- Login Modal -->
-    <div class="modal fade titleFont" id="loginModal" ng-controller="UsersController">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-
-                <!-- Modal Header -->
-                <div class="modal-header">
-                    <h4 class="modal-title">Login</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-
-                <!-- Modal body -->
-                <div class="modal-body">
-                    <form onsubmit="this.reset()">
-                        <div class="container">
-
-                            <div class="row">
-                                <label class="col-25" for="email">Email:</label>
-                                <input class="col-75" type="text" id="email" ng-model="email">
-                            </div>
-                            <div class="row">
-                                <label class="col-25" for="pass">Password:</label>
-                                <input class="col-75" type="password" id="pass" ng-model="password">
-                            </div>
-
-                        </div>
-                    </form>
-                </div>
-
-                <!-- Modal footer -->
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-success register mr-auto" data-dismiss="modal"
-                        data-toggle="modal" data-target="#registerModal">Register</button>
-                    <button type="button" class="btn btn-success" data-dismiss="modal"
-                        ng-click="authenticateUser(email, password)">Submit</button>
-                </div>
-
-            </div>
-        </div>
-    </div>
-
-
-    <!-- Register Modal -->
-    <div class="modal fade titleFont" id="registerModal" ng-controller="UsersController">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-
-                <!-- Modal Header -->
-                <div class="modal-header">
-                    <h4 class="modal-title">Register</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-
-                <!-- Modal body -->
-                <div class="modal-body">
-                    <form>
-                        <div class="container">
-                            <div class="row">
-                                <label class="col-25" for="First">First Name: </label>
-                                <input class="col-75" type="text" id="Last" name="" ng-model="newFirst">
-                            </div>
-                            <div class="row">
-                                <label class="col-25" for="First">Middle Name: </label>
-                                <input class="col-75" type="text" id="Last" name="" ng-model="newMiddle">
-                            </div>
-                            <div class="row">
-                                <label class="col-25" for="Last">Last Name:</label>
-                                <input class="col-75" type="text" id="Last" name="" ng-model="newLast">
-                            </div>
-                            <div class="row">
-                                <label class="col-25" for="pass">Password:</label>
-                                <input class="col-75" type="password" id="pass" name="" ng-model="newPass">
-                            </div>
-                            <div class="row">
-                                <label class="col-25" for="Repass">Retype Password:</label>
-                                <input class="col-75" type="password" id="Repass" name="" ng-model="newPassVerify">
-                            </div>
-                            <div class="row">
-                                <label class="col-25" for="email">Email:</label>
-                                <input class="col-75" type="text" id="email" name="" ng-model="newEmail">
-                            </div>
-                            <div class="row">
-                                <label class="col-25" for="Phone">Phone Number:</label>
-                                <input class="col-75" type="text" id="phone" name="" ng-model="newPhone">
-                            </div>
-                        </div>
-                    </form>
-                </div>
-
-                <!-- Modal footer -->
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-success login mr-auto" data-dismiss="modal" data-toggle="modal"
-                        data-target="#loginModal">Login</button>
-                    <button type="button" class="btn btn-success" data-dismiss="modal"
-                        ng-click="addUser(newFirst, newMiddle, newLast, newPass, newPassVerify, newEmail, newPhone)">Submit</button>
-                </div>
-
-            </div>
-        </div>
-    </div>
-
     <!-- NAVBAR -->
     <nav id="mainNavbar" class="navbar navbar-expand-md navbar-light fixed-top">
-        <a class="navbar-brand title" href="./index.html" style="color: #9C28FF">Bochitto Travel</a>
+        <a class="navbar-brand title logo" href="./index.html" style="color: #9C28FF"><img src="./images/logo.jpg"
+                alt=""></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -135,8 +35,7 @@
                     <a class="nav-link" href="./PastReview.html">Past Reviews<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="icon nav-item active">
-                    <a class="nav-link" href="./index.html#aboutUsContainer">About Us<span
-                            class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="#aboutUsContainer">About Us<span class="sr-only">(current)</span></a>
                 </li>
             </ul>
 
@@ -152,6 +51,84 @@
             </ul>
         </div>
     </nav>
+
+
+    <div id="loginModal" class="modal fade" ng-controller="UsersController">
+        <div class="modal-dialog modal-login">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Sign in</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                </div>
+                <div class="modal-body">
+                    <form action="/examples/actions/confirmation.php" method="post">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Your Email" ng-model="email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" placeholder="Your Password" ng-model="password"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-primary btn-block btn-lg" value="Sign in"
+                                data-dismiss="modal" ng-click="authenticateUser(email, password)">
+                        </div>
+                    </form>
+                    <p class="hint-text small"><a href="#registerModal" data-toggle="modal" data-dismiss="modal">Need an
+                            account?</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="registerModal" class="modal fade" ng-controller="UsersController">
+        <div class="modal-dialog modal-login">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Register</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                </div>
+                <div class="modal-body">
+                    <form action="/examples/actions/confirmation.php" method="post">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="First Name" required="required"
+                                ng-model="newFirst">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Middle Name" required="required"
+                                ng-model="newMiddle">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Last Name" required="required"
+                                ng-model="newLast">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" placeholder="Password" required="required"
+                                ng-model="newPass">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" placeholder="Retype Password"
+                                required="required" ng-model="newPassVerify">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Email" required="required"
+                                ng-model="newEmail">
+                        </div>
+                        <div class="form-group">
+                            <input type="number" class="form-control" placeholder="Phone Number" required="required"
+                                ng-model="newPhone">
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-primary btn-block btn-lg" data-dismiss="modal"
+                                ng-click="addUser(newFirst, newMiddle, newLast, newPass, newPassVerify, newEmail, newPhone)"></input>
+                        </div>
+                    </form>
+                    <p class="hint-text small"><a href="#loginModal" data-toggle="modal" data-dismiss="modal">Already
+                            have an account?</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Deals -->
     <div class="container-fluid py-5" id="deals" ng-controller="SpecialsController">
