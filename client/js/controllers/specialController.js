@@ -7,7 +7,7 @@ angular.module("specials").controller("SpecialsController", [
         $scope.specials = res.data;
       })
       .catch(err => console.log("Unable to retrieve specials:", err));
-
+      $scope.detailedInfo = undefined;
     /* Get all the listings, then bind it to the scope */
     $scope.get3MostRecent = function() {
       Specials.get3MostRecent()
@@ -27,7 +27,7 @@ angular.module("specials").controller("SpecialsController", [
       var newSpecial = {
         title: newTitle,
         text: newText,
-        expireDate: expireDate
+        expireDate: newExpireDate
       };
       Specials.create(newSpecial)
         .then(res => {
@@ -53,5 +53,10 @@ angular.module("specials").controller("SpecialsController", [
     $scope.showDetails = function(index) {
       $scope.detailedInfo = $scope.specials[index];
     };
+
+    $scope.showDetails = function(index) {
+      $scope.detailedInfo = $scope.specials[index];
+    };
+    
   }
 ]);

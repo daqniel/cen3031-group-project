@@ -16,12 +16,20 @@ angular
         //sends to index, doesnt show recommendations
       },
 
+      getByClient: function(clientId) {
+        return $http.get(apiHost + "/api/recommendations/?clientId=" + clientId);
+      },
+
       create: function(recommendation) {
         return $http.post(
           apiHost + "/api/recommendations",
           recommendation,
           httpOptions
         );
+      },
+
+      update: function(recommendationId, recommendation) {
+        return $http.put(apiHost + "/api/recommendations/" + recommendationId, recommendation, httpOptions);
       },
 
       delete: function(id) {

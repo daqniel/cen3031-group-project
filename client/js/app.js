@@ -1,4 +1,20 @@
 /* register the modules the application depends upon here*/
+angular.module('routes', ['ngRoute']);
+angular.module('routes').config(['$routeProvider', ($routeProvider) => {
+    $routeProvider
+    // .when('/', {
+    //     templateUrl: "../index.html"
+    // })
+    .when("/specials", {
+        templateUrl: "/specials.html",
+        resolve: {
+            delay: function(){
+                console.log("what the hecc");
+            }
+        }
+    });
+}]);
+
 angular.module('specials', []);
 angular.module('blogPosts',[]);
 angular.module('users',[]);

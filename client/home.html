@@ -22,7 +22,7 @@
 
     <!-- NAVBAR -->
     <nav id="mainNavbar" class="navbar navbar-expand-md navbar-light fixed-top" ng-controller="UsersController" data-ng-init="showName()">
-        <a class="navbar-brand title" href="./home.html" style="color: #9C28FF">Bochitto Travel</a>
+        <a class="navbar-brand title" href="./home.html" style="color: #9C28FF"><img src="./images/logo.jpg" alt=""></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -138,6 +138,32 @@
             </div>
         </nav>
     </nav>
+
+    <!-- bookNow -->
+    <div class="container-fluid mt-4 mb-2" id="bookNow">
+    <div class="row" id="fillOutForm">
+        <div class="col-md-6">
+            <div class="card-body">
+                <h3 class="card-title titleFont text-center">Create Trip Recommendation!</h3>
+                <h5 class="textFont text-center">After filling this form out, you don't have to worry about the
+                    nitty-gritty details
+                    we'll take care of everything for you
+                </h5>
+                <button type="button" class="btn btn-success bookNowButton col-md-12">Fill Out Request</button>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card-body">
+                <h3 class="card-title titleFont text-center bookNowButton">Book On Your Own!</h3>
+                <h5 class="textFont text-center">Using our vendors, book on your own and customize your booking to
+                    your specific needs
+                </h5>
+                <button type="button" class="btn btn-success bookNowButton col-md-12" id="bookownB" onclick="location.href='http://bochitto.paycationonline.com/index.asp'">Book on My Own</button>
+            </div>
+        </div>
+    </div>
+    </div>
+
 
     <!-- Services Section -->
     <div class="container-fluid" id="aboutUsContainer">

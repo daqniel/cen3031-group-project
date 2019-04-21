@@ -18,10 +18,12 @@
     <title>My Recommendations</title>
 </head>
 
-<body>
-    <!-- Nav bar -->
-    <nav id="mainNavbar" class="navbar navbar-expand-md navbar-light fixed-top">
-        <a class="navbar-brand title" href="./index.html" style="color: #9C28FF">Bochitto Travel</a>
+
+<body ng-app="agencyApp">
+    <!-- NAVBAR -->
+    <nav id="mainNavbar" class="navbar navbar-expand-md navbar-light fixed-top" ng-controller="UsersController"
+        data-ng-init="showName()">
+        <a class="navbar-brand title" href="./home.html" style="color: #9C28FF"><img src="./images/logo.jpg" alt=""></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -30,34 +32,35 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto nav-fill w-100">
                 <li class="icon nav-item active">
-                    <a class="nav-link " href="./specials.html">Specials<span class="sr-only">(current)</span></a>
+                    <a class="nav-link " href="./specials-home.html">Specials<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="icon nav-item active">
-                    <a class="nav-link" href="./blog.html">Past Reviews<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="./pastreview-home.html">Past Reviews<span
+                            class="sr-only">(current)</span></a>
                 </li>
                 <li class="icon nav-item active">
                     <a class="nav-link" href="#aboutUsContainer">About Us<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="icon nav-item active">
-                    <a class="nav-link" href="./recommendations.html">MyRecommendations<span
+                    <a class="nav-link" href="./user-recommendations.html">MyRecommendations<span
                             class="sr-only">(current)</span></a>
                 </li>
             </ul>
             <div class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false" style="color:black!important;">
-                    Welcome, Jon Doe
+                    Welcome, {{ sessionUsername }}
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Profile</a>
-                    <a class="dropdown-item" href="./recommendations.html">MyRecommendations</a>
+                    <a class="dropdown-item" href="./user-settings.html">Profile</a>
+                    <a class="dropdown-item" href="./user-recommendations.html">MyRecommendations</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Logout</a>
+                    <a class="dropdown-item" href="./index.html">Logout</a>
                 </div>
             </div>
         </div>
     </nav>
-    
+
     <br>
     <!-- page -->
     <div class="container my-5" id="profile">
@@ -84,7 +87,7 @@
             </div>
 
             <!-- Recomendations request table -->
-            <div class="col-md-9">
+            <div class="col-md-9" ng-controller = "RequestsController">
                 <div class="row">
                     <nav class="container-fluid">
                         <table class="table table-striped table-hover" id="requestTable">
@@ -92,22 +95,22 @@
                                 <th class="">Client</th>
                                 <th class="">Destination</th>
                                 <th class="">Budget</th>
-                                <th class="">Travel Length</th>
-                                <th>Travel Date</th>
+                                <th class="">Departing</th>
+                                <th>Returning</th>
                                 <th>Details</th>
                                 <th>Remove</th>
                             </thead>
-                            <tbody>                
+                            <tbody>
                                 <!-- Hardcoded special 1 -->
-                                <tr>
-                                    <td data-toggle="collapse" href="#Recommendation" role="button" aria-expanded="false" aria-controls="Recommendation">Mike john</td>
-                                    <td data-toggle="collapse" href="#Recommendation" role="button" aria-expanded="false" aria-controls="Recommendation">Cancun, Mexico</td>
-                                    <td data-toggle="collapse" href="#Recommendation" role="button" aria-expanded="false" aria-controls="Recommendation">3/6/2019</td>
-                                    <td data-toggle="collapse" href="#Recommendation" role="button" aria-expanded="false" aria-controls="Recommendation">$599.99</td>
-                                    <td data-toggle="collapse" href="#Recommendation" role="button" aria-expanded="false" aria-controls="Recommendation">$599.99</td>
+                                <tr ng-repeat = "request in  requests">
+                                    <td data-toggle="collapse" href="#Recommendation" role="button" aria-expanded="false" aria-controls="Recommendation">{{request.party[0].name}}</td>
+                                    <td data-toggle="collapse" href="#Recommendation" role="button" aria-expanded="false" aria-controls="Recommendation">{{request.location.to}}</td>
+                                    <td data-toggle="collapse" href="#Recommendation" role="button" aria-expanded="false" aria-controls="Recommendation">${{request.budget.min}} - ${{request.budget.max}}</td>
+                                    <td data-toggle="collapse" href="#Recommendation" role="button" aria-expanded="false" aria-controls="Recommendation">{{request.travelDates.departing | date}}</td>
+                                    <td data-toggle="collapse" href="#Recommendation" role="button" aria-expanded="false" aria-controls="Recommendation">{{request.travelDates.returning | date}}</td>
                                     <td id="editButton">
                                         <button type="button" id="addButton" class="btn btn-info" data-toggle="modal"
-                                            data-target="#RequestInfoModal" data-whatever="@mdo">
+                                            data-target="#RequestInfoModal" data-whatever="@mdo" ng-click="showDetails($index)">
                                             <i class="fas fa-info-circle"></i>
                                         </button>
                                     </td>
@@ -118,32 +121,87 @@
                                         </button>
                                     </td>
                                 </tr>
-        
+                                 <!--Requests Info Modal -->
+                            <div class="modal fade" id="RequestInfoModal">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
                             
+                                    <!-- Modal Header -->
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Request</h4>
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    </div>
+                            
+                                    <!-- Modal body -->
+                                    <div class="modal-body">
+                                        <form>
+                                            <div class="container"> 
+                                                <div class="row py-1">
+                                                    <label class="col-4" >Client</label>
+                                                    <p class="col" name="">{{detailedInfo.party[0].name}}</p> 
+                                                </div>
+                                                <div class="row py-1">
+                                                    <label class="col-4" >Budget:</label>
+                                                    <p class="col" name=""> ${{detailedInfo.budget.min}} - ${{detailedInfo.budget.max}}</p>
+                                                </div>
+                                                <div class="row py-1">
+                                                    <label class="col-4">Dates:</label>
+                                                    <p class="col" name=""> {{detailedInfo.travelDates.departing| date}} - {{detailedInfo.travelDates.returning |date}}</p>
+                                                </div>
+                                                <div class="row py-1">
+                                                    <label class="col-4">Locations:</label>
+                                                    <p class="col-4">Departing from {{detailedInfo.location.from}} and going to {{detailedInfo.location.to}}</p>
+                                                </div>
+                                                <div class="row py-1">
+                                                    <label class="col-4">All attendees:</label>
+                                                    <p class="col" name="" ng-repeat = "party in parties">{{party.name}}      {{party.birthDate |date}}</p> 
+                                                </div>
+            
+                                                
+                                            </div>
+                                        </form>
+                                    </div>
+                            
+                                    <!-- Modal footer -->
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-danger login mr-auto" data-dismiss="modal" data-toggle="modal" data-target="#loginModal" ng-click="deleteSpecial(detailedInfo._id)">Delete</button>
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal" >Edit</button>
+                                    </div>
+                            
+                                    </div>
+                                </div>
                                 <!-- Collapse Recommendations -->
-                                
+
                                 <tr class="collapse" id="Recommendation">
                                     <th colspan="4">Recommendation</th>
                                     <th colspan="3">Notes</th>
                                 </tr>
-                                
-                                <tr  class="collapse" id="Recommendation"> 
+
+                                <tr class="collapse" id="Recommendation">
                                     <td colspan="4">
-                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
+                                        richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes
+                                        anderson cred nesciunt sapiente ea proident.
                                     </td>
                                     <td colspan="3">
-                                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-                                    </td>                              
+                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
+                                        richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes
+                                        anderson cred nesciunt sapiente ea proident.
+                                    </td>
                                 </tr>
-                                <tr  class="collapse" id="Recommendation"> 
-                                        <td colspan="4">
-                                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-                                        </td>
-                                        <td colspan="3">
-                                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-                                        </td>                              
+                                <tr class="collapse" id="Recommendation">
+                                    <td colspan="4">
+                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
+                                        richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes
+                                        anderson cred nesciunt sapiente ea proident.
+                                    </td>
+                                    <td colspan="3">
+                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
+                                        richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes
+                                        anderson cred nesciunt sapiente ea proident.
+                                    </td>
                                 </tr>
-        
+
                                 <!-- special 2 -->
                                 <tr>
                                     <td>Larry Field</td>
@@ -192,7 +250,7 @@
             </div>
 
             <!-- Add recommendation -->
-            <div class="container-fluid py-5">   
+            <div class="container-fluid py-5">
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="">
@@ -201,32 +259,37 @@
                                     <span class="titleofBlog">Request</span>
                                 </div>
                                 <div class="card-body">
-                                    <form> 
-                                        <div class="row"> 
+                                    <form>
+                                        <div class="row">
                                             <div class="col-sm-4">
                                                 <label for="price">Price</label>
                                                 <input type="text" class="form-control" id="price" placeholder="Price">
                                                 <label for="Location">Location</label>
-                                                <input type="text" class="form-control" id="Location" placeholder="Location">
+                                                <input type="text" class="form-control" id="Location"
+                                                    placeholder="Location">
                                                 <label for="Hotel">Hotel</label>
                                                 <input type="text" class="form-control" id="Hotel" placeholder="Hotel">
                                                 <label for="TravelDate">TravelDate</label>
-                                                <input type="text" class="form-control" id="TravelDate" placeholder="TravelDate">               
+                                                <input type="text" class="form-control" id="TravelDate"
+                                                    placeholder="TravelDate">
                                             </div>
                                             <div class="col-sm-4">
                                                 <label for="Duration">Duration</label>
-                                                <input type="text" class="form-control" id="Duration" placeholder="Duration">
+                                                <input type="text" class="form-control" id="Duration"
+                                                    placeholder="Duration">
                                                 <label for="Cruise">Cruise</label>
-                                                <input type="text" class="form-control" id="Cruise" placeholder="Cruise">
+                                                <input type="text" class="form-control" id="Cruise"
+                                                    placeholder="Cruise">
                                                 <label for="Airline">Airline</label>
-                                                <input type="text" class="form-control" id="Airline" placeholder="Airline">                                                   
+                                                <input type="text" class="form-control" id="Airline"
+                                                    placeholder="Airline">
                                             </div>
-                                            <div class="col-sm-4">                                               
-                                                
+                                            <div class="col-sm-4">
+
                                                 <!-- Pending Request -->
-                                                <div class="container-fluid pt-2" id = "pending">
+                                                <div class="container-fluid pt-2" id="pending">
                                                     <table class="table table-sm table-striped">
-                                                    <thead class="thead-dark">
+                                                        <thead class="thead-dark">
                                                             <tr>
                                                                 <th scope="col">#</th>
                                                                 <th scope="col">Name</th>
@@ -254,31 +317,31 @@
                                                                 <td>Tom</td>
                                                                 <td>miami</td>
                                                             </tr>
-                                                                <tr>
+                                                            <tr>
                                                                 <th scope="row"><input type="radio" name="pick"></th>
                                                                 <td>Tom</td>
                                                                 <td>miami</td>
                                                             </tr>
-                                                                <tr>
+                                                            <tr>
                                                                 <th scope="row"><input type="radio" name="pick"></th>
                                                                 <td>Tom</td>
                                                                 <td>miami</td>
                                                             </tr>
-                                                                <tr>
+                                                            <tr>
                                                                 <th scope="row"><input type="radio" name="pick"></th>
                                                                 <td>Tom</td>
                                                                 <td>miami</td>
                                                             </tr>
-                                                                <tr>
+                                                            <tr>
                                                                 <th scope="row"><input type="radio" name="pick"></th>
                                                                 <td>Tom</td>
                                                                 <td>miami</td>
                                                             </tr>
-                                                            
+
                                                         </tbody>
                                                     </table>
                                                 </div>
-                                            
+
                                             </div>
                                         </div>
                                         <div class="row">
@@ -287,12 +350,13 @@
                                                 <textarea class="form-control" rows="7" id="Note"></textarea>
                                             </div>
                                             <div class="mt-5">
-                                                <button type="button" class="btn btn-success"  data-whatever="@mdo">Submit</button>
+                                                <button type="button" class="btn btn-success"
+                                                    data-whatever="@mdo">Submit</button>
                                             </div>
                                         </div>
                                     </form>
                                 </div>
-                            </div>  
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -301,31 +365,6 @@
         </div>
     </div>
 
-    <!--Request Modal -->
-    <div class="modal fade" id="RequestInfoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                            aria-hidden="true">&times;</span></button>
-                </div>
-                <div class="modal-body">
-                    <h3 class="titleFont text-center">I would love to travel to VEGAS!!!</h3>
-                    <hr>
-                    <p class="textFont">    
-                        Simple excursion excursion blogger traveler whimsical travelblogger cute colorful. Excursion traveling cute modern modern cute cute wanderlust excursion, Travel theme WordPress cute. WordPress wanderlust design traveling webdesign, darn colorful website clean theme WordPress.
-                    </p>
-                    <p>
-                        Adventure organized excursion, pretty traveling travelblogger blogger wanderlust simple traveler expedition simple cute. WordPress adventure design theme organized wanderlust, simple blogger clean wanderlust design WordPress. Travel theme cute organized webdesign WordPress theme whimsical.  
-                    </p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-success" data-dismiss="modal">Book Now</button>
-                </div>
-            </div>
-        </div>
-    </div>
 
 
     <br>
@@ -470,6 +509,15 @@
         integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
         crossorigin="anonymous"></script>
     <script src="js/styling/script.js"></script>
+    <script src="https://code.angularjs.org/1.4.3/angular.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/factories/recommendationFactory.js"></script>
+    <script src="js/controllers/recommendationController.js"></script>
+    <script src="js/factories/userFactory.js"></script>
+    <script src="js/controllers/userController.js"></script>
+    <script src="js/factories/requestFactory.js"></script>
+    <script src="js/controllers/requestController.js"></script>
+
 </body>
 
 </html>

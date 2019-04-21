@@ -79,6 +79,7 @@ angular.module("requests").controller("RequestsController", [
 
     $scope.showDetails = function(index) {
       $scope.detailedInfo = $scope.requests[index];
+      $scope.parties = $scope.requests[index].party;
     };
   }
 ]);

@@ -13,12 +13,30 @@ angular.module("vendors").controller("VendorsController", [
 
     $scope.detailedInfo = undefined;
 
-    $scope.addVendor = function (newVendor) {
-      Vendor.create(newVendor).then(function (response) {
-        window.location = window.location;
-      }, function (error) {
-        console.log('Unable to retrieve vendor:', error);
-      });
+    $scope.addVendor = function(
+      newName,
+      newText,
+      newPhoneNumber,
+      newEmail,
+      newLink
+    ) {
+      var newVendor = {
+        name: newName,
+        text: newText,
+        phoneNumber: newPhoneNumber,
+        email: newEmail,
+        link: newLink
+      };
+  
+      Vendors.create(newVendor)
+        .then(res => {
+          //TODO: what should we do when we get a res?
+            window.location = window.location;
+          if (res.status == 200)
+            console.log("vendor added successfully", res.data);
+        })
+        .catch(err => console.log("Error creating vendor: ", err));
+
     };
 
     $scope.deleteVendor = function(id) {
@@ -44,5 +62,6 @@ angular.module("vendors").controller("VendorsController", [
     $scope.showDetails = function(index) {
       $scope.detailedInfo = $scope.vendors[index];
     };
+
   }
 ]);

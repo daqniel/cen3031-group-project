@@ -73,6 +73,7 @@ angular.module("users").controller("UsersController", [
       console.log("did this");
       Users.getSession().then(response => {
         console.log(response);
+        $scope.currentUser = $.parseJSON(sessionStorage.getItem("user"));
         if (response.status == 200) {
           console.log("test", response.text, response.body.text);
           console.log("all good, got session");
