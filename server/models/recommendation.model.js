@@ -21,7 +21,7 @@ var recommendationSchema = new Schema({
         /* Validate most legal websites */
         /* regex by Viktor Nagy, http://regexlib.com/REDetails.aspx?regexp_id=2629 */
         return /^((http|https|ftp):\/\/(www\.)?|www\.)[a-zA-Z0-9\_\-]+\.([a-zA-Z]{2,4}|[a-zA-Z]{2}\.[a-zA-Z]{2})(\/[a-zA-Z0-9\-\._\?\&=,'\+%\$#~]*)*$/.test(
-            v
+          v
         );
       }
     }
