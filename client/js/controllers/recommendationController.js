@@ -10,7 +10,10 @@ angular.module("recommendation").controller("RecommendationsController", [
       .catch(err => {
         console.log("Unable to retrieve recommendations:", err);
       });
+
     $scope.detailedInfo = undefined;
+
+    $scope.sessionUsername = $.parseJSON(sessionStorage.getItem("user")).email;
 
     $scope.addRecommendation = function(newClient, newTitle, newText, newLink) {
       var newRecommendation = {
@@ -30,6 +33,7 @@ angular.module("recommendation").controller("RecommendationsController", [
     };
 
     $scope.getByClient = function(clientId) {
+      console.log("clientId: ", clientId);
       Recommendations.getByClient(clientId)
         .then(res => {
           $scope.recommendationsByClient = res.data;
