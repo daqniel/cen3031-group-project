@@ -48,38 +48,35 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="./admin-recommendations.html">MyDashboard</a>
-                    <a class="dropdown-item" href="./user-recommendations.html">MyProfile</a>
+                    <a class="dropdown-item" href="./admin-settings.html">MyProfile</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" ng-click="logout()">Logout</a>
                 </div>
             </div>
         </div>
     </nav>
-    q
+
     <!-- Deals -->
-    <div class=" py-5  px-5">
-
-            <div class="container-fluid" id="deals" ng-controller="SpecialsController" data-ng-init="getAll()">  
-
-                <h1 class="text-center py-4 titleFont">Specials</h1>
-                <table class="table table-striped table-hover" id="specialsTable">
-                    <thead class="thead-dark">
-                        <th width="30%">Title</th>
-                        <th width="57%">Details</th>
-                        <th width="13%">Expiration Date</th>
-                    </thead>
-                    <tbody>
-                        <!-- Specials loaded in from DB -->
-                        <tr ng-repeat="special in specials">
-                            <td>{{special.title}}</td>
-                            <td>{{special.text}}</td>
-                            <td colspan="2">{{special.expireDate | date}}</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
+    <div class="py-5  px-5">
+        <div class="container-fluid" id="deals" ng-controller="SpecialsController" data-ng-init="getAll()">
+        <h1 class="text-center py-4 titleFont">Specials</h1>
+        <table class="table table-striped table-hover" id="specialsTable">
+            <thead class="thead-dark">
+                <th width="30%">Title</th>
+                <th width="57%">Details</th>
+                <th width="13%">Expiration Date</th>
+            </thead>
+            <tbody>
+                <!-- Specials loaded in from DB -->
+                <tr ng-repeat="special in specials">
+                    <td>{{special.title}}</td>
+                    <td>{{special.text}}</td>
+                    <td colspan="2">{{special.expireDate | date}}</td>
+                </tr>
+            </tbody>
+        </table>
         </div>
+    </div>
 
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
