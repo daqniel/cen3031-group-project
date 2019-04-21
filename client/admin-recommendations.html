@@ -20,17 +20,10 @@
 
 
 <body>
-<<<<<<< HEAD
-    <!-- Nav bar -->
-    <nav id="mainNavbar" class="navbar navbar-expand-md navbar-light fixed-top">
-        <a class="navbar-brand title" href="./home.html" style="color: #9C28FF"><img src="./images/logo.jpg" alt=""></a>
-=======
     <!-- NAVBAR -->
     <nav id="mainNavbar" class="navbar navbar-expand-md navbar-light fixed-top" ng-controller="UsersController"
         data-ng-init="showName()">
-        <a class="navbar-brand title" href="./home.html" style="color: #9C28FF">Bochitto Travel</a>
-
->>>>>>> 8e796c13ab886750f4407a53dd87186cfc0d084e
+        <a class="navbar-brand title" href="./home.html" style="color: #9C28FF"><img src="./images/logo.jpg" alt=""></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -109,26 +102,12 @@
                             </thead>
                             <tbody>
                                 <!-- Hardcoded special 1 -->
-<<<<<<< HEAD
-                                <tr>
-                                    <td data-toggle="collapse" href="#Recommendation" role="button"
-                                        aria-expanded="false" aria-controls="Recommendation">Mike john</td>
-                                    <td data-toggle="collapse" href="#Recommendation" role="button"
-                                        aria-expanded="false" aria-controls="Recommendation">Cancun, Mexico</td>
-                                    <td data-toggle="collapse" href="#Recommendation" role="button"
-                                        aria-expanded="false" aria-controls="Recommendation">3/6/2019</td>
-                                    <td data-toggle="collapse" href="#Recommendation" role="button"
-                                        aria-expanded="false" aria-controls="Recommendation">$599.99</td>
-                                    <td data-toggle="collapse" href="#Recommendation" role="button"
-                                        aria-expanded="false" aria-controls="Recommendation">$599.99</td>
-=======
                                 <tr ng-repeat = "request in  requests">
                                     <td data-toggle="collapse" href="#Recommendation" role="button" aria-expanded="false" aria-controls="Recommendation">{{request.party[0].name}}</td>
                                     <td data-toggle="collapse" href="#Recommendation" role="button" aria-expanded="false" aria-controls="Recommendation">{{request.location.to}}</td>
                                     <td data-toggle="collapse" href="#Recommendation" role="button" aria-expanded="false" aria-controls="Recommendation">${{request.budget.min}} - ${{request.budget.max}}</td>
                                     <td data-toggle="collapse" href="#Recommendation" role="button" aria-expanded="false" aria-controls="Recommendation">{{request.travelDates.departing | date}}</td>
                                     <td data-toggle="collapse" href="#Recommendation" role="button" aria-expanded="false" aria-controls="Recommendation">{{request.travelDates.returning | date}}</td>
->>>>>>> 8e796c13ab886750f4407a53dd87186cfc0d084e
                                     <td id="editButton">
                                         <button type="button" id="addButton" class="btn btn-info" data-toggle="modal"
                                             data-target="#RequestInfoModal" data-whatever="@mdo" ng-click="showDetails($index)">
@@ -142,10 +121,6 @@
                                         </button>
                                     </td>
                                 </tr>
-<<<<<<< HEAD
-
-
-=======
                                  <!--Requests Info Modal -->
                             <div class="modal fade" id="RequestInfoModal">
                                 <div class="modal-dialog modal-dialog-centered">
@@ -195,9 +170,6 @@
                             
                                     </div>
                                 </div>
-        
-                            
->>>>>>> 8e796c13ab886750f4407a53dd87186cfc0d084e
                                 <!-- Collapse Recommendations -->
 
                                 <tr class="collapse" id="Recommendation">

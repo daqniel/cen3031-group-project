@@ -62,5 +62,6 @@ angular.module("vendors").controller("VendorsController", [
     $scope.showDetails = function(index) {
       $scope.detailedInfo = $scope.vendors[index];
     };
+
   }
 ]);
