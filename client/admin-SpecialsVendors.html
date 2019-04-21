@@ -18,11 +18,18 @@
     <title>My Recommendations</title>
 </head>
 
+<<<<<<< HEAD
+<body>
+    <!-- Navbar -->
+    <nav id="mainNavbar" class="navbar navbar-expand-md navbar-light fixed-top">
+        <a class="navbar-brand title" href="./home.html" style="color: #9C28FF"><img src="./images/logo.jpg" alt=""></a>
+=======
 <body ng-app="agencyApp">
     <!-- NAVBAR -->
     <nav id="mainNavbar" class="navbar navbar-expand-md navbar-light fixed-top" ng-controller="UsersController"
         data-ng-init="showName()">
         <a class="navbar-brand title" href="./home.html" style="color: #9C28FF">Bochitto Travel</a>
+>>>>>>> 8e796c13ab886750f4407a53dd87186cfc0d084e
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -59,7 +66,7 @@
             </div>
         </div>
     </nav>
-    
+
     <br>
     <!-- page -->
     <div class="container my-5" id="profile">
@@ -83,14 +90,49 @@
                     </a>
                 </div>
             </div>
+<<<<<<< HEAD
+
+            <!-- Special Manager -->
+            <div class="col-sm-6">
+=======
        
             <!-- Special Manager --> 
             <div class="col-sm-6" ng-controller="SpecialsController">
+>>>>>>> 8e796c13ab886750f4407a53dd87186cfc0d084e
                 <table class="table table-striped table-hover" id="SpecialTable">
                     <thead class="thead-dark">
                         <th colspan="3">Specials</th>
                     </thead>
                     <thead class="">
+<<<<<<< HEAD
+                        <th>Deal</th>
+                        <th>Exp Date</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Cancun, Mexico</td>
+                            <td>$2000
+                                <button type="button" id="VendorButton" class="btn btn-info" data-toggle="modal"
+                                    data-target="#SpecialInfoModal" data-whatever="@mdo">
+                                    <i class="fas fa-info-circle"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>San Fransisco, California</td>
+                            <td>$9300
+                                <button type="button" id="VendorButton" class="btn btn-info" data-toggle="modal"
+                                    data-target="#SpecialInfoModal" data-whatever="@mdo">
+                                    <i class="fas fa-info-circle"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Giza, Egypt</td>
+                            <td>$5500
+                                <button type="button" id="VendorButton" class="btn btn-info" data-toggle="modal"
+                                    data-target="#SpecialInfoModal" data-whatever="@mdo">
+=======
                             <th widht="73%">Deal</th>
                             <th width="22%">Exp Date</th>
                             <th width="5%"></th>
@@ -104,6 +146,7 @@
                             <td>
                                 <button type="button" id="VendorButton" class="btn btn-info" data-toggle="modal"
                                     data-target="#SpecialInfoModal" data-whatever="@mdo" ng-click="showDetails($index)">
+>>>>>>> 8e796c13ab886750f4407a53dd87186cfc0d084e
                                     <i class="fas fa-info-circle"></i>
                                 </button>
                             </td>
@@ -111,7 +154,7 @@
                         <tr>
                             <th colspan="3" scope="row">
                                 <button type="button" class="btn btn-success" data-toggle="modal"
-                                data-target="#AddSpecialModal" data-whatever="@mdo">Add Special</button>
+                                    data-target="#AddSpecialModal" data-whatever="@mdo">Add Special</button>
                             </th>
                         </tr>
                     </tbody>
@@ -163,10 +206,15 @@
                     </div>
                 </div>
             </div>
-            
+
             <!-- Vendor List -->
+<<<<<<< HEAD
+            <div class="col-sm-3">
+                <div class="" id="vendor">
+=======
             <div class="col-sm-3" ng-controller="VendorsController">
                 <div class="vendor" id="vendor">
+>>>>>>> 8e796c13ab886750f4407a53dd87186cfc0d084e
                     <table class="table table-md table-striped">
                         <thead class="thead-dark">
                             <tr>
@@ -180,15 +228,54 @@
                                 </td>
                                 <td>
                                     <button type="button" id="VendorButton" class="btn btn-info" data-toggle="modal"
+<<<<<<< HEAD
+                                        data-target="#VendorInfoModal" data-whatever="@mdo">
+=======
                                          data-target="#VendorInfoModal" data-whatever="@mdo" ng-click="showDetails($index)">
+>>>>>>> 8e796c13ab886750f4407a53dd87186cfc0d084e
                                         <i class="fas fa-info-circle"></i>
                                     </button>
                                 </td>
                             </tr>
                             <tr>
+<<<<<<< HEAD
+                                <th scope="row">2</th>
+                                <td>Submarine</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>Target</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Submarine</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>Target</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Submarine</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>Target</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Submarine</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>Target</td>
+                            </tr>
+                            <tr>
+=======
+>>>>>>> 8e796c13ab886750f4407a53dd87186cfc0d084e
                                 <th colspan="2" scope="row">
                                     <button type="button" class="btn btn-success" data-toggle="modal"
-                                    data-target="#AddVendorModal" data-whatever="@mdo">Add Vendor</button></th>
+                                        data-target="#AddVendorModal" data-whatever="@mdo">Add Vendor</button></th>
                             </tr>
                         </tbody>
                     </table>
@@ -253,6 +340,112 @@
     <div class="modal fade" id="AddVendorModal" ng-controller="VendorsController">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
+<<<<<<< HEAD
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Add Vendor</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <form>
+                        <div class="container">
+                            <div class="row py-1">
+                                <label class="col-4" for="First">Vendor Name: </label>
+                                <input class="col" type="text" id="Last" name="">
+                            </div>
+
+                            <div class="row py-1">
+                                <label class="col-4" for="phoneNumber">Phone Number:</label>
+                                <input class="col" type="text" id="phoneNumber" name="">
+                            </div>
+                            <div class="row py-1">
+                                <label class="col-4" for="Email">Email:</label>
+                                <input class="col" type="text" id="Email" name="">
+                            </div>
+                            <div class="row py-1">
+                                <label class="col-4" for="website">Website:</label>
+                                <input class="col" type="text" id="website" name="">
+                            </div>
+                            <div class="row py-1">
+                                <label class="col-4" for="description">Description:</label>
+                            </div>
+                            <div class="row pl-3">
+                                <textarea rows="3" cols="80" type="text" id="description" name=""></textarea>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Submit</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!--Vendor Info Modal -->
+    <div class="modal fade" id="VendorInfoModal">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Vendor</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <form>
+                        <div class="container">
+                            <div class="row py-1">
+                                <label class="col-4" for="First">Vendor Name: </label>
+                                <p class="col" name="">Vacation inc.</p>
+                            </div>
+
+                            <div class="row py-1">
+                                <label class="col-4">Phone Number:</label>
+                                <p class="col" name="">954-333-3333.</p>
+                            </div>
+                            <div class="row py-1">
+                                <label class="col-4" for="Email">Email:</label>
+                                <p class="col" name="">vacationinc@vac.com.</p>
+                            </div>
+                            <div class="row py-1">
+                                <label class="col-4" for="website">Website:</label>
+                                <p class="col" name="">VacationInc.com</p>
+                            </div>
+                            <div class="row py-1">
+                                <label class="col-4">Description:</label>
+                            </div>
+                            <div class="row pl-3">
+                                <p>
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil reprehenderit alias
+                                    aperiam vitae recusandae
+                                    blanditiis veritatis vel soluta esse explicabo aliquid error voluptatum, cupiditate
+                                    cum amet dolore excepturi
+                                    eveniet ex?
+                                </p>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger login mr-auto" data-dismiss="modal" data-toggle="modal"
+                        data-target="#loginModal">Delete</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Edit</button>
+                </div>
+
+=======
     
             <!-- Modal Header -->
             <div class="modal-header">
@@ -350,6 +543,7 @@
                 <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click ="">Submit</button>
             </div>
     
+>>>>>>> 8e796c13ab886750f4407a53dd87186cfc0d084e
             </div>
         </div>
     </div>  
@@ -360,6 +554,52 @@
     <div class="modal fade" id="AddSpecialModal" ng-controller="SpecialsController">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
+<<<<<<< HEAD
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Add Special</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <form>
+                        <div class="container">
+                            <div class="row py-1">
+                                <label class="col-4" for="First">Vendor Name: </label>
+                                <input class="col" type="text" id="Last" name="">
+                            </div>
+
+                            <div class="row py-1">
+                                <label class="col-4" for="phoneNumber">Phone Number:</label>
+                                <input class="col" type="text" id="phoneNumber" name="">
+                            </div>
+                            <div class="row py-1">
+                                <label class="col-4" for="Email">Email:</label>
+                                <input class="col" type="text" id="Email" name="">
+                            </div>
+                            <div class="row py-1">
+                                <label class="col-4" for="website">Website:</label>
+                                <input class="col" type="text" id="website" name="">
+                            </div>
+                            <div class="row py-1">
+                                <label class="col-4" for="description">Description:</label>
+                            </div>
+                            <div class="row pl-3">
+                                <textarea rows="3" cols="80" type="text" id="description" name=""></textarea>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Submit</button>
+                </div>
+
+=======
     
             <!-- Modal Header -->
             <div class="modal-header">
@@ -396,6 +636,7 @@
                 <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="addSpecial(newSpecial.title, newSpecial.text, newSpecial.expireDate)">Submit</button>
             </div>
     
+>>>>>>> 8e796c13ab886750f4407a53dd87186cfc0d084e
             </div>
         </div>
     </div>
@@ -405,6 +646,52 @@
     <div class="modal fade" id="EditSpecialModal" ng-controller="SpecialsController">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
+<<<<<<< HEAD
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Specials</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <form>
+                        <div class="container">
+                            <div class="row py-1">
+                                <label class="col-4">Special Title</label>
+                                <p class="col" name="">Bahamas Trip</p>
+                            </div>
+
+                            <div class="row py-1">
+                                <label class="col-4">Expire Date:</label>
+                                <p class="col" name="">5/04/2019</p>
+                            </div>
+                            <div class="row py-1">
+                                <label class="col-4">Description:</label>
+                            </div>
+                            <div class="row pl-3">
+                                <p>
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil reprehenderit alias
+                                    aperiam vitae recusandae
+                                    blanditiis veritatis vel soluta esse explicabo aliquid error voluptatum, cupiditate
+                                    cum amet dolore excepturi
+                                    eveniet ex?
+                                </p>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger login mr-auto" data-dismiss="modal" data-toggle="modal"
+                        data-target="#loginModal">Delete</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Edit</button>
+                </div>
+
+=======
     
             <!-- Modal Header -->
             <div class="modal-header">
@@ -441,6 +728,7 @@
                 <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="addSpecial(newSpecial)">Submit</button>
             </div>
     
+>>>>>>> 8e796c13ab886750f4407a53dd87186cfc0d084e
             </div>
         </div>
     </div>

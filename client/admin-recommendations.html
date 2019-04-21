@@ -20,11 +20,17 @@
 
 
 <body>
+<<<<<<< HEAD
+    <!-- Nav bar -->
+    <nav id="mainNavbar" class="navbar navbar-expand-md navbar-light fixed-top">
+        <a class="navbar-brand title" href="./home.html" style="color: #9C28FF"><img src="./images/logo.jpg" alt=""></a>
+=======
     <!-- NAVBAR -->
     <nav id="mainNavbar" class="navbar navbar-expand-md navbar-light fixed-top" ng-controller="UsersController"
         data-ng-init="showName()">
         <a class="navbar-brand title" href="./home.html" style="color: #9C28FF">Bochitto Travel</a>
 
+>>>>>>> 8e796c13ab886750f4407a53dd87186cfc0d084e
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -61,7 +67,7 @@
             </div>
         </div>
     </nav>
-    
+
     <br>
     <!-- page -->
     <div class="container my-5" id="profile">
@@ -101,14 +107,28 @@
                                 <th>Details</th>
                                 <th>Remove</th>
                             </thead>
-                            <tbody>                
+                            <tbody>
                                 <!-- Hardcoded special 1 -->
+<<<<<<< HEAD
+                                <tr>
+                                    <td data-toggle="collapse" href="#Recommendation" role="button"
+                                        aria-expanded="false" aria-controls="Recommendation">Mike john</td>
+                                    <td data-toggle="collapse" href="#Recommendation" role="button"
+                                        aria-expanded="false" aria-controls="Recommendation">Cancun, Mexico</td>
+                                    <td data-toggle="collapse" href="#Recommendation" role="button"
+                                        aria-expanded="false" aria-controls="Recommendation">3/6/2019</td>
+                                    <td data-toggle="collapse" href="#Recommendation" role="button"
+                                        aria-expanded="false" aria-controls="Recommendation">$599.99</td>
+                                    <td data-toggle="collapse" href="#Recommendation" role="button"
+                                        aria-expanded="false" aria-controls="Recommendation">$599.99</td>
+=======
                                 <tr ng-repeat = "request in  requests">
                                     <td data-toggle="collapse" href="#Recommendation" role="button" aria-expanded="false" aria-controls="Recommendation">{{request.party[0].name}}</td>
                                     <td data-toggle="collapse" href="#Recommendation" role="button" aria-expanded="false" aria-controls="Recommendation">{{request.location.to}}</td>
                                     <td data-toggle="collapse" href="#Recommendation" role="button" aria-expanded="false" aria-controls="Recommendation">${{request.budget.min}} - ${{request.budget.max}}</td>
                                     <td data-toggle="collapse" href="#Recommendation" role="button" aria-expanded="false" aria-controls="Recommendation">{{request.travelDates.departing | date}}</td>
                                     <td data-toggle="collapse" href="#Recommendation" role="button" aria-expanded="false" aria-controls="Recommendation">{{request.travelDates.returning | date}}</td>
+>>>>>>> 8e796c13ab886750f4407a53dd87186cfc0d084e
                                     <td id="editButton">
                                         <button type="button" id="addButton" class="btn btn-info" data-toggle="modal"
                                             data-target="#RequestInfoModal" data-whatever="@mdo" ng-click="showDetails($index)">
@@ -122,6 +142,10 @@
                                         </button>
                                     </td>
                                 </tr>
+<<<<<<< HEAD
+
+
+=======
                                  <!--Requests Info Modal -->
                             <div class="modal fade" id="RequestInfoModal">
                                 <div class="modal-dialog modal-dialog-centered">
@@ -173,30 +197,39 @@
                                 </div>
         
                             
+>>>>>>> 8e796c13ab886750f4407a53dd87186cfc0d084e
                                 <!-- Collapse Recommendations -->
-                                
+
                                 <tr class="collapse" id="Recommendation">
                                     <th colspan="4">Recommendation</th>
                                     <th colspan="3">Notes</th>
                                 </tr>
-                                
-                                <tr  class="collapse" id="Recommendation"> 
+
+                                <tr class="collapse" id="Recommendation">
                                     <td colspan="4">
-                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
+                                        richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes
+                                        anderson cred nesciunt sapiente ea proident.
                                     </td>
                                     <td colspan="3">
-                                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-                                    </td>                              
+                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
+                                        richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes
+                                        anderson cred nesciunt sapiente ea proident.
+                                    </td>
                                 </tr>
-                                <tr  class="collapse" id="Recommendation"> 
-                                        <td colspan="4">
-                                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-                                        </td>
-                                        <td colspan="3">
-                                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-                                        </td>                              
+                                <tr class="collapse" id="Recommendation">
+                                    <td colspan="4">
+                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
+                                        richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes
+                                        anderson cred nesciunt sapiente ea proident.
+                                    </td>
+                                    <td colspan="3">
+                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
+                                        richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes
+                                        anderson cred nesciunt sapiente ea proident.
+                                    </td>
                                 </tr>
-        
+
                                 <!-- special 2 -->
                                 <tr>
                                     <td>Larry Field</td>
@@ -245,7 +278,7 @@
             </div>
 
             <!-- Add recommendation -->
-            <div class="container-fluid py-5">   
+            <div class="container-fluid py-5">
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="">
@@ -254,32 +287,37 @@
                                     <span class="titleofBlog">Request</span>
                                 </div>
                                 <div class="card-body">
-                                    <form> 
-                                        <div class="row"> 
+                                    <form>
+                                        <div class="row">
                                             <div class="col-sm-4">
                                                 <label for="price">Price</label>
                                                 <input type="text" class="form-control" id="price" placeholder="Price">
                                                 <label for="Location">Location</label>
-                                                <input type="text" class="form-control" id="Location" placeholder="Location">
+                                                <input type="text" class="form-control" id="Location"
+                                                    placeholder="Location">
                                                 <label for="Hotel">Hotel</label>
                                                 <input type="text" class="form-control" id="Hotel" placeholder="Hotel">
                                                 <label for="TravelDate">TravelDate</label>
-                                                <input type="text" class="form-control" id="TravelDate" placeholder="TravelDate">               
+                                                <input type="text" class="form-control" id="TravelDate"
+                                                    placeholder="TravelDate">
                                             </div>
                                             <div class="col-sm-4">
                                                 <label for="Duration">Duration</label>
-                                                <input type="text" class="form-control" id="Duration" placeholder="Duration">
+                                                <input type="text" class="form-control" id="Duration"
+                                                    placeholder="Duration">
                                                 <label for="Cruise">Cruise</label>
-                                                <input type="text" class="form-control" id="Cruise" placeholder="Cruise">
+                                                <input type="text" class="form-control" id="Cruise"
+                                                    placeholder="Cruise">
                                                 <label for="Airline">Airline</label>
-                                                <input type="text" class="form-control" id="Airline" placeholder="Airline">                                                   
+                                                <input type="text" class="form-control" id="Airline"
+                                                    placeholder="Airline">
                                             </div>
-                                            <div class="col-sm-4">                                               
-                                                
+                                            <div class="col-sm-4">
+
                                                 <!-- Pending Request -->
-                                                <div class="container-fluid pt-2" id = "pending">
+                                                <div class="container-fluid pt-2" id="pending">
                                                     <table class="table table-sm table-striped">
-                                                    <thead class="thead-dark">
+                                                        <thead class="thead-dark">
                                                             <tr>
                                                                 <th scope="col">#</th>
                                                                 <th scope="col">Name</th>
@@ -307,31 +345,31 @@
                                                                 <td>Tom</td>
                                                                 <td>miami</td>
                                                             </tr>
-                                                                <tr>
+                                                            <tr>
                                                                 <th scope="row"><input type="radio" name="pick"></th>
                                                                 <td>Tom</td>
                                                                 <td>miami</td>
                                                             </tr>
-                                                                <tr>
+                                                            <tr>
                                                                 <th scope="row"><input type="radio" name="pick"></th>
                                                                 <td>Tom</td>
                                                                 <td>miami</td>
                                                             </tr>
-                                                                <tr>
+                                                            <tr>
                                                                 <th scope="row"><input type="radio" name="pick"></th>
                                                                 <td>Tom</td>
                                                                 <td>miami</td>
                                                             </tr>
-                                                                <tr>
+                                                            <tr>
                                                                 <th scope="row"><input type="radio" name="pick"></th>
                                                                 <td>Tom</td>
                                                                 <td>miami</td>
                                                             </tr>
-                                                            
+
                                                         </tbody>
                                                     </table>
                                                 </div>
-                                            
+
                                             </div>
                                         </div>
                                         <div class="row">
@@ -340,12 +378,13 @@
                                                 <textarea class="form-control" rows="7" id="Note"></textarea>
                                             </div>
                                             <div class="mt-5">
-                                                <button type="button" class="btn btn-success"  data-whatever="@mdo">Submit</button>
+                                                <button type="button" class="btn btn-success"
+                                                    data-whatever="@mdo">Submit</button>
                                             </div>
                                         </div>
                                     </form>
                                 </div>
-                            </div>  
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -365,11 +404,16 @@
                 <div class="modal-body">
                     <h3 class="titleFont text-center">I would love to travel to VEGAS!!!</h3>
                     <hr>
-                    <p class="textFont">    
-                        Simple excursion excursion blogger traveler whimsical travelblogger cute colorful. Excursion traveling cute modern modern cute cute wanderlust excursion, Travel theme WordPress cute. WordPress wanderlust design traveling webdesign, darn colorful website clean theme WordPress.
+                    <p class="textFont">
+                        Simple excursion excursion blogger traveler whimsical travelblogger cute colorful. Excursion
+                        traveling cute modern modern cute cute wanderlust excursion, Travel theme WordPress cute.
+                        WordPress wanderlust design traveling webdesign, darn colorful website clean theme WordPress.
                     </p>
                     <p>
-                        Adventure organized excursion, pretty traveling travelblogger blogger wanderlust simple traveler expedition simple cute. WordPress adventure design theme organized wanderlust, simple blogger clean wanderlust design WordPress. Travel theme cute organized webdesign WordPress theme whimsical.  
+                        Adventure organized excursion, pretty traveling travelblogger blogger wanderlust simple traveler
+                        expedition simple cute. WordPress adventure design theme organized wanderlust, simple blogger
+                        clean wanderlust design WordPress. Travel theme cute organized webdesign WordPress theme
+                        whimsical.
                     </p>
                 </div>
                 <div class="modal-footer">
