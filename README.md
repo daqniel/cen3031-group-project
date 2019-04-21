@@ -21,7 +21,7 @@ Provides users CRUD and login/logout/authentication functionality.
 |phoneNumber|String|no|US number format http://regexlib.com/REDetails.aspx?regexp_id=58|
 |isAdmin|Boolean|no|Designates an Administrator account|
 
-### Requests
+### HTTP Requests
 
 ## Notes
 
@@ -50,16 +50,16 @@ Provides notes CRUD functionality. Each note must be linked to a User, Vendor, o
 
 * Delete note by _id: DELETE /api/notes/(note._id)
 
-### Blogpost
+## Blogposts
 
 ### Description
+Provides blogpost CRUD functionality.
 
 ### Schema
 |Field|Type|Required?|Description|
 |-----|----|--------|-|
 |title|String|yes|Title of the blogpost.|
 |text|String|maybe|Text of the note. Required if no title is provided.|
-Required fields: title(String). Optional fields: text(String). Maybe text should be a required field too? Although she may want to use her blogposts as announcements. Short announcements would only need the title field.
 
 ### HTTP Request
 
@@ -73,9 +73,13 @@ Required fields: title(String). Optional fields: text(String). Maybe text should
 
 * Delete blogpost by _id: DELETE /api/blogposts/(blogpost._id)
 
-### Special
+## Special
 
-Required fields: title(String). Optional fields: description(String), expireDate(Date). Date format should be 'YYYY-MM-DD'.
+### Schema
+|Field|Type|Required?|Description|
+|-----|----|--------|-|
+|title|String|yes|Title of the blogpost.|
+|text|String|no|Text of the Special. Can be used for descriptions|
 
 * Get all specials: GET /api/specials
 
