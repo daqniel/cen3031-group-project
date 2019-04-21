@@ -45,8 +45,15 @@ angular.module("users").controller("UsersController", [
         .then(res => {
           console.log("res.data", res);
           if (res.status == 200) {
-            window.location.href = "../home.html";
-            sessionStorage.setItem("user", JSON.stringify(res.data));
+            if(res.data.email.substr(0,6) == "BTADM-")
+            {
+              window.location.href = "../admin-home.html";
+              sessionStorage.setItem("user", JSON.stringify(res.data));
+            }
+            else{
+              window.location.href = "../home.html";
+              sessionStorage.setItem("user", JSON.stringify(res.data));
+            }
           }
         })
         .catch(err => {
