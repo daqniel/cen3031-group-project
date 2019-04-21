@@ -16,6 +16,10 @@ angular
         //sends to index, doesnt show recommendations
       },
 
+      getByClient: function(clientId) {
+        return $http.get(apiHost + "/api/recommendations/" + clientId);
+      },
+
       create: function(recommendation) {
         return $http.post(
           apiHost + "/api/recommendations",

@@ -3,17 +3,15 @@ angular.module("recommendation").controller("RecommendationsController", [
   "$scope",
   "Recommendations",
   function($scope, Recommendations) {
-    Recommendations.getAll().then(
-      function(res) {
+    Recommendations.getAll()
+      .then(res => {
         $scope.recommendations = res.data;
-      },
-      function(error) {
-        console.log("Unable to retrieve recommendations:", error);
-      }
-    );
+      })
+      .catch(err => {
+        console.log("Unable to retrieve recommendations:", err);
+      });
     $scope.detailedInfo = undefined;
 
-    /* this is going to have to change after we settle on fields for schema */
     $scope.addRecommendation = function(newClient, newTitle, newText, newLink) {
       var newRecommendation = {
         clientId: newClient,
@@ -28,6 +26,16 @@ angular.module("recommendation").controller("RecommendationsController", [
         })
         .catch(err => {
           console.log("err creating recommendations: ", err);
+        });
+    };
+
+    $scope.getByClient = function(clientId) {
+      Recommendations.getByClient(clientId)
+        .then(res => {
+          $scope.recommendationsByClient = res.data;
+        })
+        .catch(err => {
+          console.log("Unable to retrieve recommendations for client: ", err);
         });
     };
 
