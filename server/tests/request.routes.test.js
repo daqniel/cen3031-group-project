@@ -6,6 +6,7 @@ var should = require('should'),
 /* Global variables */
 var app, agent;
 
+//Different party members to be a part of the Request
 var partyMember1 = {name: 'Jack', birthDate: new Date("1998-09-11")};
 var partyMember2 = {name: 'Samantha', birthDate: new Date("1997-10-17")};
 var partyMember3 = {name: 'Brittany', birthDate: new Date("1990-12-26")};
