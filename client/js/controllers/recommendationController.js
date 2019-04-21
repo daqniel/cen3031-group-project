@@ -1,5 +1,5 @@
 //TODO: bring this up to par with other controllers
-angular.module("recommendation").controller("RecommendationsController", [
+angular.module("recommendations").controller("RecommendationsController", [
   "$scope",
   "Recommendations",
   function($scope, Recommendations) {
