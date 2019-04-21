@@ -51,9 +51,6 @@ var requestSchema = new Schema({
 
 /* create a 'pre' function that adds the updatedDate (and createdDate if not already there) property */
 requestSchema.pre('save', function(next) {
-    if(this.party.children < 0) this.party.children = 0;
-    if(this.party.adults < 0) this.party.adults = 0;
-    this.party.size = this.party.children + this.party.adults;
 
     if(this.budget.min < 0) this.budget.min = 0;
     if(this.budget.max < 0) this.budget.max = 0;

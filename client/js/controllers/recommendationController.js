@@ -14,15 +14,21 @@ angular.module("recommendation").controller("RecommendationsController", [
     $scope.detailedInfo = undefined;
 
     /* this is going to have to change after we settle on fields for schema */
-    $scope.addRecommendation = function(rec) {
-      Recommendations.create(rec).then(
-        function(res) {
-          window.location = window.location;
-        },
-        function(error) {
-          console.log("Unable to retrieve recommendations:", error);
-        }
-      );
+    $scope.addRecommendation = function(newClient, newTitle, newText, newLink) {
+      var newRecommendation = {
+        clientId: newClient,
+        title: newTitle,
+        text: newText,
+        link: newLink
+      };
+      Recommendations.create(newRecommendation)
+        .then(res => {
+          if (res.status == 200)
+            console.log("recommendation added successfully", res.data);
+        })
+        .catch(err => {
+          console.log("err creating recommendations: ", err);
+        });
     };
 
     $scope.deleteRecommendations = function(id) {

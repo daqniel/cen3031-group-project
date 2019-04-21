@@ -21,7 +21,7 @@ angular.module('users',[]);
 angular.module('notes',[]);
 angular.module('recommendations',[]);
 angular.module('requests',[]);
-angular.module('vendor',[]);
+angular.module('vendors',[]);
 
 /* register the application and inject all the necessary dependencies */
-var app = angular.module('agencyApp', ['specials','routes','blogPosts','users','notes','recommendations','requests','vendor']);
+var app = angular.module('agencyApp', ['specials','blogPosts','users','notes','recommendations','requests','vendors']);

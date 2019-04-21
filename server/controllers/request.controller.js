@@ -1,6 +1,5 @@
 /*Dependencies*/
-var mongoose = require("mongoose"),
-  Request = require("../models/request.model.js");
+var Request = require("../models/request.model.js");
 
 /*Retrieve all Requests*/
 exports.list = function(req, res) {
@@ -11,7 +10,8 @@ exports.list = function(req, res) {
 exports.create = function(req, res) {
   var request = new Request(req.body);
   /*Saves Request to database*/
-  request.save()
+  request
+    .save()
     .then(() => res.json(request))
     .catch(err => res.status(400).send(err));
 };

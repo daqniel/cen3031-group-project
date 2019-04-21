@@ -16,12 +16,15 @@
     <title>Profile Settings</title>
 </head>
 
-<body ng-app="agencyApp" ng-controller="UsersController"
-data-ng-init="showName()">
+<<<<<<< HEAD
+<body ng-app="agencyApp" ng-controller="UsersController" data-ng-init="showName()">
+=======
+<body ng-app="agencyApp" ng-controller="UsersController" data-ng-init="getSession()">
+>>>>>>> 8e796c13ab886750f4407a53dd87186cfc0d084e
 
     <!-- NAVBAR -->
-    <nav id="mainNavbar" class="navbar navbar-expand-md navbar-light fixed-top" >
-        <a class="navbar-brand title" href="./home.html" style="color: #9C28FF">Bochitto Travel</a>
+    <nav id="mainNavbar" class="navbar navbar-expand-md navbar-light fixed-top">
+        <a class="navbar-brand title" href="./home.html" style="color: #9C28FF"><img src="./images/logo.jpg" alt=""></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -47,7 +50,7 @@ data-ng-init="showName()">
             <div class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false" style="color:black!important;">
-                    Welcome, {{sessionUsername}}
+                    Welcome, {{currentUser.email}}
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="./user-settings.html">Profile</a>
@@ -59,7 +62,7 @@ data-ng-init="showName()">
         </div>
     </nav>
 
-    <div class="container" id="profile" ng-controller = "UsersController">
+    <div class="container" id="profile" ng-controller="UsersController">
         <h1 class="titleFont text-center">Profile Settings</h1>
         <hr class="settings-hr">
         <div class="row">
@@ -77,11 +80,11 @@ data-ng-init="showName()">
             </div>
             <div class="col-md-9">
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Name: {{storedName}}
+                    <li class="list-group-item">Name: {{currentUser.name.first}}   {{currentUser.name.last}}
                     </li>
-                    <li class="list-group-item">Email: {{sessionUsername}}
+                    <li class="list-group-item">Email: {{currentUser.email}}
                     </li>
-                    <li class="list-group-item">Phone Number: {{storedPhone}}
+                    <li class="list-group-item">Phone Number: {{currentUser.phoneNumber}}
                     </li>
                     <li class="list-group-item">Password: **********
                     </li>
@@ -220,7 +223,7 @@ data-ng-init="showName()">
         integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
         crossorigin="anonymous"></script>
     <!-- <script src="js/styling/script.js"></script> -->
-    <script src="https://code.angularjs.org/1.4.3/angular.js"></script> 
+    <script src="https://code.angularjs.org/1.4.3/angular.js"></script>
     <script src="js/app.js"></script>
     <script src="js/factories/userFactory.js"></script>
     <script src="js/controllers/userController.js"></script>
