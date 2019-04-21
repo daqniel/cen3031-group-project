@@ -34,10 +34,18 @@ var requestSchema = new Schema({
         returning: Date
     },
     //Names and birthdays of each person traveling. At least one traveler is required
-    party: {
-        type: [partyMemberSchema],
-        default: undefined,
-        required: true
+    // party: {
+    //     type: [partyMemberSchema],
+    //     default: undefined,
+    //     required: true
+    // },
+    numChildren: {
+        required: true,
+        type: Number
+    },
+    numAdults: {
+        required: true,
+        type: Number
     },
 
     wantTravelInsurance: Boolean,
@@ -54,6 +62,10 @@ requestSchema.pre('save', function(next) {
 
     if(this.budget.min < 0) this.budget.min = 0;
     if(this.budget.max < 0) this.budget.max = 0;
+    if(this.numChildren < 0) this.numChildren = 0;
+    if(this.numAdults < 0) this.numAdults = 0;
+
+    this.partySize = numChildren + numAdults;
 
     this.updatedDate = new Date;
     if(!this.createdDate)
