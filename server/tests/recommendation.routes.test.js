@@ -1,7 +1,7 @@
 var should = require('should'),
     request = require('supertest'),
     express = require('../config/express'),
-    Recommendation = require('../models/recommendation.model.model.js');
+    Recommendation = require('../models/recommendation.model.js');
 
 /* Global variables */
 var app, agent;
@@ -11,6 +11,13 @@ var recommend = { //new Recommendation created to test save, update, and delete 
     title: 'The Perfect Vacation: Alcatraz!',
     text: 'Go here and never come back for only $499.',
     link: 'www.amazingalcatraz.com/booknow'
+};
+
+var badRecommend = { //new Recommendation created to test save, update, and delete calls
+    client: 'J. Jonah Jameson',
+    title: 'The Perfect Vacation: Alcatraz!',
+    text: 'Go here and never come back for only $499.',
+    link: 'brb gonna hate on spider-man right quick'
 };
 
 var id; //ObjectId of created test Recommendation
@@ -32,9 +39,21 @@ describe('Tests for Recommendation API call', function() {
             .end(function(err, res){
                 should.not.exist(err);
                 should.exist(res.body._id);
-                res.body.title.should.equal('THIS IS A TEST');
-                res.body.text.should.equal('This blog post is only a test. Do not be alarmed.');
+                res.body.client.should.equal('J. Jonah Jameson');
+                res.body.title.should.equal('The Perfect Vacation: Alcatraz!');
+                res.body.text.should.equal('Go here and never come back for only $499.');
+                res.body.link.should.equal('www.amazingalcatraz.com/booknow');
                 id = res.body._id;
+                done();
+            });
+    });
+
+    it('Reject creating Recommendation for wrong link', function(done){
+        agent.post('/api/recommendations')
+            .send(badRecommend)
+            .expect(400)
+            .end(function(res){
+                should.not.exist(res);
                 done();
             });
     });
@@ -45,8 +64,10 @@ describe('Tests for Recommendation API call', function() {
             .end(function (err, res) {
                 should.not.exist(err);
                 should.exist(res);
-                res.body.title.should.equal('THIS IS A TEST');
-                res.body.text.should.equal('This blog post is only a test. Do not be alarmed.');
+                res.body.client.should.equal('J. Jonah Jameson');
+                res.body.title.should.equal('The Perfect Vacation: Alcatraz!');
+                res.body.text.should.equal('Go here and never come back for only $499.');
+                res.body.link.should.equal('www.amazingalcatraz.com/booknow');
                 res.body._id.should.equal(id);
                 done();
             });
@@ -64,21 +85,25 @@ describe('Tests for Recommendation API call', function() {
 
     it('Update Recommendation by _id', function(done) {
         var recommendUpdate = {
-            title: 'THIS IS A TEST',
-            text: 'This is not a drill: TEXT HAS BEEN UPDATED.'
+            client: 'J. Jonah Jameson',
+            title: 'The Perfect Vacation: Anywhere but the Daily Bugle!',
+            text: 'Go here and never come back for only $1.',
+            link: 'www.dailybugle.com'
         };
         agent.put('/api/recommendations/' + id)
             .send(recommendUpdate)
             .expect(200)
             .end(function (err, res) {
                 should.not.exist(err);
-                agent.get('/api/recommendations/' + id) //grabs updated BlogPost
+                agent.get('/api/recommendations/' + id) //grabs updated Recommendation
                     .expect(200)
                     .end(function (err, res) {
                         should.not.exist(err);
                         should.exist(res);
-                        res.body.title.should.equal('THIS IS A TEST');
-                        res.body.text.should.equal('This is not a drill: TEXT HAS BEEN UPDATED.');
+                        res.body.client.should.equal('J. Jonah Jameson');
+                        res.body.title.should.equal('The Perfect Vacation: Anywhere but the Daily Bugle!');
+                        res.body.text.should.equal('Go here and never come back for only $1.');
+                        res.body.link.should.equal('www.dailybugle.com');
                         res.body._id.should.equal(id);
                         done();
                     });

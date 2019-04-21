@@ -75,8 +75,8 @@ describe('Tests for User API call', function() {
         agent.post('/api/users')
             .send(badUserEmail)
             .expect(400)
-            .end(function(err, res){
-                should.exist(err);
+            .end(function(res){
+                should.not.exist(res);
                 done();
             });
     });
@@ -85,8 +85,8 @@ describe('Tests for User API call', function() {
         agent.post('/api/users')
             .send(badUserPhoneNumber)
             .expect(400)
-            .end(function(err, res){
-                should.exist(err);
+            .end(function(res){
+                should.not.exist(res);
                 done();
             });
     });
