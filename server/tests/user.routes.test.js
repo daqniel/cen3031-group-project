@@ -64,7 +64,7 @@ describe('Tests for User API call', function() {
                 res.body.name.middle.should.equal('Ben');
                 res.body.name.last.should.equal('Bob');
                 res.body.email.should.equal('billywillyfofilly@yahoo.com');
-                //res.body.password.should.equal('$2a$10$Cjpj9HdFbI0lC.I8003hauPQmRE9pDY60TYBJvu6lc7zLGttU83RC');
+                res.body.password.should.not.equal('p@33w0rd');
                 res.body.phoneNumber.should.equal('123-456-7890');
                 res.body.isAdmin.should.equal(false);
                 done();
@@ -101,7 +101,7 @@ describe('Tests for User API call', function() {
                 res.body.name.middle.should.equal('Ben');
                 res.body.name.last.should.equal('Bob');
                 res.body.email.should.equal('billywillyfofilly@yahoo.com');
-                //res.body.password.should.equal('$2a$10$Cjpj9HdFbI0lC.I8003hauPQmRE9pDY60TYBJvu6lc7zLGttU83RC');
+                res.body.password.should.not.equal('p@33w0rd');
                 res.body.phoneNumber.should.equal('123-456-7890');
                 res.body.isAdmin.should.equal(false);
                 done();
@@ -144,7 +144,7 @@ describe('Tests for User API call', function() {
                         res.body.name.middle.should.equal('Ben');
                         res.body.name.last.should.equal('Bob');
                         res.body.email.should.equal('billywillyfofilly@yahoo.com');
-                        //res.body.password.should.equal('$2a$10$Sd0JnDCWKy4dvAsoVOl10eUXXvMOYKkGusyIowBkGX78YZQsAxJla');
+                        res.body.password.should.not.equal('C2PN69NOTC8OG2346UBRFXIJU4OG23K5CUXF2YBOV3KUJYFNC5I2TGU3Y');
                         res.body.phoneNumber.should.equal('123-456-7890');
                         res.body.isAdmin.should.equal(false);
                         done();
