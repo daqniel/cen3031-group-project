@@ -13,7 +13,19 @@ var recommendationSchema = new Schema({
     required: true
   },
   text: String,
-  link: String,
+  link: {
+    type: String,
+    validate: {
+      validator: function(v) {
+        /* TODO: find a better regex, this one doesnt work with e.g 'bookings.seh.com' */
+        /* Validate most legal websites */
+        /* regex by Viktor Nagy, http://regexlib.com/REDetails.aspx?regexp_id=2629 */
+        return /^((http|https|ftp):\/\/(www\.)?|www\.)[a-zA-Z0-9\_\-]+\.([a-zA-Z]{2,4}|[a-zA-Z]{2}\.[a-zA-Z]{2})(\/[a-zA-Z0-9\-\._\?\&=,'\+%\$#~]*)*$/.test(
+          v
+        );
+      }
+    }
+  },
   createdDate: Date,
   updatedDate: Date
 });
