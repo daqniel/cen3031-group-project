@@ -39,7 +39,7 @@ angular.module("vendors").controller("VendorsController", [
 
     };
 
-    $scope.updateVendor = function(id) {
+    $scope.updateVendor = function(id, ) {
       Vendors.update(id, $scope.updatedVendor)
         .then(res => {
           console.log("vendor successfully updated:", res.data);
