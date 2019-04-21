@@ -51,7 +51,7 @@ exports.delete = function(req, res) {
 
 /* find all notes with a matching 'linkedId' */
 exports.noteByLinkedId = function(req, res, next) {
-  linkedId = req.query.linkedId;
+  var linkedId = req.query.linkedId;
   if (linkedId) {
     Note.find({ linkedId: linkedId })
       .then(notes => (req.notes = notes))
