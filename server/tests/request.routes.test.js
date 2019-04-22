@@ -6,17 +6,17 @@ var should = require('should'),
 /* Global variables */
 var app, agent;
 
+//Different party members to be a part of the Request
 var req = { //new Request created to test save, update, and delete calls
-    clientID: 'octomom@gmail.com',
+    clientId: 'octomom@gmail.com',
     requestState: 'Pending',
-    budget: {
-        min: 0,
-        max: 1000000
-    },
-    party: {
-        children: 8,
-        adults: 2,
-    },
+    budget: {min: 0, max: 1000000},
+    location: {from : 'Gainesville, FL', to: 'New York, NY',},
+    travelDates:{departing: new Date("2019-04-24"), returning: new Date("2019-04-30")},
+    numAdults: 1,
+    numChildren: 8,
+    wantTravelInsurance: false,
+    wantCruise: true,
     text: 'I have eight rambunctious kids. Take me somewhere were they won\'t annoy me.'
 };
 
@@ -39,12 +39,15 @@ describe('Tests for Request API call', function() {
             .end(function(err, res){
                 should.not.exist(err);
                 should.exist(res.body._id);
-                res.body.clientID.should.equal('octomom@gmail.com');
+                res.body.clientId.should.equal('octomom@gmail.com');
                 res.body.requestState.should.equal('Pending');
                 res.body.budget.min.should.equal(0);
                 res.body.budget.max.should.equal(1000000);
-                res.body.party.children.should.equal(8);
-                res.body.party.adults.should.equal(2);
+                res.body.location.from.should.equal('Gainesville, FL');
+                res.body.location.to.should.equal('New York, NY');
+                res.body.numAdults.should.equal(1);
+                res.body.numChildren.should.equal(8);
+                res.body.partySize.should.equal(9);
                 res.body.text.should.equal('I have eight rambunctious kids. Take me somewhere were they won\'t annoy me.');
                 id = res.body._id;
                 done();
@@ -57,12 +60,15 @@ describe('Tests for Request API call', function() {
             .end(function (err, res) {
                 should.not.exist(err);
                 should.exist(res);
-                res.body.clientID.should.equal('octomom@gmail.com');
+                res.body.clientId.should.equal('octomom@gmail.com');
                 res.body.requestState.should.equal('Pending');
                 res.body.budget.min.should.equal(0);
                 res.body.budget.max.should.equal(1000000);
-                res.body.party.children.should.equal(8);
-                res.body.party.adults.should.equal(2);
+                res.body.location.from.should.equal('Gainesville, FL');
+                res.body.location.to.should.equal('New York, NY');
+                res.body.numAdults.should.equal(1);
+                res.body.numChildren.should.equal(8);
+                res.body.partySize.should.equal(9);
                 res.body.text.should.equal('I have eight rambunctious kids. Take me somewhere were they won\'t annoy me.');
                 res.body._id.should.equal(id);
                 done();
@@ -81,16 +87,15 @@ describe('Tests for Request API call', function() {
 
     it('Update Request by _id', function(done) {
         var reqUpdate = {
-            clientID: 'octomom@gmail.com',
+            clientId: 'octomom@gmail.com',
             requestState: 'Declined',
-            budget: {
-                min: 0,
-                max: 1000000
-            },
-            party: {
-                children: 8,
-                adults: 2,
-            },
+            budget: {min: 0, max: 1000000},
+            location: {from : 'Gainesville, FL', to: 'New York, NY',},
+            travelDates:{departing: new Date("2019-04-24"), returning: new Date("2019-04-30")},
+            numAdults: 2,
+            numChildren: 8,
+            wantTravelInsurance: false,
+            wantCruise: true,
             text: 'I have eight rambunctious kids. Take me somewhere were they won\'t annoy me.'
         };
         agent.put('/api/requests/' + id)
@@ -103,12 +108,15 @@ describe('Tests for Request API call', function() {
                     .end(function (err, res) {
                         should.not.exist(err);
                         should.exist(res);
-                        res.body.clientID.should.equal('octomom@gmail.com');
+                        res.body.clientId.should.equal('octomom@gmail.com');
                         res.body.requestState.should.equal('Declined');
                         res.body.budget.min.should.equal(0);
                         res.body.budget.max.should.equal(1000000);
-                        res.body.party.children.should.equal(8);
-                        res.body.party.adults.should.equal(2);
+                        res.body.location.from.should.equal('Gainesville, FL');
+                        res.body.location.to.should.equal('New York, NY');
+                        res.body.numAdults.should.equal(2);
+                        res.body.numChildren.should.equal(8);
+                        res.body.partySize.should.equal(10);
                         res.body.text.should.equal('I have eight rambunctious kids. Take me somewhere were they won\'t annoy me.');
                         res.body._id.should.equal(id);
                         done();

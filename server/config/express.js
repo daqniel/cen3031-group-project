@@ -66,8 +66,8 @@ module.exports.init = function() {
   });
 
   // Go to homepage for all routes not specified */
-  app.get("*", function(req, res) {
-    res.redirect("/");
-  });
+  // app.get("*", function(req, res) {
+  //   res.redirect("/");
+  // });
   return app;
 };

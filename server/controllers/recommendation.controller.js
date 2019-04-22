@@ -47,7 +47,7 @@ exports.delete = function(req, res) {
 exports.findRecommendationsByClient = function(req, res, next) {
   var clientId = req.query.clientId;
   if(clientId) {
-    Recommendation.find({clientId: clientId})
+    Recommendation.find({client: clientId})
       .then(recs => (req.recommendations = recs))
       .catch(err => res.status(400).send(err))
       .then(() => next());

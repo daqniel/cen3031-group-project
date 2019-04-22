@@ -1,173 +1,137 @@
-<!DOCTYPE html>
-<html lang="en">
+<!-- <head>
+    <title>MyDashboard | Recommendations</title>
+</head> -->
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!-- Links: API's, CSS, and FontAwesome -->
-    <link href="https://fonts.googleapis.com/css?family=Boogaloo|Laila" rel="stylesheet">
-    <link rel="stylesheet" href="style/style.css">
-    <link rel="stylesheet" href="style/admin-pastReviews.css">
-    <link rel="stylesheet" href="style/AdminSettings.css">
-    <link rel="stylesheet" href="style/user-recommendations.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-    <title>My Recommendations</title>
-</head>
+<link rel="stylesheet" href="style/AdminSettings.css">
+<link rel="stylesheet" href="style/admin-SpecialsVendors.css">
+<link rel="stylesheet" href="style/user-recommendations.css">
+<header ng-include="'navbar.html'"></header>
+<br>
+<!-- page -->
+<div class="container my-5" id="profile">
+    <h1 class="titleFont text-center">Admin Settings</h1>
+    <hr class="settings-hr">
+    <div class="row">
 
-
-<body>
-    <!-- NAVBAR -->
-    <nav id="mainNavbar" class="navbar navbar-expand-md navbar-light fixed-top" ng-controller="UsersController"
-        data-ng-init="showName()">
-        <a class="navbar-brand title" href="./home.html" style="color: #9C28FF"><img src="./images/logo.jpg" alt=""></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto nav-fill w-100">
-                <li class="icon nav-item active">
-                    <a class="nav-link " href="./specials-home.html">Specials<span class="sr-only">(current)</span></a>
-                </li>
-                <li class="icon nav-item active">
-                    <a class="nav-link" href="./pastreview-home.html">Past Reviews<span
-                            class="sr-only">(current)</span></a>
-                </li>
-                <li class="icon nav-item active">
-                    <a class="nav-link" href="#aboutUsContainer">About Us<span class="sr-only">(current)</span></a>
-                </li>
-                <li class="icon nav-item active">
-                    <a class="nav-link" href="./user-recommendations.html">MyRecommendations<span
-                            class="sr-only">(current)</span></a>
-                </li>
-            </ul>
-            <div class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false" style="color:black!important;">
-                    Welcome, {{ sessionUsername }}
+        <!--Side Nav table -->
+        <div class="col-md-3">
+            <div class="list-group">
+                <a href="#!/dashboard" class="list-group-item list-group-item-action active">
+                    <i class="far fa-lightbulb"></i> &nbsp;
+                    Recommendations
                 </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="./user-settings.html">Profile</a>
-                    <a class="dropdown-item" href="./user-recommendations.html">MyRecommendations</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="./index.html">Logout</a>
-                </div>
+                <a href="#!/dashboard/reviews" class="list-group-item list-group-item-action">
+                    <i class="fas fa-user-cog"></i> &nbsp;
+                    Past Reviews
+                </a>
+                <a href="#!/dashboard/specials-vendors" class="list-group-item list-group-item-action">
+                    <i class="fas fa-user-cog"></i> &nbsp;
+                    Vendor List/Specials
+                </a>
+                <a href="#!/dashboard/settings" class="list-group-item list-group-item-action">
+                    <i class="fas fa-user-cog"></i> &nbsp;
+                    MyProfile
+                </a>
             </div>
         </div>
-    </nav>
 
-    <br>
-    <!-- page -->
-    <div class="container my-5" id="profile">
-        <h1 class="titleFont text-center">Admin Settings</h1>
-        <hr class="settings-hr">
-        <div class="row">
-
-            <!--Side Nav table -->
-            <div class="col-md-3">
-                <div class="list-group">
-                    <a href="./admin-recommendations.html" class="list-group-item list-group-item-action active">
-                        <i class="far fa-lightbulb"></i> &nbsp;
-                        Recommendations
-                    </a>
-                    <a href="./admin-pastReviews.html" class="list-group-item list-group-item-action">
-                        <i class="fas fa-user-cog"></i> &nbsp;
-                        Past Reviews
-                    </a>
-                    <a href="./admin-SpecialsVendors.html" class="list-group-item list-group-item-action">
-                        <i class="fas fa-user-cog"></i> &nbsp;
-                        Vendor List/Specials
-                    </a>
-                </div>
-            </div>
-
-            <!-- Recomendations request table -->
-            <div class="col-md-9" ng-controller = "RequestsController">
-                <div class="row">
-                    <nav class="container-fluid">
-                        <table class="table table-striped table-hover" id="requestTable">
-                            <thead class="thead-dark">
-                                <th class="">Client</th>
-                                <th class="">Destination</th>
-                                <th class="">Budget</th>
-                                <th class="">Departing</th>
-                                <th>Returning</th>
-                                <th>Details</th>
-                                <th>Remove</th>
-                            </thead>
-                            <tbody>
-                                <!-- Hardcoded special 1 -->
-                                <tr ng-repeat = "request in  requests">
-                                    <td data-toggle="collapse" href="#Recommendation" role="button" aria-expanded="false" aria-controls="Recommendation">{{request.party[0].name}}</td>
-                                    <td data-toggle="collapse" href="#Recommendation" role="button" aria-expanded="false" aria-controls="Recommendation">{{request.location.to}}</td>
-                                    <td data-toggle="collapse" href="#Recommendation" role="button" aria-expanded="false" aria-controls="Recommendation">${{request.budget.min}} - ${{request.budget.max}}</td>
-                                    <td data-toggle="collapse" href="#Recommendation" role="button" aria-expanded="false" aria-controls="Recommendation">{{request.travelDates.departing | date}}</td>
-                                    <td data-toggle="collapse" href="#Recommendation" role="button" aria-expanded="false" aria-controls="Recommendation">{{request.travelDates.returning | date}}</td>
-                                    <td id="editButton">
-                                        <button type="button" id="addButton" class="btn btn-info" data-toggle="modal"
-                                            data-target="#RequestInfoModal" data-whatever="@mdo" ng-click="showDetails($index)">
-                                            <i class="fas fa-info-circle"></i>
-                                        </button>
-                                    </td>
-                                    <td id="removeButton">
-                                        <!-- TODO: remove listing if button is clicked -->
-                                        <button type="button" class="btn btn-secondary">
-                                            <i class="fas fa-trash-alt"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                                 <!--Requests Info Modal -->
+        <!-- Recomendations request table -->
+        <div class="col-md-9" ng-controller="RequestsController">
+            <div class="row">
+                <nav class="container-fluid">
+                    <table class="table table-striped table-hover" id="requestTable">
+                        <thead class="thead-dark">
+                            <th class="">Client</th>
+                            <th class="">Destination</th>
+                            <th class="">Budget</th>
+                            <th class="">Departing</th>
+                            <th>Returning</th>
+                            <th>Details</th>
+                            <th>Remove</th>
+                        </thead>
+                        <tbody>
+                            <!-- Hardcoded special 1 -->
+                            <tr ng-repeat="request in  requests">
+                                <td data-toggle="collapse" href="#Recommendation" role="button" aria-expanded="false"
+                                    aria-controls="Recommendation">{{request.party[0].name}}</td>
+                                <td data-toggle="collapse" href="#Recommendation" role="button" aria-expanded="false"
+                                    aria-controls="Recommendation">{{request.location.to}}</td>
+                                <td data-toggle="collapse" href="#Recommendation" role="button" aria-expanded="false"
+                                    aria-controls="Recommendation">${{request.budget.min}} - ${{request.budget.max}}
+                                </td>
+                                <td data-toggle="collapse" href="#Recommendation" role="button" aria-expanded="false"
+                                    aria-controls="Recommendation">{{request.travelDates.departing | date}}</td>
+                                <td data-toggle="collapse" href="#Recommendation" role="button" aria-expanded="false"
+                                    aria-controls="Recommendation">{{request.travelDates.returning | date}}</td>
+                                <td id="editButton">
+                                    <button type="button" id="addButton" class="btn btn-info" data-toggle="modal"
+                                        data-target="#RequestInfoModal" data-whatever="@mdo"
+                                        ng-click="showDetails($index)">
+                                        <i class="fas fa-info-circle"></i>
+                                    </button>
+                                </td>
+                                <td id="removeButton">
+                                    <!-- TODO: remove listing if button is clicked -->
+                                    <button type="button" class="btn btn-secondary">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <!--Requests Info Modal -->
                             <div class="modal fade" id="RequestInfoModal">
                                 <div class="modal-dialog modal-dialog-centered">
                                     <div class="modal-content">
-                            
-                                    <!-- Modal Header -->
-                                    <div class="modal-header">
-                                        <h4 class="modal-title">Request</h4>
-                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                    </div>
-                            
-                                    <!-- Modal body -->
-                                    <div class="modal-body">
-                                        <form>
-                                            <div class="container"> 
-                                                <div class="row py-1">
-                                                    <label class="col-4" >Client</label>
-                                                    <p class="col" name="">{{detailedInfo.party[0].name}}</p> 
+
+                                        <!-- Modal Header -->
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">Request</h4>
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        </div>
+
+                                        <!-- Modal body -->
+                                        <div class="modal-body">
+                                            <form>
+                                                <div class="container">
+                                                    <div class="row py-1">
+                                                        <label class="col-4">Client</label>
+                                                        <p class="col" name="">{{detailedInfo.party[0].name}}</p>
+                                                    </div>
+                                                    <div class="row py-1">
+                                                        <label class="col-4">Budget:</label>
+                                                        <p class="col" name=""> ${{detailedInfo.budget.min}} -
+                                                            ${{detailedInfo.budget.max}}</p>
+                                                    </div>
+                                                    <div class="row py-1">
+                                                        <label class="col-4">Dates:</label>
+                                                        <p class="col" name="">
+                                                            {{detailedInfo.travelDates.departing| date}} -
+                                                            {{detailedInfo.travelDates.returning |date}}</p>
+                                                    </div>
+                                                    <div class="row py-1">
+                                                        <label class="col-4">Locations:</label>
+                                                        <p class="col-4">Departing from {{detailedInfo.location.from}}
+                                                            and going to {{detailedInfo.location.to}}</p>
+                                                    </div>
+                                                    <div class="row py-1">
+                                                        <label class="col-4">All attendees:</label>
+                                                        <p class="col" name="" ng-repeat="party in parties">
+                                                            {{party.name}} {{party.birthDate |date}}</p>
+                                                    </div>
+
+
                                                 </div>
-                                                <div class="row py-1">
-                                                    <label class="col-4" >Budget:</label>
-                                                    <p class="col" name=""> ${{detailedInfo.budget.min}} - ${{detailedInfo.budget.max}}</p>
-                                                </div>
-                                                <div class="row py-1">
-                                                    <label class="col-4">Dates:</label>
-                                                    <p class="col" name=""> {{detailedInfo.travelDates.departing| date}} - {{detailedInfo.travelDates.returning |date}}</p>
-                                                </div>
-                                                <div class="row py-1">
-                                                    <label class="col-4">Locations:</label>
-                                                    <p class="col-4">Departing from {{detailedInfo.location.from}} and going to {{detailedInfo.location.to}}</p>
-                                                </div>
-                                                <div class="row py-1">
-                                                    <label class="col-4">All attendees:</label>
-                                                    <p class="col" name="" ng-repeat = "party in parties">{{party.name}}      {{party.birthDate |date}}</p> 
-                                                </div>
-            
-                                                
-                                            </div>
-                                        </form>
-                                    </div>
-                            
-                                    <!-- Modal footer -->
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-danger login mr-auto" data-dismiss="modal" data-toggle="modal" data-target="#loginModal" ng-click="deleteSpecial(detailedInfo._id)">Delete</button>
-                                        <button type="button" class="btn btn-danger" data-dismiss="modal" >Edit</button>
-                                    </div>
-                            
+                                            </form>
+                                        </div>
+
+                                        <!-- Modal footer -->
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-danger login mr-auto"
+                                                data-dismiss="modal" data-toggle="modal" data-target="#loginModal"
+                                                ng-click="deleteSpecial(detailedInfo._id)">Delete</button>
+                                            <button type="button" class="btn btn-danger"
+                                                data-dismiss="modal">Edit</button>
+                                        </div>
+
                                     </div>
                                 </div>
                                 <!-- Collapse Recommendations -->
@@ -240,15 +204,112 @@
                                         </button>
                                     </td>
                                 </tr>
-                            </tbody>
-                        </table>
-                    </nav>
-                </div>
-                <div class="row">
-                    <!-- you can add other shit here -->
-                </div>
+                        </tbody>
+                    </table>
+                </nav>
             </div>
+            <div class="row">
+                <!-- you can add other shit here -->
+            </div>
+        </div>
 
+        <!-- Add recommendation -->
+        <div class="container-fluid py-5">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="">
+                        <div class="card">
+                            <div class="card-header bg-dark">
+                                <span class="titleofBlog">Request</span>
+                            </div>
+                            <div class="card-body">
+                                <form>
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <label for="price">Price</label>
+                                            <input type="text" class="form-control" id="price" placeholder="Price">
+                                            <label for="Location">Location</label>
+                                            <input type="text" class="form-control" id="Location"
+                                                placeholder="Location">
+                                            <label for="Hotel">Hotel</label>
+                                            <input type="text" class="form-control" id="Hotel" placeholder="Hotel">
+                                            <label for="TravelDate">TravelDate</label>
+                                            <input type="text" class="form-control" id="TravelDate"
+                                                placeholder="TravelDate">
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <label for="Duration">Duration</label>
+                                            <input type="text" class="form-control" id="Duration"
+                                                placeholder="Duration">
+                                            <label for="Cruise">Cruise</label>
+                                            <input type="text" class="form-control" id="Cruise" placeholder="Cruise">
+                                            <label for="Airline">Airline</label>
+                                            <input type="text" class="form-control" id="Airline" placeholder="Airline">
+                                        </div>
+                                        <div class="col-sm-4">
+
+                                            <!-- Pending Request -->
+                                            <div class="container-fluid pt-2" id="pending">
+                                                <table class="table table-sm table-striped">
+                                                    <thead class="thead-dark">
+                                                        <tr>
+                                                            <th scope="col">#</th>
+                                                            <th scope="col">Name</th>
+                                                            <th scope="col">Location</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <th scope="row"><input type="radio" name="pick"></th>
+                                                            <td>Mike</td>
+                                                            <td>miami</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row"><input type="radio" name="pick"></th>
+                                                            <td>Lauren</td>
+                                                            <td>miami</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row"><input type="radio" name="pick"></th>
+                                                            <td>Tom</td>
+                                                            <td>miami</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row"><input type="radio" name="pick"></th>
+                                                            <td>Tom</td>
+                                                            <td>miami</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row"><input type="radio" name="pick"></th>
+                                                            <td>Tom</td>
+                                                            <td>miami</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row"><input type="radio" name="pick"></th>
+                                                            <td>Tom</td>
+                                                            <td>miami</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row"><input type="radio" name="pick"></th>
+                                                            <td>Tom</td>
+                                                            <td>miami</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row"><input type="radio" name="pick"></th>
+                                                            <td>Tom</td>
+                                                            <td>miami</td>
+                                                        </tr>
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-10">
+                                            <label for="Note">Note:</label>
+                                            <textarea class="form-control" rows="7" id="Note"></textarea>
             <!-- Add recommendation -->
             <div class="container-fluid py-5">
                 <div class="row">
@@ -261,295 +322,54 @@
                                 <div class="card-body">
                                     <form>
                                         <div class="row">
-                                            <div class="col-sm-4">
-                                                <label for="price">Price</label>
-                                                <input type="text" class="form-control" id="price" placeholder="Price">
-                                                <label for="Location">Location</label>
-                                                <input type="text" class="form-control" id="Location"
-                                                    placeholder="Location">
-                                                <label for="Hotel">Hotel</label>
-                                                <input type="text" class="form-control" id="Hotel" placeholder="Hotel">
-                                                <label for="TravelDate">TravelDate</label>
-                                                <input type="text" class="form-control" id="TravelDate"
-                                                    placeholder="TravelDate">
-                                            </div>
-                                            <div class="col-sm-4">
-                                                <label for="Duration">Duration</label>
-                                                <input type="text" class="form-control" id="Duration"
-                                                    placeholder="Duration">
-                                                <label for="Cruise">Cruise</label>
-                                                <input type="text" class="form-control" id="Cruise"
-                                                    placeholder="Cruise">
-                                                <label for="Airline">Airline</label>
-                                                <input type="text" class="form-control" id="Airline"
-                                                    placeholder="Airline">
-                                            </div>
-                                            <div class="col-sm-4">
-
-                                                <!-- Pending Request -->
-                                                <div class="container-fluid pt-2" id="pending">
-                                                    <table class="table table-sm table-striped">
-                                                        <thead class="thead-dark">
-                                                            <tr>
-                                                                <th scope="col">#</th>
-                                                                <th scope="col">Name</th>
-                                                                <th scope="col">Location</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr>
-                                                                <th scope="row"><input type="radio" name="pick"></th>
-                                                                <td>Mike</td>
-                                                                <td>miami</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th scope="row"><input type="radio" name="pick"></th>
-                                                                <td>Lauren</td>
-                                                                <td>miami</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th scope="row"><input type="radio" name="pick"></th>
-                                                                <td>Tom</td>
-                                                                <td>miami</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th scope="row"><input type="radio" name="pick"></th>
-                                                                <td>Tom</td>
-                                                                <td>miami</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th scope="row"><input type="radio" name="pick"></th>
-                                                                <td>Tom</td>
-                                                                <td>miami</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th scope="row"><input type="radio" name="pick"></th>
-                                                                <td>Tom</td>
-                                                                <td>miami</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th scope="row"><input type="radio" name="pick"></th>
-                                                                <td>Tom</td>
-                                                                <td>miami</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th scope="row"><input type="radio" name="pick"></th>
-                                                                <td>Tom</td>
-                                                                <td>miami</td>
-                                                            </tr>
-
-                                                        </tbody>
-                                                    </table>
+                                                <div class="col-md-12">
+                                                    <label for="email" class="text-center">Email</label>
+                                                    <input type="email" class="form-control" id="email" placeholder="Your Email">
+                                                    <br>
+                                                    <label for="title" class="text-center">Title of Request</label>
+                                                    <input type="text" class="form-control" id="title"
+                                                        placeholder="Title of Request">
+                                                    <br>
+                                                    <label for="link" class="text-center">Links (comma separated)</label>
+                                                    <input type="text" class="form-control" id="link" placeholder="Links">
+                                                    <br>
+                                                    <label for="text" class="text-center">Comments</label>
+                                                    <br>
+                                                    <textarea id="text" cols="150" rows="10" placeholder="Any more comments..."></textarea>
+                                                    <br>
+                                                    <button class="btn btn-success" style="width:100%">Submit Recommendation</button>
                                                 </div>
-
                                             </div>
                                         </div>
-                                        <div class="row">
-                                            <div class="col-sm-10">
-                                                <label for="Note">Note:</label>
-                                                <textarea class="form-control" rows="7" id="Note"></textarea>
-                                            </div>
-                                            <div class="mt-5">
-                                                <button type="button" class="btn btn-success"
-                                                    data-whatever="@mdo">Submit</button>
-                                            </div>
+                                        <div class="mt-5">
+                                            <button type="button" class="btn btn-success"
+                                                data-whatever="@mdo">Submit</button>
                                         </div>
-                                    </form>
-                                </div>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
+
     </div>
-
-    <!--Request Modal 
-    <div class="modal fade" id="" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                            aria-hidden="true">&times;</span></button>
-                </div>
-                <div class="modal-body">
-                    <h3 class="titleFont text-center">I would love to travel to VEGAS!!!</h3>
-                    <hr>
-                    <p class="textFont">
-                        Simple excursion excursion blogger traveler whimsical travelblogger cute colorful. Excursion
-                        traveling cute modern modern cute cute wanderlust excursion, Travel theme WordPress cute.
-                        WordPress wanderlust design traveling webdesign, darn colorful website clean theme WordPress.
-                    </p>
-                    <p>
-                        Adventure organized excursion, pretty traveling travelblogger blogger wanderlust simple traveler
-                        expedition simple cute. WordPress adventure design theme organized wanderlust, simple blogger
-                        clean wanderlust design WordPress. Travel theme cute organized webdesign WordPress theme
-                        whimsical.
-                    </p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-success" data-dismiss="modal">Book Now</button>
-                </div>
-            </div>
-        </div>
-    </div> -->
+</div>
 
 
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <!-- Footer -->
-    <div class="container-fluid" id="footer">
-        <br>
-        <br>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <h5 class="titleFont">Specials</h5>
-                    <ul>
-                        <li>
-                            blah
-                        </li>
-                        <li>
-                            blah
-                        </li>
-                        <li>
-                            blah
-                        </li>
-                        <li>
-                            blah
-                        </li>
-                        <li>
-                            blah
-                        </li>
-                        <li>
-                            blah
-                        </li>
-                        <li>
-                            blah
-                        </li>
-                        <li>
-                            blah
-                        </li>
-                        <li>
-                            blah
-                        </li>
-                        <li>
-                            blah
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-md-4">
-                    <h5 class="text-center titleFont">Book Now!</h5>
-                    <ul>
-                        <li>
-                            blah
-                        </li>
-                        <li>
-                            blah
-                        </li>
-                        <li>
-                            blah
-                        </li>
-                        <li>
-                            blah
-                        </li>
-                        <li>
-                            blah
-                        </li>
-                        <li>
-                            blah
-                        </li>
-                        <li>
-                            blah
-                        </li>
-                        <li>
-                            blah
-                        </li>
-                        <li>
-                            blah
-                        </li>
-                        <li>
-                            blah
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-md-4 text-right ">
-                    <h5 class="titleFont">Contact Us</h5>
-                    <ul>
-                        <li>
-                            blah
-                        </li>
-                        <li>
-                            blah
-                        </li>
-                        <li>
-                            blah
-                        </li>
-                        <li>
-                            blah
-                        </li>
-                        <li>
-                            blah
-                        </li>
-                        <li>
-                            blah
-                        </li>
-                        <li>
-                            blah
-                        </li>
-                        <li>
-                            blah
-                        </li>
-                        <li>
-                            blah
-                        </li>
-                        <li>
-                            blah
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <hr id="footerRule">
-        <h5 class="text-center titleFont">SWE Team 1 Spring 2019 - Software Engineering @ UF: All Rights Reserved.</h5>
-    </div>
 
-    <!-- CDN's + Scripts -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
-        integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
-        integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
-        crossorigin="anonymous"></script>
-    <script src="js/styling/script.js"></script>
-
-    <script src="https://code.angularjs.org/1.4.3/angular.js"></script>
-    <script src="js/app.js"></script>
-    <script src="js/factories/recommendationFactory.js"></script>
-    <script src="js/controllers/recommendationController.js"></script>
-
-    <script src="js/factories/userFactory.js"></script>
-    <script src="js/controllers/userController.js"></script>
-    <script src="js/factories/requestFactory.js"></script>
-    <script src="js/controllers/requestController.js"></script>
-
-</body>
-
-</html>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
