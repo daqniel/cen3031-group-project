@@ -107,27 +107,6 @@ angular.module("users").controller("UsersController", [
         });
       };
 
-<<<<<<< HEAD
-      $scope.deleteUser = function(id) {
-        Users.delete(id).then(
-          function(response) {
-            $scope.users = response.data;
-
-            Users.getAll().then(
-              function(response) {
-                $scope.users = response.data;
-              },
-              function(error) {
-                console.log("Unable to retrieve users:", error);
-              }
-            );
-          },
-          function(error) {
-            console.log("Unable to retrieve users:", error);
-          }
-        );
-      };
-=======
     $scope.deleteUser = function(id) {
       Users.delete(id).then(
         function(response) {
@@ -148,7 +127,6 @@ angular.module("users").controller("UsersController", [
         }
       );
     };
->>>>>>> 8c14b55452380333098290bf278ad807ac256584
 
       $scope.showDetails = function(index) {
         $scope.detailedInfo = $scope.listings[index];
