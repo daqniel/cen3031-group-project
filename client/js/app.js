@@ -8,20 +8,44 @@ angular.module('requests',[]);
 angular.module('vendors',[]);
 
 /* register the application and inject all the necessary dependencies */
-var app = angular.module('agencyApp', ['ngRoute', 'specials','blogPosts','users','notes','recommendations','requests','vendors']);
+var app = angular.module('agencyApp', ['ngRoute','specials','blogPosts','users','notes','recommendations','requests','vendors']);
 
 app.config(['$routeProvider', ($routeProvider) => {
     $routeProvider
-    .when("/test", {
-        templateUrl: "./test-index.html"
-    })
-    .when("/specials", {
-        templateUrl: "specials.html"
+    .when("/", {
+        redirectTo: "/home"
     })
     .when("/home", {
-        templateUrl: "home.html"
+        templateUrl: "./home.html"
+    })
+    .when("/specials", {
+        templateUrl: "./specials.html"
+    })
+    .when("/reviews", {
+        templateUrl: "./PastReview.html"
+    })
+    .when("/settings", {
+        templateUrl: "./user-settings.html"
+    })
+    .when("/recommendations", {
+        templateUrl: "./user-recommendations.html"
+    })
+    .when("/request", {
+        templateUrl: "./user-recommendationRequest.html"
+    })
+    .when("/dashboard", {
+        templateUrl: "./admin-recommendations.html"
+    })
+    .when("/dashboard/reviews", {
+        templateUrl: "./admin-pastReviews.html"
+    })
+    .when("/dashboard/specials-vendors", {
+        templateUrl: "./admin-SpecialsVendors.html"
+    })
+    .when("/dashboard/settings", {
+        templateUrl: "./admin-settings.html"
     })
     .otherwise({
-        redirectTo: '/test'
+        redirectTo: '/'
     });
 }]);

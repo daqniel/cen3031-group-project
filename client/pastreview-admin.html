@@ -19,8 +19,10 @@
 <body ng-app="agencyApp">
 
     <!-- NAVBAR -->
-    <nav id="mainNavbar" class="navbar navbar-expand-md navbar-light fixed-top" ng-controller="UsersController" data-ng-init="showName()">
-        <a class="navbar-brand title" href="./admin-home.html" style="color: #9C28FF"><img src="./images/logo.jpg" alt=""></a>
+    <nav id="mainNavbar" class="navbar navbar-expand-md navbar-light fixed-top" ng-controller="UsersController"
+        data-ng-init="showName()">
+        <a class="navbar-brand title" href="./admin-home.html" style="color: #9C28FF"><img src="./images/logo.jpg"
+                alt=""></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -32,7 +34,8 @@
                     <a class="nav-link " href="./specials-admin.html">Specials<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="icon nav-item active">
-                    <a class="nav-link" href="./pastreview-admin.html">Past Reviews<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="./pastreview-admin.html">Past Reviews<span
+                            class="sr-only">(current)</span></a>
                 </li>
                 <li class="icon nav-item active">
                     <a class="nav-link" href="#">About Us<span class="sr-only">(current)</span></a>
@@ -58,25 +61,25 @@
     </nav>
 
     <!-- body -->
-<br>
-<br>
+    <br>
+    <br>
     <div class="container border my-5" id="profile" ng-controller="BlogPostsController">
-            <h1 class="titleFont text-center mt-4">Past Reviews</h1>
-            <hr class="settings-hr">
-            <div class="row">
-                <nav class="container-fluid col py-3">
-                    <!-- Hardcoded past Reviews -->
-                    <div class="py-4" id="PastReview" ng-repeat = "blogPost in blogPosts">
-                        <h3 class="pb-3">{{blogPost.title}}</h3>
-                        <div class="container px-5">
-                            <p>
-                                {{blogPost.text}}
-                           </p>
-                        </div>
+        <h1 class="titleFont text-center mt-4">Past Reviews</h1>
+        <hr class="settings-hr">
+        <div class="row">
+            <nav class="container-fluid col py-3">
+                <!-- Hardcoded past Reviews -->
+                <div class="py-4" id="PastReview" ng-repeat="blogPost in blogPosts">
+                    <h3 class="pb-3">{{blogPost.title}}</h3>
+                    <div class="container px-5">
+                        <p>
+                            {{blogPost.text}}
+                        </p>
                     </div>
-                </nav>
-            </div>
+                </div>
+            </nav>
         </div>
+    </div>
     </div>
 
     <!-- Footer  -->
