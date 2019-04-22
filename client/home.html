@@ -1,64 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!-- Links: API's, CSS, and FontAwesome -->
-    <link href="https://fonts.googleapis.com/css?family=Boogaloo|Laila" rel="stylesheet">
-    <link rel="stylesheet" href="style/index.css">
-    <link rel="stylesheet" href="style/style.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
-        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-
-
-    <title>Welcome!</title>
-</head>
-
-<body ng-app="agencyApp" >
-
-    <!-- NAVBAR -->
-    <nav id="mainNavbar" class="navbar navbar-expand-md navbar-light fixed-top" ng-controller="UsersController" data-ng-init="showName()">
-        <a class="navbar-brand title" href="./home.html" style="color: #9C28FF"><img src="./images/logo.jpg" alt=""></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto nav-fill w-100">
-                <li class="icon nav-item active">
-                    <a class="nav-link " href="./specials-home.html">Specials<span class="sr-only">(current)</span></a>
-                </li>
-                <li class="icon nav-item active">
-                    <a class="nav-link" href="./pastreview-home.html">Past Reviews<span class="sr-only">(current)</span></a>
-                </li>
-                <li class="icon nav-item active">
-                    <a class="nav-link" href="#aboutUsContainer">About Us<span class="sr-only">(current)</span></a>
-                </li>
-                <li class="icon nav-item active">
-                    <a class="nav-link" href="./user-recommendations.html">MyRecommendations<span
-                            class="sr-only">(current)</span></a>
-                </li>
-            </ul>
-            <div class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false" style="color:black!important;">
-                    Welcome, {{ sessionUsername }}
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="./user-settings.html">Profile</a>
-                    <a class="dropdown-item" href="./user-recommendations.html">MyRecommendations</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" ng-click="logout()">Logout</a>
-                </div>
-            </div>
-        </div>
-    </nav>
-
+  <link rel="stylesheet" href="style/index.css">
+  <div ng-include="'navbar.html'"></div>
     <!-- Specials Carousel -->
     <div class="container-fluid specialsCarousel" ng-controller="SpecialsController" data-ng-init="get3MostRecent()">
         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
@@ -85,11 +26,11 @@
                     </div>
                 </div>
             </div>
-            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+            <a class="carousel-control-prev" data-target="#carouselExampleControls" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="sr-only">Previous</span>
             </a>
-            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+            <a class="carousel-control-next" data-target="#carouselExampleControls" role="button" data-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="sr-only">Next</span>
             </a>
@@ -103,13 +44,13 @@
             <nav>
                 <div class="nav nav-tabs m-3" id="nav-tab" role="tablist">
                     <a class="nav-item nav-link active titleFont reviewTab" id="nav-home-tab" data-toggle="tab"
-                        href="#nav-home" role="tab" aria-controls="nav-home"
+                        data-target="#nav-home" role="tab" aria-controls="nav-home"
                         aria-selected="true">{{blogPosts[0].title}}</a>
                     <a class="nav-item nav-link titleFont reviewTab" id="nav-profile-tab" data-toggle="tab"
-                        href="#nav-profile" role="tab" aria-controls="nav-profile"
+                        data-target="#nav-profile" role="tab" aria-controls="nav-profile"
                         aria-selected="false">{{blogPosts[1].title}}</a>
                     <a class="nav-item nav-link titleFont reviewTab" id="nav-contact-tab" data-toggle="tab"
-                        href="#nav-contact" role="tab" aria-controls="nav-contact"
+                        data-target="#nav-contact" role="tab" aria-controls="nav-contact"
                         aria-selected="false">{{blogPosts[2].title}}</a>
                 </div>
             </nav>
@@ -168,7 +109,7 @@
     <!-- Services Section -->
     <div class="container-fluid" id="aboutUsContainer">
         <!-- Titles and hr -->
-        <h1 class="text-center titleFont pt-3">About Us <i class="fas fa-sun fa-1.5x"></i></h1>
+        <h1 class="text-center titleFont pt-3">About Bochitto Travel <i class="fas fa-sun fa-1.5x"></i></h1>
         <h5 class="text-center subtitleFont">Individual, Group, Business, Family, Domestic and International Travel
             Specializing in... </h5>
         <hr id="storyRule">
@@ -258,29 +199,20 @@
                 </div>
             </div>
         </div>
+       <!-- Quote -->
+       
+            <h1 class="text-center titleFont pt-5">About Me<i class="far fa-heart"></i></h1>
+            <h5 class="text-center subtitleFont">Our Mission: To enhance the overall travel experience</h5>
+            <hr id="storyRule">
+        <div class="container">
+           <div class="row">
+                <img class="col-md-4 pic" src="/images/Selfie.jpg" alt="">
+                <div class="col-md-8 pt-5">
+                    <h4 class="pt-4">"Loving mother and daughter who loves to help others fulfill their dream to travel and see all the beauty and majesty that the world has to offer."</h4> 
+                    <h5>-Sandra Bochitto</h5>
+                </div>
+           </div>
+       </div>
+       <div class="bottom pt-3" ng-include="'footer.html'"></div>
+
     </div>
-
-  <div ng-include="'footer.html'"></div>
-
-    <!-- CDN's + Scripts -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
-        integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
-        integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
-        crossorigin="anonymous"></script>
-    <!-- <script src="js/styling/script.js"></script> -->
-    <script src="https://code.angularjs.org/1.4.3/angular.js"></script>
-    <script src="js/app.js"></script>
-    <script src="js/factories/specialFactory.js"></script>
-    <script src="js/controllers/specialController.js"></script>
-    <script src="js/factories/blogPostFactory.js"></script>
-    <script src="js/controllers/blogPostController.js"></script>
-    <script src="js/factories/userFactory.js"></script>
-    <script src="js/controllers/userController.js"></script>
-</body>
-
-</html>

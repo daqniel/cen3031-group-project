@@ -2,6 +2,8 @@ angular.module("users").controller("UsersController", [
   "$scope",
   "Users",
   function($scope, Users) {
+    console.log("this ran");
+    $scope.loggedIn = "no";
     /* Get all the listings, then bind it to the scope */
     $scope.addUser = function(
       newFirst,
@@ -36,7 +38,7 @@ angular.module("users").controller("UsersController", [
           } else {
             alert("User could not be created.");
           }
-          window.location.href = "../index.html";
+          window.location.href = "#!/";
         });
     };
 
@@ -45,30 +47,32 @@ angular.module("users").controller("UsersController", [
         .then(res => {
           console.log("res.data", res);
           if (res.status == 200) {
-            if(res.data.email.substr(0,6) == "BTADM-")
-            {
-              window.location.href = "../admin-home.html";
+            if (res.data.email.substr(0, 6) == "BTADM-") {
               sessionStorage.setItem("user", JSON.stringify(res.data));
-            }
-            else{
-              window.location.href = "../home.html";
+              $scope.loggedIn = "admin";
+              window.location.href = "#!/home";
+            } else {
               sessionStorage.setItem("user", JSON.stringify(res.data));
+              $scope.loggedIn = "yes";
+              window.location.href = "#!/home";
             }
           }
         })
         .catch(err => {
           alert("Please try again, incorrect credentials provided");
-          window.location.href = "../index.html";
+          window.location.href = "#!/home";
         });
-    };
+    }
 
     $scope.logout = function() {
       Users.logout()
         .then(response => {
           console.log(response.status);
           if (response.status == 200) {
+            $scope.currentUser = null;
+            $scope.loggedIn = "no";
             sessionStorage.removeItem("user");
-            window.location.href = "../index.html";
+            window.location.href = "#!/";
           }
         })
         .catch(err => {
