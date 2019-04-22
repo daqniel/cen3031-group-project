@@ -1,6 +1,6 @@
 <div ng-switch="loggedIn">
+    <!-- NO USER NAVBAR -->
     <div ng-switch-when="no">
-        <!-- NAVBAR -->
         <nav id="mainNavbar" class="navbar navbar-expand-md navbar-light fixed-top">
             <a class="navbar-brand title logo" href="#!/" style="color: #9C28FF"><img src="./images/logo.jpg"
                     alt=""></a>
@@ -113,8 +113,9 @@
             </div>
         </div>
     </div>
+
+    <!-- ADMIN NAVBAR-->
     <div ng-switch-when="admin">
-        <!-- NAVBAR -->
         <nav id="mainNavbar" class="navbar navbar-expand-md navbar-light fixed-top" ng-controller="UsersController"
             data-ng-init="showName()">
             <a class="navbar-brand title" href="#!/" style="color: #9C28FF"><img src="./images/logo.jpg" alt=""></a>
@@ -153,8 +154,9 @@
             </div>
         </nav>
     </div>
+
+    <!-- USER NAVBAR -->
     <div ng-switch-when="yes">
-        <!-- NAVBAR -->
         <nav id="mainNavbar" class="navbar navbar-expand-md navbar-light fixed-top" data-ng-init="showName()">
             <a class="navbar-brand title" href="#!/home" style="color: #9C28FF"><img src="./images/logo.jpg" alt=""></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
