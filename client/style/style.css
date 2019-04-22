@@ -152,3 +152,9 @@ html, body
     display: inline-block;
     margin: 100px auto;
 }
+
+.pic{
+    height: 10%;
+    width: 10%;
+    border-radius: 50%;
+}
