@@ -61,8 +61,20 @@ module.exports.init = function() {
   app.use("/api/vendors", vendorsRouter);
 
   app.get("/api/session", (req, res) => {
-    console.log("THIS HAPPINGING");
     res.send(req.session.passport);
+  });
+
+  app.get("/api/logout", (req, res, next) => {
+    console.log("heck");
+    // req.logout();
+    req.session.destroy(err => {
+      if (err) return next(err);
+      return res.send({ authenticated: req.isAuthenticated });
+    });
+  });
+
+  app.all("/*", function(req, res, next) {
+    res.sendFile("index.html", { root: "client" });
   });
 
   // Go to homepage for all routes not specified */

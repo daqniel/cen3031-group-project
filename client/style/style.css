@@ -86,8 +86,9 @@ html, body
 
 #footer
 {
+    position: absolute;
     background-color: rgb(242, 242, 242);
-    height: 60%;
+    /* height: 60%; */
     width: 100%;
 }
 

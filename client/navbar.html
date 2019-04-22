@@ -1,8 +1,8 @@
-<div ng-switch="loggedIn">
+<div ng-controller="UsersController" ng-switch="loggedIn">
     <!-- NO USER NAVBAR -->
     <div ng-switch-when="no">
         <nav id="mainNavbar" class="navbar navbar-expand-md navbar-light fixed-top">
-            <a class="navbar-brand title logo" href="#!/" style="color: #9C28FF"><img src="./images/logo.jpg"
+            <a class="navbar-brand title logo" href="/" style="color: #9C28FF"><img src="./images/logo.jpg"
                     alt=""></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -12,10 +12,10 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto nav-fill w-100">
                     <li class="icon nav-item active">
-                        <a class="nav-link " href="#!/specials">Specials<span class="sr-only">(current)</span></a>
+                        <a class="nav-link " href="/specials">Specials<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="icon nav-item active">
-                        <a class="nav-link" href="#!/reviews">Past Reviews<span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="/reviews">Past Reviews<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="icon nav-item active">
                         <a class="nav-link" href="#aboutUsContainer">About Us<span class="sr-only">(current)</span></a>
@@ -117,8 +117,8 @@
     <!-- ADMIN NAVBAR-->
     <div ng-switch-when="admin">
         <nav id="mainNavbar" class="navbar navbar-expand-md navbar-light fixed-top" ng-controller="UsersController"
-            data-ng-init="showName()">
-            <a class="navbar-brand title" href="#!/" style="color: #9C28FF"><img src="./images/logo.jpg" alt=""></a>
+            >
+            <a class="navbar-brand title" href="/" style="color: #9C28FF"><img src="./images/logo.jpg" alt=""></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -127,16 +127,16 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto nav-fill w-100">
                     <li class="icon nav-item active">
-                        <a class="nav-link " href="#!/specials">Specials<span class="sr-only">(current)</span></a>
+                        <a class="nav-link " href="/specials">Specials<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="icon nav-item active">
-                        <a class="nav-link" href="#!/reviews">Past Reviews<span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="/reviews">Past Reviews<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="icon nav-item active">
                         <a class="nav-link" href="#aboutUsContainer">About Us<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="icon nav-item active">
-                        <a class="nav-link" href="#!/dashboard">MyDashboard<span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="/dashboard">MyDashboard<span class="sr-only">(current)</span></a>
                     </li>
                 </ul>
                 <div class="nav-item dropdown">
@@ -145,8 +145,8 @@
                         Welcome, {{ sessionUsername }}
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#!/dashboard">MyDashboard</a>
-                        <a class="dropdown-item" href="#!/recommendations">MyProfile</a>
+                        <a class="dropdown-item" href="/dashboard">MyDashboard</a>
+                        <a class="dropdown-item" href="/recommendations">MyProfile</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" ng-click="logout()">Logout</a>
                     </div>
@@ -157,8 +157,8 @@
 
     <!-- USER NAVBAR -->
     <div ng-switch-when="yes">
-        <nav id="mainNavbar" class="navbar navbar-expand-md navbar-light fixed-top" data-ng-init="showName()">
-            <a class="navbar-brand title" href="#!/home" style="color: #9C28FF"><img src="./images/logo.jpg" alt=""></a>
+        <nav id="mainNavbar" class="navbar navbar-expand-md navbar-light fixed-top">
+            <a class="navbar-brand title" href="/home" style="color: #9C28FF"><img src="./images/logo.jpg" alt=""></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -167,16 +167,16 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto nav-fill w-100">
                     <li class="icon nav-item active">
-                        <a class="nav-link " href="#!/specials">Specials<span class="sr-only">(current)</span></a>
+                        <a class="nav-link " href="/specials">Specials<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="icon nav-item active">
-                        <a class="nav-link" href="#!/reviews">Past Reviews<span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="/reviews">Past Reviews<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="icon nav-item active">
                         <a class="nav-link" href="#aboutUsContainer">About Us<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="icon nav-item active">
-                        <a class="nav-link" href="#!/recommendations">MyRecommendations<span
+                        <a class="nav-link" href="/recommendations">MyRecommendations<span
                                 class="sr-only">(current)</span></a>
                     </li>
                 </ul>
@@ -186,8 +186,8 @@
                         Welcome, {{ sessionUsername }}
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#!/settings">Profile</a>
-                        <a class="dropdown-item" href="#!/recommendations">MyRecommendations</a>
+                        <a class="dropdown-item" href="/settings">Profile</a>
+                        <a class="dropdown-item" href="/recommendations">MyRecommendations</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" ng-click="logout()">Logout</a>
                     </div>

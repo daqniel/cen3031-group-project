@@ -34,7 +34,7 @@ angular.module("users", []).factory("Users", function($http, $location) {
     },
 
     logout: function() {
-      return $http.get(apiHost + "/api/users/logout");
+      return $http.get(apiHost + "/api/logout");
     },
 
     // this could probably be somewhere else, it's useful

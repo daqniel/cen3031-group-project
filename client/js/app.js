@@ -10,7 +10,8 @@ angular.module('vendors',[]);
 /* register the application and inject all the necessary dependencies */
 var app = angular.module('agencyApp', ['ngRoute','specials','blogPosts','users','notes','recommendations','requests','vendors']);
 
-app.config(['$routeProvider', ($routeProvider) => {
+app.config(['$routeProvider', '$locationProvider', ($routeProvider, $locationProvider) => {
+    $locationProvider.html5Mode(true);
     $routeProvider
     .when("/", {
         redirectTo: "/home"
