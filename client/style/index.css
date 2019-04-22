@@ -33,11 +33,11 @@
 #aboutUsContainer
 {
     margin-top: 3%;
-    height: 85%;
+    height: 60%;
     background-color: white;
     padding-left: 0px !important;
     padding-right: 0px !important;
-    margin-bottom: 15%;
+    margin-bottom: 5%;
 }
 
 #tabs
@@ -105,11 +105,8 @@
   float: left;
   width: 75%;
   margin-top: 6px;
-<<<<<<< HEAD
 }
-=======
-}
+
 #bookownB {
     margin-top: 20px;
 }
->>>>>>> 8e796c13ab886750f4407a53dd87186cfc0d084e

@@ -1,19 +1,13 @@
-<!-- <head>
-
-    <title>MyRecommendations</title>
-</head> -->
 <link rel="stylesheet" href="style/PastReviews.css">
-
 <header ng-include="'navbar.html'"></header>
 <!-- body -->
 <br>
 <br>
-<div class="container border my-5" id="profile" ng-controller="BlogPostsController">
+<div class="container border my-5" id="" ng-controller="BlogPostsController">
     <h1 class="titleFont text-center mt-4">Past Reviews</h1>
     <hr class="settings-hr">
     <div class="row">
         <nav class="container-fluid col py-3">
-            <!-- Hardcoded past Reviews -->
             <div class="py-4" id="PastReview" ng-repeat="blogPost in blogPosts">
                 <h3 class="pb-3">{{blogPost.title}}</h3>
                 <div class="container px-5">
@@ -27,3 +21,5 @@
         </nav>
     </div>
 </div>
+
+<div class="bottom" ng-include="'footer.html'"></div>

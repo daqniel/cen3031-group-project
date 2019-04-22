@@ -6,7 +6,7 @@ html, body
 
 .navbar .navbar-brand img {
     height: 40px;
-} 
+}
 
 .btn:focus, .btn:active {
     outline: #9C28FF !important;
@@ -87,7 +87,13 @@ html, body
 #footer
 {
     background-color: rgb(242, 242, 242);
-    height: 60%;
+    height: 20%;
+    width: 100%;
+    bottom:0;
+}
+
+.bottom{   
+    position: absolute;
     width: 100%;
 }
 
@@ -151,4 +157,10 @@ html, body
 .trigger-btn {
     display: inline-block;
     margin: 100px auto;
+}
+
+.pic{
+    height: 10%;
+    width: 10%;
+    border-radius: 50%;
 }

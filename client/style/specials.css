@@ -1,19 +1,15 @@
-#bookNow
+html, body
 {
-    height:25%;
+    width: 100%;
+    height: 100%;
 }
 
 #deals
 {
-    height: 75%;
+    height: 205%;
     background-color:white;
     overflow-y: scroll;
     max-height: 700px;
-}
-
-.bookNowButton
-{
-    width: 100%;
 }
 
 .col-25 {
@@ -43,4 +39,13 @@
 .image
 {
     width: 100%;
+}
+
+#footer
+{
+    background-color: rgb(242, 242, 242);
+    height: 10%;
+    width: 100%;
+    bottom:0;
+    position: absolute;
 }
