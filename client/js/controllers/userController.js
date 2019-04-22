@@ -95,8 +95,9 @@ angular.module("users").controller("UsersController", [
     $scope.deleteUser = function(id) {
       Users.delete(id).then(
         function(response) {
+          alert("You're account was deleted");
+          window.location.href = "#!/home"
           $scope.users = response.data;
-
           Users.getAll().then(
             function(response) {
               $scope.users = response.data;
