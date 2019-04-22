@@ -22,10 +22,13 @@ angular.module("recommendations").controller("RecommendationsController", [
         text: newText,
         link: newLink
       };
+      console.log(newRecommendation);
       Recommendations.create(newRecommendation)
         .then(res => {
           if (res.status == 200)
             console.log("recommendation added successfully", res.data);
+            alert("recommendation created successfully!");
+            window.location.href = '#!/dashboard  '
         })
         .catch(err => {
           console.log("err creating recommendations: ", err);

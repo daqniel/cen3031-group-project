@@ -6,7 +6,7 @@ html, body
 
 .navbar .navbar-brand img {
     height: 40px;
-} 
+}
 
 .btn:focus, .btn:active {
     outline: #9C28FF !important;
@@ -88,7 +88,17 @@ html, body
 {
     position: absolute;
     background-color: rgb(242, 242, 242);
+<<<<<<< HEAD
     /* height: 60%; */
+=======
+    height: 20%;
+    width: 100%;
+    bottom:0;
+}
+
+.bottom{   
+    position: absolute;
+>>>>>>> 8c14b55452380333098290bf278ad807ac256584
     width: 100%;
 }
 
