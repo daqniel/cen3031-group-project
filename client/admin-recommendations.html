@@ -53,7 +53,7 @@
                             <!-- Hardcoded special 1 -->
                             <tr ng-repeat="request in  requests">
                                 <td data-toggle="collapse" href="#Recommendation" role="button" aria-expanded="false"
-                                    aria-controls="Recommendation">{{request.party[0].name}}</td>
+                                    aria-controls="Recommendation">{{request.clientId}}</td>
                                 <td data-toggle="collapse" href="#Recommendation" role="button" aria-expanded="false"
                                     aria-controls="Recommendation">{{request.location.to}}</td>
                                 <td data-toggle="collapse" href="#Recommendation" role="button" aria-expanded="false"
@@ -72,7 +72,7 @@
                                 </td>
                                 <td id="removeButton">
                                     <!-- TODO: remove listing if button is clicked -->
-                                    <button type="button" class="btn btn-secondary">
+                                    <button type="button" class="btn btn-secondary" ng-click="deleteRequest(detailedInfo._id)">
                                         <i class="fas fa-trash-alt"></i>
                                     </button>
                                 </td>
@@ -94,7 +94,7 @@
                                                 <div class="container">
                                                     <div class="row py-1">
                                                         <label class="col-4">Client</label>
-                                                        <p class="col" name="">{{detailedInfo.party[0].name}}</p>
+                                                        <p class="col" name="">{{detailedInfo.clientId}}</p>
                                                     </div>
                                                     <div class="row py-1">
                                                         <label class="col-4">Budget:</label>
@@ -113,12 +113,16 @@
                                                             and going to {{detailedInfo.location.to}}</p>
                                                     </div>
                                                     <div class="row py-1">
-                                                        <label class="col-4">All attendees:</label>
-                                                        <p class="col" name="" ng-repeat="party in parties">
-                                                            {{party.name}} {{party.birthDate |date}}</p>
+                                                        <label class="col-4">Wants travel insurance?</label>
+                                                        <p class="col-4">{{detailedInfo.wantTravelInsurance}}</p>
                                                     </div>
-
-
+                                                    <div class="row py-1">
+                                                        <label class="col-4">Wants a cruise?</label>
+                                                        <p class="col-4">{{detailedInfo.wantCruise}}</p>
+                                                    </div>
+                                                    <div class="row py-1">
+                                                        <p class="col-14">There will be {{detailedInfo.partySize}} people on this trip, {{detailedInfo.numAdults}} adults and {{detailedInfo.numChildren}} children.</p>
+                                                    </div>
                                                 </div>
                                             </form>
                                         </div>
@@ -127,7 +131,7 @@
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-danger login mr-auto"
                                                 data-dismiss="modal" data-toggle="modal" data-target="#loginModal"
-                                                ng-click="deleteSpecial(detailedInfo._id)">Delete</button>
+                                                ng-click="deleteRequest(detailedInfo._id)">Delete</button>
                                             <button type="button" class="btn btn-danger"
                                                 data-dismiss="modal">Edit</button>
                                         </div>
@@ -165,45 +169,6 @@
                                         anderson cred nesciunt sapiente ea proident.
                                     </td>
                                 </tr>
-
-                                <!-- special 2 -->
-                                <tr>
-                                    <td>Larry Field</td>
-                                    <td>San Fransisco, California</td>
-                                    <td>3/9/2019</td>
-                                    <td>$999.99</td>
-                                    <td>$999.99</td>
-                                    <td id="editButton">
-                                        <button type="button" class="btn btn-info" id="editButton">
-                                            <i class="fas fa-info-circle"></i>
-                                        </button>
-                                    </td>
-                                    <td id="removeButton">
-                                        <!-- TODO: remove listing if button is clicked -->
-                                        <button type="button" class="btn btn-secondary">
-                                            <i class="fas fa-trash-alt"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                                <!-- special 3 -->
-                                <tr>
-                                    <td>Michelle West</td>
-                                    <td>Giza, Egypt</td>
-                                    <td>3/9/2019</td>
-                                    <td>$1299.99</td>
-                                    <td>$1299.99</td>
-                                    <td id="editButton">
-                                        <button type="button" class="btn btn-info" id="editButton">
-                                            <i class="fas fa-info-circle"></i>
-                                        </button>
-                                    </td>
-                                    <td id="removeButton">
-                                        <!-- TODO: remove listing if button is clicked -->
-                                        <button type="button" class="btn btn-secondary">
-                                            <i class="fas fa-trash-alt"></i>
-                                        </button>
-                                    </td>
-                                </tr>
                         </tbody>
                     </table>
                 </nav>
@@ -213,137 +178,37 @@
             </div>
         </div>
 
-        <!-- Add recommendation -->
-        <div class="container-fluid py-5">
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="">
-                        <div class="card">
-                            <div class="card-header bg-dark">
-                                <span class="titleofBlog">Request</span>
-                            </div>
-                            <div class="card-body">
-                                <form>
-                                    <div class="row">
-                                        <div class="col-sm-4">
-                                            <label for="price">Price</label>
-                                            <input type="text" class="form-control" id="price" placeholder="Price">
-                                            <label for="Location">Location</label>
-                                            <input type="text" class="form-control" id="Location"
-                                                placeholder="Location">
-                                            <label for="Hotel">Hotel</label>
-                                            <input type="text" class="form-control" id="Hotel" placeholder="Hotel">
-                                            <label for="TravelDate">TravelDate</label>
-                                            <input type="text" class="form-control" id="TravelDate"
-                                                placeholder="TravelDate">
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <label for="Duration">Duration</label>
-                                            <input type="text" class="form-control" id="Duration"
-                                                placeholder="Duration">
-                                            <label for="Cruise">Cruise</label>
-                                            <input type="text" class="form-control" id="Cruise" placeholder="Cruise">
-                                            <label for="Airline">Airline</label>
-                                            <input type="text" class="form-control" id="Airline" placeholder="Airline">
-                                        </div>
-                                        <div class="col-sm-4">
-
-                                            <!-- Pending Request -->
-                                            <div class="container-fluid pt-2" id="pending">
-                                                <table class="table table-sm table-striped">
-                                                    <thead class="thead-dark">
-                                                        <tr>
-                                                            <th scope="col">#</th>
-                                                            <th scope="col">Name</th>
-                                                            <th scope="col">Location</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <th scope="row"><input type="radio" name="pick"></th>
-                                                            <td>Mike</td>
-                                                            <td>miami</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row"><input type="radio" name="pick"></th>
-                                                            <td>Lauren</td>
-                                                            <td>miami</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row"><input type="radio" name="pick"></th>
-                                                            <td>Tom</td>
-                                                            <td>miami</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row"><input type="radio" name="pick"></th>
-                                                            <td>Tom</td>
-                                                            <td>miami</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row"><input type="radio" name="pick"></th>
-                                                            <td>Tom</td>
-                                                            <td>miami</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row"><input type="radio" name="pick"></th>
-                                                            <td>Tom</td>
-                                                            <td>miami</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row"><input type="radio" name="pick"></th>
-                                                            <td>Tom</td>
-                                                            <td>miami</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row"><input type="radio" name="pick"></th>
-                                                            <td>Tom</td>
-                                                            <td>miami</td>
-                                                        </tr>
-
-                                                    </tbody>
-                                                </table>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-sm-10">
-                                            <label for="Note">Note:</label>
-                                            <textarea class="form-control" rows="7" id="Note"></textarea>
+        
             <!-- Add recommendation -->
-            <div class="container-fluid py-5">
+            <div class="container-fluid py-5" ng-controller="RecommendationsController">
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="">
                             <div class="card">
                                 <div class="card-header bg-dark">
-                                    <span class="titleofBlog">Request</span>
+                                    <span class="titleofBlog">Recommendation</span>
                                 </div>
                                 <div class="card-body">
                                     <form>
                                         <div class="row">
                                                 <div class="col-md-12">
                                                     <label for="email" class="text-center">Email</label>
-                                                    <input type="email" class="form-control" id="email" placeholder="Your Email">
+                                                    <input type="email" class="form-control" id="email" placeholder="Clients Email" ng-model="clientId">
                                                     <br>
                                                     <label for="title" class="text-center">Title of Request</label>
                                                     <input type="text" class="form-control" id="title"
-                                                        placeholder="Title of Request">
+                                                        placeholder="Title of Request" ng-model="title">
                                                     <br>
                                                     <label for="link" class="text-center">Links (comma separated)</label>
-                                                    <input type="text" class="form-control" id="link" placeholder="Links">
+                                                    <input type="text" class="form-control" id="link" placeholder="Links" ng-model="link">
                                                     <br>
                                                     <label for="text" class="text-center">Comments</label>
                                                     <br>
-                                                    <textarea id="text" cols="150" rows="10" placeholder="Any more comments..."></textarea>
+                                                    <textarea id="text" cols="150" rows="10" placeholder="Any more comments..." ng-model="text"></textarea>
                                                     <br>
-                                                    <button class="btn btn-success" style="width:100%">Submit Recommendation</button>
+                                                    <button class="btn btn-success" style="width:100%"  ng-click="addRecommendation(clientId,title,text,link)">Submit Recommendation</button>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="mt-5">
-                                            <button type="button" class="btn btn-success"
-                                                data-whatever="@mdo">Submit</button>
                                         </div>
                                     </div>
                                 </form>

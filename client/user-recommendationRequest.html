@@ -74,16 +74,6 @@
             </div>
         </div>
         <div class="form-row pb-3">
-            <div class="col-sm-9">
-                <label for="">Name of Requester</label>
-                <input type="text" class="form-control" placeholder="i.e. John Smith" ng-model="">
-            </div>
-            <div class="col-sm-3">
-                <label for="">Date of Birth</label>
-                <input type="date" class="form-control" ng-model="">
-            </div>
-        </div>
-        <div class="form-row pb-3">
             <div class="col-sm-12">
                 <label for="">Description of your perfect vacation</label>
                 <textarea class="form-control" name="" id="" cols="30" rows="5"
@@ -91,6 +81,6 @@
             </div>
         </div>
         <button type="submit" class="btn btn-success"
-            ng-click="addRequest(email, locationFrom, locationTo, budgetMin, budgetMax, numChildren, numAdults, text)">Submit</button>
+            ng-click="addRequest(email, budgetMin, budgetMax, locationTo, locationFrom,travelDatesDeparting,travelDatesReturning,numChildren,numAdults,wantTravelInsurance, wantCruise,text)">Submit</button>
     </form>
 </div>
