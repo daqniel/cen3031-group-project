@@ -44,7 +44,8 @@ html, body
 #footer
 {
     background-color: rgb(242, 242, 242);
-    height: 20%;
+    height: 10%;
     width: 100%;
     bottom:0;
+    position: absolute;
 }
