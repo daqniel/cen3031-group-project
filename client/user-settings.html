@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="style/user-settings.css">
 
 <header ng-include="'navbar.html'"></header>
-<div class="container" id="profile" data-ng-init ="getSession()">
+<div class="container" id="profile" data-ng-init="getSession()">
     <h1 class="titleFont text-center">Profile Settings</h1>
     <hr class="settings-hr">
     <div class="row">
@@ -23,14 +23,24 @@
         </div>
         <div class="col-md-9">
             <ul class="list-group list-group-flush">
-                <li class="list-group-item">Name: {{currentUser.name.first}} {{currentUser.name.last}}
+                <li class="list-group-item">
+                    Name: {{currentUser.name.first}} {{currentUser.name.last}}
+                    <span class="editSpan"><button class="btn btn-success"> <i class="fas fa-edit"></i>
+                        </button></span>
                 </li>
-                <li class="list-group-item">Email: {{currentUser.email}}
+                <li class="list-group-item">
+                    Email: {{currentUser.email}}
+                    <span class="editSpan"><button class="btn btn-success"> <i class="fas fa-edit"></i>
+                    </button></span>
                 </li>
-                <li class="list-group-item">Phone Number: {{currentUser.phoneNumber}}
+                <li class="list-group-item">
+                    Phone Number: {{currentUser.phoneNumber}}
+                    <span class="editSpan"><button class="btn btn-success"> <i class="fas fa-edit"></i>
+                    </button></span>
                 </li>
                 <li class="list-group-item">Password: **********
-                </li>
+                        <span class="editSpan"><button class="btn btn-success"> <i class="fas fa-edit"></i>
+                        </button></span>
             </ul>
             <br>
             <button class="btn btn-success" id="delete">Delete Account</button>
