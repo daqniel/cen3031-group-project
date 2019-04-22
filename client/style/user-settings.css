@@ -25,3 +25,10 @@
     background-color: #9C28FF !important;
     border-color: #9C28FF !important;
 }
+
+.footer{
+    width:100%;
+    position:absolute;
+    bottom:0;
+    left:0;
+}
