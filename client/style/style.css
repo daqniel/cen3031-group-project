@@ -91,6 +91,11 @@ html, body
     width: 100%;
 }
 
+.bottom{   
+    position: absolute;
+    width: 100%;
+}
+
 #footerRule
 {
     width: 58.7%;
