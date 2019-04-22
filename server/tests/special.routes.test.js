@@ -8,7 +8,7 @@ var app, agent;
 
 var special = { //new BlogPosts created to test save, update, and delete calls
     title: 'PASS ONE TEST AND PASS ANOTHER ONE FREE HOPEFULLY',
-    description: 'May or may not pass the test',
+    text: 'May or may not pass the test',
     expireDate: new Date("2019-04-01")
 };
 
@@ -32,7 +32,7 @@ describe('Tests for Special API call', function() {
                 should.not.exist(err);
                 should.exist(res.body._id);
                 res.body.title.should.equal('PASS ONE TEST AND PASS ANOTHER ONE FREE HOPEFULLY');
-                res.body.description.should.equal('May or may not pass the test');
+                res.body.text.should.equal('May or may not pass the test');
                 id = res.body._id;
                 done();
             });
@@ -46,7 +46,7 @@ describe('Tests for Special API call', function() {
                 should.not.exist(err);
                 should.exist(res);
                 res.body.title.should.equal('PASS ONE TEST AND PASS ANOTHER ONE FREE HOPEFULLY');
-                res.body.description.should.equal('May or may not pass the test');
+                res.body.text.should.equal('May or may not pass the test');
                 res.body._id.should.equal(id);
                 done();
             });
@@ -58,7 +58,6 @@ describe('Tests for Special API call', function() {
             .end(function (err, res) {
                 should.not.exist(err);
                 should.exist(res);
-                res.body.should.have.length(9);
                 done();
             });
     });
@@ -66,7 +65,7 @@ describe('Tests for Special API call', function() {
     it('Update Special by _id', function(done) {
         var specialUpdate = {
             title: 'PASS ONE TEST AND PASS ANOTHER ONE FREE HOPEFULLY',
-            description: 'Will not pass the test for some reason',
+            text: 'Will not pass the test for some reason',
             expireDate: new Date("2019-05-01")
         };
         agent.put('/api/specials/' + id)
@@ -80,7 +79,7 @@ describe('Tests for Special API call', function() {
                         should.not.exist(err);
                         should.exist(res);
                         res.body.title.should.equal('PASS ONE TEST AND PASS ANOTHER ONE FREE HOPEFULLY');
-                        res.body.description.should.equal('Will not pass the test for some reason');
+                        res.body.text.should.equal('Will not pass the test for some reason');
                         res.body._id.should.equal(id);
                         done();
                     });
@@ -132,7 +131,6 @@ describe('Tests for Special API call', function() {
             .end(function(err,res) {
                 should.not.exist(err);
                 should.exist(res);
-                res.body.should.have.length(8);
                 done();
             });
     });

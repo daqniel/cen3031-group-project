@@ -34,10 +34,18 @@ var requestSchema = new Schema({
         returning: Date
     },
     //Names and birthdays of each person traveling. At least one traveler is required
-    party: {
-        type: [partyMemberSchema],
-        default: undefined,
-        required: true
+    // party: {
+    //     type: [partyMemberSchema],
+    //     default: undefined,
+    //     required: true
+    // },
+    numChildren: {
+        required: true,
+        type: Number
+    },
+    numAdults: {
+        required: true,
+        type: Number
     },
 
     wantTravelInsurance: Boolean,
@@ -51,12 +59,13 @@ var requestSchema = new Schema({
 
 /* create a 'pre' function that adds the updatedDate (and createdDate if not already there) property */
 requestSchema.pre('save', function(next) {
-    if(this.party.children < 0) this.party.children = 0;
-    if(this.party.adults < 0) this.party.adults = 0;
-    this.party.size = this.party.children + this.party.adults;
 
     if(this.budget.min < 0) this.budget.min = 0;
     if(this.budget.max < 0) this.budget.max = 0;
+    if(this.numChildren < 0) this.numChildren = 0;
+    if(this.numAdults < 0) this.numAdults = 0;
+
+    this.partySize = numChildren + numAdults;
 
     this.updatedDate = new Date;
     if(!this.createdDate)

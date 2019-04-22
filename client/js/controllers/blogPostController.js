@@ -11,6 +11,7 @@ angular.module("blogPosts").controller("BlogPostsController", [
         console.log("Unable to get blogPosts:", error);
       });
 
+
     $scope.detailedInfo = undefined;
 
     $scope.addBlogPost = function(newTitle, newText) {

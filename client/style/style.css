@@ -4,6 +4,10 @@ html, body
     height: 100%;
 }
 
+.navbar .navbar-brand img {
+    height: 40px;
+} 
+
 .btn:focus, .btn:active {
     outline: #9C28FF !important;
     box-shadow: none !important;
@@ -36,10 +40,6 @@ html, body
     font-family: 'Laila', serif;
     font-size: 16px;
     color: black;
-}
-
-.navbar-brand {
-    font-size: 1.5rem!important;
 }
 
 .navbar {
@@ -94,4 +94,61 @@ html, body
 #footerRule
 {
     width: 58.7%;
+}
+
+.modal-login {
+    width: 350px;
+}
+.modal-login .modal-content {
+    padding: 20px;
+    border-radius: 1px;
+    border: none;
+}
+.modal-login .modal-header {
+    border-bottom: none;
+    position: relative;
+    justify-content: center;
+}
+.modal-login h4 {
+    text-align: center;
+    font-size: 26px;
+}
+.modal-login .form-group {
+    margin-bottom: 20px;
+}
+.modal-login .form-control, .modal-login .btn {
+    min-height: 40px;
+    border-radius: 30px; 
+    font-size: 15px;
+    transition: all 0.5s;
+}
+.modal-login .form-control {
+    font-size: 13px;
+}
+.modal-login .form-control:focus {
+    border-color: #9C28FF;
+}
+.modal-login .hint-text {
+    text-align: center;
+    padding-top: 10px;
+}
+.modal-login .close {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+}
+.modal-login .btn {
+    background: #9C28FF;
+    border: none;
+    line-height: normal;
+}
+.modal-login .btn:hover, .modal-login .btn:focus {
+    background: #9C28FF;
+}
+.modal-login .hint-text a {
+    color: #999;
+}
+.trigger-btn {
+    display: inline-block;
+    margin: 100px auto;
 }

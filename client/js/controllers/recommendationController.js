@@ -1,28 +1,46 @@
 //TODO: bring this up to par with other controllers
-angular.module("recommendation").controller("RecommendationsController", [
+angular.module("recommendations").controller("RecommendationsController", [
   "$scope",
   "Recommendations",
   function($scope, Recommendations) {
-    Recommendations.getAll().then(
-      function(res) {
+    Recommendations.getAll()
+      .then(res => {
         $scope.recommendations = res.data;
-      },
-      function(error) {
-        console.log("Unable to retrieve recommendations:", error);
-      }
-    );
+      })
+      .catch(err => {
+        console.log("Unable to retrieve recommendations:", err);
+      });
+
     $scope.detailedInfo = undefined;
 
-    /* this is going to have to change after we settle on fields for schema */
-    $scope.addRecommendation = function(rec) {
-      Recommendations.create(rec).then(
-        function(res) {
-          window.location = window.location;
-        },
-        function(error) {
-          console.log("Unable to retrieve recommendations:", error);
-        }
-      );
+    $scope.sessionUsername = $.parseJSON(sessionStorage.getItem("user")).email;
+
+    $scope.addRecommendation = function(newClient, newTitle, newText, newLink) {
+      var newRecommendation = {
+        clientId: newClient,
+        title: newTitle,
+        text: newText,
+        link: newLink
+      };
+      Recommendations.create(newRecommendation)
+        .then(res => {
+          if (res.status == 200)
+            console.log("recommendation added successfully", res.data);
+        })
+        .catch(err => {
+          console.log("err creating recommendations: ", err);
+        });
+    };
+
+    $scope.getByClient = function(clientId) {
+      console.log("clientId: ", clientId);
+      Recommendations.getByClient(clientId)
+        .then(res => {
+          $scope.recommendationsByClient = res.data;
+        })
+        .catch(err => {
+          console.log("Unable to retrieve recommendations for client: ", err);
+        });
     };
 
     $scope.deleteRecommendations = function(id) {

@@ -64,7 +64,7 @@ describe('Tests for User API call', function() {
                 res.body.name.middle.should.equal('Ben');
                 res.body.name.last.should.equal('Bob');
                 res.body.email.should.equal('billywillyfofilly@yahoo.com');
-                res.body.password.should.equal('p@33w0rd');
+                res.body.password.should.not.equal('p@33w0rd');
                 res.body.phoneNumber.should.equal('123-456-7890');
                 res.body.isAdmin.should.equal(false);
                 done();
@@ -75,8 +75,8 @@ describe('Tests for User API call', function() {
         agent.post('/api/users')
             .send(badUserEmail)
             .expect(400)
-            .end(function(err, res){
-                should.exist(err);
+            .end(function(res){
+                should.not.exist(res);
                 done();
             });
     });
@@ -85,8 +85,8 @@ describe('Tests for User API call', function() {
         agent.post('/api/users')
             .send(badUserPhoneNumber)
             .expect(400)
-            .end(function(err, res){
-                should.exist(err);
+            .end(function(res){
+                should.not.exist(res);
                 done();
             });
     });
@@ -101,7 +101,7 @@ describe('Tests for User API call', function() {
                 res.body.name.middle.should.equal('Ben');
                 res.body.name.last.should.equal('Bob');
                 res.body.email.should.equal('billywillyfofilly@yahoo.com');
-                res.body.password.should.equal('p@33w0rd');
+                res.body.password.should.not.equal('p@33w0rd');
                 res.body.phoneNumber.should.equal('123-456-7890');
                 res.body.isAdmin.should.equal(false);
                 done();
@@ -128,7 +128,7 @@ describe('Tests for User API call', function() {
             email: 'billywillyfofilly@yahoo.com',
             password: 'C2PN69NOTC8OG2346UBRFXIJU4OG23K5CUXF2YBOV3KUJYFNC5I2TGU3Y',
             phoneNumber: '123-456-7890',
-            isAdmin: true
+            isAdmin: false
         };
         agent.put('/api/users/' + user.email)
             .send(userUpdate)
@@ -144,9 +144,9 @@ describe('Tests for User API call', function() {
                         res.body.name.middle.should.equal('Ben');
                         res.body.name.last.should.equal('Bob');
                         res.body.email.should.equal('billywillyfofilly@yahoo.com');
-                        res.body.password.should.equal('C2PN69NOTC8OG2346UBRFXIJU4OG23K5CUXF2YBOV3KUJYFNC5I2TGU3Y');
+                        res.body.password.should.not.equal('C2PN69NOTC8OG2346UBRFXIJU4OG23K5CUXF2YBOV3KUJYFNC5I2TGU3Y');
                         res.body.phoneNumber.should.equal('123-456-7890');
-                        res.body.isAdmin.should.equal(true);
+                        res.body.isAdmin.should.equal(false);
                         done();
                     });
             })

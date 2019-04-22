@@ -3,14 +3,14 @@ angular.module("requests").controller("RequestsController", [
   "$scope",
   "Requests",
   function($scope, Requests) {
-    Requests.getAll().then(
-      function(response) {
-        $scope.requests = response.data;
-      },
-      function(error) {
-        console.log("Unable to retrieve requests:", error);
-      }
-    );
+    Requests.getAll()
+      .then(res => {
+        $scope.requests = res.data;
+      })
+      .catch(err => {
+        console.log("Unable to retrieve requests: ", err);
+      });
+
     $scope.detailedInfo = undefined;
 
     $scope.addRequest = function(
@@ -22,7 +22,8 @@ angular.module("requests").controller("RequestsController", [
       newLocationFrom,
       newTravelDatesDeparting,
       newTravelDatesReturning,
-      newParty,
+      newNumChildren,
+      newNumAdults,
       newWantTravelInsurance,
       newWantCruise,
       newText
@@ -42,7 +43,8 @@ angular.module("requests").controller("RequestsController", [
           departing: newTravelDatesDeparting,
           returning: newTravelDatesReturning
         },
-        party: newParty,
+        numChildren: newNumChildren,
+        numAdults: newNumAdults,
         wantTravelInsurance: newWantTravelInsurance,
         wantCruise: newWantCruise,
         text: newText
@@ -50,11 +52,11 @@ angular.module("requests").controller("RequestsController", [
 
       Requests.create(newRequest)
         .then(res => {
-          if(res.status == 200) alert("Request successfully made!");
+          if (res.status == 200) alert("Request successfully made!");
         })
         .catch(err => {
-          alert(err.data.code, "Request couldn't be made")
-        })
+          alert(err.data.code, "Request couldn't be made");
+        });
     };
 
     $scope.deleteRequest = function(id) {
@@ -79,6 +81,7 @@ angular.module("requests").controller("RequestsController", [
 
     $scope.showDetails = function(index) {
       $scope.detailedInfo = $scope.requests[index];
+      $scope.parties = $scope.requests[index].party;
     };
   }
 ]);
