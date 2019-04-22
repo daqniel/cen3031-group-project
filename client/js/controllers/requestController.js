@@ -15,7 +15,6 @@ angular.module("requests").controller("RequestsController", [
 
     $scope.addRequest = function(
       newClientId,
-      newRequestState,
       newBudgetMin,
       newBudgetMax,
       newLocationTo,
@@ -30,7 +29,7 @@ angular.module("requests").controller("RequestsController", [
     ) {
       var newRequest = {
         clientId: newClientId,
-        requestState: newRequestState,
+        requestState: "Pending",
         budget: {
           min: newBudgetMin,
           max: newBudgetMax

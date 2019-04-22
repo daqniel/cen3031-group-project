@@ -17,7 +17,7 @@ angular.module("recommendations").controller("RecommendationsController", [
 
     $scope.addRecommendation = function(newClient, newTitle, newText, newLink) {
       var newRecommendation = {
-        clientId: newClient,
+        client: newClient,
         title: newTitle,
         text: newText,
         link: newLink
