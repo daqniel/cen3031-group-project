@@ -25,3 +25,15 @@
 {
     width: 100%;
 }
+
+#footer
+{
+    background-color: rgb(242, 242, 242);
+    height: 20%;
+    width: 100%;
+    position: absolute !important;
+}
+
+.bottom{   
+    width: 100%;
+}

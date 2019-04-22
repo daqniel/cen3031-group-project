@@ -6,7 +6,7 @@ html, body
 
 .navbar .navbar-brand img {
     height: 40px;
-} 
+}
 
 .btn:focus, .btn:active {
     outline: #9C28FF !important;
@@ -87,8 +87,9 @@ html, body
 #footer
 {
     background-color: rgb(242, 242, 242);
-    height: 60%;
+    height: 20%;
     width: 100%;
+    bottom:0;
 }
 
 .bottom{   
