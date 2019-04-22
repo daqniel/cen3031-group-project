@@ -2,14 +2,6 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
-var partyMemberSchema = new Schema({
-    name: {
-        type: String,
-    },
-    birthDate: {
-        type: Date
-    }
-});
 var requestSchema = new Schema({
     clientId : {
         type: String,
@@ -33,13 +25,15 @@ var requestSchema = new Schema({
         departing: Date,
         returning: Date
     },
-    //Names and birthdays of each person traveling. At least one traveler is required
-    party: {
-        type: [partyMemberSchema],
-        default: undefined,
-        required: true
+    numChildren: {
+        required: true,
+        type: Number
     },
-
+    numAdults: {
+        required: true,
+        type: Number
+    },
+    partySize: Number,
     wantTravelInsurance: Boolean,
     wantCruise: Boolean,
 
@@ -54,6 +48,10 @@ requestSchema.pre('save', function(next) {
 
     if(this.budget.min < 0) this.budget.min = 0;
     if(this.budget.max < 0) this.budget.max = 0;
+    if(this.numChildren < 0) this.numChildren = 0;
+    if(this.numAdults < 0) this.numAdults = 0;
+
+    this.partySize = this.numChildren + this.numAdults;
 
     this.updatedDate = new Date;
     if(!this.createdDate)

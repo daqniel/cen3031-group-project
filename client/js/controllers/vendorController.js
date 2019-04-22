@@ -39,6 +39,16 @@ angular.module("vendors").controller("VendorsController", [
 
     };
 
+    $scope.updateVendor = function(id, ) {
+      Vendors.update(id, $scope.updatedVendor)
+        .then(res => {
+          console.log("vendor successfully updated:", res.data);
+        })
+        .catch(err => {
+          console.log("couldn't update vendor: ", err);
+        })
+    }
+      
     $scope.deleteVendor = function(id) {
       Vendors.delete(id).then(
         function(res) {

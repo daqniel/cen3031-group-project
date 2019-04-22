@@ -1,23 +1,34 @@
 <!-- <head>
-    <title>Profile Settings</title>
-</head>
- -->
-<link rel="stylesheet" href="style/user-settings.css">
+    <title>MyDashboard | Admin Accounts</title>
+</head> -->
 
+<link rel="stylesheet" href="style/AdminSettings.css">
+<link rel="stylesheet" href="style/admin-SpecialsVendors.css">
+<link rel="stylesheet" href="style/user-recommendations.css">
 <header ng-include="'navbar.html'"></header>
-<div class="container" id="profile">
-    <h1 class="titleFont text-center">Profile Settings</h1>
+
+<div class="container my-5" id="profile">
+    <h1 class="titleFont text-center">Admin Settings</h1>
     <hr class="settings-hr">
     <div class="row">
+
         <div class="col-md-3">
             <div class="list-group">
-                <a href="#!/recommendations" class="list-group-item list-group-item-action">
+                <a href="#!/dashboard" class="list-group-item list-group-item-action active">
                     <i class="far fa-lightbulb"></i> &nbsp;
                     Recommendations
                 </a>
-                <a href="#!/settings" class="list-group-item list-group-item-action active">
+                <a href="#!/dashboard/reviews" class="list-group-item list-group-item-action">
                     <i class="fas fa-user-cog"></i> &nbsp;
-                    Profile Settings
+                    Past Reviews
+                </a>
+                <a href="#!/dashboard/specials-vendors" class="list-group-item list-group-item-action">
+                    <i class="fas fa-user-cog"></i> &nbsp;
+                    Vendor List/Specials
+                </a>
+                <a href="#!/dashboard/settings" class="list-group-item list-group-item-action">
+                    <i class="fas fa-user-cog"></i> &nbsp;
+                    MyProfile
                 </a>
             </div>
         </div>

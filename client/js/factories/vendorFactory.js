@@ -16,6 +16,14 @@ angular.module("vendors", []).factory("Vendors", function($http, $location) {
       return $http.post(apiHost + "/api/vendors", vendor, httpOptions);
     },
 
+    update: function(vendorId, vendor) {
+      return $http.put(
+        apiHost + "/api/vendors/" + vendorId,
+        vendor,
+        httpOptions
+      );
+    },
+
     delete: function(id) {
       return $http.delete(apiHost + "/api/vendors/" + id);
     }
