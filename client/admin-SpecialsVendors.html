@@ -41,7 +41,7 @@
                 </thead>
                 <thead class="">
 
-                    <th widht="73%">Deal</th>
+                    <th width="73%">Deal</th>
                     <th width="22%">Exp Date</th>
                     <th width="5%"></th>
                 </thead>
@@ -294,6 +294,7 @@
                         </div>
                         <div class="row pl-3">
                             <input class= "col-12" rows="3" cols="80" type="text" ng-model = "newVendor.text">
+
                         </div>
 
                     </div>
@@ -311,6 +312,58 @@
     </div>
 </div>
 
+
+<!--Edit Vendor Modal -->
+<div class="modal fade" id="EditVendorModal" ng-controller="VendorsController">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Edit Vendor</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form>
+                    <div class="container">
+                        <div class="row py-1">
+                            <label class="col-4">Vendor Name: {{detailedInfo.name}}</label>
+                            <input class="col" type="text" value="{{detailedInfo.name}}" ng-model="updatedVendor.name">
+                        </div>
+
+                        <div class="row py-1">
+                            <label class="col-4">Phone Number:</label>
+                            <input class="col" type="text" value="{{detailedInfo.phoneNumber}}" ng-model="updatedVendor.phoneNumber">
+                        </div>
+                        <div class="row py-1">
+                            <label class="col-4">Email:</label>
+                            <input class="col" type="text" value="{{detailedInfo.email}}" ng-model="updatedVendor.email">
+                        </div>
+                        <div class="row py-1">
+                            <label class="col-4">Website:</label>
+                            <input class="col" type="text" value="{{detailedInfo.link}}" ng-model="updatedVendor.link">
+                        </div>
+                        <div class="row py-1">
+                            <label class="col-4">Description:</label>
+                        </div>
+                        <div class="row pl-3">
+                            <textarea rows="3" cols="80" type="text" ng-model="updatedVendor.text">{{detailedInfo.text}}</textarea>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="updateVendor(detailedInfo._id)">Submit</button>
+            </div>
+
+        </div>
+    </div>
+</div>
 
 
 <!--Add Special Modal -->
