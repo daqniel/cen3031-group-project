@@ -12,12 +12,10 @@ angular.module("users").controller("UsersController", [
           $scope.loggedIn = "no";
         } else if (response.data.isAdmin == true) {
           $scope.loggedIn = "admin";
-          $scope.currentUser = response.data.user;
-          $scope.sessionUsername = $scope.currentUser;
+          $scope.sessionUsername = $scope.response.data.user;
         } else {
           $scope.loggedIn = "yes";
-          $scope.currentUser = response.data.user;
-          $scope.sessionUsername = $scope.currentUser;
+          $scope.sessionUsername = $scope.response.data.user;
         }
         // console.log("test", response.text, response.body.text);
         // console.log("all good, got session");
@@ -66,15 +64,7 @@ angular.module("users").controller("UsersController", [
           .then(res => {
             console.log("res.data", res);
             if (res.status == 200) {
-              // if (res.data.email.substr(0, 6) == "BTADM-") {
-              //   sessionStorage.setItem("user", JSON.stringify(res.data));
-              //   $scope.loggedIn = "admin";
-              //   window.location.href = "/home";
-              // } else {
-              //   sessionStorage.setItem("user", JSON.stringify(res.data));
-              //   $scope.loggedin = "yes";
-              //   window.location.href = "/home";
-              // }
+              sessionStorage.setItem("user", JSON.stringify(res.data));
               console.log("looged in successfully");
               window.location.href = "/home";
             }
@@ -92,7 +82,7 @@ angular.module("users").controller("UsersController", [
             if (response.status == 200) {
               console.log("the heck");
               $scope.loggedIn = "no";
-              // sessionStorage.removeItem("user");
+              sessionStorage.removeItem("user");
               window.location.href = "/home";
             } else {
               console.log("wthell");
@@ -103,14 +93,8 @@ angular.module("users").controller("UsersController", [
           });
       };
 
-      $scope.getSession = function() {
-        console.log("SHOULD NOT BE RUNNING");
-
-        Users.getSession().then(response => {
-          // $scope.currentUser = $.parseJSON(sessionStorage.getItem("user"));
-          if (response.status == 200) {
-          }
-        });
+      $scope.getUserInfo = function() {
+        $scope.currentUser = $.parseJSON(sessionStorage.getItem("user"));
       };
 
       $scope.deleteUser = function(id) {
@@ -137,14 +121,6 @@ angular.module("users").controller("UsersController", [
       $scope.showDetails = function(index) {
         $scope.detailedInfo = $scope.listings[index];
       };
-
-      // $scope.showName = function() {
-      //   // $scope.sessionUsername = $.parseJSON(
-      //     // sessionStorage.getItem("user")
-      //   // ).email;
-      //   $scope.sessionUsername = $scope.currentUser.user;
-      //   console.log("sessionname", $scope.sessionUsername);
-      // };
     });
   }
 ]);
