@@ -79,6 +79,33 @@ angular.module("users").controller("UsersController", [
           alert("logout unsuccessful...");
         });
     };
+    $scope.updateUser = function(id,
+    updatedFirst,
+    updatedMiddle,
+    updatedLast,
+    updatedEmail,
+    updatedPhone,
+    updatedPass
+    ) {
+      var updatedUser = {
+        name: {
+          first: updatedFirst,
+          middle: updatedMiddle,
+          last: updatedLast
+        },
+        email: updatedEmail,
+        password: updatedPass,
+        phoneNumber: updatedPhone
+      };
+      Users.update(id, updatedUser)
+        .then(res => {
+          window.location.href = "#!/home";
+          console.log("user successfully updated:", res.data);
+        })
+        .catch(err => {
+          console.log("couldn't update user: ", err);
+        })
+    }
 
     $scope.getSession = function() {
       console.log("did this");
