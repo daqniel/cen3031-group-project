@@ -111,6 +111,34 @@ angular.module("users").controller("UsersController", [
           }
         );
       };
+      $scope.updateUser = function(id,
+        updatedFirst,
+        updatedMiddle,
+        updatedLast,
+        updatedEmail,
+        updatedPhone,
+        updatedPass
+        ) {
+          var updatedUser = {
+            name: {
+              first: updatedFirst,
+              middle: updatedMiddle,
+              last: updatedLast
+            },
+            email: updatedEmail,
+            password: updatedPass,
+            phoneNumber: updatedPhone
+          };
+          Users.update(id, updatedUser)
+            .then(res => {
+              window.location.href = "#!/home";
+              console.log("user successfully updated:", res.data);
+            })
+            .catch(err => {
+              console.log("couldn't update user: ", err);
+            })
+        }
+    
 
       $scope.showDetails = function(index) {
         $scope.detailedInfo = $scope.listings[index];
