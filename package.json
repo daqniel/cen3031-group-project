@@ -1,5 +1,5 @@
 {
-  "name": "business-travel-team-1",
+  "name": "bochitto-travel-team-1",
   "version": "1.0.0",
   "description": "Routing server-side requests using ExpressJS",
   "main": "server.js",

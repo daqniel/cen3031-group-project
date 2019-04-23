@@ -201,6 +201,57 @@
                     </div>
                 </div>
             </div>
+            <!--Edit Vendor Modal -->
+        <div class="modal fade" id="EditVendorModal">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">Edit Vendor</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <form>
+                            <div class="container">
+                                <div class="row py-1">
+                                        <label class="col-4">Vendor Name: </label>
+                                    <input class="col" type="text" value="{{detailedInfo.name}}" ng-model = "name"> 
+                                </div>
+
+                                <div class="row py-1">
+                                    <label class="col-4">Phone Number:</label>
+                                    <input class="col" type="text"  ng-model = "phone" ng-init="{{detailedInfo.phone}}" >
+                                </div>
+                                <div class="row py-1">
+                                    <label class="col-4">Email:</label>
+                                    <input class="col" type="text" value="{{detailedInfo.email}}" ng-model = "email">
+                                </div>
+                                <div class="row py-1">
+                                    <label class="col-4">Website:</label>
+                                    <input class="col" type="text" value="{{detailedInfo.link}}" ng-model = "link">
+                                </div>
+                                <div class="row py-1">
+                                    <label class="col-4">Description:</label>
+                                </div>
+                                <div class="row pl-3">
+                                    <input class= "col-12" rows="3" cols="80" type="text" value = "{{detailedInfo.text}}" ng-model = "text">
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="updateVendor(detailedInfo._id,name,text,phone,email,link)">Submit</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
         </div>
 
     </div>
@@ -242,7 +293,7 @@
                             <label class="col-4">Description:</label>
                         </div>
                         <div class="row pl-3">
-                            <textarea rows="3" cols="80" type="text"></textarea>
+                            <input class= "col-12" rows="3" cols="80" type="text" ng-model = "newVendor.text">
                         </div>
 
                     </div>
@@ -254,58 +305,6 @@
                 <button type="button" class="btn btn-danger" data-dismiss="modal"
                     ng-click="addVendor(newVendor.name, newVendor.text, newVendor.phoneNumber, newVendor.email, newVendor.link)">Submit</button>
 
-            </div>
-
-        </div>
-    </div>
-</div>
-
-<!--Edit Vendor Modal -->
-<div class="modal fade" id="EditVendorModal" ng-controller="VendorsController">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-
-            <!-- Modal Header -->
-            <div class="modal-header">
-                <h4 class="modal-title">Edit Vendor</h4>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-
-            <!-- Modal body -->
-            <div class="modal-body">
-                <form>
-                    <div class="container">
-                        <div class="row py-1">
-                            <label class="col-4">Vendor Name: </label>
-                            <input class="col" type="text" value="DAM"> {{detailedInfo.name}}
-                        </div>
-
-                        <div class="row py-1">
-                            <label class="col-4">Phone Number:</label>
-                            <input class="col" type="text" value={{detailedInfo.name}}>
-                        </div>
-                        <div class="row py-1">
-                            <label class="col-4">Email:</label>
-                            <input class="col" type="text" value="{{detailedInfo.name}}">
-                        </div>
-                        <div class="row py-1">
-                            <label class="col-4">Website:</label>
-                            <input class="col" type="text">
-                        </div>
-                        <div class="row py-1">
-                            <label class="col-4">Description:</label>
-                        </div>
-                        <div class="row pl-3">
-                            <textarea rows="3" cols="80" type="text"></textarea>
-                        </div>
-
-                    </div>
-                </form>
-            </div>
-
-            <!-- Modal footer -->
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="">Submit</button>
             </div>
 
         </div>

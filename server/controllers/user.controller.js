@@ -67,6 +67,7 @@ exports.delete = function(req, res) {
 
 /* post authentication, send user object in response */
 exports.postAuth = function(req, res) {
+  req.session.passport.isAdmin = req.user.isAdmin;
   res.json(req.user);
 };
 
