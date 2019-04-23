@@ -59,7 +59,7 @@ Provides blogpost CRUD functionality.
 |Field|Type|Required?|Description|
 |-----|----|--------|-|
 |title|String|yes|Title of the blogpost.|
-|text|String|maybe|Text of the note. Required if no title is provided.|
+|text|String|maybe|Text of the blogpost. Required if no title is provided.|
 
 ### HTTP Request
 
@@ -78,8 +78,9 @@ Provides blogpost CRUD functionality.
 ### Schema
 |Field|Type|Required?|Description|
 |-----|----|--------|-|
-|title|String|yes|Title of the blogpost.|
+|title|String|yes|Title of the special deal.|
 |text|String|no|Text of the Special. Can be used for descriptions|
+|expireDate|Date|no|Date the special deal expires|
 
 * Get all specials: GET /api/specials
 
@@ -100,6 +101,17 @@ NOTE: I have reimplemented this to use query params instead
 * Get all specials old to new: GET /api/specials/?order=old
  
 TODO: Document rest of the API.
+
+## Vendor
+
+### Schema
+|Field|Type|Required?|Description|
+|-----|----|--------|-|
+|name|String|yes|Name of a particular vendor|
+|text|String|no|Text of the vendor. Can be used for descriptions|
+|phoneNumber|String|no|Phone number of contact for the vendor|
+|email|String|no|Email of contact for vendor|
+|link|String|no|URL for vendor website|
 
 ### BlogPosts
 

@@ -28,7 +28,7 @@ angular.module("recommendations").controller("RecommendationsController", [
           if (res.status == 200)
             console.log("recommendation added successfully", res.data);
             alert("recommendation created successfully!");
-            window.location.href = '#!/dashboard  '
+            window.location.href = '/dashboard  '
         })
         .catch(err => {
           console.log("err creating recommendations: ", err);
@@ -64,6 +64,7 @@ angular.module("recommendations").controller("RecommendationsController", [
           console.log("Unable to retrieve recommendations:", error);
         }
       );
+      window.location.href = "/recommendations";
     };
 
     $scope.showDetails = function(index) {
