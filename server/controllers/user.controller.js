@@ -3,6 +3,7 @@ var User = require("../models/user.model.js");
 
 /* retrieve all users */
 exports.list = function(req, res) {
+  console.log("henlo");
   User.find({})
     .then(users => res.json(users))
     .catch(err => res.status(400).send(err));
@@ -66,17 +67,21 @@ exports.delete = function(req, res) {
 
 /* post authentication, send user object in response */
 exports.postAuth = function(req, res) {
+  req.session.passport.isAdmin = req.user.isAdmin;
   res.json(req.user);
 };
 
-/* destroy session */
-exports.logout = function(req, res) {
-  req.session
-    .destroy()
-    .then(() => res.send("Logged Out!"))
-    .catch(err => res.status(400).send(err));
-};
-
+// /* destroy session */
+// exports.logout = function(req, res) {
+//   console.log("thhe heck");
+//   req.session
+//     .destroy()
+//     .then(() => {
+//       console.log("session:", req.session);
+//       res.clearCookie("connect.sid");
+//     })
+//     .catch(err => res.status(400).send(err));
+// };
 /**
  * Middleware
  */

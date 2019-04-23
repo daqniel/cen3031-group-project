@@ -15,26 +15,26 @@
         <!--Side Nav table -->
         <div class="col-md-3">
             <div class="list-group">
-                <a href="#!/dashboard" class="list-group-item list-group-item-action">
+                <a href="/dashboard" class="list-group-item list-group-item-action">
                     <i class="far fa-lightbulb"></i> &nbsp;
                     Recommendations
                 </a>
-                <a href="#!/dashboard/reviews" class="list-group-item list-group-item-action">
+                <a href="/dashboard/reviews" class="list-group-item list-group-item-action">
                     <i class="fas fa-user-cog"></i> &nbsp;
                     Past Reviews
                 </a>
-                <a href="#!/dashboard/specials-vendors" class="list-group-item list-group-item-action active">
+                <a href="/dashboard/specials-vendors" class="list-group-item list-group-item-action active">
                     <i class="fas fa-user-cog"></i> &nbsp;
                     Vendor List/Specials
                 </a>
-                <a href="#!/dashboard/settings" class="list-group-item list-group-item-action">
+                <a href="/dashboard/settings" class="list-group-item list-group-item-action">
                     <i class="fas fa-user-cog"></i> &nbsp;
                     MyProfile
                 </a>
             </div>
         </div>
         <!-- Special Manager -->
-        <div class="col-sm-6" ng-controller="SpecialsController">
+        <div class="col-sm-6 special_vendor_Table" ng-controller="SpecialsController">
             <table class="table table-striped table-hover" id="SpecialTable">
                 <thead class="thead-dark">
                     <th colspan="3">Specials</th>
@@ -119,7 +119,7 @@
         </div>
 
         <!-- Vendor List -->
-        <div class="col-sm-3" ng-controller="VendorsController">
+        <div class="col-sm-3 special_vendor_Table" ng-controller="VendorsController">
             <div class="vendor" id="vendor">
                 <table class="table table-md table-striped">
                     <thead class="thead-dark">
