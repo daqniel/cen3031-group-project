@@ -4,19 +4,18 @@ angular.module("users").controller("UsersController", [
   function($scope, Users) {
     console.log("this ran");
     Users.getSession().then(response => {
-      $scope.currentUser = null;
       console.log("getting session", response);
       // $scope.currentUser = $.parseJSON(sessionStorage.getItem("user"));
       if (response.status == 200) {
         if (response.data == "") {
           $scope.loggedIn = "no";
+        } else if (response.data.isAdmin == true) {
+          $scope.loggedIn = "admin";
+          $scope.sessionUsername = response.data.user;
         } else {
-          $scope.currentUser = response.data.user;
-          $scope.sessionUsername = $scope.currentUser;
           $scope.loggedIn = "yes";
+          $scope.sessionUsername = response.data.user;
         }
-        // console.log("test", response.text, response.body.text);
-        // console.log("all good, got session");
       }
 
       /* Get all the listings, then bind it to the scope */
@@ -53,7 +52,7 @@ angular.module("users").controller("UsersController", [
             } else {
               alert("User could not be created.");
             }
-            window.location.href = "/";
+            window.location.href = "/home";
           });
       };
 
@@ -62,15 +61,9 @@ angular.module("users").controller("UsersController", [
           .then(res => {
             console.log("res.data", res);
             if (res.status == 200) {
-              if (res.data.email.substr(0, 6) == "BTADM-") {
-                sessionStorage.setItem("user", JSON.stringify(res.data));
-                $scope.loggedIn = "admin";
-                window.location.href = "/home";
-              } else {
-                sessionStorage.setItem("user", JSON.stringify(res.data));
-                $scope.loggedin = "yes";
-                window.location.href = "/home";
-              }
+              sessionStorage.setItem("user", JSON.stringify(res.data));
+              console.log("looged in successfully");
+              window.location.href = "/home";
             }
           })
           .catch(err => {
@@ -84,12 +77,9 @@ angular.module("users").controller("UsersController", [
           .then(response => {
             console.log(response.status);
             if (response.status == 200) {
-              console.log("the heck");
               $scope.loggedIn = "no";
-              // sessionStorage.removeItem("user");
-              window.location.href = "/";
-            } else {
-              console.log("wthell");
+              sessionStorage.removeItem("user");
+              window.location.href = "/home";
             }
           })
           .catch(err => {
@@ -97,48 +87,62 @@ angular.module("users").controller("UsersController", [
           });
       };
 
-      $scope.getSession = function() {
-        console.log("SHOULD NOT BE RUNNING");
-
-        Users.getSession().then(response => {
-          // $scope.currentUser = $.parseJSON(sessionStorage.getItem("user"));
-          if (response.status == 200) {
-          }
-        });
+      $scope.getUserInfo = function() {
+        $scope.currentUser = $.parseJSON(sessionStorage.getItem("user"));
       };
 
-    $scope.deleteUser = function(id) {
-      Users.delete(id).then(
-        function(response) {
-          alert("You're account was deleted");
-          window.location.href = "#!/home"
-          $scope.users = response.data;
-          Users.getAll().then(
-            function(response) {
-              $scope.users = response.data;
+      $scope.deleteUser = function(id) {
+        Users.delete(id).then(
+          function(response) {
+            alert("You're account was deleted");
+            window.location.href = "/home";
+            $scope.users = response.data;
+            Users.getAll().then(
+              function(response) {
+                $scope.users = response.data;
+              },
+              function(error) {
+                console.log("Unable to retrieve users:", error);
+              }
+            );
+          },
+          function(error) {
+            console.log("Unable to retrieve users:", error);
+          }
+        );
+      };
+      $scope.updateUser = function(id,
+        updatedFirst,
+        updatedMiddle,
+        updatedLast,
+        updatedEmail,
+        updatedPhone,
+        updatedPass
+        ) {
+          var updatedUser = {
+            name: {
+              first: updatedFirst,
+              middle: updatedMiddle,
+              last: updatedLast
             },
-            function(error) {
-              console.log("Unable to retrieve users:", error);
-            }
-          );
-        },
-        function(error) {
-          console.log("Unable to retrieve users:", error);
+            email: updatedEmail,
+            password: updatedPass,
+            phoneNumber: updatedPhone
+          };
+          Users.update(id, updatedUser)
+            .then(res => {
+              window.location.href = "#!/home";
+              console.log("user successfully updated:", res.data);
+            })
+            .catch(err => {
+              console.log("couldn't update user: ", err);
+            })
         }
-      );
-    };
+    
 
       $scope.showDetails = function(index) {
         $scope.detailedInfo = $scope.listings[index];
       };
-
-      // $scope.showName = function() {
-      //   // $scope.sessionUsername = $.parseJSON(
-      //     // sessionStorage.getItem("user")
-      //   // ).email;
-      //   $scope.sessionUsername = $scope.currentUser.user;
-      //   console.log("sessionname", $scope.sessionUsername);
-      // };
     });
   }
 ]);
