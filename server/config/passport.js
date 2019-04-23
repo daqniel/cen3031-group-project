@@ -31,10 +31,12 @@ module.exports = function(passport) {
   );
 
   passport.serializeUser((user, done) => {
+    console.log("serializing User");
     done(null, user.email);
   });
 
   passport.deserializeUser((email, done) => {
+    console.log("deserializing User");
     User.findOne({ email: email }, (err, user) => {
       done(err, user);
     });
