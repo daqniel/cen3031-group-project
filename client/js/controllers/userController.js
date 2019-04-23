@@ -4,7 +4,6 @@ angular.module("users").controller("UsersController", [
   function($scope, Users) {
     console.log("this ran");
     Users.getSession().then(response => {
-      $scope.currentUser = null;
       console.log("getting session", response);
       // $scope.currentUser = $.parseJSON(sessionStorage.getItem("user"));
       if (response.status == 200) {
@@ -12,13 +11,11 @@ angular.module("users").controller("UsersController", [
           $scope.loggedIn = "no";
         } else if (response.data.isAdmin == true) {
           $scope.loggedIn = "admin";
-          $scope.sessionUsername = $scope.response.data.user;
+          $scope.sessionUsername = response.data.user;
         } else {
           $scope.loggedIn = "yes";
-          $scope.sessionUsername = $scope.response.data.user;
+          $scope.sessionUsername = response.data.user;
         }
-        // console.log("test", response.text, response.body.text);
-        // console.log("all good, got session");
       }
 
       /* Get all the listings, then bind it to the scope */
@@ -80,12 +77,9 @@ angular.module("users").controller("UsersController", [
           .then(response => {
             console.log(response.status);
             if (response.status == 200) {
-              console.log("the heck");
               $scope.loggedIn = "no";
               sessionStorage.removeItem("user");
               window.location.href = "/home";
-            } else {
-              console.log("wthell");
             }
           })
           .catch(err => {
