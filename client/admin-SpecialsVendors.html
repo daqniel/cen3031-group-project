@@ -41,7 +41,7 @@
                 </thead>
                 <thead class="">
 
-                    <th widht="73%">Deal</th>
+                    <th width="73%">Deal</th>
                     <th width="22%">Exp Date</th>
                     <th width="5%"></th>
                 </thead>
@@ -276,27 +276,27 @@
                 <form>
                     <div class="container">
                         <div class="row py-1">
-                            <label class="col-4">Vendor Name: </label>
-                            <input class="col" type="text" value="DAM"> {{detailedInfo.name}}
+                            <label class="col-4">Vendor Name: {{detailedInfo.name}}</label>
+                            <input class="col" type="text" value="{{detailedInfo.name}}" ng-model="updatedVendor.name">
                         </div>
 
                         <div class="row py-1">
                             <label class="col-4">Phone Number:</label>
-                            <input class="col" type="text" value={{detailedInfo.name}}>
+                            <input class="col" type="text" value="{{detailedInfo.phoneNumber}}" ng-model="updatedVendor.phoneNumber">
                         </div>
                         <div class="row py-1">
                             <label class="col-4">Email:</label>
-                            <input class="col" type="text" value="{{detailedInfo.name}}">
+                            <input class="col" type="text" value="{{detailedInfo.email}}" ng-model="updatedVendor.email">
                         </div>
                         <div class="row py-1">
                             <label class="col-4">Website:</label>
-                            <input class="col" type="text">
+                            <input class="col" type="text" value="{{detailedInfo.link}}" ng-model="updatedVendor.link">
                         </div>
                         <div class="row py-1">
                             <label class="col-4">Description:</label>
                         </div>
                         <div class="row pl-3">
-                            <textarea rows="3" cols="80" type="text"></textarea>
+                            <textarea rows="3" cols="80" type="text" ng-model="updatedVendor.text">{{detailedInfo.text}}</textarea>
                         </div>
 
                     </div>
@@ -305,7 +305,7 @@
 
             <!-- Modal footer -->
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="">Submit</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="updateVendor(detailedInfo._id)">Submit</button>
             </div>
 
         </div>
