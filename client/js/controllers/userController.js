@@ -98,7 +98,7 @@ angular.module("users").controller("UsersController", [
               //   $scope.loggedIn = "admin";
               //   window.location.href = "/home";
               // } else {
-              //   sessionStorage.setItem("user", JSON.stringify(res.data));
+                 sessionStorage.setItem("user", JSON.stringify(res.data));
               //   $scope.loggedin = "yes";
               //   window.location.href = "/home";
               // }
@@ -134,7 +134,7 @@ angular.module("users").controller("UsersController", [
         console.log("SHOULD NOT BE RUNNING");
 
         Users.getSession().then(response => {
-          // $scope.currentUser = $.parseJSON(sessionStorage.getItem("user"));
+          $scope.currentUser = $.parseJSON(sessionStorage.getItem("user"));
           if (response.status == 200) {
           }
         });
