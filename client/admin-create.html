@@ -1,0 +1,89 @@
+<!-- <head>
+    <title>MyDashboard | Recommendations</title>
+</head> -->
+
+<link rel="stylesheet" href="style/AdminSettings.css">
+<link rel="stylesheet" href="style/admin-pastReviews.css">
+<link rel="stylesheet" href="style/admin-SpecialsVendors.css">
+<link rel="stylesheet" href="style/user-recommendations.css">
+<header ng-include="'navbar.html'"></header>
+<br>
+<!-- page -->
+<div class="container my-5" id="profile">
+    <h1 class="titleFont text-center">Accounts</h1>
+    <hr class="settings-hr">
+    <div class="row">
+
+        <!--Side Nav table -->
+        <div class="col-md-3">
+            <div class="list-group">
+                <a href="/dashboard" class="list-group-item list-group-item-action">
+                    <i class="far fa-lightbulb"></i> &nbsp;
+                    Recommendations
+                </a>
+                <a href="/dashboard/reviews" class="list-group-item list-group-item-action">
+                    <i class="fas fa-glasses"></i> &nbsp;
+                    Past Reviews
+                </a>
+                <a href="/dashboard/specials-vendors" class="list-group-item list-group-item-action">
+                    <i class="fas fa-list-ol"></i> &nbsp;
+                    Vendor List/Specials
+                </a>
+                <a href="/dashboard/settings" class="list-group-item list-group-item-action">
+                    <i class="far fa-user"></i> &nbsp;
+                    MyProfile
+                </a>
+                <a href="/dashboard/admin-create" class="list-group-item list-group-item-action active">
+                    <i class="fas fa-user-plus"></i> &nbsp;
+                    Accounts
+                </a>
+            </div>
+        </div>
+
+        <div class="col-md-9">
+            <h3 class="titleFont text-center">Create new Admin Account</h3>
+            <form>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="First Name" required="required"
+                        ng-model="newFirst">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Middle Name" required="required"
+                        ng-model="newMiddle">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Last Name" required="required"
+                        ng-model="newLast">
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" placeholder="Password" required="required"
+                        ng-model="newPass">
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" placeholder="Retype Password"
+                        required="required" ng-model="newPassVerify">
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-control" placeholder="Email" required="required"
+                        ng-model="newEmail">
+                </div>
+                <div class="form-group">
+                    <input type="number" class="form-control" placeholder="Phone Number" required="required"
+                        ng-model="newPhone">
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-primary btn-block btn-lg" data-dismiss="modal"
+                        ng-click="addUser(newFirst, newMiddle, newLast, newPass, newPassVerify, newEmail, newPhone)"></input>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+</div>
+</div>
+
+
+
+<div class="bottom" ng-include="'footer.html'"></div>
