@@ -23,6 +23,6 @@ router
   .post(passport.authenticate("local"), user_controller.postAuth);
 
 /* destroys session */
-router.route("/logout").get(user_controller.logout);
+// router.route("/logout").get(user_controller.logout);
 
 module.exports = router;
