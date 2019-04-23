@@ -64,6 +64,7 @@ angular.module("recommendations").controller("RecommendationsController", [
           console.log("Unable to retrieve recommendations:", error);
         }
       );
+      window.location.href = "/recommendations";
     };
 
     $scope.showDetails = function(index) {
