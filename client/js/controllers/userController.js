@@ -11,10 +11,10 @@ angular.module("users").controller("UsersController", [
           $scope.loggedIn = "no";
         } else if (response.data.isAdmin == true) {
           $scope.loggedIn = "admin";
-          $scope.sessionUsername = response.data.user;
+          $scope.sessionInfo = response.data;
         } else {
           $scope.loggedIn = "yes";
-          $scope.sessionUsername = response.data.user;
+          $scope.sessionInfo = response.data;
         }
       }
 
@@ -131,7 +131,7 @@ angular.module("users").controller("UsersController", [
           };
           Users.update(id, updatedUser)
             .then(res => {
-              window.location.href = "#!/home";
+              window.location.href = "/home";
               console.log("user successfully updated:", res.data);
             })
             .catch(err => {
