@@ -37,6 +37,14 @@ angular.module("users", []).factory("Users", function($http, $location) {
       return $http.get(apiHost + "/api/logout");
     },
 
+    update: function(userId, user) {
+      return $http.put(
+        apiHost + "/api/users/" + userId,
+        user,
+        httpOptions
+      );
+    },
+
     // this could probably be somewhere else, it's useful
     // for more than just user info.
     getSession: function() {

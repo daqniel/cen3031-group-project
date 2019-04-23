@@ -39,15 +39,30 @@ angular.module("vendors").controller("VendorsController", [
 
     };
 
-    $scope.updateVendor = function(id, ) {
-      Vendors.update(id, $scope.updatedVendor)
-        .then(res => {
-          console.log("vendor successfully updated:", res.data);
-        })
-        .catch(err => {
-          console.log("couldn't update vendor: ", err);
-        })
-    }
+    $scope.updateVendor = function(id,
+      updatedName,
+      updatedText,
+      updatedPhoneNumber,
+      updatedEmail,
+      updatedLink
+    ) {
+      var updatedVendor = {
+        name: updatedName,
+        text: updatedText,
+        phoneNumber: updatedPhoneNumber,
+        email: updatedEmail,
+        link: updatedLink
+      };
+  
+        Vendors.update(id, updatedVendor)
+          .then(res => {
+            window.location.href = "#!/home";
+            console.log("vendor successfully updated:", res.data);
+          })
+          .catch(err => {
+            console.log("couldn't update vendor: ", err);
+          })
+      }
       
     $scope.deleteVendor = function(id) {
       Vendors.delete(id).then(
