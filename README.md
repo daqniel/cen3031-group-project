@@ -20,15 +20,10 @@ Provides users CRUD and login/logout/authentication functionality.
 |isAdmin|Boolean|no|Designates an Administrator account|
 
 ### HTTP Requests
-* Get all users: GET /api/users
 
-* Get user by email: GET /api/users/(user.email)
+#### GET
 
-* Create user: POST /api/users
-
-* Update user by email: PUT /api/users/(user.email)
-
-* Delete user by email: DELETE /api/user/(user.email)
++ all users: 
 
 ## Notes
 
