@@ -1,9 +1,26 @@
 # cen3031-group-project
+**Bochitto Travel**
+
+Spring 2019
 
 # API
 The API is a way to interact with the documents stored in the database through HTTP requests.
 
-## Users
+*Note*: All schemas have an **_id** field that is unique for each document within the database. This **_id** field is used in many of the HTTP Requests.
+
+## Non-schema related HTTP Requests
+
+##### Logout
+
+* Logout from current user session: **GET** `/api/logout`
+
+##### Get Session
+
+* Get info about current user session: **GET** `/api/session`
+
+    Info includes username/email, and name object with first, middle, last name.
+
+## **Users**
 
 ### Description
 Provides users CRUD and login/logout/authentication functionality.
@@ -21,21 +38,35 @@ Provides users CRUD and login/logout/authentication functionality.
 
 ### HTTP Requests
 
-#### CREATE
+##### CREATE
 
 + Create new user: **POST** /api/users
 
     All fields must be sent in request body in application/json format.
 
-#### READ
+##### READ
 
-+ All users: **GET** /api/users/
++ All users' information: **GET** /api/users/
 
-+ One user: **GET** /api/users/email
++ One user's information: **GET** /api/users/:email
 
-####
+##### UPDATE
+ 
++ Update a user: **PUT** /api/users/:email
 
-## Notes
+    Entire object including unchanged fields must be sent in request body in application/json format.
+
+##### DELETE
+
++ Delete a user: **DELETE** /api/users/:email
+
+##### OTHER
+
++ Login/Create user session: **POST** /api/users/login
+
+    Request body must contain username and password fields.
+
+## **Notes**
 
 ### Description
 Provides notes CRUD functionality. Each note must be linked to a User, Vendor, or Request stored in the database.
@@ -49,19 +80,30 @@ Provides notes CRUD functionality. Each note must be linked to a User, Vendor, o
 |text|String|maybe|Text of the note. Required if no title is provided.|
 
 ### HTTP Requests
-* Get all notes: GET /api/notes
 
-* Get all notes by certain linkedId: GET /api/notes/?linkedId=xxxx
+##### CREATE
 
-* Create note: POST /api/notes
++ Create new note: **POST** /api/notes
 
-* Get note by _id: GET /api/notes/(note._id)
+    All fields must be sent in request body in application/json format.
 
-* Update note by _id: PUT /api/notes/(note._id)
+##### READ
 
-* Delete note by _id: DELETE /api/notes/(note._id)
++ All notes: **GET** /api/notes/
 
-## Blogposts
++ One note: **GET** /api/notes/:_id
+
+##### UPDATE
+ 
++ Update a note: **PUT** /api/notes/:_id
+
+    Entire object including unchanged fields must be sent in request body in application/json format.
+
+##### DELETE
+
++ Delete a note: **DELETE** /api/notes/:_id
+
+## **Blogposts**
 
 ### Description
 Provides blogpost CRUD functionality.
@@ -73,17 +115,36 @@ Provides blogpost CRUD functionality.
 |text|String|maybe|Text of the blogpost. Required if no title is provided.|
 
 ### HTTP Request
-* Get all blogposts: GET /api/blogposts
 
-* Create blogpost: POST /api/blogposts
+##### CREATE
 
-* Get blogpost by _id: GET /api/blogposts/(blogpost._id)
++ Create new blogpost: **POST** /api/blogposts
 
-* Update blogpost by _id: PUT /api/blogposts/(blogpost._id)
+    All fields must be sent in request body in application/json format.
 
-* Delete blogpost by _id: DELETE /api/blogposts/(blogpost._id)
+##### READ
 
-## Special
++ All blogposts: **GET** /api/blogposts
+
+    Optional Query Parameters: 
+
+        ?num=N - gets only the latest N blogposts, where N is a positive integer.
+
+        ?order=old - gets oldest blogposts instead of newest
+
++ One blogpost: **GET** /api/blogposts/:_id
+
+##### UPDATE
+ 
++ Update a blogpost: **PUT** /api/blogposts/:_id
+
+    Entire object including unchanged fields must be sent in request body in application/json format.
+
+##### DELETE
+
++ Delete a note: **DELETE** /api/notes/:_id
+
+## **Specials**
 
 ### Description
 Provides specials CRUD functionality. Can be retrieved by date.
@@ -96,25 +157,36 @@ Provides specials CRUD functionality. Can be retrieved by date.
 |expireDate|Date|no|Date the special deal expires|
 
 ### HTTP Requests
-* Get all specials: GET /api/specials
 
-* Create special: POST /api/specials
+##### CREATE
 
-* Get special by _id: GET /api/specials/(special._id)
++ Create new special: **POST** /api/specials
 
-* Update special by _id: PUT /api/specials/(special._id)
+    All fields must be sent in request body in application/json format.
 
-* Delete special by _id: DELETE /api/specials/(special._id)
+##### READ
 
-* Get newest N specials: GET /api/specials/?num=N
++ All specials: **GET** /api/specials
 
-* Get oldest N specials: GET /api/specials/?num=N&order=old
+    Optional Query Parameters: 
 
-* Get all specials old to new: GET /api/specials/?order=old
+        ?num=N - gets only the latest N specials, where N is a positive integer.
+
+        ?order=old - gets oldest specials instead of newest
+
++ One special: **GET** /api/specials/:_id
+
+##### UPDATE
  
-TODO: Document rest of the API.
++ Update a special: **PUT** /api/specials/:_id
 
-## Vendor
+    Entire object including unchanged fields must be sent in request body in application/json format.
+
+##### DELETE
+
++ Delete a special: **DELETE** /api/specials/:_id
+ 
+## **Vendor**
 
 ### Description
 Provides vendor CRUD functionality.
@@ -129,19 +201,30 @@ Provides vendor CRUD functionality.
 |link|String|no|URL for vendor website|
 
 ### HTTP Requests
-Required fields: title(String). Optional fields: text(String). Maybe text should be a required field too? Although she may want to use her blogposts as announcements. Short announcements would only need the title field.
 
-* Get all vendor: GET /api/vendors
+##### CREATE
 
-* Create vendor: POST /api/vendors
++ Create new vendor: **POST** /api/vendors
 
-* Get vendor by _id: GET /api/vendors/(vendor._id)
+    All fields must be sent in request body in application/json format.
 
-* Update vendor by _id: PUT /api/vendors/(vendor._id)
+##### READ
 
-* Delete vendor by _id: DELETE /api/vendors/(vendor._id)
++ All vendors: **GET** /api/vendors
 
-## Request
++ One vendor: **GET** /api/vendors/:_id
+
+##### UPDATE
+ 
++ Update a vendor: **PUT** /api/vendors/:_id
+
+    Entire object including unchanged fields must be sent in request body in application/json format.
+
+##### DELETE
+
++ Delete a vendor: **DELETE** /api/vendors/:_id
+
+## **Requests**
 
 ### Description
 Provides request CRUD functionality. Requests are created by a client and sent to admin
@@ -164,17 +247,32 @@ Provides request CRUD functionality. Requests are created by a client and sent t
 |wantCruise|Boolean|no|Decides if client wants to take a cruise|
 
 ### HTTP Requests
-* Get all requests for a client: GET /api/requests
+##### CREATE
 
-* Create request: POST /api/requests
++ Create new request: **POST** /api/requests
 
-* Get request by _id: GET /api/requests/(request._id)
+    All fields must be sent in request body in application/json format.
 
-* Update request by _id: PUT /api/requests/(request._id)
+##### READ
++ All requests: **GET** /api/requests
 
-* Delete request by _id: DELETE /api/requests/(request._id)
+    Optional Query Parameters: 
 
-## Recommendation
+        ?clientId=email - gets all requests made by user with the specified email
+
++ One request: **GET** /api/requests/:_id
+
+##### UPDATE
+ 
++ Update a request: **PUT** /api/requests/:_id
+
+    Entire object including unchanged fields must be sent in request body in application/json format.
+
+##### DELETE
+
++ Delete a request: **DELETE** /api/requests/:_id
+
+## **Recommendations**
 
 ### Description
 Provides recommendation CRUD functionality.
@@ -188,24 +286,28 @@ Provides recommendation CRUD functionality.
 |link|String|no|URL for suggested travel website|
 
 ### HTTP Requests
-* Get all recommendations: GET /api/recommendations
+##### CREATE
 
-* Create recommendation: POST /api/recommendations
++ Create new recommendation: **POST** /api/recommendations
 
-* Get recommendation by _id: GET /api/recommendations/(recommendation._id)
+    All fields must be sent in recommendation body in application/json format.
 
-* Update recommendation by _id: PUT /api/recommendations/(recommendation._id)
+##### READ
++ All recommendations: **GET** /api/recommendations
 
-* Delete recommendation by _id: DELETE /api/recommendations/(recommendation._id)
+    Optional Query Parameters: 
 
+        ?clientId=email - gets all recommendations made by user with the specified email
 
-## Team 
-Daniel Quintero (leingad)
++ One recommendation: **GET** /api/recommendations/:_id
 
-Daniel Chalco (chalco)
+##### UPDATE
+ 
++ Update a recommendation: **PUT** /api/recommendations/:_id
 
-Jack Fining (jackfining)
+    Entire object including unchanged fields must be sent in recommendation body in application/json format.
 
-Sarah Walker (swalker15)
-	
-Daniel Garzon Moreno (dgarzonmoreno)
+##### DELETE
+
++ Delete a recommendation: **DELETE** /api/recommendations/:_id
+
