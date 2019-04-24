@@ -78,7 +78,7 @@
 
                         <!-- Modal Header -->
                         <div class="modal-header">
-                            <h4 class="modal-title">Specials</h4>
+                            <h4 class="modal-title specialsTitle">Specials</h4>
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
 
@@ -87,19 +87,19 @@
                             <form>
                                 <div class="container">
                                     <div class="row py-1">
-                                        <label class="col-4">Special Title</label>
-                                        <p class="col" name="">{{detailedInfo.title}}</p>
+                                        <label class="col-sm-12">Special Title</label>
+                                        <label class="col-sm-12 CirclePurple" name="">{{detailedInfo.title}}</label>
                                     </div>
 
                                     <div class="row py-1">
-                                        <label class="col-4">Expire Date:</label>
-                                        <p class="col" name="">{{detailedInfo.expireDate | date}}</p>
+                                        <label class="col-sm-12">Expire Date</label>
+                                        <p class="col-sm-12 CirclePurple" name="">{{detailedInfo.expireDate | date}}</p>
                                     </div>
                                     <div class="row py-1">
-                                        <label class="col-4">Description:</label>
+                                        <label class="col-sm-12">Description:</label>
                                     </div>
                                     <div class="row pl-3">
-                                        <p>
+                                        <p class="SmallCirclePurple">
                                             {{detailedInfo.text}}
                                         </p>
                                     </div>
@@ -110,10 +110,10 @@
 
                         <!-- Modal footer -->
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-danger login mr-auto" data-dismiss="modal"
+                            <button type="button" class="btn btn-danger login mr-auto col-sm-6 purple" data-dismiss="modal"
                                 data-toggle="modal" data-target="#loginModal"
                                 ng-click="deleteSpecial(detailedInfo._id)">Delete</button>
-                            <button type="button" class="btn btn-danger" data-dismiss="modal" data-toggle="modal"
+                            <button type="button" class="btn btn-danger col-sm-6 purple" data-dismiss="modal" data-toggle="modal"
                                 data-target="#EditSpecialModal">Edit</button>
                         </div>
 
@@ -158,7 +158,7 @@
 
                         <!-- Modal Header -->
                         <div class="modal-header">
-                            <h4 class="modal-title">Vendor</h4>
+                            <h4 class="modal-title vendorTitle">Vendor</h4>
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
 
@@ -167,25 +167,26 @@
                             <form>
                                 <div class="container">
                                     <div class="row py-1">
-                                        <label class="col-4" for="First">Vendor Name: </label>
-                                        <p class="col" name="">{{detailedInfo.name}}</p>
+                                        <label class="col-sm-6" for="First">Vendor Name</label>
+                                        <label class="col-sm-6">Phone Number</label>
+                                       
                                     </div>
 
                                     <div class="row py-1">
-                                        <label class="col-4">Phone Number:</label>
-                                        <p class="col" name="">{{detailedInfo.phoneNumber}}</p>
+                                        <p class="col-sm-6 CirclePurple" name="">{{detailedInfo.name}}</p>
+                                        <p class="col-sm-5 SmallCirclePurple" name="">{{detailedInfo.phoneNumber}}</p>
                                     </div>
                                     <div class="row py-1">
-                                        <label class="col-4" for="Email">Email:</label>
-                                        <p class="col" name="">{{detailedInfo.email}}</p>
+                                        <label class="col-sm-12" for="Email">Email</label>
+                                        <label class="col-sm-12 CirclePurple" name="">{{detailedInfo.email}}</label>
                                     </div>
                                     <div class="row py-1">
-                                        <label class="col-4" for="website">Website:</label>
-                                        <p class="col" name="">{{detailedInfo.link}}</p>
+                                        <label class="col-sm-12" for="website">Website</label>
+                                        <p class="col-sm-12 CirclePurple" name="">{{detailedInfo.link}}</p>
                                     </div>
                                     <div class="row py-1">
-                                        <label class="col-4">Description:</label>
-                                        <p class="col" name="">{{detailedInfo.text}}</p>
+                                        <label class="col-sm-12">Description:</label>
+                                        <p class="col-sm-12 CirclePurple" name="">{{detailedInfo.text}}</p>
                                     </div>
                                 </div>
                             </form>
@@ -194,10 +195,10 @@
                         <!-- Modal footer -->
                         <div class="modal-footer">
 
-                            <button type="button" class="btn btn-danger login mr-auto" data-dismiss="modal"
+                            <button type="button" class="btn btn-danger login mr-auto col-sm-6 purple" data-dismiss="modal"
                                 data-toggle="modal" data-target="#loginModal"
                                 ng-click="deleteVendor(detailedInfo._id)">Delete</button>
-                            <button type="button" class="btn btn-danger" data-dismiss="modal" data-toggle="modal"
+                            <button type="button" class="btn btn-danger col-sm-6 purple" data-dismiss="modal" data-toggle="modal"
                                 data-target="#EditVendorModal">Edit</button>
 
                         </div>
