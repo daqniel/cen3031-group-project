@@ -107,3 +107,8 @@
 	background: linear-gradient(to bottom, #2D77A2 5%, #337DA8 100%);
 	background-color: #28739E;
 }
+
+.editSpan
+{
+    padding-left: 95%;
+}

@@ -1,5 +1,5 @@
 {
-  "name": "business-travel-team-1",
+  "name": "bochitto-travel-team-1",
   "version": "1.0.0",
   "description": "Routing server-side requests using ExpressJS",
   "main": "server.js",
@@ -7,11 +7,15 @@
   "license": "MIT",
   "dependencies": {
     "bcryptjs": "*",
+    "bluebird": "*",
+
     "body-parser": "^1.18.3",
     "cookie-parser": "*",
     "express": "^4.16.4",
+    "express-session": "^1.16.1",
     "mocha": "^5.2.0",
-    "mongoose": "^5.4.20",
+    "mongoose": "^5.5.2",
+
     "morgan": "^1.9.1",
     "passport": "*",
     "passport-http": "*",
@@ -20,8 +24,9 @@
   },
   "devDependencies": {
     "nodemon": "^1.18.10",
-    "should": "^7.1.1",
-    "supertest": "^3.4.2"
+    "should": "*",
+    "supertest": "^3.4.2",
+    "mocha": "*"
   },
   "scripts": {
     "start": "node server.js",

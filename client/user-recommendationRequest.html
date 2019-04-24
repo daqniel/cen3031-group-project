@@ -1,249 +1,88 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!-- Links: API's, CSS, and FontAwesome -->
-    <link href="https://fonts.googleapis.com/css?family=Boogaloo|Laila" rel="stylesheet">
-    <link rel="stylesheet" href="style/user-recommendationRequest.css">
-    <link rel="stylesheet" href="style/style.css">
-    <link rel="stylesheet" href="style/user-recommendations.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+<!-- <head>
     <title>My Recommendations</title>
-</head>
+</head> -->
 
-<body ng-app="agencyApp">
-
-
-    <!-- NAVBAR -->
-    <nav id="mainNavbar" class="navbar navbar-expand-md navbar-light fixed-top" ng-controller="UsersController"
-        data-ng-init="showName()">
-        <a class="navbar-brand title" href="./home.html" style="color: #9C28FF">Bochitto Travel</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto nav-fill w-100">
-                <li class="icon nav-item active">
-                    <a class="nav-link " href="./specials-home.html">Specials<span class="sr-only">(current)</span></a>
-                </li>
-                <li class="icon nav-item active">
-                    <a class="nav-link" href="./pastreview-home.html">Past Reviews<span
-                            class="sr-only">(current)</span></a>
-                </li>
-                <li class="icon nav-item active">
-                    <a class="nav-link" href="#aboutUsContainer">About Us<span class="sr-only">(current)</span></a>
-                </li>
-                <li class="icon nav-item active">
-                    <a class="nav-link" href="./user-recommendations.html">MyRecommendations<span
-                            class="sr-only">(current)</span></a>
-                </li>
-            </ul>
-            <div class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false" style="color:black!important;">
-                    Welcome, {{ sessionUsername }}
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="./user-settings.html">Profile</a>
-                    <a class="dropdown-item" href="./user-recommendations.html">MyRecommendations</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="./index.html">Logout</a>
-                </div>
-            </div>
-        </div>
-    </nav>
-
-    <br>
-    <!-- page -->
-    <div class="container my-5 border rounded" id="profile" ng-controller="RequestsController">
-        <h1 class="titleFont text-center pt-2">Request Recommendation</h1>
-        <hr class="settings-hr">
-        <!-- Request Form -->
-        <form>
-            <div class="form-row pb-5 pt-3">
-                <div class="col-sm-12">
-                    <label class="text-center">Email</label>
-                    <input type="text" id="" class="form-control" ng-model="email"
+<header ng-include="'navbar.html'"></header>
+<br>
+<!-- page -->
+<div class="container my-5 border rounded" id="profile" ng-controller="RequestsController">
+    <h1 class="titleFont text-center pt-2">Request Recommendation</h1>
+    <hr class="settings-hr">
+    <!-- Request Form -->
+    <form>
+        <div class="form-row pb-5 pt-3">
+            <div class="col-sm-12">
+                <label class="text-center">Email</label>
+                <input type="text" id="" class="form-control" ng-model="email"
                     placeholder="Please type contact email here...">
+            </div>
+        </div>
+        <div class="form-row pb-5">
+            <div class="col-sm-3">
+                <label for="">Departing From</label>
+                <div class="">
+                    <input type="text" class="form-control" placeholder="i.e. Gainesville, FL" ng-model="locationFrom">
                 </div>
             </div>
-
-            <div class="form-row pb-5">
-                <div class="col-sm-3">
-                    <label for="">Budget</label>
-                    <div class="">
-                        <input type="number" class="form-control" placeholder="Min" ng-model="budgetMin">
-                    </div>
-                </div>
-                <div class="col-sm-3 ">
-                    <div class="">
-                        <label for="">` </label>
-                        <input type="number" class="form-control" placeholder="Max" ng-model="budgetMax">
-                    </div>
-                </div>
-                <div class="col-sm-3">
-                    <label for="">Number of Adults</label>
-                    <input type="number" class="form-control" placeholder="# of Adults" ng-model="numAdults">
-                </div>
-                <div class="col-sm-3">
-                    <label for="">Number of Children</label>
-                    <input type="number" class="form-control" placeholder="# of Children" ng-model="numChildren">
+            <div class="col-sm-3">
+                <label for="">Traveling To</label>
+                <div class="">
+                    <input type="text" class="form-control" placeholder="i.e. New York, NY" ng-model="locationTo">
                 </div>
             </div>
-            <div class="form-row pb-3">
-                <div class="col-sm-12">
-                    <label for="">Description of your perfect vacation</label>
-                    <textarea class="form-control" name="" id="" cols="30" rows="5"
-                        placeholder="Where will your adventure begin..." ng-model="text"></textarea>
+            <div class="col-sm-3">
+                <label for="">Departure Date</label>
+                <div class="">
+                    <input type="date" class="form-control" ng-model="travelDatesDeparting">
                 </div>
             </div>
-
-            <button type="submit" class="btn btn-success" 
-            ng-click="addRequest(email, budgetMin, budgetMax, numChildren, numAdults, text)">Submit</button>
-        </form>
-    </div>
-    <!-- Footer -->
-    <div class="container-fluid" id="footer">
-        <br>
-        <br>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <h5 class="titleFont">Specials</h5>
-                    <ul>
-                        <li>
-                            blah
-                        </li>
-                        <li>
-                            blah
-                        </li>
-                        <li>
-                            blah
-                        </li>
-                        <li>
-                            blah
-                        </li>
-                        <li>
-                            blah
-                        </li>
-                        <li>
-                            blah
-                        </li>
-                        <li>
-                            blah
-                        </li>
-                        <li>
-                            blah
-                        </li>
-                        <li>
-                            blah
-                        </li>
-                        <li>
-                            blah
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-md-4">
-                    <h5 class="text-center titleFont">Book Now!</h5>
-                    <ul>
-                        <li>
-                            blah
-                        </li>
-                        <li>
-                            blah
-                        </li>
-                        <li>
-                            blah
-                        </li>
-                        <li>
-                            blah
-                        </li>
-                        <li>
-                            blah
-                        </li>
-                        <li>
-                            blah
-                        </li>
-                        <li>
-                            blah
-                        </li>
-                        <li>
-                            blah
-                        </li>
-                        <li>
-                            blah
-                        </li>
-                        <li>
-                            blah
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-md-4 text-right ">
-                    <h5 class="titleFont">Contact Us</h5>
-                    <ul>
-                        <li>
-                            blah
-                        </li>
-                        <li>
-                            blah
-                        </li>
-                        <li>
-                            blah
-                        </li>
-                        <li>
-                            blah
-                        </li>
-                        <li>
-                            blah
-                        </li>
-                        <li>
-                            blah
-                        </li>
-                        <li>
-                            blah
-                        </li>
-                        <li>
-                            blah
-                        </li>
-                        <li>
-                            blah
-                        </li>
-                        <li>
-                            blah
-                        </li>
-                    </ul>
+            <div class="col-sm-3">
+                <label for="">Return Date</label>
+                <div class="">
+                    <input type="date" class="form-control" ng-model="travelDatesReturning">
                 </div>
             </div>
         </div>
-        <hr id="footerRule">
-        <h5 class="text-center titleFont">SWE Team 1 Spring 2019 - Software Engineering @ UF: All Rights Reserved.</h5>
-    </div>
+        <div class="form-row pb-5">
+            <div class="col-sm-2">
+                <label for="">Need Travel Insurance?</label>
+                <input type="checkbox" class="form-control" checked ng-model="wantTravelInsurance">
+            </div>
+            <div class="col-sm-2">
+                <label for="">Traveling on a Cruise?</label>
+                <input type="checkbox" class="form-control" checked ng-model="wantCruise">
+            </div>
+            <div class="col-sm-2">
+                <label for="">Budget</label>
+                <div class="">
+                    <input type="number" class="form-control" placeholder="Minimum" ng-model="budgetMin">
+                </div>
+            </div>
+            <div class="col-sm-2 ">
+                <div class="">
+                    <label for="">` </label>
+                    <input type="number" class="form-control" placeholder="Maximum" ng-model="budgetMax">
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <label for="">Number of Adults</label>
+                <input type="number" class="form-control" placeholder="# of Adults" ng-model="numAdults">
+            </div>
+            <div class="col-sm-2">
+                <label for="">Number of Children</label>
+                <input type="number" class="form-control" placeholder="# of Children" ng-model="numChildren">
+            </div>
+        </div>
+        <div class="form-row pb-3">
+            <div class="col-sm-12">
+                <label for="">Description of your perfect vacation</label>
+                <textarea class="form-control" name="" id="" cols="30" rows="5"
+                    placeholder="Where will your adventure begin..." ng-model="text"></textarea>
+            </div>
+        </div>
+        <button type="submit" style="width:100%;" class="btn btn-success"
+            ng-click="addRequest(email, budgetMin, budgetMax, locationTo, locationFrom,travelDatesDeparting,travelDatesReturning,numChildren,numAdults,wantTravelInsurance, wantCruise,text)">Submit</button>
+    </form>
+</div>
 
-    <!-- CDN's + Scripts -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
-        integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
-        integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
-        crossorigin="anonymous"></script>
-    <!-- <script src="js/styling/script.js"></script> -->
-    <script src="https://code.angularjs.org/1.4.3/angular.js"></script>
-    <script src="js/app.js"></script>
-    <script src="js/factories/userFactory.js"></script>
-    <script src="js/controllers/userController.js"></script>
-    <script src="js/factories/requestFactory.js"></script>
-    <script src="js/controllers/requestController.js"></script>
-</body>
-
-</html>
+<div class="bottom" ng-include="'footer.html'"></div>

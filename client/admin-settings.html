@@ -1,0 +1,201 @@
+<!-- <head>
+    <title>MyDashboard | Admin Accounts</title>
+</head> -->
+
+<link rel="stylesheet" href="style/AdminSettings.css">
+<link rel="stylesheet" href="style/admin-SpecialsVendors.css">
+<link rel="stylesheet" href="style/user-recommendations.css">
+<header ng-include="'navbar.html'"></header>
+
+<div class="container my-5" id="profile" data-ng-init="getSession()">
+    <h1 class="titleFont text-center pt-5">Admin Settings</h1>
+    <hr class="settings-hr">
+    <div class="row">
+
+        <div class="col-md-3">
+            <div class="list-group">
+                <a href="/dashboard" class="list-group-item list-group-item-action">
+                    <i class="far fa-lightbulb"></i> &nbsp;
+                    Recommendations
+                </a>
+                <a href="/dashboard/reviews" class="list-group-item list-group-item-action">
+                    <i class="fas fa-glasses"></i> &nbsp;
+                    Past Reviews
+                </a>
+                <a href="/dashboard/specials-vendors" class="list-group-item list-group-item-action">
+                    <i class="fas fa-list-ol"></i> &nbsp;
+                    Vendor List/Specials
+                </a>
+                <a href="/dashboard/settings" class="list-group-item list-group-item-action active">
+                    <i class="far fa-user"></i> &nbsp;
+                    MyProfile
+                </a>
+                <a href="/dashboard/admin-create" class="list-group-item list-group-item-action">
+                    <i class="fas fa-user-plus"></i> &nbsp;
+                    Accounts
+                </a>
+            </div>
+        </div>
+        <div class="col-md-9" data-ng-init="getUserInfo()">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    Name: {{currentUser.name.first}} {{currentUser.name.last}}
+                    <span class="editSpan"><button class="btn btn-success"  data-dismiss="modal" data-toggle="modal"
+                        data-target="#EditNameModal"> <i class="fas fa-edit"></i>
+                        </button></span>
+                </li>
+                <li class="list-group-item">
+                    Email: {{currentUser.email}}
+                    <span class="editSpan"><button class="btn btn-success" data-dismiss="modal" data-toggle="modal"
+                        data-target="#EditEmailModal"> <i class="fas fa-edit"></i>
+                        </button></span>
+                </li>
+                <li class="list-group-item">
+                    Phone Number: {{currentUser.phoneNumber}}
+                    <span class="editSpan"><button class="btn btn-success"  data-dismiss="modal" data-toggle="modal"
+                        data-target="#EditPhoneModal"> <i class="fas fa-edit"></i>
+                        </button></span>
+                </li>
+                <li class="list-group-item">Password: **********
+                    <span class="editSpan"><button class="btn btn-success"  data-dismiss="modal" data-toggle="modal"
+                        data-target="#EditPasswordModal"> <i class="fas fa-edit"></i>
+                        </button></span>
+            </ul>
+             <!--Edit User Modal -->
+                <div class="modal fade" id="EditNameModal" >
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                                <h4 class="modal-title">Edit User Profile</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+
+                            <!-- Modal body -->
+                            <div class="modal-body">
+                                <form>
+                                    <div class="container">
+                                        <div class="row py-1">
+                                            <label class="col-4"> First Name: </label>
+                                            <input class="col" type="text" name="" ng-model="firstName">
+                                        </div>
+                                        <div class="row py-1">
+                                            <label class="col-4">Last Name: </label>
+                                            <input class="col" type="text" name="" ng-model="lastName">
+                                        </div>
+
+                                    </div>
+                                </form>
+                            </div>
+
+                            <!-- Modal footer -->
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click = "updateUser(currentUser.email, firstName,currentUser.name.middle,lastName,currentUser.email, currentUser.phoneNumber,currentUser.password)">Submit</button>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!--Edit User Modal -->
+                <div class="modal fade" id="EditEmailModal" >
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                                <h4 class="modal-title">Edit User Profile</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+
+                            <!-- Modal body -->
+                            <div class="modal-body">
+                                <form>
+                                    <div class="container">
+                                        <div class="row py-1">
+                                            <label class="col-4">Email: </label>
+                                            <input class="col" type="text" name="" ng-model="email">
+                                        </div>
+
+                                    </div>
+                                </form>
+                            </div>
+
+                            <!-- Modal footer -->
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click = "updateUser(currentUser.email, currentUser.name.first,currentUser.name.middle,currentUser.name.last,email, currentUser.phoneNumber,currentUser.password)">Submit</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!--Edit User Modal -->
+                <div class="modal fade" id="EditPhoneModal" >
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                                <h4 class="modal-title">Edit User Profile</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+
+                            <!-- Modal body -->
+                            <div class="modal-body">
+                                <form>
+                                    <div class="container">
+                                        <div class="row py-1">
+                                            <label class="col-4">Phone Number: </label>
+                                            <input class="col" type="text" name="" ng-model="phoneNumber">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <!-- Modal footer -->
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click = "updateUser(currentUser.email, currentUser.name.first,currentUser.name.middle,currentUser.name.last,currentUser.email, phoneNumber,currentUser.password)">Submit</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!--Edit User Modal -->
+                <div class="modal fade" id="EditPasswordModal" >
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                                <h4 class="modal-title">Edit User Profile</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+
+                            <!-- Modal body -->
+                            <div class="modal-body">
+                                <form>
+                                    <div class="container">
+                                        <div class="row py-1">
+                                            <label class="col-4">Password: </label>
+                                            <input class="col" type="text" name="" ng-model="password">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <!-- Modal footer -->
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click = "updateUser(currentUser.email, currentUser.name.first,currentUser.name.middle,currentUser.name.last,currentUser.email, currentUser.phoneNumber,password)">Submit</button>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="bottom" ng-include="'footer.html'"></div>

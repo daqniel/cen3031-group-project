@@ -1,0 +1,30 @@
+.titleofBlog {
+    color: white;
+    font-weight: bold;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+.form-control, .btn {
+    min-height: 40px;
+    border-radius: 30px; 
+    font-size: 15px;
+    transition: all 0.5s;
+}
+.form-control {
+    font-size: 13px;
+}
+.form-control:focus {
+    border-color: #9C28FF;
+}
+
+.btn {
+    background: #9C28FF;
+    border: none;
+    line-height: normal;
+}
+
+.btn:hover, .btn:focus {
+    background: #9C28FF;
+}

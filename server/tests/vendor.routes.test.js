@@ -8,6 +8,7 @@ var app, agent;
 
 var vendor = { //new Vendors created to test save, update, and delete calls
     name: 'Testy\'s Test Location',
+    text: 'Testy is a good friend of mine and will get me great deals.',
     email: 'ttlocation@gmail.com',
     link: 'www.ttlocation.gov',
     phoneNumber: '352-123-4567'
@@ -33,6 +34,7 @@ describe('Tests for Vendor API call', function() {
                 should.not.exist(err);
                 should.exist(res.body._id);
                 res.body.name.should.equal('Testy\'s Test Location');
+                res.body.text.should.equal('Testy is a good friend of mine and will get me great deals.');
                 res.body.email.should.equal('ttlocation@gmail.com');
                 res.body.link.should.equal('www.ttlocation.gov');
                 res.body.phoneNumber.should.equal('352-123-4567');
@@ -48,6 +50,7 @@ describe('Tests for Vendor API call', function() {
                 should.not.exist(err);
                 should.exist(res);
                 res.body.name.should.equal('Testy\'s Test Location');
+                res.body.text.should.equal('Testy is a good friend of mine and will get me great deals.');
                 res.body.email.should.equal('ttlocation@gmail.com');
                 res.body.link.should.equal('www.ttlocation.gov');
                 res.body.phoneNumber.should.equal('352-123-4567');
@@ -62,7 +65,6 @@ describe('Tests for Vendor API call', function() {
             .end(function (err, res) {
                 should.not.exist(err);
                 should.exist(res);
-                res.body.should.have.length(3);
                 done();
             });
     });
@@ -70,6 +72,7 @@ describe('Tests for Vendor API call', function() {
     it('Update Vendor by _id', function(done) {
         var vendorUpdate = {
             name: 'Testy\'s Test Location',
+            text: 'Testy and I aren\'t friends anymore..,',
             email: 'ttlocation@gmail.com',
             link: 'www.ttlocation.com',
             phoneNumber: '352-123-4567'
@@ -85,6 +88,7 @@ describe('Tests for Vendor API call', function() {
                         should.not.exist(err);
                         should.exist(res);
                         res.body.name.should.equal('Testy\'s Test Location');
+                        res.body.text.should.equal('Testy and I aren\'t friends anymore..,');
                         res.body.email.should.equal('ttlocation@gmail.com');
                         res.body.link.should.equal('www.ttlocation.com');
                         res.body.phoneNumber.should.equal('352-123-4567');

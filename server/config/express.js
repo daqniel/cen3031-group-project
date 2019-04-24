@@ -1,11 +1,11 @@
-var path = require("path"),
+const path = require("path"),
+  Promise = require("bluebird"),
   express = require("express"),
-  mongoose = require("mongoose"),
-  morgan = require("morgan"),
-  //NOTE: body-parser not needed, already built into express (express.json)
-  //bodyParser = require('body-parser'),
-  config = require("./config"),
-  specialsRouter = require("../routes/special.routes"),
+  session = require("express-session"),
+  mongoose = Promise.promisifyAll(require("mongoose")),
+  passport = require("passport");
+
+const specialsRouter = require("../routes/special.routes"),
   usersRouter = require("../routes/user.routes"),
   requestsRouter = require("../routes/request.routes"),
   recommendationsRouter = require("../routes/recommendation.routes"),
@@ -13,23 +13,43 @@ var path = require("path"),
   blogpostsRouter = require("../routes/blogpost.routes"),
   vendorsRouter = require("../routes/vendor.routes");
 
+const config = require("./config");
+
 module.exports.init = function() {
   /* db connect */
-  mongoose.connect(config.db.uri, {dbName: 'BochittoTravelDB', useNewUrlParser: true}, err => {
-    if(err) console.log("couldn't connect to DB: ", err);
-  });
+  mongoose.connect(
+    config.db.uri,
+    { dbName: "BochittoTravelDB", useNewUrlParser: true },
+    err => {
+      if (err) console.log("couldn't connect to DB: ", err);
+    }
+  );
 
   /* init app */
   const app = express();
 
-  //enable request logging for development debugging
-  // app.use(morgan('dev'));
+  /* Passport config */
+  require("./passport")(passport);
 
   //body parsing middleware
   app.use(express.json());
+  app.use(express.urlencoded({ extended: true }));
 
   // Set static folder */
   app.use(express.static("client"));
+
+  // Express Session
+  app.use(
+    session({
+      secret: "sekeret",
+      resave: true,
+      saveUninitialized: true
+    })
+  );
+
+  // PassportJS
+  app.use(passport.initialize());
+  app.use(passport.session());
 
   // Use the listings router for requests to the api */
   app.use("/api/users", usersRouter);
@@ -40,10 +60,20 @@ module.exports.init = function() {
   app.use("/api/blogposts", blogpostsRouter);
   app.use("/api/vendors", vendorsRouter);
 
-  // Go to homepage for all routes not specified */
-  app.get("*", function(req, res) {
-    res.redirect("/");
+  app.get("/api/session", (req, res) => {
+    res.send(req.session.passport);
   });
+
+  app.get("/api/logout", (req, res, next) => {
+    req.session.destroy(err => {
+      if (err) return next(err);
+      return res.send({ authenticated: req.isAuthenticated });
+    });
+  });
+
+  app.all("/*", function(req, res, next) {
+    res.sendFile("index.html", { root: "client" });
+  });
+
   return app;
 };
-

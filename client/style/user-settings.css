@@ -1,6 +1,6 @@
 #profile
 {
-    height: 93%;
+    height: 60%;
     margin-top: 5%;
 }
 
@@ -24,4 +24,18 @@
 .list-group-item.active {
     background-color: #9C28FF !important;
     border-color: #9C28FF !important;
+}
+
+#footer
+{
+    background-color: rgb(242, 242, 242);
+    width: 100%;
+    height: 25%;
+    bottom:0;
+    position: absolute;
+}
+
+.editSpan
+{
+    padding-left: 95%;
 }
