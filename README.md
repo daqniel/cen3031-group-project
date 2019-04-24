@@ -21,9 +21,19 @@ Provides users CRUD and login/logout/authentication functionality.
 
 ### HTTP Requests
 
-#### GET
+#### CREATE
 
-+ all users: 
++ Create new user: **POST** /api/users
+
+    All fields must be sent in request body in application/json format.
+
+#### READ
+
++ All users: **GET** /api/users/
+
++ One user: **GET** /api/users/email
+
+####
 
 ## Notes
 
