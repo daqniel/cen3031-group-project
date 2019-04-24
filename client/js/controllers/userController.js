@@ -11,10 +11,10 @@ angular.module("users").controller("UsersController", [
           $scope.loggedIn = "no";
         } else if (response.data.isAdmin == true) {
           $scope.loggedIn = "admin";
-          $scope.sessionUsername = response.data.user;
+          $scope.sessionInfo = response.data;
         } else {
           $scope.loggedIn = "yes";
-          $scope.sessionUsername = response.data.user;
+          $scope.sessionInfo = response.data;
         }
       }
 
@@ -94,23 +94,20 @@ angular.module("users").controller("UsersController", [
       $scope.deleteUser = function(id) {
         Users.delete(id).then(
           function(response) {
-            alert("You're account was deleted");
-            window.location.href = "/home";
+            Users.logout()
+                .then(res => {
+                  console.log("logged out successfully");
+                  window.location.href = "/home";
+                })
+            alert("Your account was deleted");
             $scope.users = response.data;
-            Users.getAll().then(
-              function(response) {
-                $scope.users = response.data;
-              },
-              function(error) {
-                console.log("Unable to retrieve users:", error);
-              }
-            );
           },
           function(error) {
             console.log("Unable to retrieve users:", error);
           }
         );
       };
+
       $scope.updateUser = function(id,
         updatedFirst,
         updatedMiddle,
@@ -131,7 +128,7 @@ angular.module("users").controller("UsersController", [
           };
           Users.update(id, updatedUser)
             .then(res => {
-              window.location.href = "#!/home";
+              window.location.href = "/home";
               console.log("user successfully updated:", res.data);
             })
             .catch(err => {

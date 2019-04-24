@@ -10,7 +10,7 @@
 <br>
 <!-- page -->
 <div class="container my-5" id="profile">
-    <h1 class="titleFont text-center">Admin Settings</h1>
+    <h1 class="titleFont text-center">Recommendation Requests</h1>
     <hr class="settings-hr">
     <div class="row">
 
@@ -22,16 +22,20 @@
                     Recommendations
                 </a>
                 <a href="/dashboard/reviews" class="list-group-item list-group-item-action">
-                    <i class="fas fa-user-cog"></i> &nbsp;
+                    <i class="fas fa-glasses"></i> &nbsp;
                     Past Reviews
                 </a>
                 <a href="/dashboard/specials-vendors" class="list-group-item list-group-item-action">
-                    <i class="fas fa-user-cog"></i> &nbsp;
+                    <i class="fas fa-list-ol"></i> &nbsp;
                     Vendor List/Specials
                 </a>
                 <a href="/dashboard/settings" class="list-group-item list-group-item-action">
-                    <i class="fas fa-user-cog"></i> &nbsp;
+                    <i class="far fa-user"></i> &nbsp;
                     MyProfile
+                </a>
+                <a href="/dashboard/admin-create" class="list-group-item list-group-item-action">
+                    <i class="fas fa-user-plus"></i> &nbsp;
+                    Accounts
                 </a>
             </div>
         </div>
@@ -73,7 +77,8 @@
                                 </td>
                                 <td id="removeButton">
                                     <!-- TODO: remove listing if button is clicked -->
-                                    <button type="button" class="btn btn-secondary" ng-click="deleteRequest(detailedInfo._id)">
+                                    <button type="button" class="btn btn-secondary"
+                                        ng-click="deleteRequest(detailedInfo._id)">
                                         <i class="fas fa-trash-alt"></i>
                                     </button>
                                 </td>
@@ -122,7 +127,9 @@
                                                         <p class="col-4">{{detailedInfo.wantCruise}}</p>
                                                     </div>
                                                     <div class="row py-1">
-                                                        <p class="col-14">There will be {{detailedInfo.partySize}} people on this trip, {{detailedInfo.numAdults}} adults and {{detailedInfo.numChildren}} children.</p>
+                                                        <p class="col-14">There will be {{detailedInfo.partySize}}
+                                                            people on this trip, {{detailedInfo.numAdults}} adults and
+                                                            {{detailedInfo.numChildren}} children.</p>
                                                     </div>
                                                 </div>
                                             </form>
@@ -149,48 +156,53 @@
             </div>
         </div>
 
-        
-            <!-- Add recommendation -->
-            <div class="container-fluid py-5" ng-controller="RecommendationsController">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="">
-                            <div class="card">
-                                <div class="card-header bg-dark">
-                                    <span class="titleofBlog">Recommendation</span>
-                                </div>
-                                <div class="card-body">
-                                    <form>
-                                        <div class="row">
-                                                <div class="col-md-12">
-                                                    <label for="email" class="text-center">Email</label>
-                                                    <input type="email" class="form-control" id="email" placeholder="Clients Email" ng-model="clientId">
-                                                    <br>
-                                                    <label for="title" class="text-center">Title of Request</label>
-                                                    <input type="text" class="form-control" id="title"
-                                                        placeholder="Title of Request" ng-model="title">
-                                                    <br>
-                                                    <label for="link" class="text-center">Links (comma separated)</label>
-                                                    <input type="text" class="form-control" id="link" placeholder="Links" ng-model="link">
-                                                    <br>
-                                                    <label for="text" class="text-center">Comments</label>
-                                                    <br>
-                                                    <textarea id="text" cols="131" rows="10" placeholder="Any more comments..." ng-model="text"></textarea>
-                                                    <br>
-                                                    <button class="btn btn-success" style="width:100%"  ng-click="addRecommendation(clientId,title,text,link)">Submit Recommendation</button>
-                                                </div>
-                                            </div>
+
+        <!-- Add recommendation -->
+        <div class="container-fluid py-5" ng-controller="RecommendationsController">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="">
+                        <div class="card">
+                            <div class="card-header bg-dark">
+                                <span class="titleofBlog">Recommendation</span>
+                            </div>
+                            <div class="card-body">
+                                <form>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <label for="email" class="text-center">Email</label>
+                                            <input type="email" class="form-control" id="email"
+                                                placeholder="Clients Email" ng-model="clientId">
+                                            <br>
+                                            <label for="title" class="text-center">Title of Request</label>
+                                            <input type="text" class="form-control" id="title"
+                                                placeholder="Title of Request" ng-model="title">
+                                            <br>
+                                            <label for="link" class="text-center">Links (comma separated)</label>
+                                            <input type="text" class="form-control" id="link" placeholder="Links"
+                                                ng-model="link">
+                                            <br>
+                                            <label for="text" class="text-center">Comments</label>
+                                            <br>
+                                            <textarea id="text" cols="131" rows="10" placeholder="Any more comments..."
+                                                ng-model="text"></textarea>
+                                            <br>
+                                            <button class="btn btn-success" style="width:100%"
+                                                ng-click="addRecommendation(clientId,title,text,link)">Submit
+                                                Recommendation</button>
                                         </div>
                                     </div>
-                                </form>
                             </div>
                         </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
+</div>
+
+</div>
 </div>
 
 

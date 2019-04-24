@@ -9,7 +9,7 @@
 <br>
 <!-- page -->
 <div class="container my-5" id="profile">
-    <h1 class="titleFont text-center">Admin Settings</h1>
+    <h1 class="titleFont text-center">Specials & Vendors</h1>
     <hr class="settings-hr">
     <div class="row">
         <!--Side Nav table -->
@@ -20,16 +20,20 @@
                     Recommendations
                 </a>
                 <a href="/dashboard/reviews" class="list-group-item list-group-item-action">
-                    <i class="fas fa-user-cog"></i> &nbsp;
+                    <i class="fas fa-glasses"></i> &nbsp;
                     Past Reviews
                 </a>
                 <a href="/dashboard/specials-vendors" class="list-group-item list-group-item-action active">
-                    <i class="fas fa-user-cog"></i> &nbsp;
+                    <i class="fas fa-list-ol"></i> &nbsp;
                     Vendor List/Specials
                 </a>
                 <a href="/dashboard/settings" class="list-group-item list-group-item-action">
-                    <i class="fas fa-user-cog"></i> &nbsp;
+                    <i class="far fa-user"></i> &nbsp;
                     MyProfile
+                </a>
+                <a href="/dashboard/admin-create" class="list-group-item list-group-item-action">
+                    <i class="fas fa-user-plus"></i> &nbsp;
+                    Accounts
                 </a>
             </div>
         </div>
@@ -41,7 +45,7 @@
                 </thead>
                 <thead class="">
 
-                    <th widht="73%">Deal</th>
+                    <th width="73%">Deal</th>
                     <th width="22%">Exp Date</th>
                     <th width="5%"></th>
                 </thead>
@@ -294,6 +298,7 @@
                         </div>
                         <div class="row pl-3">
                             <input class= "col-12" rows="3" cols="80" type="text" ng-model = "newVendor.text">
+
                         </div>
 
                     </div>
