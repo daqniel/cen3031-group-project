@@ -65,8 +65,6 @@ module.exports.init = function() {
   });
 
   app.get("/api/logout", (req, res, next) => {
-    console.log("heck");
-    // req.logout();
     req.session.destroy(err => {
       if (err) return next(err);
       return res.send({ authenticated: req.isAuthenticated });
@@ -77,9 +75,5 @@ module.exports.init = function() {
     res.sendFile("index.html", { root: "client" });
   });
 
-  // Go to homepage for all routes not specified */
-  // app.get("*", function(req, res) {
-  //   res.redirect("/");
-  // });
   return app;
 };
