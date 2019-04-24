@@ -46,6 +46,9 @@ app.config(['$routeProvider', '$locationProvider', ($routeProvider, $locationPro
     .when("/dashboard/settings", {
         templateUrl: "./admin-settings.html"
     })
+    .when("/dashboard/admin-create", {
+        templateUrl: "./admin-create.html"
+    })
     .otherwise({
         redirectTo: '/'
     });

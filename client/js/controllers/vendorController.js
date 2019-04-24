@@ -56,7 +56,7 @@ angular.module("vendors").controller("VendorsController", [
   
         Vendors.update(id, updatedVendor)
           .then(res => {
-            window.location.href = "#!/home";
+            window.location.href = "/home";
             console.log("vendor successfully updated:", res.data);
           })
           .catch(err => {

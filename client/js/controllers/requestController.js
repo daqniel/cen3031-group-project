@@ -58,7 +58,8 @@ angular.module("requests").controller("RequestsController", [
         });
     };
 
-    $scope.deleteRequest = function(id) {
+    $scope.deleteRequest = function(index) {
+      var id = $scope.requests[index]._id;
       Requests.delete(id).then(
         function(response) {
           $scope.requests = response.data;
