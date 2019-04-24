@@ -15,13 +15,13 @@ html, body
 
 .titleFont
 {
-    font-family: 'Boogaloo', cursive;
+    font-family: 'Nunito', sans-serif;
     color: black;
 }
 
 .subtitleFont
 {
-    font-family: 'Boogaloo', cursive;
+    font-family: 'Nunito', sans-serif;
     font-style: italic;
 }
 
@@ -47,8 +47,7 @@ html, body
     /* background-color: #807869; */
      background-color: white;
   /* not sure which color you guys intended, kept both in here just in case - Daniel Q */
-
-    font-family: 'Boogaloo', cursive;
+  font-family: 'Nunito', sans-serif;
 }
 
 .navbar.scrolled{
@@ -167,5 +166,35 @@ html, body
 }
 
 .request{
-    padding-left: 220%;
+    padding-left: 160%;
+}
+.ModalTitle{
+    padding-left: 160px !important;
+}
+.CirclePurple{
+    border: solid #9C28FF 1px;
+    border-radius: 15px;
+    padding-left: 3px !important;
+    padding-right: 3px !important;
+    margin-left: 10px !important;
+    margin-right: 10px !important;
+    padding-bottom: 3px;
+    padding-top: 3px;
+
+}
+.SmallCirclePurple{
+    border: solid #9C28FF 1px;
+    border-radius: 15px;
+    padding-left: 3px !important;
+    padding-right: 3px !important;
+    margin-right: 10px !important;
+    padding-bottom: 3px;
+    padding-top: 3px;
+}
+.SmallCirclePurple2{
+    border: solid #9C28FF 1px;
+    border-radius: 15px;
+    padding-left: 3px !important;
+    padding-bottom: 3px;
+    padding-top: 3px;
 }

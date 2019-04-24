@@ -10,7 +10,7 @@
 <br>
 <!-- page -->
 <div class="container my-5" id="profile">
-    <h1 class="titleFont text-center">Admin Settings</h1>
+    <h1 class="titleFont text-center">Recommendation Requests</h1>
     <hr class="settings-hr">
     <div class="row">
 
@@ -22,16 +22,20 @@
                     Recommendations
                 </a>
                 <a href="/dashboard/reviews" class="list-group-item list-group-item-action">
-                    <i class="fas fa-user-cog"></i> &nbsp;
+                    <i class="fas fa-glasses"></i> &nbsp;
                     Past Reviews
                 </a>
                 <a href="/dashboard/specials-vendors" class="list-group-item list-group-item-action">
-                    <i class="fas fa-user-cog"></i> &nbsp;
+                    <i class="fas fa-list-ol"></i> &nbsp;
                     Vendor List/Specials
                 </a>
                 <a href="/dashboard/settings" class="list-group-item list-group-item-action">
-                    <i class="fas fa-user-cog"></i> &nbsp;
+                    <i class="far fa-user"></i> &nbsp;
                     MyProfile
+                </a>
+                <a href="/dashboard/admin-create" class="list-group-item list-group-item-action">
+                    <i class="fas fa-user-plus"></i> &nbsp;
+                    Accounts
                 </a>
             </div>
         </div>
@@ -73,22 +77,23 @@
                                 </td>
                                 <td id="removeButton">
                                     <!-- TODO: remove listing if button is clicked -->
-                                    <button type="button" class="btn btn-secondary" ng-click="deleteRequest(detailedInfo._id)">
+                                    <button type="button" class="btn btn-secondary"
+                                        ng-click="deleteRequest(detailedInfo._id)">
                                         <i class="fas fa-trash-alt"></i>
                                     </button>
                                 </td>
                             </tr>
-                            <!--Requests Info Modal -->
-                            <div class="modal fade" id="RequestInfoModal">
+
+                            <!--Requests CIRCLE Info Modal -->
+                            <div class="modal fade circle" id="RequestInfoModal">
                                 <div class="modal-dialog modal-dialog-centered">
                                     <div class="modal-content">
 
                                         <!-- Modal Header -->
                                         <div class="modal-header">
                                             <div class="center">
-                                                <h4 class="request">Request</h4>
+                                                <h2 class="request">Request</h2>
                                             </div>
-                                            <button type="button" class="close" data-dismiss="modal">&times;</button>                                       
                                         </div>
 
                                         <!-- Modal body -->
@@ -96,35 +101,48 @@
                                             <form>
                                                 <div class="container">
                                                     <div class="row py-1">
-                                                        <label class="col-4">Client</label>
-                                                        <p class="col" name="">{{detailedInfo.clientId}}</p>
+                                                        <label class="col-sm-12">Client</label>
                                                     </div>
                                                     <div class="row py-1">
-                                                        <label class="col-4">Budget:</label>
-                                                        <p class="col" name=""> ${{detailedInfo.budget.min}} -
-                                                            ${{detailedInfo.budget.max}}</p>
+                                                        <label class="col-sm-11 CirclePurple">
+                                                            {{detailedInfo.clientId}}
+                                                        </label>
                                                     </div>
                                                     <div class="row py-1">
-                                                        <label class="col-4">Dates:</label>
-                                                        <p class="col" name="">
+                                                        <label class="col-sm-6">Dates</label>
+                                                        <label class="col-sm-6">Budget</label>                                                    
+                                                    </div>
+                                                    <div>
+                                                        <label class="col-sm-6 SmallCirclePurple" name="">
                                                             {{detailedInfo.travelDates.departing| date}} -
-                                                            {{detailedInfo.travelDates.returning |date}}</p>
+                                                            {{detailedInfo.travelDates.returning |date}}
+                                                        </label>
+                                                        <label class="col-sm-5 SmallCirclePurple2" name=""> ${{detailedInfo.budget.min}} -
+                                                            ${{detailedInfo.budget.max}}
+                                                        </label>
                                                     </div>
                                                     <div class="row py-1">
-                                                        <label class="col-4">Locations:</label>
-                                                        <p class="col-4">Departing from {{detailedInfo.location.from}}
-                                                            and going to {{detailedInfo.location.to}}</p>
+                                                        <label class="col-sm-12">Locations</label>
+                                                        <label class="col-sm-11 CirclePurple">Departing from {{detailedInfo.location.from}}
+                                                            and going to {{detailedInfo.location.to}}</label>
                                                     </div>
                                                     <div class="row py-1">
-                                                        <label class="col-4">Wants travel insurance?</label>
-                                                        <p class="col-4">{{detailedInfo.wantTravelInsurance}}</p>
+                                                        <label class="col-sm-6">Wants travel insurance?</label>
+                                                        <label class="col-sm-6">Wants a cruise?</label>
                                                     </div>
                                                     <div class="row py-1">
-                                                        <label class="col-4">Wants a cruise?</label>
-                                                        <p class="col-4">{{detailedInfo.wantCruise}}</p>
+                                                        <span class="col-sm-12" name="">
+                                                            <label class="col-sm-6 SmallCirclePurple" value="NA">{{detailedInfo.wantTravelInsurance}}</label>
+                                                            <label class="col-sm-5 SmallCirclePurple2" value="NA">{{detailedInfo.wantCruise}}</label>
+                                                        </span>    
                                                     </div>
                                                     <div class="row py-1">
-                                                        <p class="col-14">There will be {{detailedInfo.partySize}} people on this trip, {{detailedInfo.numAdults}} adults and {{detailedInfo.numChildren}} children.</p>
+                                                        <label class="col-sm-12" for="">Comments...</label>
+                                                    </div>
+                                                    <div class="row py-1">
+                                                        <p class="col-sm-11 CirclePurple">There will be {{detailedInfo.partySize}}
+                                                            people on this trip, {{detailedInfo.numAdults}} adults and
+                                                            {{detailedInfo.numChildren}} children.</p>
                                                     </div>
                                                 </div>
                                             </form>
@@ -132,15 +150,14 @@
 
                                         <!-- Modal footer -->
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-danger login mr-auto"
-                                                data-dismiss="modal" data-toggle="modal" data-target="#loginModal"
-                                                ng-click="deleteRequest(detailedInfo._id)">Delete</button>
-                                            <button type="button" class="btn btn-danger"
-                                                data-dismiss="modal">Edit</button>
+                                            <button type="button" class="btn btn-danger login mr-auto col-sm-12"
+                                                data-dismiss="modal" data-toggle="modal" data-target="#RequestInfoModal">Close
+                                            </button>
                                         </div>
 
                                     </div>
                                 </div>
+                            </div>
                                 <!-- Collapse Recommendations -->
                         </tbody>
                     </table>
@@ -151,47 +168,53 @@
             </div>
         </div>
 
-        
-            <!-- Add recommendation -->
-            <div class="container-fluid py-5" ng-controller="RecommendationsController">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="">
-                            <div class="card">
-                                <div class="card-header bg-dark">
-                                    <span class="titleofBlog">Recommendation</span>
-                                </div>
-                                <div class="card-body">
-                                    <form>
-                                        <div class="row">
-                                                <div class="col-md-12">
-                                                    <label for="email" class="text-center">Email</label>
-                                                    <input type="email" class="form-control" id="email" placeholder="Clients Email" ng-model="clientId">
-                                                    <br>
-                                                    <label for="title" class="text-center">Title of Request</label>
-                                                    <input type="text" class="form-control" id="title"
-                                                        placeholder="Title of Request" ng-model="title">
-                                                    <br>
-                                                    <label for="link" class="text-center">Links (comma separated)</label>
-                                                    <input type="text" class="form-control" id="link" placeholder="Links" ng-model="link">
-                                                    <br>
-                                                    <label for="text" class="text-center">Comments</label>
-                                                    <br>
-                                                    <textarea class="col-sm-12" id="text" cols="" rows="10" placeholder="Any more comments..." ng-model="text"></textarea>
-                                                    <button class="btn btn-success mt-3" style="width:100%"  ng-click="addRecommendation(clientId,title,text,link)">Submit Recommendation</button>
-                                                </div>
-                                            </div>
+
+        <!-- Add recommendation -->
+        <div class="container-fluid py-5" ng-controller="RecommendationsController">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="">
+                        <div class="card">
+                            <div class="card-header bg-dark">
+                                <span class="titleofBlog">Recommendation</span>
+                            </div>
+                            <div class="card-body">
+                                <form>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <label for="email" class="text-center">Email</label>
+                                            <input type="email" class="form-control" id="email"
+                                                placeholder="Clients Email" ng-model="clientId">
+                                            <br>
+                                            <label for="title" class="text-center">Title of Request</label>
+                                            <input type="text" class="form-control" id="title"
+                                                placeholder="Title of Request" ng-model="title">
+                                            <br>
+                                            <label for="link" class="text-center">Links (comma separated)</label>
+                                            <input type="text" class="form-control" id="link" placeholder="Links"
+                                                ng-model="link">
+                                            <br>
+                                            <label for="text" class="text-center">Comments</label>
+                                            <br>
+                                            <textarea id="text" class="col-sm-12" rows="10" placeholder="Any more comments..."
+                                                ng-model="text"></textarea>
+                                            <br>
+                                            <button class="btn btn-success mt-3" style="width:100%"
+                                                ng-click="addRecommendation(clientId,title,text,link)">Submit
+                                                Recommendation</button>
                                         </div>
                                     </div>
-                                </form>
                             </div>
                         </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
+</div>
+
+</div>
 </div>
 
 
