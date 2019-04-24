@@ -1,6 +1,4 @@
 # cen3031-group-project
-## Notes
-Request/Recommendation schema/API's are a mess right now. Waiting on more info from client. Other API's should be pretty much functional, may need some additional functionality added later. Code could probably be cleaned up a bit too but not too important right now.
 
 # API
 The API is a way to interact with the documents stored in the database through HTTP requests.
@@ -22,6 +20,15 @@ Provides users CRUD and login/logout/authentication functionality.
 |isAdmin|Boolean|no|Designates an Administrator account|
 
 ### HTTP Requests
+* Get all users: GET /api/users
+
+* Get user by email: GET /api/users/(user.email)
+
+* Create user: POST /api/users
+
+* Update user by email: PUT /api/users/(user.email)
+
+* Delete user by email: DELETE /api/user/(user.email)
 
 ## Notes
 
@@ -37,7 +44,6 @@ Provides notes CRUD functionality. Each note must be linked to a User, Vendor, o
 |text|String|maybe|Text of the note. Required if no title is provided.|
 
 ### HTTP Requests
-
 * Get all notes: GET /api/notes
 
 * Get all notes by certain linkedId: GET /api/notes/?linkedId=xxxx
@@ -62,7 +68,6 @@ Provides blogpost CRUD functionality.
 |text|String|maybe|Text of the blogpost. Required if no title is provided.|
 
 ### HTTP Request
-
 * Get all blogposts: GET /api/blogposts
 
 * Create blogpost: POST /api/blogposts
@@ -75,6 +80,9 @@ Provides blogpost CRUD functionality.
 
 ## Special
 
+### Description
+Provides specials CRUD functionality. Can be retrieved by date.
+
 ### Schema
 |Field|Type|Required?|Description|
 |-----|----|--------|-|
@@ -82,6 +90,7 @@ Provides blogpost CRUD functionality.
 |text|String|no|Text of the Special. Can be used for descriptions|
 |expireDate|Date|no|Date the special deal expires|
 
+### HTTP Requests
 * Get all specials: GET /api/specials
 
 * Create special: POST /api/specials
@@ -91,8 +100,6 @@ Provides blogpost CRUD functionality.
 * Update special by _id: PUT /api/specials/(special._id)
 
 * Delete special by _id: DELETE /api/specials/(special._id)
-
-NOTE: I have reimplemented this to use query params instead
 
 * Get newest N specials: GET /api/specials/?num=N
 
@@ -104,6 +111,9 @@ TODO: Document rest of the API.
 
 ## Vendor
 
+### Description
+Provides vendor CRUD functionality.
+
 ### Schema
 |Field|Type|Required?|Description|
 |-----|----|--------|-|
@@ -113,41 +123,76 @@ TODO: Document rest of the API.
 |email|String|no|Email of contact for vendor|
 |link|String|no|URL for vendor website|
 
-### BlogPosts
-
+### HTTP Requests
 Required fields: title(String). Optional fields: text(String). Maybe text should be a required field too? Although she may want to use her blogposts as announcements. Short announcements would only need the title field.
 
-Get all blogposts: GET /api/blogposts
+* Get all vendor: GET /api/vendors
 
-Create blogpost: POST /api/blogposts
+* Create vendor: POST /api/vendors
 
-Get blogpost by _id: GET /api/blogposts/(blogpost._id)
+* Get vendor by _id: GET /api/vendors/(vendor._id)
 
-Update blogpost by _id: PUT /api/blogposts/(blogpost._id)
+* Update vendor by _id: PUT /api/vendors/(vendor._id)
 
-Delete blogpost by _id: DELETE /api/blogposts/(blogpost._id)
+* Delete vendor by _id: DELETE /api/vendors/(vendor._id)
 
-### Specials
+## Request
 
-Required fields: title(String). Optional fields: description(String), expireDate(Date). Date format should be 'YYYY-MM-DD'.
+### Description
+Provides request CRUD functionality. Requests are created by a client and sent to admin
 
-Get all specials: GET /api/specials
+### Schema
+|Field|Type|Required?|Description|
+|-----|----|--------|-|
+|clientID|String|yes|Email associated with client account|
+|requestState|String|yes|Pending/Declined/Accepted/Resolved states of request|
+|budget.min|Number|no|Low end of budget for travel|
+|budget.max|Number|no|High end of budget for travel|
+|location.from|String|no|Departing location for travel|
+|location.to|String|no|Desired destination for travel|
+|travelDates.departing|Date|no|Date desired to leave for travel|
+|travelDates.returning|Date|no|Date desired to return from travel|
+|numChildren|Number|yes|Number of children that will be travelling|
+|numAdults|Number|yes|Number of adults that will be travelling|
+|partySize|Number|no|Total number of children and adults|
+|wantTravelInsurance|Boolean|no|Decides if client wants to purchase travel insurance|
+|wantCruise|Boolean|no|Decides if client wants to take a cruise|
 
-Create special: POST /api/specials
+### HTTP Requests
+* Get all requests for a client: GET /api/requests
 
-Get special by _id: GET /api/specials/(special._id)
+* Create request: POST /api/requests
 
-Update special by _id: PUT /api/specials/(special._id)
+* Get request by _id: GET /api/requests/(request._id)
 
-Delete special by _id: DELETE /api/specials/(special._id)
+* Update request by _id: PUT /api/requests/(request._id)
 
-NOTE: I have reimplemented this to use query params instead
+* Delete request by _id: DELETE /api/requests/(request._id)
 
-Get newest N specials: GET /api/specials/?num=N
+## Recommendation
 
-Get oldest N specials: GET /api/specials/?num=N&order=old
+### Description
+Provides recommendation CRUD functionality.
 
-Get all specials old to new: GET /api/specials/?order=old
+### Schema
+|Field|Type|Required?|Description|
+|-----|----|--------|-|
+|client|String|yes|Name of a client being responded to|
+|title|String|yes|Title of recommendation|
+|text|String|no|Body of recommendation|
+|link|String|no|URL for suggested travel website|
+
+### HTTP Requests
+* Get all recommendations: GET /api/recommendations
+
+* Create recommendation: POST /api/recommendations
+
+* Get recommendation by _id: GET /api/recommendations/(recommendation._id)
+
+* Update recommendation by _id: PUT /api/recommendations/(recommendation._id)
+
+* Delete recommendation by _id: DELETE /api/recommendations/(recommendation._id)
+
 
 ## Team 
 Daniel Quintero (leingad)
