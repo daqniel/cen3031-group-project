@@ -5,7 +5,7 @@ angular.module("blogPosts").controller("BlogPostsController", [
     BlogPosts.getAll()
       .then(res => {
         $scope.blogPosts = res.data;
-        // console.log('resdata', $scope.blogPosts);
+        console.log("resdata", $scope.blogPosts);
       })
       .catch(err => {
         console.log("Unable to get blogPosts:", error);
@@ -20,8 +20,8 @@ angular.module("blogPosts").controller("BlogPostsController", [
       };
       BlogPosts.create(newBlogPost)
         .then(res => {
-         if (res.status == 200)
-            // console.log("blogPost added successfully", res.data);
+          //  if (res.status == 200) alert("Blogpost added successfully");
+          // console.log("blogPost added successfully", res.data);
         })
         .catch(err => console.log("Unable to retrieve blogPosts:", error));
     };
