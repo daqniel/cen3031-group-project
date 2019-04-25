@@ -12,8 +12,14 @@ exports.list = function(req, res) {
 /* Create a user */
 exports.create = function(req, res) {
   var user = new User(req.body);
+
   /* Always false on user creation, can be set true by another admin */
-  user.isAdmin = false;
+  if(req.session.passport.isAdmin)
+  {
+    user.isAdmin = true;
+  } else {
+    user.isAdmin = false;
+  }
 
   /* hash password and save to database */
   User.hashPassword(user.password, hashed => {
