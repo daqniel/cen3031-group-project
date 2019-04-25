@@ -15,7 +15,7 @@ router
 
 router
   .route("/:_id")
-  .get(specials_controller.read) /* Maybe don't need this get by id */
+  .get(specials_controller.read)
   .put(specials_controller.update)
   .delete(specials_controller.delete);
 
