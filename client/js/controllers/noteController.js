@@ -23,7 +23,7 @@ angular.module("notes").controller("NotesController", [
       Notes.create(newNote)
         .then(res => {
           if (res.status == 200)
-            console.log("vendor added successfully", res.data);
+            // console.log("vendor added successfully", res.data);
           window.location = window.location;
         })
         .catch(err => {

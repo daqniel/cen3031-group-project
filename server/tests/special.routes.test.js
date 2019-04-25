@@ -39,7 +39,6 @@ describe('Tests for Special API call', function() {
     });
 
     it('Get Special by _id', function(done) {
-        console.log(id);
         agent.get('/api/specials/' + id) //specifies test BlogPost's ObjectId
             .expect(200)
             .end(function (err, res) {

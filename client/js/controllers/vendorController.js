@@ -4,7 +4,6 @@ angular.module("vendors").controller("VendorsController", [
   function($scope, Vendors) {
     Vendors.getAll()
       .then(res => {
-        console.log(res.data);
         $scope.vendors = res.data;
       })
       .catch(err => {
@@ -33,7 +32,7 @@ angular.module("vendors").controller("VendorsController", [
           //TODO: what should we do when we get a res?
             window.location = window.location;
           if (res.status == 200)
-            console.log("vendor added successfully", res.data);
+            // console.log("vendor added successfully", res.data);
         })
         .catch(err => console.log("Error creating vendor: ", err));
 
@@ -57,7 +56,7 @@ angular.module("vendors").controller("VendorsController", [
         Vendors.update(id, updatedVendor)
           .then(res => {
             window.location.href = "/home";
-            console.log("vendor successfully updated:", res.data);
+            // console.log("vendor successfully updated:", res.data);
           })
           .catch(err => {
             console.log("couldn't update vendor: ", err);

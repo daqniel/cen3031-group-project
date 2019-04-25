@@ -5,12 +5,11 @@ angular.module("blogPosts").controller("BlogPostsController", [
     BlogPosts.getAll()
       .then(res => {
         $scope.blogPosts = res.data;
-        console.log('resdata', $scope.blogPosts);
+        // console.log('resdata', $scope.blogPosts);
       })
       .catch(err => {
         console.log("Unable to get blogPosts:", error);
       });
-
 
     $scope.detailedInfo = undefined;
 
@@ -21,10 +20,8 @@ angular.module("blogPosts").controller("BlogPostsController", [
       };
       BlogPosts.create(newBlogPost)
         .then(res => {
-          //TODO: what should we do when we get a res?
-          if (res.status == 200)
-            console.log("blogPost added successfully", res.data);
-          window.location = window.location;
+         if (res.status == 200)
+            // console.log("blogPost added successfully", res.data);
         })
         .catch(err => console.log("Unable to retrieve blogPosts:", error));
     };

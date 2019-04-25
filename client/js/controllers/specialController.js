@@ -12,7 +12,7 @@ angular.module("specials").controller("SpecialsController", [
     $scope.get3MostRecent = function() {
       Specials.get3MostRecent()
         .then(res => {
-          console.log("get3specials", res);
+          // console.log("get3specials", res);
           $scope.specials = res.data;
           $scope.special1 = res.data[0];
           $scope.special2 = res.data[1];
