@@ -163,3 +163,59 @@ html, body
     width: 10%;
     border-radius: 50%;
 }
+
+.request{
+    padding-left: 160%;
+}
+.ModalTitle{
+    padding-left: 160px !important;
+}
+.CirclePurple{
+    border: solid #9C28FF 1px;
+    border-radius: 15px;
+    padding-left: 3px !important;
+    padding-right: 3px !important;
+    margin-left: 10px !important;
+    margin-right: 10px !important;
+    padding-bottom: 3px;
+    padding-top: 3px;
+
+}
+.SmallCirclePurple{
+    border: solid #9C28FF 1px;
+    border-radius: 15px;
+    padding-left: 3px !important;
+    padding-right: 3px !important;
+    margin-right: 10px !important;
+    padding-bottom: 3px;
+    padding-top: 3px;
+}
+.SmallCirclePurple2{
+    border: solid #9C28FF 1px;
+    border-radius: 15px;
+    padding-left: 3px !important;
+    padding-bottom: 3px;
+    padding-top: 3px;
+}
+.SmallCirclePurple3{
+    border: solid #9C28FF 1px;
+    border-radius: 15px;
+    padding-left: 3px !important;
+    padding-right: 3px !important;
+    margin-left: 10px !important;
+    margin-right: 10px !important;
+    padding-bottom: 3px;
+    padding-top: 3px;
+}
+.purple{
+    background: #9C28FF !important;
+    border:  #9C28FF !important;
+    border-radius: 20px !important;
+}
+
+.specialsTitle{
+    padding-left: 43%;
+}
+.vendorTitle{
+    padding-left: 43%;
+}

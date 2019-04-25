@@ -44,7 +44,7 @@
 
             <table class="table table-striped table-hover" id="SpecialTable">
                 <thead class="thead-dark">
-                    <th colspan="3">Past Reviews</th>
+                    <th colspan="3" class="">Past Reviews</th>
                 </thead>
                 <thead class="">
                     <th>Post</th>
@@ -69,21 +69,17 @@
                     <div class="modal-content">
 
                         <!-- Modal Header -->
-                        <div class="modal-header">
-                            <h4 class="modal-title">Past Review</h4>
+                        <div align="center" class="modal-header">
+                            <h4  class="modal-title">{{detailedInfo.title}}</h4>
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
 
                         <!-- Modal body -->
                         <div class="modal-body">
                             <form>
-                                <div class="container">
-                                    <div class="row py-1">
-                                        <label class="col-4"></label>
-                                        <p class="col" name="">{{detailedInfo.title}}</p>
-                                    </div>
+                                <div class="container SmallCirclePurple2">
 
-                                    <div class="row pl-3">
+                                    <div class="row pl-3 ">
                                         <p>
                                             {{detailedInfo.text}}
                                         </p>
@@ -95,9 +91,12 @@
 
                         <!-- Modal footer -->
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-danger login mr-auto" data-dismiss="modal"
+                            <button type="button" class="btn btn-danger login mr-auto col-sm-6" data-dismiss="modal"
                                 data-toggle="modal" data-target="#loginModal"
                                 ng-click="deleteBlogPost(detailedInfo._id)">Delete</button>
+
+                            <button type="button" class="btn btn-danger col-sm-6" data-dismiss="modal">Edit</button>
+
                         </div>
 
                     </div>
@@ -131,7 +130,7 @@
                                     </div>
                                 </div>
                                 <div class="">
-                                    <button type="button" class="btn btn-success" data-whatever="@mdo"
+                                    <button type="button" class="btn btn-success col-sm-12" data-whatever="@mdo"
                                         ng-click="addBlogPost(newBlogPost.title,newBlogPost.text)">Submit</button>
                                 </div>
 
