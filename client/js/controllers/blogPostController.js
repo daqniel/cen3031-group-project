@@ -5,7 +5,6 @@ angular.module("blogPosts").controller("BlogPostsController", [
     BlogPosts.getAll()
       .then(res => {
         $scope.blogPosts = res.data;
-        console.log("resdata", $scope.blogPosts);
       })
       .catch(err => {
         console.log("Unable to get blogPosts:", error);
