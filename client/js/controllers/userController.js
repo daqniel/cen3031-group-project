@@ -1,20 +1,20 @@
 angular.module("users").controller("UsersController", [
   "$scope",
+  "$rootScope",
   "Users",
-  function($scope, Users) {
-    console.log("this ran");
+  function($rootScope, $scope, Users) {
     Users.getSession().then(response => {
-      console.log("getting session", response);
+      // console.log("getting session", response);
       // $scope.currentUser = $.parseJSON(sessionStorage.getItem("user"));
       if (response.status == 200) {
         if (response.data == "") {
-          $scope.loggedIn = "no";
+          $rootScope.loggedIn = "no";
         } else if (response.data.isAdmin == true) {
-          $scope.loggedIn = "admin";
-          $scope.sessionInfo = response.data;
+          $rootScope.loggedIn = "admin";
+          $rootScope.sessionInfo = response.data;
         } else {
-          $scope.loggedIn = "yes";
-          $scope.sessionInfo = response.data;
+          $rootScope.loggedIn = "yes";
+          $rootScope.sessionInfo = response.data;
         }
       }
 
@@ -30,39 +30,38 @@ angular.module("users").controller("UsersController", [
       ) {
         if (newPass != newPassVerify) {
           alert("Passwords don't match, please try again.");
-          window.location.href = "../index.html";
+        } else {
+          var newUser = {
+            name: {
+              first: newFirst,
+              middle: newMiddle,
+              last: newLast
+            },
+            email: newEmail,
+            password: newPass,
+            phoneNumber: newPhone
+          };
+          Users.create(newUser)
+            .then(res => {
+              if (res.status == 200) alert("User successfully registered!");
+            })
+            .catch(err => {
+              if (err.data.code == 11000) {
+                alert("That email has already been registered!");
+              } else {
+                alert("User could not be created.");
+              }
+              // window.location.href = "/home";
+            });
         }
-        var newUser = {
-          name: {
-            first: newFirst,
-            middle: newMiddle,
-            last: newLast
-          },
-          email: newEmail,
-          password: newPass,
-          phoneNumber: newPhone
-        };
-        Users.create(newUser)
-          .then(res => {
-            if (res.status == 200) alert("User successfully registered!");
-          })
-          .catch(err => {
-            if (err.data.code == 11000) {
-              alert("That email has already been registered!");
-            } else {
-              alert("User could not be created.");
-            }
-            window.location.href = "/home";
-          });
       };
 
       $scope.authenticateUser = function(email, password) {
         Users.authenticate(email, password)
           .then(res => {
-            console.log("res.data", res);
+            // console.log("res.data", res);
             if (res.status == 200) {
               sessionStorage.setItem("user", JSON.stringify(res.data));
-              console.log("looged in successfully");
               window.location.href = "/home";
             }
           })
@@ -75,9 +74,9 @@ angular.module("users").controller("UsersController", [
       $scope.logout = function() {
         Users.logout()
           .then(response => {
-            console.log(response.status);
+            // console.log(response.status);
             if (response.status == 200) {
-              $scope.loggedIn = "no";
+              $rootScope.loggedIn = "no";
               sessionStorage.removeItem("user");
               window.location.href = "/home";
             }
@@ -94,11 +93,10 @@ angular.module("users").controller("UsersController", [
       $scope.deleteUser = function(id) {
         Users.delete(id).then(
           function(response) {
-            Users.logout()
-                .then(res => {
-                  console.log("logged out successfully");
-                  window.location.href = "/home";
-                })
+            Users.logout().then(res => {
+              // console.log("logged out successfully");
+              window.location.href = "/home";
+            });
             alert("Your account was deleted");
             $scope.users = response.data;
           },
@@ -108,34 +106,34 @@ angular.module("users").controller("UsersController", [
         );
       };
 
-      $scope.updateUser = function(id,
+      $scope.updateUser = function(
+        id,
         updatedFirst,
         updatedMiddle,
         updatedLast,
         updatedEmail,
         updatedPhone,
         updatedPass
-        ) {
-          var updatedUser = {
-            name: {
-              first: updatedFirst,
-              middle: updatedMiddle,
-              last: updatedLast
-            },
-            email: updatedEmail,
-            password: updatedPass,
-            phoneNumber: updatedPhone
-          };
-          Users.update(id, updatedUser)
-            .then(res => {
-              window.location.href = "/home";
-              console.log("user successfully updated:", res.data);
-            })
-            .catch(err => {
-              console.log("couldn't update user: ", err);
-            })
-        }
-    
+      ) {
+        var updatedUser = {
+          name: {
+            first: updatedFirst,
+            middle: updatedMiddle,
+            last: updatedLast
+          },
+          email: updatedEmail,
+          password: updatedPass,
+          phoneNumber: updatedPhone
+        };
+        Users.update(id, updatedUser)
+          .then(res => {
+            window.location.href = "/home";
+            // console.log("user successfully updated:", res.data);
+          })
+          .catch(err => {
+            console.log("couldn't update user: ", err);
+          });
+      };
 
       $scope.showDetails = function(index) {
         $scope.detailedInfo = $scope.listings[index];

@@ -9,7 +9,6 @@ module.exports = function(passport) {
   passport.use(
     new LocalStrategy({ usernameField: "email" }, (email, password, done) => {
       // Check if user exists
-      console.log("MHMHMH");
       User.findOne({ email: email })
         .then(user => {
           if (!user) {
@@ -31,12 +30,12 @@ module.exports = function(passport) {
   );
 
   passport.serializeUser((user, done) => {
-    console.log("serializing User");
+    // console.log("serializing User");
     done(null, user.email);
   });
 
   passport.deserializeUser((email, done) => {
-    console.log("deserializing User");
+    // console.log("deserializing User");
     User.findOne({ email: email }, (err, user) => {
       done(err, user);
     });

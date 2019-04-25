@@ -3,7 +3,6 @@ var User = require("../models/user.model.js");
 
 /* retrieve all users */
 exports.list = function(req, res) {
-  console.log("henlo");
   User.find({})
     .then(users => res.json(users))
     .catch(err => res.status(400).send(err));
@@ -12,8 +11,14 @@ exports.list = function(req, res) {
 /* Create a user */
 exports.create = function(req, res) {
   var user = new User(req.body);
+
   /* Always false on user creation, can be set true by another admin */
-  user.isAdmin = false;
+  if(req.session.passport.isAdmin)
+  {
+    user.isAdmin = true;
+  } else {
+    user.isAdmin = false;
+  }
 
   /* hash password and save to database */
   User.hashPassword(user.password, hashed => {
@@ -71,20 +76,5 @@ exports.postAuth = function(req, res) {
   req.session.passport.name = req.user.name;
   res.json(req.user);
 };
-
-// /* destroy session */
-// exports.logout = function(req, res) {
-//   console.log("thhe heck");
-//   req.session
-//     .destroy()
-//     .then(() => {
-//       console.log("session:", req.session);
-//       res.clearCookie("connect.sid");
-//     })
-//     .catch(err => res.status(400).send(err));
-// };
-/**
- * Middleware
- */
 
 //TODO: Restrict Read/Update/Delete by email to admin.
